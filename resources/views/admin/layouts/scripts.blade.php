@@ -19,5 +19,8 @@
 <script src="/admin-assets/dist/js/pages/dashboard2.js"></script>
 <!-- admin-assetsLTE for demo purposes -->
 <script src="/admin-assets/dist/js/demo.js"></script>
+<!-- configurações gerais de JS -->
+<script src="/admin-assets/js/app.js"></script>
+
 </body>
 </html>

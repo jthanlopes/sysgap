@@ -1,0 +1,15 @@
+.content-header .btn-add {
+	margin-top: 0px;
+	margin-bottom: 50px;
+}
+
+.content-header hr {
+  color: #000;
+  background-color: #000;
+  height: 1px;
+}
+
+.thead-inverse tr {
+	background-color: #3c8dbc;
+	color: #fff;
+}

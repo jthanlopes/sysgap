@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Admin;
 
 class AdminController extends Controller
 {
@@ -28,6 +29,8 @@ class AdminController extends Controller
     }   
 
     public function adminsView() {
-        return view('admin.admins-view');
+        $administradores = Admin::orderBy('active', 'desc')->get();
+
+        return view('admin.admins-view', compact('administradores'));
     }
 }
