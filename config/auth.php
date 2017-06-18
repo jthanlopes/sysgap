@@ -45,6 +45,24 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'freela' => [
+            'driver' => 'session',
+            'provider' => 'freelas',
+        ],
+
+        'freela-api' => [
+            'driver' => 'token',
+            'provider' => 'freelas',
+        ],
+        'empresa' => [
+            'driver' => 'session',
+            'provider' => 'empresas',
+        ],
+
+        'empresa-api' => [
+            'driver' => 'token',
+            'provider' => 'empresas',
+        ],
     ],
 
     /*
@@ -68,6 +86,15 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
+        ],
+
+        'freelas' => [
+            'driver' => 'eloquent',
+            'model' => App\Freelancer::class,
+        ],
+        'empresas' => [
+            'driver' => 'eloquent',
+            'model' => App\Empresa::class,
         ],
 
         // 'users' => [
@@ -94,6 +121,16 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'freelas' => [
+            'provider' => 'freelas',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'empresas' => [
+            'provider' => 'empresas',
             'table' => 'password_resets',
             'expire' => 60,
         ],
