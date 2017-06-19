@@ -24,9 +24,9 @@ d<!-- Left side column. contains the logo and sidebar -->
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="{{ route('admins.view') }}"><i class="fa fa-circle-o"></i> Administradores</a></li>
+            <li><a href="{{ route('admins.view') }}"><i class="fa fa-circle-o"></i> Administradores</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Notícias </a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
+            <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
           </ul>
         </li>
         <li class="treeview">
