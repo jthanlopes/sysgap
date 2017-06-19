@@ -13,11 +13,17 @@
         <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Administradores</li>
       </ol>
-      <a href="{{ route('register') }}" class="btn btn-success btn-sm btn-add">
+      <a href="{{ route('admin.show-register-form') }}" class="btn btn-success btn-sm btn-add">
       ADICIONAR NOVO</a>
 
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 col-md-offset-2">
+          @if(session()->has('message'))
+            <div class="alert alert-success alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              {{ session()->get('message') }}
+            </div>
+          @endif
           <table class="table table-hover table-striped">
             <thead class="thead-inverse">
               <tr>            
@@ -25,7 +31,7 @@
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Membro desde</th>
-                <th>Ativo?</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -35,7 +41,7 @@
                   <td>{{ $admin->name }}</td>
                   <td>{{ $admin->email }}</td>
                   <td>{{ $admin->created_at }}</td>
-                  <td><?php echo ($admin->active == 1) ? "Sim" : "Não"; ?></td>
+                  <td><?php echo ($admin->active == 1) ? "Ativo" : "Inativo"; ?></td>
                 </tr>       
               @endforeach       
               </tbody>

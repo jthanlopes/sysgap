@@ -22,6 +22,16 @@ Route::prefix('admin')->group(function () {
 	Route::get('/admins-view', 'AdminController@adminsView')->name('admins.view');
 	Route::post('/logout', 'Auth\LoginController@logout')->name('admin.logout');
 
+	// Rotas de Login
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.show-login-form');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
+
+	// Rotas de Registro
+	Route::get('/register', 'Auth\AdminRegisterController@showRegisterForm')->name('admin.show-register-form');
+	Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register');
+
+	// Rotas de Conhecimentos
+	Route::get('/conhecimentos-view', 'ConhecimentoController@conhecimentosView')->name('conhecimentos.view');
+	Route::Post('/conhecimentos-view/novo', 'ConhecimentoController@conhecimentosView')->name('conhecimento.novo');
+
 });
