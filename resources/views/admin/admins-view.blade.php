@@ -40,7 +40,7 @@
                   <th scope="row">{{ $admin->id }}</th>
                   <td>{{ $admin->name }}</td>
                   <td>{{ $admin->email }}</td>
-                  <td>{{ $admin->created_at }}</td>
+                  <td>{{ $admin->created_at->format('d/m/Y') }}</td>
                   <td><?php echo ($admin->active == 1) ? "Ativo" : "Inativo"; ?></td>
                 </tr>       
               @endforeach       

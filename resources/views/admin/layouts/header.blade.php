@@ -211,7 +211,7 @@
 
                 <p>
                   {{ Auth::user()->name }} - Administrador(a)
-                  <small>Membro desde: {{ Auth::user()->created_at }}</small>
+                  <small>Membro desde: {{ Auth::user()->created_at->format('d/m/Y') }}</small>
                 </p>
               </li>            
               <!-- Menu Footer-->

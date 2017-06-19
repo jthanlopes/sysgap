@@ -14,7 +14,7 @@ class CreateConhecimentosTable extends Migration {
 	{
 		Schema::create('conhecimentos', function(Blueprint $table)
 		{
-			$table->increments('id')->primary();
+			$table->increments('id');
 			$table->string('titulo', 50);
 			$table->string('descricao', 100)->nullable();
 			$table->string('nivel', 45);
