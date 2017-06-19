@@ -19,6 +19,7 @@ class CreateConhecimentosTable extends Migration {
 			$table->string('descricao', 100)->nullable();
 			$table->string('nivel', 45);
 			$table->boolean('padrao');
+			$table->timestamps();
 		});
 	}
 

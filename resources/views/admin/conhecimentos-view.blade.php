@@ -13,7 +13,7 @@
         <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Conhecimentos</li>
       </ol>
-      <a href="{{ route('conhecimento.novo') }}" class="btn btn-success btn-sm btn-add">
+      <a href="{{ route('conhecimento.show-form-novo') }}" class="btn btn-success btn-sm btn-add">
       ADICIONAR NOVO</a>
 
       <div class="row">

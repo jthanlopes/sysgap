@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Conhecimento;
+use Illuminate\Http\Request;
 
 class ConhecimentoController extends Controller
 {
@@ -20,28 +20,27 @@ class ConhecimentoController extends Controller
     // 	return view ('posts.show', compact('post'));
     // }
 
-    public function criacao() {
-        return view ('admin');
+    public function conhecimentoNovo() {
+        return view('admin.conhecimento-novo');
     }
 
-    // public function store() {
-    // 	$this->validate(request(), [
-    //         'title' => 'required|max:15',
-    //         'body' => 'required'
-    //     ]);
+    public function conhecimentoCadastrar() {
+    	$this->validate(request(), [
+            'titulo' => 'required|max:15',
+            'nivel'  => 'required',
+        ]);
 
-    //     auth()->user()->publish(
-    //         new Post(request(['title', 'body']))
-    //     );
+        // auth()->user()->publish(
+        //     new Post(request(['title', 'body']))
+        // );
 
-    //     // Post::create([
-    //     //     'title' => request('title'), 
-    //     //     'body' => request('body'), 
-    //     //     'user_id' => auth()->id()
-    //     // ]);
+        Conhecimento::create([
+            'titulo' => request('titulo'), 
+            'descricao' => request('descricao'), 
+            'nivel' => request('nivel'),
+            'padrao' => 1,
+        ]);
 
-    //     // Redirecionar pra home page
-
-    //     return redirect('/');
-    // }
+        return redirect()->route('conhecimentos.view')->with('message', 'Registro efetuado com sucesso!');
+    }
 }

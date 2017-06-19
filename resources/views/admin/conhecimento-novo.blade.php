@@ -5,85 +5,52 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">  
-        <h1>Registro de Administrador</h1>
+        <h1>Cadastro de Conhecimento</h1>
         <hr>
         <ol class="breadcrumb">
-            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="/admin/admins-view"></i> Administradores</a></li>
-            <li class="active">Registro</li>
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home </a></li>
+            <li><a href="/admin/conhecimentos-view"></i> Conhecimentos </a></li>
+            <li class="active"> Cadastro </li>
         </ol>
 
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.register') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('conhecimento.cadastrar') }}">
                     {{ csrf_field() }}
-                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                        <label for="name" class="col-sm-2 control-label">Nome</label>
+                    <div class="form-group{{ $errors->has('titulo') ? ' has-error' : '' }}">
+                        <label for="titulo" class="col-sm-2 control-label">Título</label>
                         <div class="col-sm-10">
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Digite o nome" required autofocus="">
+                            <input id="titulo" type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" placeholder="Digite o título" required autofocus="">
                         </div>
                     </div>
 
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-sm-2 control-label">Email</label>
+                    <div class="form-group{{ $errors->has('descricao') ? ' has-error' : '' }}">
+                        <label for="descricao" class="col-sm-2 control-label">Descrição</label>
                         <div class="col-sm-10">
-                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Digite o email" required>
-                            @if ($errors->has('email'))
+                            <input id="descricao" type="text" class="form-control" name="descricao" value="{{ old('descricao') }}" placeholder="Digite a descrição" required>
+                            @if ($errors->has('descricao'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
+                                <strong>{{ $errors->first('descricao') }}</strong>
                             </span>
                             @endif
                         </div>
                     </div>
 
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <label for="password" class="col-sm-2 control-label">Senha</label>
+                    <div class="form-group{{ $errors->has('nivel') ? ' has-error' : '' }}">
+                        <label for="nivel" class="col-sm-2 control-label">Nível</label>
                         <div class="col-sm-10">
-                            <input id="password" type="password" class="form-control" name="password" placeholder="Digite a senha" required>
-                            @if ($errors->has('password'))
+                            <input id="nivel" type="text" class="form-control" name="nivel" placeholder="Digite o nível" required>
+                            @if ($errors->has('nivel'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
+                                <strong>{{ $errors->first('nivel') }}</strong>
                             </span>
                             @endif
                         </div>                        
-                    </div>
-
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <label for="password-confirm" class="col-sm-2 control-label">Confirmação de senha</label>
-                        <div class="col-sm-10">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Digite novamente a senha" required>
-                            @if ($errors->has('password'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                            @endif
-                        </div>                        
-                    </div>
-
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <label for="profile_photo" class="col-sm-2 control-label">Foto de perfil</label>
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="profile_photo">
-                            <small id="fileHelp" class="form-text text-muted">Escolha a foto do perfil do administrador.</small>
-                            @if ($errors->has('password'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                            @endif
-                        </div>                        
-                    </div>
-
-                    {{-- <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox">
-                                <label><input type="checkbox"> Remember me</label>
-                            </div>
-                        </div>
-                    </div> --}}
+                    </div>                                                          
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                           <button type="submit" class="btn btn-primary"> Registrar </button>
+                           <button type="submit" class="btn btn-primary"> Cadastrar </button>
                         </div>
                     </div>
                 </form>
