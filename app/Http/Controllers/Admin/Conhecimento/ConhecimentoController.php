@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Conhecimento;
 
 use App\Conhecimento;
 use Illuminate\Http\Request;

@@ -21,7 +21,10 @@
   <link rel="stylesheet" href="/admin-assets/dist/css/skins/_all-skins.min.css">
 
   {{-- Alterações gerais de css --}}
-  <link rel="stylesheet" href="/admin-assets/css/style.css">
+  <link rel="stylesheet" href="/admin-assets/css/style.css">  
+  
+  {{-- SweetAlert --}}
+  <link rel="stylesheet" type="text/css" href="sweet-alert/dist/sweetalert.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

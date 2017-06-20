@@ -19,5 +19,7 @@
 <script src="/admin-assets/dist/js/pages/dashboard2.js"></script>
 <!-- admin-assetsLTE for demo purposes -->
 <script src="/admin-assets/dist/js/demo.js"></script>
+{{-- SweetAlert --}}
+<script src="sweet-alert/dist/sweetalert.min.js"></script>
 </body>
 </html>

@@ -33,4 +33,11 @@ class AdminController extends Controller
 
         return view('admin.admins-view', compact('administradores'));
     }
+
+    public function adminPerfil() {
+        $id = Auth::user()->id;
+        $admin = Admin::find($id);
+
+        return view('admin.admin-perfil', compact('admin'));
+    }
 }
