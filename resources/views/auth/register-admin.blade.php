@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.register') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.register') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name" class="col-sm-2 control-label">Nome</label>
