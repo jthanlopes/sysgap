@@ -24,26 +24,35 @@
               {{ session()->get('message') }}
             </div>
           @endif
-          <table class="table table-hover table-striped">
-            <thead class="thead-inverse">
-              <tr>            
-                <th>Id</th>
-                <th>Título</th>
-                <th>Descrição</th>
-                <th>Nível</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($conhecimentos as $conhecimento)
-                <tr>
-                  <th scope="row">{{ $conhecimento->id }}</th>
-                  <td>{{ $conhecimento->titulo }}</td>
-                  <td>{{ $conhecimento->descricao }}</td>
-                  <td>{{ $conhecimento->nivel }}</td>                 
-                </tr>       
-              @endforeach       
-              </tbody>
-            </table>    
+          <div class="table-responsive">
+            <table class="table table-hover table-striped">
+              <thead class="thead-inverse">
+                <tr>            
+                  <th>Id</th>
+                  <th>Título</th>
+                  <th>Descrição</th>
+                  <th>Nível</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($conhecimentos as $conhecimento)
+                  <tr>
+                    <th scope="row">{{ $conhecimento->id }}</th>
+                    <td>{{ $conhecimento->titulo }}</td>
+                    <td>{{ $conhecimento->descricao }}</td>
+                    <td>{{ $conhecimento->nivel }}</td>                 
+                    <td>
+                      <a href="/admin/conhecimento-view/{{ $conhecimento->id }}" class="btn btn-warning">
+                      Editar</a>
+                      <a href="http://127.0.0.1:8000/admin/conhecimentos-view/novo" class="btn btn-danger">
+                      Excluir</a>
+                    </td>                 
+                  </tr>       
+                @endforeach       
+                </tbody>
+              </table>    
+            </div>
         </div>
       </div>
     </section>        

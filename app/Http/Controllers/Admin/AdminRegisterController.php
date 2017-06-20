@@ -28,7 +28,7 @@ class AdminRegisterController extends Controller
         //     // 'profile_photo' => 'required|image',
         // ]);
 
-    	Admin::create([
+    	Admin::updateOrCreate([
             'name' => request('name'),
             'email' => request('email'),
             'password' => bcrypt(request('password')),

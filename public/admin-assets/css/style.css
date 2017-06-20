@@ -13,3 +13,7 @@
 	background-color: #3c8dbc;
 	color: #fff;
 }
+
+.thead-inverse th, td {
+	text-align: center;
+}

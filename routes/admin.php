@@ -17,4 +17,6 @@ Route::post('/register', 'AdminRegisterController@register')->name('admin.regist
 Route::get('/conhecimentos-view', 'ConhecimentoController@conhecimentosView')->name('conhecimentos.view');
 Route::get('/conhecimentos-view/novo', 'ConhecimentoController@conhecimentoNovo')->name('conhecimento.show-form-novo');
 Route::post('/conhecimentos-view/novo/cadastrar', 'ConhecimentoController@conhecimentoCadastrar')->name('conhecimento.cadastrar');
+Route::patch('/conhecimento-view/{conhecimento}', 'ConhecimentoController@editarForm')->name('conhecimento.show-form-edit');
+// Route::post('/conhecimentos-view/{conhecimento}/editar', 'ConhecimentoController@conhecimentoEditar')->name('conhecimento.cadastrar');
 

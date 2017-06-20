@@ -24,6 +24,10 @@ class ConhecimentoController extends Controller
         return view('admin.conhecimento-novo');
     }
 
+    public function editarForm(Conhecimento $conhecimento) {
+        return view ('admin.conhecimento-editar', compact('conhecimento'));
+    }
+
     public function conhecimentoCadastrar() {
     	$this->validate(request(), [
             'titulo' => 'required|max:15',
@@ -34,7 +38,7 @@ class ConhecimentoController extends Controller
         //     new Post(request(['title', 'body']))
         // );
 
-        Conhecimento::create([
+        Conhecimento::firstOrCreate([
             'titulo' => request('titulo'), 
             'descricao' => request('descricao'), 
             'nivel' => request('nivel'),
