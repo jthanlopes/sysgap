@@ -15,8 +15,9 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <form class="form-horizontal" role="form" method="POST" action="{{ route('conhecimento.cadastrar') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('conhecimento.editar') }}">
                     {{ csrf_field() }}
+                    <input type="hidden" value="{{ $conhecimento->id }}" name="idConhecimento">
                     <div class="form-group{{ $errors->has('titulo') ? ' has-error' : '' }}">
                         <label for="titulo" class="col-sm-2 control-label">Título</label>
                         <div class="col-sm-10">

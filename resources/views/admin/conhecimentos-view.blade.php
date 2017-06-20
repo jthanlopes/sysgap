@@ -19,9 +19,9 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           @if(session()->has('message'))
-            <div class="alert alert-success alert-dismissable">
+            <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              {{ session()->get('message') }}
+              {{ session()->get('message')['message'] }}
             </div>
           @endif
           <div class="table-responsive">
@@ -43,9 +43,9 @@
                     <td>{{ $conhecimento->descricao }}</td>
                     <td>{{ $conhecimento->nivel }}</td>                 
                     <td>
-                      <a href="/admin/conhecimento-view/{{ $conhecimento->id }}" class="btn btn-warning">
+                      <a href="/admin/conhecimento-view/editar/{{ $conhecimento->id }}" class="btn btn-warning">
                       Editar</a>
-                      <a href="http://127.0.0.1:8000/admin/conhecimentos-view/novo" class="btn btn-danger">
+                      <a href="/admin/conhecimento-view/excluir/{{ $conhecimento->id }}" class="btn btn-danger">
                       Excluir</a>
                     </td>                 
                   </tr>       

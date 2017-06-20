@@ -14,6 +14,10 @@
 	color: #fff;
 }
 
+.thead-inverse tr, th {
+	text-align: center !important;
+}
+
 .thead-inverse th, td {
-	text-align: center;
+	text-align: center !important;
 }

@@ -29,22 +29,65 @@ class ConhecimentoController extends Controller
     }
 
     public function conhecimentoCadastrar() {
-    	$this->validate(request(), [
+            // Validator::make([
+            //     'titulo' => 'required|max:15',
+            //     'nivel'  => 'required',
+            // ]);
+            
+           $create = Conhecimento::create([
+                'titulo' => request('titulo'), 
+                'descricao' => request('descricao'),
+                'nivel' => request('nivel'),
+                'padrao' => 1,
+            ]);
+
+            if ( $create )
+            {
+                $message = parent::returnMessage('success', 'Registro efetuado com sucesso!');
+            } else 
+            {
+                $message = parent::returnMessage('danger', 'Erro ao efetuar o registro!');
+            }
+
+            return redirect()->route('conhecimentos.view')->with('message', $message);
+    }
+
+    public function conhecimentoEditar(Request $request) {
+    	$this->validate($request, [
             'titulo' => 'required|max:15',
             'nivel'  => 'required',
         ]);
 
-        // auth()->user()->publish(
-        //     new Post(request(['title', 'body']))
-        // );
+        $update = Conhecimento::where( 'id', $request->idConhecimento )
+                                ->update([
+                                    'titulo' => $request->titulo,
+                                    'descricao' => $request->descricao, 
+                                    'nivel' => $request->nivel,
+                                    'padrao' => 1,
+                                ]);
 
-        Conhecimento::firstOrCreate([
-            'titulo' => request('titulo'), 
-            'descricao' => request('descricao'), 
-            'nivel' => request('nivel'),
-            'padrao' => 1,
-        ]);
+        if ( $update )
+        {
+            $message = parent::returnMessage('success', 'Alteração efetuada com sucesso!');
+        } else 
+        {
+            $message = parent::returnMessage('danger', 'Erro ao efetuar a alteração!');
+        }
 
-        return redirect()->route('conhecimentos.view')->with('message', 'Registro efetuado com sucesso!');
+        return redirect()->route('conhecimentos.view')->with('message', $message);
+    }
+
+    public function conhecimentoExcluir(Conhecimento $conhecimento) {
+        $exclusao = $conhecimento->delete();
+
+        if ( $exclusao )
+        {
+            $message = parent::returnMessage('success', 'Exclusão efetuada com sucesso!');
+        } else 
+        {
+            $message = parent::returnMessage('danger', 'Erro ao fazer a exclusão!');
+        }
+
+        return redirect()->route('conhecimentos.view')->with('message', $message);
     }
 }

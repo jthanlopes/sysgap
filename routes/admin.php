@@ -16,7 +16,8 @@ Route::post('/register', 'AdminRegisterController@register')->name('admin.regist
 // Rotas de conhecimentos
 Route::get('/conhecimentos-view', 'ConhecimentoController@conhecimentosView')->name('conhecimentos.view');
 Route::get('/conhecimentos-view/novo', 'ConhecimentoController@conhecimentoNovo')->name('conhecimento.show-form-novo');
-Route::post('/conhecimentos-view/novo/cadastrar', 'ConhecimentoController@conhecimentoCadastrar')->name('conhecimento.cadastrar');
-Route::patch('/conhecimento-view/{conhecimento}', 'ConhecimentoController@editarForm')->name('conhecimento.show-form-edit');
-// Route::post('/conhecimentos-view/{conhecimento}/editar', 'ConhecimentoController@conhecimentoEditar')->name('conhecimento.cadastrar');
+Route::post('/conhecimentos-view/novo', 'ConhecimentoController@conhecimentoCadastrar')->name('conhecimento.cadastrar');
+Route::get('/conhecimento-view/editar/{conhecimento}', 'ConhecimentoController@editarForm')->name('conhecimento.show-form-edit');
+Route::post('/conhecimento-view/editar', 'ConhecimentoController@conhecimentoEditar')->name('conhecimento.editar');
+Route::get('/conhecimento-view/excluir/{conhecimento}', 'ConhecimentoController@conhecimentoExcluir')->name('conhecimento.excluir');
 
