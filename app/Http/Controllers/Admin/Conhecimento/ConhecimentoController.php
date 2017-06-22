@@ -15,11 +15,7 @@ class ConhecimentoController extends Controller
         $conhecimentos = Conhecimento::all();
     	return view('admin.conhecimentos-view', compact('conhecimentos'));
     }
-
-    // public function show(Post $post) {        
-    // 	return view ('posts.show', compact('post'));
-    // }
-
+    
     public function conhecimentoNovo() {
         return view('admin.conhecimento-novo');
     }

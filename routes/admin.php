@@ -4,6 +4,7 @@
 Route::get('/', 'AdminController@index')->name('admin.dashboard');
 Route::get('/admins-view', 'AdminController@adminsView')->name('admins.view');
 Route::get('/admin-perfil', 'AdminController@adminPerfil')->name('admin.perfil');
+Route::post('/admin-perfil', 'AdminRegisterController@adminEditarPerfil')->name('admin.perfil.editar');
 
 // Rotas de login e logout do admin
 Route::get('/login', 'AdminLoginController@showLoginForm')->name('admin.show-login-form');

@@ -1,5 +1,21 @@
 @extends ('admin.layouts.master')
 
+@section ('cadastros')
+<li class="active treeview">
+  <a href="#">
+    <i class="fa fa-dashboard"></i> <span>Cadastros</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-left pull-right"></i>
+    </span>
+  </a>
+  <ul class="treeview-menu">
+    <li><a href="{{ route('admins.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Administradores</a></li>
+    <li><a href="index2.html"><i class="fa fa-circle-o"></i> Notícias </a></li>
+    <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
+  </ul>
+</li>
+@endsection
+
 @section ('content')
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -19,15 +35,16 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           @if(session()->has('message'))
-            <div class="alert alert-success alert-dismissable">
+            <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              {{ session()->get('message') }}
+              {{ session()->get('message')['message'] }}
             </div>
           @endif
           <table class="table table-hover table-striped">
             <thead class="thead-inverse">
               <tr>            
                 <th>Id</th>
+                <th>Foto Perfil</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Membro desde</th>
@@ -35,14 +52,24 @@
                 <th>Ações</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="admin-view">
               @foreach ($administradores as $admin)
                 <tr>
-                  <th scope="row">{{ $admin->id }}</th>
+                  <td>{{ $admin->id }}</td>
+                  <td><img src="{{ asset('storage') . '/admins/perfil/' . $admin->profile_photo }}" class="user-image img-circle" alt="User Image"></td>
                   <td>{{ $admin->name }}</td>
                   <td>{{ $admin->email }}</td>
                   <td>{{ $admin->created_at->format('d/m/Y') }}</td>
                   <td><?php echo ($admin->active == 1) ? "Ativo" : "Inativo"; ?></td>
+                  <td>
+                    @if ($admin->id == Auth::user()->id)
+                    <a href="{{ route('admin.perfil') }}" class="btn btn-warning">
+                      Editar</a>
+                    @else
+                      <a href="/admin/conhecimento-view/excluir/{{ $admin->id }}" class="btn btn-danger">
+                      Excluir</a>
+                    @endif                    
+                  </td>
                 </tr>       
               @endforeach       
               </tbody>

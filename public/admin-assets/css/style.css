@@ -20,4 +20,16 @@
 
 .thead-inverse th, td {
 	text-align: center !important;
+	vertical-align: middle !important;
+}
+
+.admin-view .img-circle {
+	width: 6vw;
+	height: 10vh;
+}
+
+@media (max-width: 991px) {
+	.content-header .btn-add {		
+		margin-top: 20px;
+	}
 }

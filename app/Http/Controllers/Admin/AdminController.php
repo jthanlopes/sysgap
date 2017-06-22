@@ -29,7 +29,7 @@ class AdminController extends Controller
     }   
 
     public function adminsView() {
-        $administradores = Admin::orderBy('active', 'desc')->get();
+        $administradores = Admin::where('active', 1)->orderBy('active', 'desc')->get();
 
         return view('admin.admins-view', compact('administradores'));
     }
