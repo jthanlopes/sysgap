@@ -26,4 +26,8 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function noticias() {
+        return $this->hasMany(Noticia::class);
+    }
 }

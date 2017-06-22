@@ -31,5 +31,5 @@ Route::post('/conhecimento-view/editar', 'Conhecimento\ConhecimentoController@co
 Route::get('/conhecimento-view/excluir/{conhecimento}', 'Conhecimento\ConhecimentoController@conhecimentoExcluir')->name('conhecimento.excluir');
 
 // Rotas de notícias
-Route::get('/noticias-view', 'NoticiasController@noticiasView')->name('noticias.view');
+Route::get('/noticias-view', 'Noticia\NoticiaController@noticiasView')->name('noticias.view');
 
