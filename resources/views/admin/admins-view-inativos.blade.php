@@ -22,26 +22,26 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">  
       <h1>
-        Lista de Administradores
+        Lista de Administradores Inativos
       </h1>
       <hr>
       <ol class="breadcrumb">
         <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Administradores</li>
+        <li class="active">Administradores Inativos</li>
       </ol>
       <a href="{{ route('admin.show-register-form') }}" class="btn btn-success btn-sm btn-add">
       ADICIONAR NOVO</a>
       
-      <div class="row">
+       <div class="row">
         <div class="col-lg-6 col-md-offset-2 pesquisa-admin-view">          
-            <form class="form-inline" role="form" method="POST" action="{{ route('admins.view.pesquisar') }}">
+            <form class="form-inline" role="form" method="POST" action="{{ route('admins.view-inativos.pesquisar') }}">
               {{ csrf_field() }}
               <input id="pesquisa" type="text" class="form-control" name="pesquisa" placeholder="Pesquisar por nome">              
               <button type="submit" class="btn btn-primary"> Pesquisar </button>              
             </form>          
         </div>
         <div class="col-lg-4 inativos-admins-view">      
-          <a href="{{ route('admins.view-inativos') }}">Mostrar administradores inativos</a>
+          <a href="{{ route('admins.view') }}">Mostrar administradores ativos</a>
         </div>
       </div>
 
@@ -74,14 +74,11 @@
                   <td>{{ $admin->email }}</td>
                   <td>{{ $admin->created_at->format('d/m/Y') }}</td>
                   <td><?php echo ($admin->active == 1) ? "Ativo" : "Inativo"; ?></td>
-                  <td>
-                    @if ($admin->id == Auth::user()->id)
+                  <td>                    
                     <a href="{{ route('admin.perfil') }}" class="btn btn-warning">
-                      Editar</a>
-                    @else
-                      <a href="{{ route('admin.inativar', $admin->id) }}" class="btn btn-danger">
-                      Inativar</a>
-                    @endif                    
+                      Editar</a>                  
+                    <a href="{{ route('admin.ativar', $admin->id) }}" class="btn btn-danger">
+                      Ativar</a>                                
                   </td>
                 </tr>       
               @endforeach       

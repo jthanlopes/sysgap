@@ -31,5 +31,26 @@
 @media (max-width: 991px) {
 	.content-header .btn-add {		
 		margin-top: 20px;
+		margin-bottom: 22px;
 	}
+
+	.inativos-admins-view a {		
+	  top: -9px !important;	  
+	}
+}
+
+.pesquisa-admin-view {
+	margin-bottom: 15px;
+}
+
+.inativos-admins-view a {
+	position: relative;
+  top: 5px;
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+	.form-inline .form-control {
+    width: 300px;
+  }
 }

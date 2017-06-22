@@ -34,10 +34,28 @@ class AdminController extends Controller
         return view('admin.admins-view', compact('administradores'));
     }
 
+    public function adminsViewInativos() {
+        $administradores = Admin::where('active', 0)->get();
+
+        return view('admin.admins-view-inativos', compact('administradores'));
+    }
+
     public function adminPerfil() {
         $id = Auth::user()->id;
         $admin = Admin::find($id);
 
         return view('admin.admin-perfil', compact('admin'));
+    }
+
+    public function adminPesquisarAtivos(Request $request) {
+        $administradores = Admin::orWhere('name', 'like', '%' . $request->pesquisa . '%')->orderBy('active', 'desc')->get();
+
+        return view('admin.admins-view', compact('administradores'));
+    }
+
+    public function adminPesquisarInativos(Request $request) {
+        $administradores = Admin::orWhere('name', 'like', '%' . $request->pesquisa . '%')->where('active', 0)->get();
+
+        return view('admin.admins-view-inativos', compact('administradores'));
     }
 }

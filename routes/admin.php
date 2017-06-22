@@ -3,6 +3,13 @@
 //Rotas ds dashboard, admins e perfil
 Route::get('/', 'AdminController@index')->name('admin.dashboard');
 Route::get('/admins-view', 'AdminController@adminsView')->name('admins.view');
+Route::post('/admins-view/pesquisar', 'AdminController@adminPesquisarAtivos')->name('admins.view.pesquisar');
+Route::get('/admins-view-inativos', 'AdminController@adminsViewInativos')->name('admins.view-inativos');
+Route::post('/admins-view-inativos/pesquisar', 'AdminController@adminPesquisarInativos')->name('admins.view-inativos.pesquisar');
+
+Route::get('/admin-view/inativar/{admin}', 'AdminRegisterController@adminInativar')->name('admin.inativar');
+Route::get('/admin-view/ativar/{admin}', 'AdminRegisterController@adminAtivar')->name('admin.ativar');
+
 Route::get('/admin-perfil', 'AdminController@adminPerfil')->name('admin.perfil');
 Route::post('/admin-perfil', 'AdminRegisterController@adminEditarPerfil')->name('admin.perfil.editar');
 

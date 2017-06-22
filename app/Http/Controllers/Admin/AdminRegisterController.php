@@ -31,6 +31,7 @@ class AdminRegisterController extends Controller
         // ]);
         $filename = config('app.name') . '_foto_perfil_' . $request->id . str_slug($request->name, '_') . '.' . $request->profile_photo->getClientOriginalExtension();
         $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
+        Image::make('public/admins/perfil' .  $filename)->stream('jpg', 60);
 
     	Admin::updateOrCreate([
             'name' => $request->name,
@@ -69,17 +70,37 @@ class AdminRegisterController extends Controller
         return redirect()->route('admins.view')->with('message', $message);
     }
 
-    // public function conhecimentoExcluir(Conhecimento $conhecimento) {
-    //     $exclusao = $conhecimento->delete();
+    public function adminInativar($admin) {
+        $update = Admin::where( 'id', $admin )
+                                ->update([                                    
+                                    'active' => 0,  
+                                ]);
 
-    //     if ( $exclusao )
-    //     {
-    //         $message = parent::returnMessage('success', 'Exclusão efetuada com sucesso!');
-    //     } else 
-    //     {
-    //         $message = parent::returnMessage('danger', 'Erro ao fazer a exclusão!');
-    //     }
+        if ( $update )
+        {
+            $message = parent::returnMessage('success', 'Administrador inativado com sucesso!');
+        } else 
+        {
+            $message = parent::returnMessage('danger', 'Erro ao inativar adiministrador!');
+        }
 
-    //     return redirect()->route('conhecimentos.view')->with('message', $message);
-    // }
+        return redirect()->route('admins.view')->with('message', $message);
+    }
+
+    public function adminAtivar($admin) {
+        $update = Admin::where( 'id', $admin )
+                                ->update([                                    
+                                    'active' => 1,  
+                                ]);
+
+        if ( $update )
+        {
+            $message = parent::returnMessage('success', 'Administrador ativado com sucesso!');
+        } else 
+        {
+            $message = parent::returnMessage('danger', 'Erro ao ativar adiministrador!');
+        }
+
+        return redirect()->route('admins.view-inativos')->with('message', $message);
+    }
 }
