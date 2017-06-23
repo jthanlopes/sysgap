@@ -13,15 +13,15 @@ class ConhecimentoController extends Controller
 
     public function conhecimentosView() {
         $conhecimentos = Conhecimento::all();
-    	return view('admin.conhecimentos-view', compact('conhecimentos'));
+    	return view('admin.conhecimento.conhecimentos-view', compact('conhecimentos'));
     }
     
     public function conhecimentoNovo() {
-        return view('admin.conhecimento-novo');
+        return view('admin.conhecimento.conhecimento-novo');
     }
 
     public function editarForm(Conhecimento $conhecimento) {
-        return view ('admin.conhecimento-editar', compact('conhecimento'));
+        return view ('admin.conhecimento.conhecimento-editar', compact('conhecimento'));
     }
 
     public function conhecimentoCadastrar() {

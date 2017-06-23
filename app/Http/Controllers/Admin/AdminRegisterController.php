@@ -70,6 +70,32 @@ class AdminRegisterController extends Controller
         return redirect()->route('admins.view')->with('message', $message);
     }
 
+    public function adminEditarPerfilInativo(Request $request) {
+        // $this->validate($request, [
+        //     'titulo' => 'required|max:15',
+        //     'nivel'  => 'required',
+        // ]);
+
+        $update = Admin::where( 'id', $request->id )
+                                ->update([
+                                    'name' => $request->name,
+                                    'email' => $request->email,
+                                    'password' => bcrypt($request->password),
+                                    'active' => 0,
+                                    // 'profile_photo' => $filename,
+                                ]);
+
+        if ( $update )          
+        {            
+            $message = parent::returnMessage('success', 'Perfil alterado com sucesso!');            
+        } else 
+        {
+            $message = parent::returnMessage('danger', 'Erro ao alterar o perfil!');
+        }
+        
+        return redirect()->route('admins.view-inativos')->with('message', $message);
+    }
+
     public function adminInativar($admin) {
         $update = Admin::where( 'id', $admin )
                                 ->update([                                    

@@ -75,7 +75,7 @@
                   <td>{{ $admin->created_at->format('d/m/Y') }}</td>
                   <td><?php echo ($admin->active == 1) ? "Ativo" : "Inativo"; ?></td>
                   <td>                    
-                    <a href="{{ route('admin.perfil') }}" class="btn btn-warning">
+                    <a href="{{ route('admin.perfil-inativo', $admin->id) }}" class="btn btn-warning">
                       Editar</a>                  
                     <a href="{{ route('admin.ativar', $admin->id) }}" class="btn btn-danger">
                       Ativar</a>                                

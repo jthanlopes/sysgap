@@ -1,17 +1,23 @@
 <?php
 
-//Rotas ds dashboard, admins e perfil
+//Rotas ds dashboard, admins inativos e ativos
 Route::get('/', 'AdminController@index')->name('admin.dashboard');
 Route::get('/admins-view', 'AdminController@adminsView')->name('admins.view');
 Route::post('/admins-view/pesquisar', 'AdminController@adminPesquisarAtivos')->name('admins.view.pesquisar');
 Route::get('/admins-view-inativos', 'AdminController@adminsViewInativos')->name('admins.view-inativos');
 Route::post('/admins-view-inativos/pesquisar', 'AdminController@adminPesquisarInativos')->name('admins.view-inativos.pesquisar');
 
+//Rotas para ativar e inativar admins
 Route::get('/admin-view/inativar/{admin}', 'AdminRegisterController@adminInativar')->name('admin.inativar');
 Route::get('/admin-view/ativar/{admin}', 'AdminRegisterController@adminAtivar')->name('admin.ativar');
 
+// Rotas de edição do perfil do admin conectado
 Route::get('/admin-perfil', 'AdminController@adminPerfil')->name('admin.perfil');
 Route::post('/admin-perfil', 'AdminRegisterController@adminEditarPerfil')->name('admin.perfil.editar');
+
+// Rotas edição do perfil de inativos
+Route::get('/admin-perfil-inativo/{id}', 'AdminController@adminPerfilInativo')->name('admin.perfil-inativo');
+Route::post('/admin-perfil-inativo', 'AdminRegisterController@adminEditarPerfilInativo')->name('admin.perfil-inativo.editar');
 
 // Rotas de login e logout do admin
 Route::get('/login', 'AdminLoginController@showLoginForm')->name('admin.show-login-form');

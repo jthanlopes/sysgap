@@ -47,6 +47,12 @@ class AdminController extends Controller
         return view('admin.admin-perfil', compact('admin'));
     }
 
+    public function adminPerfilInativo($id) {        
+        $admin = Admin::find($id);
+
+        return view('admin.admin-perfil-inativo', compact('admin'));
+    }
+
     public function adminPesquisarAtivos(Request $request) {
         $administradores = Admin::orWhere('name', 'like', '%' . $request->pesquisa . '%')->orderBy('active', 'desc')->get();
 
