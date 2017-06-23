@@ -31,6 +31,16 @@
       </ol>
       <a href="{{ route('conhecimento.show-form-novo') }}" class="btn btn-success btn-sm btn-add">
       ADICIONAR NOVO</a>
+      
+       <div class="row">
+        <div class="col-lg-6 col-md-offset-2 pesquisa-admin-view">          
+            <form class="form-inline" role="form" method="POST" action="{{ route('conhecimentos.view.pesquisar') }}">
+              {{ csrf_field() }}
+              <input id="pesquisa" type="text" class="form-control" name="pesquisa" placeholder="Pesquisar por título">              
+              <button type="submit" class="btn btn-primary"> Pesquisar </button>              
+            </form>          
+        </div>        
+      </div>
 
       <div class="row">
         <div class="col-md-8 col-md-offset-2">

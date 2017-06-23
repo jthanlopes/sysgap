@@ -54,7 +54,7 @@ class AdminController extends Controller
     }
 
     public function adminPesquisarAtivos(Request $request) {
-        $administradores = Admin::orWhere('name', 'like', '%' . $request->pesquisa . '%')->orderBy('active', 'desc')->get();
+        $administradores = Admin::orWhere('name', 'like', '%' . $request->pesquisa . '%')->where('active', 1)->get();
 
         return view('admin.admins-view', compact('administradores'));
     }

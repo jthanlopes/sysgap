@@ -48,6 +48,12 @@ class ConhecimentoController extends Controller
             return redirect()->route('conhecimentos.view')->with('message', $message);
     }
 
+    public function conhecimentoPesquisar(Request $request) {
+        $conhecimentos = Conhecimento::orWhere('titulo', 'like', '%' . $request->pesquisa . '%')->get();
+
+        return view('admin.conhecimento.conhecimentos-view', compact('conhecimentos'));
+    }
+
     public function conhecimentoEditar(Request $request) {
     	$this->validate($request, [
             'titulo' => 'required|max:15',
