@@ -50,7 +50,7 @@
           @if(session()->has('message'))
             <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              {{ session()->get('message')['message'] }}
+              {{ session()->get('message')['message'] }}              
             </div>
           @endif
           <table class="table table-hover table-striped">

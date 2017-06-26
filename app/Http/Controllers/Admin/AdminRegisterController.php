@@ -33,7 +33,7 @@ class AdminRegisterController extends Controller
         $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
         // Image::make('public/admins/perfil' .  $filename)->stream('jpg', 60);
 
-    	Admin::updateOrCreate([
+    	$create = Admin::updateOrCreate([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
@@ -41,7 +41,15 @@ class AdminRegisterController extends Controller
             'profile_photo' => $filename,            
         ]);        
 
-        return redirect()->route('admins.view')->with('message', 'Registro efetuado com sucesso!');
+        if ( $create )          
+        {            
+            $message = parent::returnMessage('success', 'Administrador criado com sucesso!');            
+        } else 
+        {
+            $message = parent::returnMessage('danger', 'Erro ao criar o administrador!');
+        }
+        
+        return redirect()->route('admins.view')->with('message', $message);
     }
 
     public function adminEditarPerfil(Request $request) {

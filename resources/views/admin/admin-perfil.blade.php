@@ -80,8 +80,7 @@
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <label for="profile_photo" class="col-sm-2 control-label">Foto de perfil</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="profile_photo">
-                            <small id="fileHelp" class="form-text text-muted">Escolha a foto do perfil do administrador.</small>
+                            <input id="input-1" type="file" class="file" value="{{ $admin->profile_photo }}" name="profile_photo" placeholder="Envie a foto de perfil" />
                             @if ($errors->has('password'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('password') }}</strong>
