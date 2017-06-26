@@ -34,6 +34,7 @@ Route::get('/admin-perfil-inativo/{id}', 'AdminController@adminPerfilInativo')->
 // Salvar formulário de edição de perfil de admin inativo
 Route::post('/admin-perfil-inativo', 'AdminRegisterController@adminEditarPerfilInativo')->name('admin.perfil-inativo.editar');
 
+
 // -------------------------------------------------------------------------------------------------------------------------------------
 // Rotas de login
 Route::get('/login', 'AdminLoginController@showLoginForm')->name('admin.show-login-form');
@@ -45,6 +46,7 @@ Route::post('/logout', 'AdminLoginController@logout')->name('admin.logout');
 // Rotas de registro do admin
 Route::get('/register', 'AdminRegisterController@showRegisterForm')->name('admin.show-register-form');
 Route::post('/register', 'AdminRegisterController@register')->name('admin.register');
+
 
 // -------------------------------------------------------------------------------------------------------------------------------------
 // Rotas de conhecimentos
@@ -69,6 +71,8 @@ Route::post('/conhecimento-view/editar', 'Conhecimento\ConhecimentoController@co
 // Excluir conhecimento
 Route::get('/conhecimento-view/excluir/{conhecimento}', 'Conhecimento\ConhecimentoController@conhecimentoExcluir')->name('conhecimento.excluir');
 
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
 // Rotas de notícias
 Route::get('/noticias-view', 'Noticia\NoticiaController@noticiasView')->name('noticias.view');
 

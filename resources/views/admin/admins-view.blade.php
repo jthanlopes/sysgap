@@ -46,7 +46,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">          
           @if(session()->has('message'))
             <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

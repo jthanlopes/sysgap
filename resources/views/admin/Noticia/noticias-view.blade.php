@@ -39,10 +39,7 @@
               <input id="pesquisa" type="text" class="form-control" name="pesquisa" placeholder="Pesquisar por título">              
               <button type="submit" class="btn btn-primary"> Pesquisar </button>              
             </form>          
-        </div>
-        <div class="col-lg-4 inativos-noticias-view">      
-          <a href="{{-- {{ route('noticias.view-inativos') }} --}}">Mostrar notícias inativas</a>
-        </div>
+        </div>       
       </div>
 
       <div class="row">
