@@ -1,0 +1,10 @@
+{
+  "name": "SysGAP",
+  "description": "Sistema para gerenciar agências, produtoras e freelancers",
+  "main": "",
+  "authors": [
+    "Jonathan Lopes"
+  ],
+  "license": "MIT",
+  "homepage": ""
+}
