@@ -9,10 +9,12 @@ sistema para pagamentos dos jobs e troca de mensagens entre os usuários.
 
 Quais tecnologias são necessárias para rodar o projeto:
 <ul>
-  <li>PHP;</li>
-  <li>Composer => é o gerenciador de dependências (ou pacotes) para o PHP;</li>
-  <li>Laravel 5.4 => O Laravel é um framework PHP, open-source, criado por Taylor Otwell e destinado ao desenvolvimento de aplicativos da web seguindo o padrão model-view-controller (MVC);</li>
-  <li>MariaDB => MariaDB é um banco de dados que surgiu como fork do MySQL.</li>
+  <li>PHP (https://secure.php.net/);</li>
+  <li>Composer (https://getcomposer.org/);</li>
+  <li>Laravel 5.4 => (https://laravel.com/);</li>
+  <li>MariaDB => (https://mariadb.org/);</li>
+  <li>NodeJS e NPM (https://nodejs.org/en/);</li>
+  <li>Bower (https://bower.io/).</li>
 </ul>
 
 ## Começando
@@ -25,11 +27,24 @@ O primeiro passo é baixar e instalar o <a href="https://www.apachefriends.org/p
 O Xampp já faz a instalação e configuração do Apache PHP e do MariaDB, além de outras ferramentas.
 
 O segundo passo é instalar o Composer PHP.<br>
-Faça o download nesse link https://getcomposer.org/Composer-Setup.exe e após o download o instale.
+Faça o download no link a seguir e após o instale:
+```
+https://getcomposer.org/Composer-Setup.exe
+```
 
 Após a instalação do Composer devemos instalar o Laravel, abra o terminal e digite o seguinte comando:
 ```
 composer global require "laravel/installer"
+```
+
+Agora iremos instalar o NodeJS/NPM, faça o download no link a seguir e após o download o instale:
+```
+https://nodejs.org/en/
+```
+
+Para finalizar devemos instalar o Bower, digite o seguinte comando no terminal:
+```
+npm install -g bower
 ```
 
 Pronto, o ambiente de desenvolvimento está instalado.
@@ -48,6 +63,49 @@ https://github.com/jthanlopes/SysGAP.git
 ```
 
 Após fazer o download do projeto ou clonar o repositório é necessário configurar o projeto na máquina, conforme as etapas a seguir:
+
+1º Estartar o Xampp (Wampp ou EasyPHP) acessar o phpMyAdmin e criar uma base de dados (utilize agrupamento utf8_general_ci), para mais informações acesse:
+```
+https://docs.phpmyadmin.net/pt_BR/latest/
+```
+
+2º Abra o terminal dentro da raíz do projeto e rode o seguinte comando para baixar as dependências do projeto:
+```
+composer install
+```
+
+3º Depois rode o seguinte comando pra criar o .env do projeto:
+```
+composer run post-root-package-install
+```
+
+4º Abra o arquivo .env que foi criado na raíz do projeto e faça as seguintes alterações:
+```
+DB_DATABASE=sysgap_db   =>  Nome do banco criado na primeira etapa.
+DB_USERNAME=root        =>  Nome do usuário do banco, padrão => root.
+DB_PASSWORD=            =>  Senha do usuário do banco, no meu caso é vazia.
+```
+
+5º Agora digite esse comando para gerar a _key_ da aplicação:
+```
+composer run post-create-project-cmd
+```
+
+6º Para criar as tabelas do banco rode o seguinte comando:
+```
+php artisan migrate
+```
+
+7º Para instalar os componentes do Bower, execute:
+```
+bower install
+```
+
+8º Por fim, rode no terminal:
+```
+php artisan serve
+```
+Esse comando serve para "levantar" o servidor, para acessar o site entre no seu navegador e acesse http://127.0.0.1:8000/ (esse endereço pode variar de máquina para máquina, consulte o terminal para ver qual endereço você deve acessar).
 
 ## Licença
 
