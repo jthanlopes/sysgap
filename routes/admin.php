@@ -1,6 +1,6 @@
 <?php
 
-//Rotas do admin
+// Rotas do admin ------------------------------------------------------------------------------------------------------------------
 // Dashboard do admin
 Route::get('/', 'AdminController@index')->name('admin.dashboard');
 
@@ -33,23 +33,27 @@ Route::get('/admin-perfil-inativo/{id}', 'AdminController@adminPerfilInativo')->
 
 // Salvar formulário de edição de perfil de admin inativo
 Route::post('/admin-perfil-inativo', 'AdminRegisterController@adminEditarPerfilInativo')->name('admin.perfil-inativo.editar');
-
-
 // -------------------------------------------------------------------------------------------------------------------------------------
-// Rotas de login
+
+// Rotas de login do administrador -----------------------------------------------------------------------------------------------------
+// Chama o formulário de login
 Route::get('/login', 'AdminLoginController@showLoginForm')->name('admin.show-login-form');
+
+// Submete o formulário de login
 Route::post('/login', 'AdminLoginController@login')->name('admin.login');
 
 // Rotas de logout
 Route::post('/logout', 'AdminLoginController@logout')->name('admin.logout');
 
 // Rotas de registro do admin
+// Chama o formulário de cadastro
 Route::get('/register', 'AdminRegisterController@showRegisterForm')->name('admin.show-register-form');
+
+// Submete o formulário de cadastro
 Route::post('/register', 'AdminRegisterController@register')->name('admin.register');
-
-
 // -------------------------------------------------------------------------------------------------------------------------------------
-// Rotas de conhecimentos
+
+// Rotas de conhecimentos ----------------------------------------------------------------------------------------------------------------
 // Listagem de todos os conhecimentos
 Route::get('/conhecimentos-view', 'Conhecimento\ConhecimentoController@conhecimentosView')->name('conhecimentos.view');
 
@@ -70,9 +74,8 @@ Route::post('/conhecimento-view/editar', 'Conhecimento\ConhecimentoController@co
 
 // Excluir conhecimento
 Route::get('/conhecimento-view/excluir/{conhecimento}', 'Conhecimento\ConhecimentoController@conhecimentoExcluir')->name('conhecimento.excluir');
-
-
 // ---------------------------------------------------------------------------------------------------------------------------------------
-// Rotas de notícias
+
+// Rotas de notícias ---------------------------------------------------------------------------------------------------------------------
 Route::get('/noticias-view', 'Noticia\NoticiaController@noticiasView')->name('noticias.view');
 

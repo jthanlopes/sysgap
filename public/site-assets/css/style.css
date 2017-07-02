@@ -1,4 +1,65 @@
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 2rem;
+.login-options {
+	position: absolute;
+    display: none;
+    right: 0px;
+    height: 200px;
+    width: 300px;
+    background-color: #EEEEEE;
+    z-index: 99999;
+    top: 51px;
+    border: 1px black;
+    padding: 10px;
+    -webkit-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
+    box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);    
+}
+
+/*.show-login-options-test {
+    display: block;
+    top: 51px;
+    transition:all 1s;
+    -webkit-transition: all .3s linear 3s;
+    transition: all .3s linear 3s;
+}
+*/
+.options-buttons {
+	text-align: center;
+	margin-top: 26px;
+}
+
+@media (min-width: 768px) {
+
+    .modal-dialog {
+        width: 19%;
+        height: 50%;        
+        margin-right: 0 !important;
+        margin-top: 51px !important;
+    }
+}
+
+.modal-content {
+    border-radius: 0 !important;
+}
+
+.btn-login-home {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 15px;
+  background: #333;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  width: 215px;
+}
+
+.btn-login-home:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
 }
