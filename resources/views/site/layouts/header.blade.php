@@ -9,8 +9,8 @@
       <li><a href="#">Page 2</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#" class="show-login-options"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Cadastrar</a></li>
+      <li><a href="#" class="link-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
     <div class="login-options">
       <div class="options-text">

@@ -14,14 +14,10 @@
     box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);    
 }
 
-/*.show-login-options-test {
-    display: block;
-    top: 51px;
-    transition:all 1s;
-    -webkit-transition: all .3s linear 3s;
-    transition: all .3s linear 3s;
+.link-active {
+    color: #ffffff !important;
 }
-*/
+
 .options-buttons {
 	text-align: center;
 	margin-top: 26px;
@@ -62,4 +58,11 @@
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .login-options {
+        left: 0px !important;
+        top: 274px;
+    }
 }
