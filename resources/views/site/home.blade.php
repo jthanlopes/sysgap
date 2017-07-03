@@ -1,4 +1,4 @@
 @extends ('site.layouts.master')
 
-@section ('conteudo')                 
+@section ('conteudo')             
 @endsection

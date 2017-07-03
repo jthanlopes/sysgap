@@ -12,5 +12,5 @@
 	@include ('site.layouts.header')
 	@include ('site.layouts.carousel')
 	@yield ('conteudo')
-	@include ('site.layouts.footer')
+	{{-- @include ('site.layouts.footer') --}}
 	@include ('site.layouts.scripts')

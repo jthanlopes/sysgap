@@ -14,21 +14,24 @@
     box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);    
 }
 
-.link-active {
-    color: #ffffff !important;
-}
-
-.options-buttons {
+.options-buttons-login {
 	text-align: center;
 	margin-top: 26px;
 }
 
-@media (min-width: 768px) {
 
+@media (max-width: 768px) {
+    .login-options {
+        left: 0px !important;
+        top: 274px;
+    }
+}
+
+@media (min-width: 768px) {
     .modal-dialog {
         width: 19%;
         height: 50%;        
-        margin-right: 0 !important;
+        margin-right: 250px !important;
         margin-top: 51px !important;
     }
 }
@@ -60,9 +63,68 @@
   text-decoration: none;
 }
 
+.link-active {
+    color: #ffffff !important;
+}
+
+
+
+/* Cadastro home */
+.register-options {
+  position: absolute;
+    display: none;
+    right: 73px;
+    height: 200px;
+    width: 300px;
+    background-color: #EEEEEE;
+    z-index: 99999;
+    top: 51px;
+    border: 1px black;
+    padding: 10px;
+    -webkit-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
+    box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);    
+}
+
+.options-buttons-register {
+  text-align: center;
+  margin-top: 26px;
+}
+
+
 @media (max-width: 768px) {
-    .login-options {
+    .register-options {
         left: 0px !important;
         top: 274px;
     }
+}
+
+.btn-register-home {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 15px;
+  background: #333;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  width: 215px;
+}
+
+.btn-register-home:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  #myModalRegisterEmpresa .modal-dialog {
+    width: 60%;
+    margin: 20%;
+  }
 }

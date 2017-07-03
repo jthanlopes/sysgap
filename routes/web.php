@@ -15,4 +15,8 @@ Route::get('/', function () {
     return view('site.home');
 });
 
+Route::prefix('empresa')->group(function () {
+    Route::post('/novo', 'Empresa\EmpresaController@empresaNovo')->name('empresa.novo');
+});
+
 Auth::routes();
