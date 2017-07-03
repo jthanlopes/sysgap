@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToFreelancerTable extends Migration {
+class AddForeignKeysToFreelancersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class AddForeignKeysToFreelancerTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('freelancer', function(Blueprint $table)
+		Schema::table('freelancers', function(Blueprint $table)
 		{
-			$table->foreign('endereco_id', 'fk_freela_end')->references('id')->on('endereco')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('endereco_id', 'fk_freela_end')->references('id')->on('enderecos')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -26,7 +26,7 @@ class AddForeignKeysToFreelancerTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('freelancer', function(Blueprint $table)
+		Schema::table('freelancers', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_freela_end');
 		});

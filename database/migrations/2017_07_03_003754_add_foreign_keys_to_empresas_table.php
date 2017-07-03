@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToEmpresaTable extends Migration {
+class AddForeignKeysToEmpresasTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class AddForeignKeysToEmpresaTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('empresa', function(Blueprint $table)
+		Schema::table('empresas', function(Blueprint $table)
 		{
-			$table->foreign('endereco_id', 'fk_prod_end')->references('id')->on('endereco')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('endereco_id', 'fk_prod_end')->references('id')->on('enderecos')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -26,7 +26,7 @@ class AddForeignKeysToEmpresaTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('empresa', function(Blueprint $table)
+		Schema::table('empresas', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_prod_end');
 		});
