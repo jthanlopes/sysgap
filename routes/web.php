@@ -15,8 +15,14 @@ Route::get('/', function () {
     return view('site.home');
 });
 
-Route::prefix('empresa')->group(function () {
-    Route::post('/novo', 'Empresa\EmpresaController@empresaNovo')->name('empresa.novo');
+Route::prefix('empresa')->group(function () {	
+  Route::post('/novo', 'Empresa\EmpresaController@empresaNovo')->name('empresa.novo');
+
+  // Submete o formulário de login
+	Route::post('/login', 'Empresa\EmpresaController@loginEmpresa')->name('empresa.login');
+
+	// Rotas de logout
+	Route::post('/logout', 'Empresa\EmpresaController@logout')->name('empresa.logout');
 });
 
 Auth::routes();

@@ -31,20 +31,19 @@ class AdminRegisterController extends Controller
         // ]);
         $filename = config('app.name') . '_foto_perfil_' . $request->id . str_slug($request->name, '_') . '.' . $request->profile_photo->getClientOriginalExtension();
         $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
-        // Image::make('public/admins/perfil' .  $filename)->stream('jpg', 60);
 
     	$create = Admin::updateOrCreate([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'active' => 1,
-            'profile_photo' => $filename,            
+            'profile_photo' => $filename,
         ]);        
 
-        if ( $create )          
-        {            
-            $message = parent::returnMessage('success', 'Administrador criado com sucesso!');            
-        } else 
+        if ( $create )
+        {
+            $message = parent::returnMessage('success', 'Administrador criado com sucesso!'); 
+        } else
         {
             $message = parent::returnMessage('danger', 'Erro ao criar o administrador!');
         }

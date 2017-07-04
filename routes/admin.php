@@ -79,3 +79,8 @@ Route::get('/conhecimento-view/excluir/{conhecimento}', 'Conhecimento\Conhecimen
 // Rotas de notícias ---------------------------------------------------------------------------------------------------------------------
 Route::get('/noticias-view', 'Noticia\NoticiaController@noticiasView')->name('noticias.view');
 
+//------------------------------------------------------------------------------------------------------
+
+// Rotas de empresas
+Route::get('/empresas-view', 'Noticia\NoticiaController@empresasView')->name('empresas.view');
+

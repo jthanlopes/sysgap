@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Noticia;
 
 use App\Noticia;
+use App\Empresa;
 use Illuminate\Http\Request;
 
 class NoticiaController extends Controller
@@ -36,4 +37,9 @@ class NoticiaController extends Controller
 
         return redirect('/');
     }
+
+    public function empresasView() {
+      $empresas = Empresa::all();
+        return view('admin.empresa.empresas-view', compact('empresas'));
+    } 
 }

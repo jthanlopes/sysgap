@@ -13,8 +13,12 @@
       </div>
       <div class="col-md-4">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" class="link-register"><span class="glyphicon glyphicon-user"></span> Cadastrar</a></li>
-          <li><a href="#" class="link-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          @if (Auth::check())
+            <li><a href="#" class="link-logout"><span class="glyphicon glyphicon-log-in"></span> Logout </a></li>
+          @else          
+            <li><a href="#" class="link-register"><span class="glyphicon glyphicon-user"></span> Cadastrar </a></li>
+            <li><a href="#" class="link-login"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
+          @endif
         </ul>
         <div class="login-options">
           <div class="options-text">
@@ -48,14 +52,15 @@
                 <h4 class="modal-title"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;Login Empresa</h4>
               </div>
               <div class="modal-body">
-                <form>
+                <form method="POST" action="{{ route('empresa.login') }}">
+                  {{ csrf_field() }}
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email" required>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Senha</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" required>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" name="password" required>
                   </div>            
                   <div class="checkbox">
                     <label>
@@ -119,12 +124,64 @@
                <form method="POST" action="{{ route('empresa.novo') }}">
                 {{ csrf_field() }}
                 <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="nome">Nome:</label>
+                      <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input type="text" class="form-control" id="email" placeholder="E-mail" name="email">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="senha">Senha:</label>
+                      <input type="password" class="form-control" id="senha" placeholder="Senha" name="senha">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="confirmaSenha">Confirmação de senha:</label>
+                      <input type="password" class="form-control" id="confirmaSenha" placeholder="Senha" name="confirmaSenha">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="categoria">Categoria:</label>
+                      <input type="text" class="form-control" id="categoria" placeholder="Categoria" name="categoria">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="cnpj">CNPJ:</label>
+                      <input type="text" class="form-control" id="cnpj" placeholder="CNPJ" name="cnpj">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="categoria">Foto de perfil:</label>
+                      <input id="input-1" type="file" class="file" name="profile_photo" placeholder="Envie a foto de perfil" />
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
                   <div class="col-md-5">
                     <div class="form-group">
                       <label for="cep">CEP</label>
                       <input type="text" class="form-control" id="cep" placeholder="CEP" name="cep">
                     </div>
                   </div>
+                  <div class="col-md-7"></div>
                 </div>
 
                 <div class="row">
