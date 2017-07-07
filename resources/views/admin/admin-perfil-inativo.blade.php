@@ -32,7 +32,7 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.perfil-inativo.editar') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.perfil-inativo.editar') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $admin->id }}">
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

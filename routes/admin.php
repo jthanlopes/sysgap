@@ -79,6 +79,13 @@ Route::get('/conhecimento-view/excluir/{conhecimento}', 'Conhecimento\Conhecimen
 // Rotas de notícias ---------------------------------------------------------------------------------------------------------------------
 Route::get('/noticias-view', 'Noticia\NoticiaController@noticiasView')->name('noticias.view');
 
+// Formulário de cadastro de notícia
+Route::get('/noticias-view/novo', 'Noticia\NoticiaController@conhecimentoNovo')->name('noticia.show-form-novo');
+
+// Salvar formulário de notícia
+Route::post('/noticias-view/novo', 'Noticia\NoticiaController@conhecimentoCadastrar')->name('noticia.cadastrar');
+
+
 //------------------------------------------------------------------------------------------------------
 
 // Rotas de empresas

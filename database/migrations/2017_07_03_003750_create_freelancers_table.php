@@ -17,12 +17,13 @@ class CreateFreelancersTable extends Migration {
 			$table->increments('id');
 			$table->string('nome', 100);
 			$table->string('email', 100)->unique();
-			$table->string('senha', 60);
+			$table->string('password', 60);
 			$table->string('foto_perfil', 100);
 			$table->integer('endereco_id')->unsigned();
 			$table->integer('pontuacao')->default(0);
 			$table->integer('avaliacao_geral')->default(0);
 			$table->timestamps();
+			$table->rememberToken();
 			$table->boolean('ativo');
 		});
 	}

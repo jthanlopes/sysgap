@@ -14,7 +14,7 @@ class AddForeignKeysToNoticiasTable extends Migration {
 	{
 		Schema::table('noticias', function(Blueprint $table)
 		{
-			$table->foreign('administrador_id')->references('id')->on('admins')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('admin_id')->references('id')->on('admins')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 

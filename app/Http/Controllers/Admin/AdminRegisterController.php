@@ -57,13 +57,16 @@ class AdminRegisterController extends Controller
         //     'nivel'  => 'required',
         // ]);
 
+        $filename = config('app.name') . '_foto_perfil_' . $request->id . str_slug($request->name, '_') . '.' . $request->profile_photo->getClientOriginalExtension();
+        $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
+
         $update = Admin::where( 'id', Auth::id() )
                                 ->update([
                                     'name' => $request->name,
                                     'email' => $request->email,
                                     'password' => bcrypt($request->password),
                                     'active' => 1,
-                                    // 'profile_photo' => $filename,
+                                    'profile_photo' => $filename,
                                 ]);
 
         if ( $update )          
