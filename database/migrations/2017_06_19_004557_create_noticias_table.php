@@ -16,12 +16,12 @@ class CreateNoticiasTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('titulo', 45);
-			$table->string('conteudo', 200);
+			$table->text('conteudo');
 			$table->string('imagem', 100);
 			$table->timestamps('data_cadastro');
 			$table->date('data_final')->nullable();
 			$table->boolean('ativo');
-			$table->integer('administrador_id')->unsigned();
+			$table->integer('admin_id')->unsigned();
 		});
 	}
 

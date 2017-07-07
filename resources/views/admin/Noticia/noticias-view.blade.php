@@ -20,7 +20,7 @@
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">  
+    <section class="content-header">
       <h1>
         Lista de Notícias
       </h1>
@@ -29,7 +29,7 @@
         <li><a href="/noticia"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Notícias</li>
       </ol>
-      <a href="{{-- {{ route('noticia.show-register-form') }} --}}" class="btn btn-success btn-sm btn-add">
+      <a href="{{ route('noticia.show-form-novo') }}" class="btn btn-success btn-sm btn-add">
       ADICIONAR NOVA</a>
       
       <div class="row">
@@ -52,10 +52,10 @@
           @endif
           <table class="table table-hover table-striped">
             <thead class="thead-inverse">
-              <tr>            
-                <th>Id</th>
+              <tr>                          
                 <th>Imagem</th>
                 <th>Titulo</th>
+                <th>Conteúdo</th>
                 <th>Data Cadastro</th>
                 <th>Data Final</th>
                 <th>Autor</th>
@@ -65,26 +65,47 @@
             </thead>
             <tbody class="noticia-view">
               @foreach ($noticias as $noticia)
-                <tr>
-                  <td>{{ $noticia->id }}</td>
+                <tr>                  
                   <td>Teste Imagem{{-- <img src="{{ asset('storage') . '/noticias/perfil/' . $noticia->profile_photo }}" class="user-image img-circle" alt="User Image"> --}}</td>
                   <td>{{ $noticia->titulo }}</td>
+                  <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-conteudo">Ver</button></td>
                   <td>{{ $noticia->created_at }}</td>
                   <td>{{ $noticia->data_final }}</td>
-                  <td>{{ $noticia->administrador_id }}</td>
-                  <td><?php echo ($noticia->active == 1) ? "Ativo" : "Inativo"; ?></td>
+                  <td>{{ $noticia->admin->name }}</td>
+                  <td><?php echo ($noticia->ativo == 1) ? "Ativo" : "Inativo"; ?></td>
                   <td>                    
                     <a href="{{-- {{ route('noticia.perfil') }} --}}" class="btn btn-warning">
                       Editar</a>                    
                     <a href="{{-- {{ route('noticia.inativar', $noticia->id) }} --}}" class="btn btn-danger">
                       Inativar</a>                              
-                  </td>
-                </tr>       
-              @endforeach       
-              </tbody>
-            </table>    
-        </div>
+                    </td>
+                  </tr>       
+
+                  <!-- Modal -->
+                  <div id="modal-conteudo" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Conteúdo</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>{{ $noticia->conteudo }}</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  @endforeach       
+                </tbody>
+              </table>    
+            </div>
+          </div>
+        </section>        
       </div>
-    </section>        
-  </div>
-@endsection
+      @endsection

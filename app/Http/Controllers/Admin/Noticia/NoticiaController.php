@@ -8,38 +8,42 @@ use Illuminate\Http\Request;
 
 class NoticiaController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
+  public function __construct() {
+    $this->middleware('auth');
+  }
 
-    public function noticiasView() {
-      $noticias = Noticia::all();
-    	return view('admin.noticia.noticias-view', compact('noticias'));
-    }    
+  public function noticiasView() {
+    $noticias = Noticia::all();
+    return view('admin.noticia.noticias-view', compact('noticias'));
+  }    
 
-    public function noticiaCadastrar() {
+  public function conhecimentoNovo() {
+    return view('admin.noticia.noticia-novo');
+  }
+
+  public function conhecimentoCadastrar(Request $request) {
     	// $this->validate(request(), [
      //        'title' => 'required|max:15',
      //        'body' => 'required'
      //  ]);
 
-        auth()->user()->publish(
-            new Post(request(['title', 'body']))
-        );
+    $file = 'teste';
 
-        // Post::create([
-        //     'title' => request('title'), 
-        //     'body' => request('body'), 
-        //     'user_id' => auth()->id()
-        // ]);
+    auth()->user()->cadastrarNoticia(
+      new Noticia(['titulo' => $request->titulo, 'conteudo' => $request->conteudo, 'imagem' => $file, 'data_final' => $request->data_final, 'ativo' => 1])
+    );
 
-        // Redirecionar pra home page
+    // Adicionar mensagem de sucesso e retornar para a view
 
-        return redirect('/');
-    }
+    return redirect()->route('noticias.view');
+  }
 
-    public function empresasView() {
-      $empresas = Empresa::all();
-        return view('admin.empresa.empresas-view', compact('empresas'));
-    } 
+    // Mudar de lugar ___________________________________________________________
+
+  public function empresasView() {
+    $empresas = Empresa::all();
+    return view('admin.empresa.empresas-view', compact('empresas'));
+  } 
+
+    // __________________________________________________________________________
 }
