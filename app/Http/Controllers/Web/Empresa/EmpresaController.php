@@ -35,7 +35,7 @@ class EmpresaController extends Controller
             'nome' => $request->nome,
             'email' => $request->email, 
             'cnpj' => $request->cnpj,
-            'senha' => bcrypt($request->password),
+            'password' => bcrypt($request->password),
             'categoria' => $request->categoria,
             'endereco_id' => $endereco['id'],
             'foto_perfil' => 'teste',
@@ -49,16 +49,15 @@ class EmpresaController extends Controller
 
 
     public function loginEmpresa(Request $request) {        
-        // $this->validate($request, [
-        //     'email' => 'required|email',
-        //     'password' => 'required|min:6'
-        // ]);
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ]);
 
-        if (auth()->guard('empresa')->attempt(['email' => $request->email, 'password' => bcrypt($request->password)], $request->remember)) {            
-            dd('logado');
-            return redirect('/');        
-        }
-        dd('Erro');
+        if (auth()->guard('empresa')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) { 
+            
+            return redirect('/');
+        } 
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }    
 

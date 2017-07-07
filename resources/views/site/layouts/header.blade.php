@@ -13,8 +13,8 @@
       </div>
       <div class="col-md-4">
         <ul class="nav navbar-nav navbar-right">
-          @if (Auth::check())
-            <li><a href="#" class="link-logout"><span class="glyphicon glyphicon-log-in"></span> Logout </a></li>
+          @if (auth()->guard('empresa')->check())
+            <li><a href="{{ route('empresa.logout') }}" class="link-logout"><span class="glyphicon glyphicon-log-in"></span> Logout </a></li>
           @else          
             <li><a href="#" class="link-register"><span class="glyphicon glyphicon-user"></span> Cadastrar </a></li>
             <li><a href="#" class="link-login"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
@@ -26,8 +26,8 @@
           </div>
 
           <div class="options-buttons-login">
-            <p><button class="btn-login-home" data-toggle="modal" data-target="#myModalLoginEmpresa">Sou Empresa</button></p>
-            <p><button class="btn-login-home" data-toggle="modal" data-target="#myModalLoginFreelancer">Sou Freelancer</button></p>
+            <p><button class="btn-login-home" onclick="document.getElementById('modal-login-empresa').style.display='block'">Sou Empresa</button></p>
+            <p><button class="btn-login-home" onclick="document.getElementById('modal-login-freelancer').style.display='block'">Sou Freelancer</button></p>
           </div>        
         </div>   
 
@@ -37,79 +37,65 @@
           </div>
 
           <div class="options-buttons-register">
-            <p><button class="btn-register-home" data-toggle="modal" data-target="#myModalRegisterEmpresa">Sou Empresa</button></p>
-            <p><button class="btn-register-home" data-toggle="modal" data-target="#myModalRegisterFreelancer">Sou Freelancer</button></p>
+            <p><button class="btn-register-home">Sou Empresa</button></p>
+            <p><button class="btn-register-home">Sou Freelancer</button></p>
           </div>        
         </div> 
 
-        <div id="myModalLoginEmpresa" class="modal fade" role="dialog">
-          <div class="modal-dialog">
+        <div id="modal-login-empresa" class="modal">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;Login Empresa</h4>
-              </div>
-              <div class="modal-body">
-                <form method="POST" action="{{ route('empresa.login') }}">
-                  {{ csrf_field() }}
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Senha</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" name="password" required>
-                  </div>            
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Check me out
-                    </label>
-                  </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
+          <form class="modal-content animate" method="POST" action="{{ route('empresa.login') }}">
+            {{ csrf_field() }}
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('modal-login-empresa').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <img src="/site-assets/img/home/icone_empresa_login.png" alt="Avatar" class="avatar">
             </div>
-          </div>
+
+            <div class="container-modal">
+              <label><b>E-mail</b></label>
+              <input type="text" placeholder="Digite seu e-mail" name="email" required>
+
+              <label><b>Senha</b></label>
+              <input type="password" placeholder="Digite sua senha" name="password" required>
+
+              <button type="submit">Logar</button>
+              <input type="checkbox" checked="checked"> Lembre-me
+            </div>
+
+            <div class="container-modal" style="background-color:#f1f1f1">
+              <button type="button" onclick="document.getElementById('modal-login-empresa').style.display='none'" class="cancelbtn">Cancelar</button>
+              <span class="psw">Esqueceu sua <a href="#">senha?</a></span>
+            </div>
+          </form>
         </div>
 
-        <div id="myModalLoginFreelancer" class="modal fade" role="dialog">
-          <div class="modal-dialog">
+        <div id="modal-login-freelancer" class="modal">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><span class="glyphicon glyphicon-usd"></span>&nbsp;Login Freelancer</h4>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Senha</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" required>
-                  </div>            
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Check me out
-                    </label>
-                  </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
+          <form class="modal-content animate" method="POST" action="{{ route('empresa.login') }}">
+            {{ csrf_field() }}
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('modal-login-freelancer').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <img src="/site-assets/img/home/icone_freelancer_login.png" alt="Avatar" class="avatar-2">
             </div>
-          </div>
+
+            <div class="container-modal">
+              <label><b>E-mail</b></label>
+              <input type="text" placeholder="Digite seu e-mail" name="email" required>
+
+              <label><b>Senha</b></label>
+              <input type="password" placeholder="Digite sua senha" name="password" required>
+
+              <button type="submit">Logar</button>
+              <input type="checkbox" checked="checked"> Lembre-me
+            </div>
+
+            <div class="container-modal" style="background-color:#f1f1f1">
+              <button type="button" onclick="document.getElementById('modal-login-freelancer').style.display='none'" class="cancelbtn">Cancelar</button>
+              <span class="psw">Esqueceu sua <a href="#">senha?</a></span>
+            </div>
+          </form>
         </div>
+
 
         <div id="myModalRegisterEmpresa" class="modal fade" role="dialog">
           <div class="modal-dialog">
@@ -236,7 +222,7 @@
         </div>
       </div>
 
-      <div id="myModalRegisterFreelancer" class="modal fade" role="dialog">
+      <div id="modal-login" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
           <!-- Modal content-->

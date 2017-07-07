@@ -22,7 +22,7 @@ Route::prefix('empresa')->group(function () {
 	Route::post('/login', 'Empresa\EmpresaController@loginEmpresa')->name('empresa.login');
 
 	// Rotas de logout
-	Route::post('/logout', 'Empresa\EmpresaController@logout')->name('empresa.logout');
+	Route::get('/logout', 'Empresa\EmpresaController@logout')->name('empresa.logout');
 });
 
 Auth::routes();

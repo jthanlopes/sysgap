@@ -14,4 +14,16 @@ $(document).ready(function(){
 			$(".link-register").toggleClass("link-active");
 			$(".register-options").slideToggle('200');
 	});
-});
+})
+
+// Pegar Modal
+var modal = document.getElementById('modal-login-empresa');
+var modal2 = document.getElementById('modal-login-freelancer');
+
+// Fechar Modal ao clicar fora dele
+window.onclick = function(event) {
+    if (event.target == modal || event.target == modal2) {
+        modal.style.display = "none";
+        modal2.style.display = "none";
+    }
+}

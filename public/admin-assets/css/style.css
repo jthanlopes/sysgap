@@ -54,3 +54,10 @@
     width: 300px !important;
   }
 }
+
+@media (min-width: 768px) {
+	.modal-content {	
+		height: 50%;
+		margin-top: 25%;
+	}
+}
