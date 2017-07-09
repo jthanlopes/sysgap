@@ -31,4 +31,12 @@ class Empresa extends Authenticatable
     public function endereco() {
     	return $this->hasOne(Endereco::class);
     }
+
+    public function jobs() {
+        return $this->hasMany(Job::class);
+    }
+
+    public function cadastrarJob(Job $job) {
+        $this->jobs()->save($job);
+    }
 }

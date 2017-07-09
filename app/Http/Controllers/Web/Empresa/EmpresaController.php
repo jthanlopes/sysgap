@@ -10,7 +10,11 @@ use Storage;
 class EmpresaController extends Controller
 {
     public function __construct() {
-        $this->middleware('guest:empresa')->except('logout');
+        $this->middleware('auth:empresa')->except(['loginEmpresa', 'empresaNovo']);
+    }
+
+    public function perfil() {
+        return view('site.empresa.empresa-perfil');
     }
 
     public function empresaNovo(Request $request) {        
@@ -55,9 +59,9 @@ class EmpresaController extends Controller
         ]);
 
         if (auth()->guard('empresa')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) { 
-            
-            return redirect('/');
+            return redirect()->route('empresa.perfil');
         } 
+
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }    
 
