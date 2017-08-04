@@ -67,7 +67,7 @@
 
 						<div class="clearfix">
 							<button type="button" onclick="document.getElementById('modal-criar-job').style.display='none'" class="cancelbtn-job">Cancel</button>
-							<button type="submit" class="signupbtn">Criar</button>
+							<button class="btn-salvar-job" type="submit" class="signupbtn">Criar</button>
 						</div>
 					</div>
 				</form>

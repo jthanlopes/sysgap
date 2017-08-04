@@ -1,33 +1,63 @@
-.login-options {
-	position: absolute;
-    display: none;
-    right: 0px;
-    height: 200px;
-    width: 300px;
-    background-color: #EEEEEE;
-    z-index: 99999;
-    top: 51px;
-    border: 1px black;
-    padding: 10px;
-    -webkit-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
-    -moz-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
-    box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);    
+#home-page {
+  margin: 0;
+  padding: 0;
 }
 
-.options-buttons-login {
+#home-page .overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#home-page .overlay .msg-alerta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  font-size: 50px;
+  text-align: center;
+  color: white;
+}
+
+#home-page .login-options {
+	position: absolute;
+  display: none;
+  right: 0px;
+  height: 200px;
+  width: 300px;
+  background-color: #EEEEEE;
+  z-index: 99999;
+  top: 51px;
+  border: 1px black;
+  padding: 10px;
+  -webkit-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
+  box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);    
+}
+
+#home-page .options-buttons-login {
 	text-align: center;
 	margin-top: 26px;
 }
 
 
 @media (max-width: 768px) {
-    .login-options {
-        left: 0px !important;
-        top: 274px;
-    }
+  #home-page .login-options {
+    left: 0px !important;
+    top: 274px;
+  }
 }
 
-.btn-login-home {
+#home-page .btn-login-home {
   -webkit-border-radius: 10;
   -moz-border-radius: 10;
   border-radius: 10px;
@@ -40,7 +70,7 @@
   width: 215px;
 }
 
-.btn-login-home:hover {
+#home-page .btn-login-home:hover {
   background: #3cb0fd;
   background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
@@ -50,41 +80,41 @@
   text-decoration: none;
 }
 
-.link-active {
-    color: #ffffff !important;
+#home-page .link-active {
+  color: #ffffff !important;
 }
 
 /* Cadastro home */
-.register-options {
+#home-page .register-options {
   position: absolute;
-    display: none;
-    right: 73px;
-    height: 200px;
-    width: 300px;
-    background-color: #EEEEEE;
-    z-index: 99999;
-    top: 51px;
-    border: 1px black;
-    padding: 10px;
-    -webkit-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
-    -moz-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
-    box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);    
+  display: none;
+  right: 73px;
+  height: 200px;
+  width: 300px;
+  background-color: #EEEEEE;
+  z-index: 99999;
+  top: 51px;
+  border: 1px black;
+  padding: 10px;
+  -webkit-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
+  box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);    
 }
 
-.options-buttons-register {
+#home-page .options-buttons-register {
   text-align: center;
   margin-top: 26px;
 }
 
 
 @media (max-width: 768px) {
-    .register-options {
-        left: 0px !important;
-        top: 274px;
-    }
+  #home-page .register-options {
+    left: 0px !important;
+    top: 274px;
+  }
 }
 
-.btn-register-home {
+#home-page .btn-register-home {
   -webkit-border-radius: 10;
   -moz-border-radius: 10;
   border-radius: 10px;
@@ -97,7 +127,7 @@
   width: 215px;
 }
 
-.btn-register-home:hover {
+#home-page .btn-register-home:hover {
   background: #3cb0fd;
   background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
@@ -108,267 +138,317 @@
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+#home-page input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 /* Set a style for all buttons */
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+#home-page button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
 
-button:hover {
-    opacity: 0.8;
+#home-page button:hover {
+  opacity: 0.8;
 }
 
 /* Extra styles for the cancel button */
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
+#home-page .cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
 }
 
 /* Center the image and position the close button */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
+#home-page .imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
 }
 
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
+#home-page img.avatar {
+  width: 40%;
+  border-radius: 50%;
 }
 
-img.avatar-2 {
+#home-page img.avatar-2 {
   width: 80%;
 }
 
-.container-modal {
-    padding: 16px;
+#home-page .container-modal {
+  padding: 16px;
 }
 
-span.psw {
-    float: right;
-    padding-top: 16px;
+#home-page span.psw {
+  float: right;
+  padding-top: 16px;
 }
 
 /* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+#home-page .modal {
+  display: none; /* Hidden by default */
+  position: fixed;  Stay in place 
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */    
 }
 
 /* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 33%; /* Could be more or less, depending on screen size */
+#home-page .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 33%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
+#home-page .close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
 }
 
-.close:hover,
+#home-page .close:hover,
 .close:focus {
-    color: red;
-    cursor: pointer;
+  color: red;
+  cursor: pointer;
 }
 
 /* Add Zoom Animation */
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+#home-page .animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
 }
-    
+
 @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
 }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
+  #home-page span.psw {
+   display: block;
+   float: none;
+ }
+ #home-page .cancelbtn {
+   width: 100%;
+ }
 }
 
+/* css dropdown menu perfil admin*/
 
-/* css dropdown menu perfil */
+#admin-perfil {
+  margin: 0;
+  padding: 0;
+}
 
 /* Dropdown Button */
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+#admin-perfil .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+#admin-perfil .dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
 }
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
+#admin-perfil .dropdown {
+  position: relative;
+  display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+#admin-perfil .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+#admin-perfil .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+#admin-perfil .dropdown-content a:hover {background-color: #f1f1f1}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
-
+#admin-perfil .show {display:block;}
 
 /* Css modal de criar job*/
 /* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+#admin-perfil input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 /* Set a style for all buttons */
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+#admin-perfil button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;    
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Set a style for all buttons */
+#admin-perfil .modal-job button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;    
+  border: none;
+  cursor: pointer;
+  width: 50%;
 }
 
 /* Extra styles for the cancel button */
-.cancelbtn-job {
-    padding: 14px 20px;
-    background-color: #f44336;
+#admin-perfil .modal-job .cancelbtn-job {
+  padding: 14px 20px;
+  background-color: #f44336;
 }
 
 /* Float cancel and signup buttons and add an equal width */
-.cancelbtn-job,.signupbtn {
-    float: left;
-    width: 50%;
+#admin-perfil .modal-job .cancelbtn-job,.signupbtn {
+  float: left;
+  width: 50%;
 }
 
 /* Add padding to container elements */
-.container-job {
-    padding: 16px;
+#admin-perfil .container-job {
+  padding: 16px;
 }
 
 /* The Modal (background) */
-.modal-job {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+#admin-perfil .modal-job {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
 }
 
 /* Modal Content/Box */
-.modal-content-job {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 60%; /* Could be more or less, depending on screen size */
+#admin-perfil .modal-content-job {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 35px;
-    top: 15px;
-    color: #000;
-    font-size: 40px;
-    font-weight: bold;
+#admin-perfil .close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  color: #000;
+  font-size: 40px;
+  font-weight: bold;
 }
 
-.close:hover,
+#admin-perfil .close:hover,
 .close:focus {
-    color: red;
-    cursor: pointer;
+  color: red;
+  cursor: pointer;
 }
 
- /*Clear floats */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
+/*Clear floats */
+#admin-perfil .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
-/* Change styles for cancel button and signup button on extra small screens 
-@media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn {
-        width: 100%;
-    }
+/* The snackbar - position it at the bottom and in the middle of the screen */
+.snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+.snackbar .show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }
 
 /* ----------------------------------------- */

@@ -42,14 +42,14 @@ Route::get('/login', 'AdminLoginController@showLoginForm')->name('admin.show-log
 // Submete o formulário de login
 Route::post('/login', 'AdminLoginController@login')->name('admin.login');
 
-// Rotas de logout
+// Faz o logout do admin
 Route::post('/logout', 'AdminLoginController@logout')->name('admin.logout');
 
 // Rotas de registro do admin
 // Chama o formulário de cadastro
 Route::get('/register', 'AdminRegisterController@showRegisterForm')->name('admin.show-register-form');
 
-// Submete o formulário de cadastro
+// Submete o formulário de cadastro do admin
 Route::post('/register', 'AdminRegisterController@register')->name('admin.register');
 // -------------------------------------------------------------------------------------------------------------------------------------
 
@@ -60,20 +60,20 @@ Route::get('/conhecimentos-view', 'Conhecimento\ConhecimentoController@conhecime
 // Pesquisa por conhecimento
 Route::post('/conhecimentos-view/pesquisar', 'Conhecimento\ConhecimentoController@conhecimentoPesquisar')->name('conhecimentos.view.pesquisar');
 
-// Formulário de cadastro de conhecimento
+// Chama o formulário de cadastro de conhecimento
 Route::get('/conhecimentos-view/novo', 'Conhecimento\ConhecimentoController@conhecimentoNovo')->name('conhecimento.show-form-novo');
 
-// Salvar formulário de conhecimento
+// Submete o formulário de cadastro de conhecimento
 Route::post('/conhecimentos-view/novo', 'Conhecimento\ConhecimentoController@conhecimentoCadastrar')->name('conhecimento.cadastrar');
 
-// Formulário para editar conhecimento
+// Chama o formulário de edição do conhecimento
 Route::get('/conhecimento-view/editar/{conhecimento}', 'Conhecimento\ConhecimentoController@editarForm')->name('conhecimento.show-form-edit');
 
-// Salvar formulário de edição de conhecimento
+// Submete o formulário de edição de conhecimento
 Route::post('/conhecimento-view/editar', 'Conhecimento\ConhecimentoController@conhecimentoEditar')->name('conhecimento.editar');
 
-// Excluir conhecimento
-Route::get('/conhecimento-view/excluir/{conhecimento}', 'Conhecimento\ConhecimentoController@conhecimentoExcluir')->name('conhecimento.excluir');
+// Excluir o conhecimento
+Route::delete('/conhecimento-view/excluir/{conhecimento}', 'Conhecimento\ConhecimentoController@conhecimentoExcluir')->name('conhecimento.excluir');
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 // Rotas de notícias ---------------------------------------------------------------------------------------------------------------------
@@ -85,9 +85,7 @@ Route::get('/noticias-view/novo', 'Noticia\NoticiaController@conhecimentoNovo')-
 // Salvar formulário de notícia
 Route::post('/noticias-view/novo', 'Noticia\NoticiaController@conhecimentoCadastrar')->name('noticia.cadastrar');
 
-
 //------------------------------------------------------------------------------------------------------
 
 // Rotas de empresas
 Route::get('/empresas-view', 'Noticia\NoticiaController@empresasView')->name('empresas.view');
-

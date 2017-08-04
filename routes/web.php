@@ -19,13 +19,13 @@ Route::prefix('empresa')->group(function () {
 	// Rotas de logout
 	Route::get('/perfil', 'Empresa\EmpresaController@perfil')->name('empresa.perfil');	
 
-  Route::post('/novo', 'Empresa\EmpresaController@empresaNovo')->name('empresa.novo');
+  Route::post('/novo', 'Empresa\EmpresaRegisterController@empresaNovo')->name('empresa.novo');
 
   // Submete o formulário de login
-	Route::post('/login', 'Empresa\EmpresaController@loginEmpresa')->name('empresa.login');
+	Route::post('/login', 'Empresa\EmpresaLoginController@loginEmpresa')->name('empresa.login');
 
 	// Rotas de logout
-	Route::get('/logout', 'Empresa\EmpresaController@logout')->name('empresa.logout');
+	Route::get('/logout', 'Empresa\EmpresaLoginController@logout')->name('empresa.logout');
 
 	// Rotas de job	
 	Route::post('/job/novo', 'Empresa\Job\JobController@jobCadastrar')->name('job.novo');

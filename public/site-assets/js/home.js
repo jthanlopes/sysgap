@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	$(".overlay").css({ display: "block" });
+
 	$(".link-login, .btn-login-home").click(function(event){		
 		$(".link-register").removeClass("link-active");
 		$(".register-options").slideUp('200');
@@ -18,21 +20,25 @@ $(document).ready(function(){
 	$("#modal-login-empresa").click(function(event){
 		var modal = document.getElementById('modal-login-empresa');		
 		if (event.target == modal) {
-    	modal.style.display = "none";			
-    }			
+			modal.style.display = "none";			
+		}			
 	});
 
 	$("#modal-login-freelancer").click(function(event){		
 		var modal = document.getElementById('modal-login-freelancer');
 		if (event.target == modal) {			
-    	modal.style.display = "none";
-    }			
+			modal.style.display = "none";
+		}			
 	});
 
 	$("#modal-criar-job").click(function(event){
 		var modal = document.getElementById('modal-criar-job');
 		if (event.target == modal) {
-    	modal.style.display = "none";
-    }		
-	});	
+			modal.style.display = "none";
+		}		
+	});
+
+		$(".overlay").click(function(event){
+			$(this).css({display: "none"});
+		});
 })
