@@ -1,22 +1,25 @@
 $(document).ready(function(){
   var data = sessionStorage.getItem('job');
+  if (data) {    
     // Get the snackbar DIV
-    var x = document.getElementsByClassName("snackbar")[0];  
+    var x = document.getElementsByClassName("snackbar")[0];
 
     // Add the "show" class to DIV
-    x.className = "show";
+    x.className = "snackbar" + " show-snackbar";
 
     // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    setTimeout(function(){ x.className = x.className.replace("show-snackbar", ""); }, 3000);
 
-    $(".btn-salvar-job").click(function(event){    
-      sessionStorage.setItem('job', '1');
-    });
-  })
+    sessionStorage.removeItem('job');
+  }
+
+  $(".btn-salvar-job").click(function(event){
+    sessionStorage.setItem('job', '1');
+  });
+})
 
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
-  console.log("teste2");
 }
 
 window.onclick = function(event) {

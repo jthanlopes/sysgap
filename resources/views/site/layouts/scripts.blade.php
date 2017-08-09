@@ -27,5 +27,6 @@
   <!-- optionally if you need translation for your language then include 
   locale file as mentioned below -->
   {{-- <script src="/bower_resources/bootstrap-fileinput/js/<lang>.js"></script> --}}
+</div> {{-- Final do container--}}
 </body>
 </html>

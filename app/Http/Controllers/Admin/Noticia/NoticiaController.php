@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class NoticiaController extends Controller
 {
   public function __construct() {
-    $this->middleware('auth');
+    $this->middleware('auth:web');
   }
 
   public function noticiasView() {
@@ -37,13 +37,4 @@ class NoticiaController extends Controller
 
     return redirect()->route('noticias.view');
   }
-
-    // Mudar de lugar ___________________________________________________________
-
-  public function empresasView() {
-    $empresas = Empresa::all();
-    return view('admin.empresa.empresas-view', compact('empresas'));
-  } 
-
-    // __________________________________________________________________________
 }

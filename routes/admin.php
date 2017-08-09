@@ -88,4 +88,4 @@ Route::post('/noticias-view/novo', 'Noticia\NoticiaController@conhecimentoCadast
 //------------------------------------------------------------------------------------------------------
 
 // Rotas de empresas
-Route::get('/empresas-view', 'Noticia\NoticiaController@empresasView')->name('empresas.view');
+Route::get('/empresas-view', 'Empresa\EmpresaController@empresasView')->name('empresas.view');

@@ -33,7 +33,7 @@
       ADICIONAR NOVA</a>
       
       <div class="row">
-        <div class="col-lg-6 col-md-offset-2 pesquisa-admin-view">          
+        <div class="col-lg-10 col-md-offset-1 pesquisa-admin-view">          
             <form class="form-inline" role="form" method="POST" action="{{-- {{ route('noticias.view.pesquisar') }} --}}">
               {{ csrf_field() }}
               <input id="pesquisa" type="text" class="form-control" name="pesquisa" placeholder="Pesquisar por título">              
@@ -43,7 +43,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
           @if(session()->has('message'))
             <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -98,7 +98,6 @@
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                       </div>
-
                     </div>
                   </div>
                   @endforeach       

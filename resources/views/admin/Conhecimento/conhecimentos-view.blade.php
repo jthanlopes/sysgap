@@ -33,7 +33,7 @@
       ADICIONAR NOVO</a>
       
        <div class="row">
-        <div class="col-lg-6 col-md-offset-2 pesquisa-admin-view">          
+        <div class="col-lg-10 col-md-offset-1 pesquisa-admin-view">          
             <form class="form-inline" role="form" method="POST" action="{{ route('conhecimentos.view.pesquisar') }}">
               {{ csrf_field() }}
               <input id="pesquisa" type="text" class="form-control" name="pesquisa" placeholder="Pesquisar por título">              
@@ -43,7 +43,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
           @if(session()->has('message'))
             <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -54,7 +54,6 @@
             <table class="table table-hover table-striped">
               <thead class="thead-inverse">
                 <tr>            
-                  <th>Id</th>
                   <th>Título</th>
                   <th>Descrição</th>
                   <th>Nível</th>
@@ -64,7 +63,6 @@
               <tbody>
                 @foreach ($conhecimentos as $conhecimento)
                   <tr>
-                    <th scope="row">{{ $conhecimento->id }}</th>
                     <td>{{ $conhecimento->titulo }}</td>
                     <td>{{ $conhecimento->descricao }}</td>
                     <td>{{ $conhecimento->nivel }}</td>                 

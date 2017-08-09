@@ -18,4 +18,3 @@
 		<div class="snackbar">Job cadastrado com sucesso.</div>
 		{{-- @include ('site.layouts.footer') --}}
 		@include ('site.layouts.scripts')
-	</div>

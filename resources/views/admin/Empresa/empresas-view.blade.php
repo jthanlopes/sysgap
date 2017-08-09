@@ -20,7 +20,7 @@
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">  
+    <section class="content-header">
       <h1>
         Lista de Empresas
       </h1>
@@ -29,48 +29,48 @@
         <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Registros</li>
         <li class="active">Empresas</li>
-      </ol>      
+      </ol>
       
       <div class="row">
-        <div class="col-lg-6 col-md-offset-2 pesquisa-admin-view">          
+        <div class="col-lg-10 col-md-offset-1 pesquisa-admin-view">
             <form class="form-inline" role="form" method="POST" action="">
               {{ csrf_field() }}
-              <input id="pesquisa" type="text" class="form-control" name="pesquisa" placeholder="Pesquisar por nome">              
-              <button type="submit" class="btn btn-primary"> Pesquisar </button>              
-            </form>          
+              <input id="pesquisa" type="text" class="form-control" name="pesquisa" placeholder="Pesquisar por nome">
+              <button type="submit" class="btn btn-primary"> Pesquisar </button>
+            </form>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">          
+        <div class="col-md-10 col-md-offset-1">
           @if(session()->has('message'))
             <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              {{ session()->get('message')['message'] }}              
+              {{ session()->get('message')['message'] }}
             </div>
           @endif
           <table class="table table-hover table-striped">
             <thead class="thead-inverse">
-              <tr>            
-                <th>Id</th>                
+              <tr>
                 <th>Nome</th>
-                <th>Email</th>                
-                <th>Status</th>                
+                <th>CNPJ</th>
+                <th>Email</th>               
+                <th>Status</th>
               </tr>
             </thead>
             <tbody class="admin-view">
               @foreach ($empresas as $empresa)
-                <tr>
-                  <td>{{ $empresa->id }}</td>            
-                  <td>{{ $empresa->name }}</td>
-                  <td>{{ $empresa->email }}</td>                  
-                  <td><?php echo ($empresa->active == 1) ? "Ativo" : "Inativo"; ?></td>                  
-                </tr>       
-              @endforeach       
+                <tr>                  
+                  <td>{{ $empresa->nome }}</td>
+                  <td>{{ $empresa->cnpj }}</td>
+                  <td>{{ $empresa->email }}</td>
+                  <td>Ativo</td>
+                </tr>
+              @endforeach
               </tbody>
-            </table>    
+            </table>
         </div>
       </div>
-    </section>        
+    </section>  
   </div>
 @endsection

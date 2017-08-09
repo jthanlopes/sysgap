@@ -15,7 +15,7 @@
 		<div class="overlay" onclick="off()">
 			<div class="msg-alerta">
 				<h1>Página em desenvolvimento.</h1>
-				<h2>Clique para continuar.</h2>
+				<h3>clique para continuar</h3>
 			</div>
 		</div>
 		@include ('site.layouts.header-home')
