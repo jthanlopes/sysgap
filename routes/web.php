@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('site.home');
 })->name('home.page');
 
+
 Route::prefix('empresa')->group(function () {	
+	Route::get('/', 'Empresa\EmpresaController@perfil')->name('empresa.perfil');
 	// Rotas de logout
 	Route::get('/perfil', 'Empresa\EmpresaController@perfil')->name('empresa.perfil');	
 

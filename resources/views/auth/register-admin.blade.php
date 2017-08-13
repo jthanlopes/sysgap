@@ -64,25 +64,26 @@
                         </div>                        
                     </div>
 
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                         <label for="password-confirm" class="col-sm-2 control-label">Confirmação de senha</label>
                         <div class="col-sm-10">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Digite novamente a senha" required>
+                            <input id="password-confirmation" type="password" class="form-control" name="password_confirmation" placeholder="Digite novamente a senha" required>
                             @if ($errors->has('password'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
+                                <strong>{{ $errors->first('password_confirmation') }}</strong>
                             </span>
                             @endif
                         </div>                        
                     </div>
 
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('profile_photo') ? ' has-error' : '' }}">
                         <label for="profile_photo" class="col-sm-2 control-label">Foto de perfil</label>
                         <div class="col-sm-10">                            
-                            <input id="input-1" type="file" class="file" name="profile_photo">
+                            {{-- <input id="input-1" type="file" class="file" name="profile_photo"> --}}
+                            <input type="file" name="profile_photo">
                             @if ($errors->has('password'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
+                                <strong>{{ $errors->first('profile_photo') }}</strong>
                             </span>
                             @endif
                         </div>                        

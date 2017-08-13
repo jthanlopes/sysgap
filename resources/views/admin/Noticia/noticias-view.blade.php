@@ -69,8 +69,8 @@
                   <td>Teste Imagem{{-- <img src="{{ asset('storage') . '/noticias/perfil/' . $noticia->profile_photo }}" class="user-image img-circle" alt="User Image"> --}}</td>
                   <td>{{ $noticia->titulo }}</td>
                   <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-conteudo">Ver</button></td>
-                  <td>{{ $noticia->created_at }}</td>
-                  <td>{{ $noticia->data_final }}</td>
+                  <td>{{ $noticia->created_at->format('d/m/Y') }}</td>
+                  <td>{{ $noticia->data_final->format('d/m/Y') }}</td>
                   <td>{{ $noticia->admin->name }}</td>
                   <td><?php echo ($noticia->ativo == 1) ? "Ativo" : "Inativo"; ?></td>
                   <td>                    

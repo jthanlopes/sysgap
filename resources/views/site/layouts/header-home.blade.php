@@ -37,7 +37,7 @@
           </div>
 
           <div class="options-buttons-register">
-            <p><button class="btn-register-home">Sou Empresa</button></p>
+            <p><button class="btn-register-home" onclick="document.getElementById('modal-register-empresa').style.display='block'">Sou Empresa</button></p>
             <p><button class="btn-register-home">Sou Freelancer</button></p>
           </div>        
         </div> 
@@ -97,7 +97,7 @@
         </div>
 
 
-        <div id="myModalRegisterEmpresa" class="modal fade" role="dialog">
+        <div id="modal-register-empresa" class="modal-register fade" role="dialog">
           <div class="modal-dialog">
 
             <!-- Modal content-->

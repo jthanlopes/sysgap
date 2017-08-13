@@ -29,7 +29,9 @@ class AdminRegisterController extends Controller
         //     'password' => 'required|string|min:6|confirmed',
         //     // 'profile_photo' => 'required|image',
         // ]);
-        $filename = config('app.name') . '_foto_perfil_' . $request->id . str_slug($request->name, '_') . '.' . $request->profile_photo->getClientOriginalExtension();
+
+        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->name, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();      
+
         $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
 
     	$create = Admin::updateOrCreate([
@@ -55,10 +57,10 @@ class AdminRegisterController extends Controller
         // $this->validate($request, [
         //     'titulo' => 'required|max:15',
         //     'nivel'  => 'required',
-        // ]);
+        // ]);        
 
-        $filename = config('app.name') . '_foto_perfil_' . $request->id . str_slug($request->name, '_') . '.' . $request->profile_photo->getClientOriginalExtension();
-        $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
+        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->name, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();
+        $request->profile_photo->storeAs('admins/perfil', $filename, 'public');        
 
         $update = Admin::where( 'id', Auth::id() )
                                 ->update([
@@ -69,7 +71,7 @@ class AdminRegisterController extends Controller
                                     'profile_photo' => $filename,
                                 ]);
 
-        if ( $update )          
+        if ( $update )
         {            
             $message = parent::returnMessage('success', 'Perfil alterado com sucesso!');            
         } else 
@@ -86,18 +88,21 @@ class AdminRegisterController extends Controller
         //     'nivel'  => 'required',
         // ]);
 
+        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->name, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();      
+        $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
+
         $update = Admin::where( 'id', $request->id )
                                 ->update([
                                     'name' => $request->name,
                                     'email' => $request->email,
                                     'password' => bcrypt($request->password),
                                     'active' => 0,
-                                    // 'profile_photo' => $filename,
+                                    'profile_photo' => $filename,
                                 ]);
 
         if ( $update )          
         {            
-            $message = parent::returnMessage('success', 'Perfil alterado com sucesso!');            
+            $message = parent::returnMessage('success', 'Perfil alterado com sucesso!');        
         } else 
         {
             $message = parent::returnMessage('danger', 'Erro ao alterar o perfil!');
