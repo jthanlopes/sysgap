@@ -80,10 +80,10 @@ Route::delete('/conhecimento-view/excluir/{conhecimento}', 'Conhecimento\Conheci
 Route::get('/noticias-view', 'Noticia\NoticiaController@noticiasView')->name('noticias.view');
 
 // Formulário de cadastro de notícia
-Route::get('/noticias-view/novo', 'Noticia\NoticiaController@conhecimentoNovo')->name('noticia.show-form-novo');
+Route::get('/noticias-view/novo', 'Noticia\NoticiaController@noticiaNovo')->name('noticia.show-form-novo');
 
 // Salvar formulário de notícia
-Route::post('/noticias-view/novo', 'Noticia\NoticiaController@conhecimentoCadastrar')->name('noticia.cadastrar');
+Route::post('/noticias-view/novo', 'Noticia\NoticiaController@noticiaCadastrar')->name('noticia.cadastrar');
 
 //------------------------------------------------------------------------------------------------------
 

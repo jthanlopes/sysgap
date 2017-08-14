@@ -17,7 +17,7 @@ class NoticiaController extends Controller
     return view('admin.noticia.noticias-view', compact('noticias'));
   }    
 
-  public function conhecimentoNovo() {
+  public function noticiaNovo() {
     return view('admin.noticia.noticia-novo');
   }
 

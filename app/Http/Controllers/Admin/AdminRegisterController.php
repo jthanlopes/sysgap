@@ -30,8 +30,7 @@ class AdminRegisterController extends Controller
         //     // 'profile_photo' => 'required|image',
         // ]);
 
-        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->name, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();      
-
+        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->email, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();
         $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
 
     	$create = Admin::updateOrCreate([

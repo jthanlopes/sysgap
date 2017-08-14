@@ -13,10 +13,10 @@ class EmpresaRegisterController extends Controller
         $this->middleware('guest:empresa');
     }
 
-    public function empresaNovo(Request $request) {        
+    public function empresaNovo(Request $request) {   
         $endereco = Endereco::create([
-            'cep' => request('cep'), 
-            'logradouro' => request('logradouro'), 
+            'cep' => request('cep'),
+            'logradouro' => request('logradouro'),
             'numero' => request('numero'),
             'complemento' => request('complemento'),
             'bairro' => request('bairro'),
@@ -25,19 +25,19 @@ class EmpresaRegisterController extends Controller
         ]);
 
         // Salvar o endereço primeiro
-        $endereco->save();    
+        $endereco->save();        
 
-        // $filename = config('app.name') . '_foto_perfil_' . $request->id . str_slug($request->name, '_') . '.' . $request->profile_photo .'.png';
-        // $request->profile_photo->storeAs('empresas/perfil', $filename, 'public');
+        $filename = config('app.name') . '_foto_perfil' . str_slug($request->email, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();
+        $request->profile_photo->storeAs('empresas/perfil', $filename, 'public');
 
         $empresa = Empresa::create([
             'nome' => $request->nome,
-            'email' => $request->email, 
+            'email' => $request->email,
             'cnpj' => $request->cnpj,
             'password' => bcrypt($request->password),
-            'categoria' => $request->categoria,
+            'categoria' => $request->get('categoria'),
             'endereco_id' => $endereco['id'],
-            'foto_perfil' => 'teste',
+            'foto_perfil' => $filename,
             'ativo' => 1,
         ]);
 
