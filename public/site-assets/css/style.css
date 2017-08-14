@@ -148,7 +148,7 @@
 }
 
 /* Set a style for all buttons */
-#home-page button {
+#home-page .btn-default-home {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -208,6 +208,33 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */    
 }
 
+/* Modal Content/Box */
+#home-page .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 33%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+#home-page .close-login {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  line-height: 1;
+  font-weight: bold;
+  opacity: .2;
+  text-shadow: 0 1px 0 #fff;
+}
+
+#home-page .close-login:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+/* Cadastros Empresa/Freelancer homepage*/
 /* The Modal (background) */
 #home-page .modal-register {
   display: none; /* Hidden by default */
@@ -223,31 +250,45 @@
 }
 
 /* Modal Content/Box */
-#home-page .modal-content {
+#home-page .modal-content-register {
   background-color: #fefefe;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  padding: 10px;
   border: 1px solid #888;
-  width: 33%; /* Could be more or less, depending on screen size */
+  border-radius: 6px;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+#home-page .ajuste-input-bottom {
+  margin-bottom: 13px;
+}
+
+#home-page .msg-cep {
+  color: red;
 }
 
 /* The Close Button (x) */
-#home-page .close {
-  position: absolute;
-  right: 25px;
-  top: 0;
+#home-page .close-register {
+  float: right;
+  margin-right: 20px;
   color: #000;
   font-size: 35px;
+  line-height: 1;
   font-weight: bold;
+  opacity: .2;
+  text-shadow: 0 1px 0 #fff;
 }
 
-#home-page .close:hover,
-.close:focus {
+#home-page .close-register:hover,
+.close-register:focus {
   color: red;
   cursor: pointer;
 }
 
-/* Add Zoom Animation */
-#home-page .animate {
+ /* Fim cadastro homepage*/
+
+ /* Add Zoom Animation */
+ #home-page .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
 }
