@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="/site-assets/js/cep-correios.js"></script>
   <script src="/site-assets/js/browser-update.js"></script>
-  <script src="/site-assets/jquery-mask/dist/jquery.mask.js"></script>
+  <script src="/site-assets/js/jquery-mask/dist/jquery.mask.js"></script>
   <script src="/site-assets/js/functions.js"></script>
   <script src="/site-assets/js/home.js"></script>  
 
@@ -30,6 +30,3 @@
   <!-- optionally if you need translation for your language then include 
   locale file as mentioned below -->
   {{-- <script src="/bower_resources/bootstrap-fileinput/js/<lang>.js"></script> --}}
-</div> {{-- Final do container--}}
-</body>
-</html>

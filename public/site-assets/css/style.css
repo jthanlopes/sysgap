@@ -1,8 +1,15 @@
+@font-face {
+    font-family: 'Langdon';
+    src: url('../fonts/Langdon.otf');
+    font-weight: normal;
+    font-style: normal;    
+}
+
 #home-page {
   margin: 0;
   padding: 0;
 }
-
+/* Definindo css do overleaf */
 #home-page .overlay {
   position: fixed;
   display: none;
@@ -17,6 +24,7 @@
   cursor: pointer;
 }
 
+/* Definindo o css da mensagem do overleaf */
 #home-page .overlay .msg-alerta {
   position: absolute;
   top: 50%;
@@ -27,6 +35,128 @@
   text-align: center;
   color: white;
 }
+
+/* Ajuste itens do menu */
+#home-page .nav-home .w3-btn, .w3-button {
+  padding-top: 12px;
+}
+
+/* Alterar fonte do título principal da home */
+#home-page .header-home .main-title {
+  font-family: "Langdon";
+  text-transform: lowercase;  
+}
+
+/* Alterar tamanho da fonte do H1 do header da home */
+#home-page .header-home .w3-jumbo {
+  font-size: 110px!important;
+}
+
+/* Alterar fonte do sub-titulo do header da home */
+#home-page .header-home .w3-xlarge {
+  font-family: "Langdon";
+  text-transform: uppercase;
+}
+
+/* Cadastros Empresa/Freelancer homepage*/
+/* The Modal (background) */
+#home-page .modal-register {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 9999; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: scroll;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */    
+}
+
+/* Modal Content/Box */
+#home-page .modal-content-register {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  padding: 10px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+#home-page .ajuste-input-bottom {
+  margin-bottom: 13px;
+}
+
+#home-page .msg-cep {
+  color: red;
+}
+
+/* The Close Button (x) */
+#home-page .close-register {
+  float: right;
+  margin-right: 20px;
+  color: #000;
+  font-size: 35px;
+  line-height: 1;
+  font-weight: bold;
+  opacity: .2;
+  text-shadow: 0 1px 0 #fff;
+}
+
+#home-page .close-register:hover,
+.close-register:focus {
+  color: red;
+  cursor: pointer;
+}
+
+ /* Fim cadastro homepage*/
+
+ /* Add Zoom Animation */
+ #home-page .animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  #home-page span.psw {
+   display: block;
+   float: none;
+ }
+ #home-page .cancelbtn {
+   width: 100%;
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #home-page .login-options {
 	position: absolute;
@@ -233,85 +363,6 @@
 .close:focus {
   color: red;
   cursor: pointer;
-}
-/* Cadastros Empresa/Freelancer homepage*/
-/* The Modal (background) */
-#home-page .modal-register {
-  display: none; /* Hidden by default */
-  position: fixed;  Stay in place 
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */    
-}
-
-/* Modal Content/Box */
-#home-page .modal-content-register {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  padding: 10px;
-  border: 1px solid #888;
-  border-radius: 6px;
-  width: 60%; /* Could be more or less, depending on screen size */
-}
-
-#home-page .ajuste-input-bottom {
-  margin-bottom: 13px;
-}
-
-#home-page .msg-cep {
-  color: red;
-}
-
-/* The Close Button (x) */
-#home-page .close-register {
-  float: right;
-  margin-right: 20px;
-  color: #000;
-  font-size: 35px;
-  line-height: 1;
-  font-weight: bold;
-  opacity: .2;
-  text-shadow: 0 1px 0 #fff;
-}
-
-#home-page .close-register:hover,
-.close-register:focus {
-  color: red;
-  cursor: pointer;
-}
-
- /* Fim cadastro homepage*/
-
- /* Add Zoom Animation */
- #home-page .animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  #home-page span.psw {
-   display: block;
-   float: none;
- }
- #home-page .cancelbtn {
-   width: 100%;
- }
 }
 
 /* css dropdown menu perfil admin*/

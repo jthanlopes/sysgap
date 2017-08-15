@@ -1,7 +1,17 @@
 $(document).ready(function(){
+	// Exibe overlay ao abrir a home-page
 	$(".overlay").css({ display: "block" });
+	// Acrescenta a animação ao overlay
+	$('.animate-zoomIn').addClass('animated zoomIn');
+	$('.animate-slideInLeft').addClass('animated slideInLeft');	
+
+  // Aplica a maskara de campos aos inputs
 	$("#cnpj").mask('00.000.000/0000-00', {reverse: true});
 	$("#cep").mask('00000-000');
+
+	// $( ".scroll-begin" ).click(function() {		
+ //  	$('.teste').animate({scrollTop: $('.teste')[0].scrollHeight}, 500);
+	// });
 
 	$(".link-login, .btn-login-home").click(function(event){		
 		$(".link-register").removeClass("link-active");
@@ -38,7 +48,7 @@ $(document).ready(function(){
 		var modal2 = $(".modal-dialog");
 		if (event.target == modal || event.target == modal2) {
 			console.log("Entrou");
-			$(this).css("display", "none");
+			$(this).css("display", "none");			
 		}
 	});
 
@@ -49,7 +59,9 @@ $(document).ready(function(){
 		}
 	});
 
+	// Fecha overlay da home ao clicar nele
 	$(".overlay").click(function(event){
-		$(this).css({display: "none"});
+		$(this).css({display: "none"});		
+		$('.animate-fadeIn').addClass('animated fadeIn');
 	});
 })
