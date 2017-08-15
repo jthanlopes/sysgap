@@ -3,8 +3,9 @@
 @section ('conteudo')
 <div class="w3-row-padding w3-padding-64 w3-container block-begin contato">
   <div class="w3-content">
-    <div class="w3-container w3-blue">
+    <div class="w3-container">
       <h2>Formulário de Contato</h2>
+      <hr>
     </div>
 
     <form class="w3-container">

@@ -132,7 +132,7 @@
           </div>
         </div>
       </div>
-
+      <hr>
       <button type="submit" class="btn btn-default btn-default-home">Enviar</button>
     </form>
   </div>         
