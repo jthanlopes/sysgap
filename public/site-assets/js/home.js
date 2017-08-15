@@ -6,12 +6,16 @@ $(document).ready(function(){
 	$('.animate-slideInLeft').addClass('animated slideInLeft');	
 
   // Aplica a maskara de campos aos inputs
-	$("#cnpj").mask('00.000.000/0000-00', {reverse: true});
-	$("#cep").mask('00000-000');
+  $("#cnpj").mask('00.000.000/0000-00', {reverse: true});
+  $("#cep").mask('00000-000');
 
-	// $( ".scroll-begin" ).click(function() {		
- //  	$('.teste').animate({scrollTop: $('.teste')[0].scrollHeight}, 500);
-	// });
+ 	// Scrolar a página ao clicar em Começar
+	$('.scroll-begin').click(function () {
+		var navHeight = $('.nav-home').height();
+		$('html, body').animate({
+			scrollTop: $(".block-begin").offset().top - navHeight
+        }, 600); // Tempo em ms que a animação irá durar
+	});
 
 	$(".link-login, .btn-login-home").click(function(event){		
 		$(".link-register").removeClass("link-active");

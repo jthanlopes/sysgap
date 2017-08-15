@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('site.home');
 })->name('home.page');
 
+Route::get('/eventos', function () {
+    return view('site.eventos');
+})->name('eventos.page');
+
+Route::get('/contato', function () {
+    return view('site.contato');
+})->name('contato.page');
 
 Route::prefix('empresa')->group(function () {	
 	Route::get('/', 'Empresa\EmpresaController@perfil')->name('empresa.perfil');

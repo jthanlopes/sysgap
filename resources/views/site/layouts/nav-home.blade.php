@@ -2,9 +2,9 @@
 <div class="w3-top nav-home">
   <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="showNavMobile()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Eventos</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contato</a>
+    <a href="{{ route('home.page') }}" id="home" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="{{ route('eventos.page') }}" id="eventos" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Eventos</a>
+    <a href="{{ route('contato.page') }}" id="contato" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contato</a>
     <div class="w3-dropdown-hover">
       <button class="w3-button">Registro</button>
       <div class="w3-dropdown-content w3-bar-block w3-card-4">

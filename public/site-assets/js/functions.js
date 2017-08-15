@@ -3,13 +3,10 @@ $(document).ready(function(){
   if (data) {    
     // Get the snackbar DIV
     var x = document.getElementsByClassName("snackbar")[0];
-
     // Add the "show" class to DIV
     x.className = "snackbar" + " show-snackbar";
-
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show-snackbar", ""); }, 3000);
-
     sessionStorage.removeItem('job');
   }
 

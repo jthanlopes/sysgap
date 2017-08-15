@@ -8,10 +8,10 @@
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  <p>Powered by Jonathan Lopes</p>
 </footer>
 
-{{-- Modais de logine registro--}}
+{{-- Modais de login e registro--}}
 
 <div id="modal-register-empresa" class="modal-register" role="dialog">
 
@@ -19,7 +19,7 @@
   <div class="modal-content-register animate">
     <div class="modal-header-register">
       <span onclick="document.getElementById('modal-register-empresa').style.display='none'" class="close-register" title="Close Modal Register">×</span>
-      <h2 class="modal-title"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;Cadastre sua Empresa</h2>
+      <h2 class="modal-title">Cadastre sua Empresa</h2>
       <hr>
     </div>
     <div class="modal-body-register">

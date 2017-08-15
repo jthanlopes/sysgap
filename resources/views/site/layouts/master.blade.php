@@ -31,13 +31,7 @@
 	<link rel="stylesheet" href="/site-assets/css/style.css" />
 </head>
 <body>	
-	<div id="home-page">
-		<div class="overlay">
-			<div class="msg-alerta">
-				<h1 class="animate-zoomIn">Página em desenvolvimento.</h1>
-				<h3 class="animate-slideInLeft">clique para continuar</h3>				
-			</div>
-		</div>
+	<div id="home-page">		
 		@include ('site.layouts.nav-home')
 		@include ('site.layouts.header')
 		@yield ('conteudo')
