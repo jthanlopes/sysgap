@@ -167,10 +167,13 @@
   }
 /* Fim do style do formulário de cadastro */
 
-
-
-
-
+/* Css acessibilidade */
+#home-page .acessibilidade {
+  position: relative;
+  left: 20px;
+  top: -40px;
+}
+/* Fim css acessibilidade*/
 
 
 

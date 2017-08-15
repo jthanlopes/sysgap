@@ -10,6 +10,10 @@
 </div>
 <!-- First Grid -->
 <div class="w3-row-padding w3-padding-64 w3-container block-begin">
+  <div class="acessibilidade">
+    <a href=""><img src="/site-assets/img/home/diminuirFonte.png" alt="Icone de lupa para diminuir a fonte."></a>
+    <a href=""><img src="/site-assets/img/home/aumentarFonte.png" alt="Icone de lupa para aumentar a fonte."></a>
+  </div>
   <div class="w3-content">
     <div class="w3-twothird">
       <h1>Sobre o Projeto</h1>
