@@ -25,7 +25,7 @@
       </div>
 
       <div class="w3-third w3-center">
-        <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+        <img src="\site-assets\img\home\projeto.png" alt="Imagem projeto">
       </div>
     </div>
   </div>
