@@ -9,7 +9,7 @@
       <button class="w3-button">Registro</button>
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
         <a href="#" class="w3-bar-item w3-button" onclick="document.getElementById('modal-register-empresa').style.display='block'">Sou empresa</a>
-        <a href="#" class="w3-bar-item w3-button">Sou freelancer</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="document.getElementById('modal-register-freelancer').style.display='block'">Sou freelancer</a>
       </div>
     </div>           
     <div class="w3-dropdown-hover w3-right">

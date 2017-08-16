@@ -1,15 +1,15 @@
 $(document).ready(function() {
   function limpa_formulário_cep() {
                 // Limpa valores do formulário de cep.
-                $("#logradouro").val("");
-                $("#bairro").val("");
-                $("#cidade").val("");
-                $("#uf").val("");
-                $("#numero").val("");
-                $("#complemento").val("");
+                $(".logradouro").val("");
+                $(".bairro").val("");
+                $(".cidade").val("");
+                $(".uf").val("");
+                $(".numero").val("");
+                $(".complemento").val("");
               }
             //Quando o campo cep perde o foco.
-            $("#cep").blur(function() {
+            $(".cep").blur(function() {
 
                 //Nova variável "cep" somente com dígitos.
                 var cep = $(this).val().replace(/\D/g, '');
@@ -25,32 +25,32 @@ $(document).ready(function() {
 
                       $(".msg-cep").html("");
                         //Preenche os campos com "..." enquanto consulta webservice.
-                        $("#logradouro").val("...");                        
-                        $("#bairro").val("...");
-                        $("#cidade").val("...");
-                        $("#uf").val("...");
+                        $(".logradouro").val("...");     
+                        $(".bairro").val("...");
+                        $(".cidade").val("...");
+                        $(".uf").val("...");
 
                         //Consulta o webservice viacep.com.br/
                         $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 
-                          if (!("erro" in dados)) {                                
+                          if (!("erro" in dados)) {
                                 //Atualiza os campos com os valores da consulta.
-                                $("#logradouro").val(dados.logradouro);
-                                $("#bairro").val(dados.bairro);
-                                $("#cidade").val(dados.localidade);
-                                $("#uf").val(dados.uf);                      
+                                $(".logradouro").val(dados.logradouro);
+                                $(".bairro").val(dados.bairro);
+                                $(".cidade").val(dados.localidade);
+                                $(".uf").val(dados.uf);
                             } //end if.
                             else {
                                 //CEP pesquisado não foi encontrado.
                                 limpa_formulário_cep();
-                                $(".msg-cep").html("CEP não foi encontrado.");          
+                                $(".msg-cep").html("CEP não foi encontrado.");
                               }
                             });
                     } //end if.
                     else {
                         //cep é inválido.
                         limpa_formulário_cep();
-                        $(".msg-cep").html("Formato do CEP é inválido.");    
+                        $(".msg-cep").html("Formato do CEP é inválido.");
                       }
                 } //end if.
                 else {

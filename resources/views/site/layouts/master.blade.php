@@ -36,6 +36,7 @@
 		@include ('site.layouts.header')
 		@yield ('conteudo')
 		{{-- @include ('site.layouts.footer') --}}
+		@include ('site.layouts.modais')
 		@include ('site.layouts.scripts')
 		@include ('site.layouts.footer')
 	</div>

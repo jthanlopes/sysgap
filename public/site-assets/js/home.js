@@ -12,8 +12,9 @@ $(document).ready(function(){
 	});
 
   // Aplica a maskara de campos aos inputs
-  $("#cnpj").mask('00.000.000/0000-00', {reverse: true});
-  $("#cep").mask('00000-000');
+  $(".cnpj").mask('00.000.000/0000-00', {reverse: true});
+  $(".cpf").mask('000.000.000-00', {reverse: true});
+  $(".cep").mask('00000-000');
 
  	// Scrolar a página ao clicar em Começar
  	$('.scroll-begin').click(function () {
@@ -57,7 +58,14 @@ $(document).ready(function(){
  		var modal = document.getElementById('modal-register-empresa');
  		var modal2 = $(".modal-dialog");
  		if (event.target == modal || event.target == modal2) {
- 			console.log("Entrou");
+ 			$(this).css("display", "none");
+ 		}
+ 	});
+
+ 	$("#modal-register-freelancer").click(function(event){
+ 		var modal = document.getElementById('modal-register-freelancer');
+ 		var modal2 = $(".modal-dialog");
+ 		if (event.target == modal || event.target == modal2) {
  			$(this).css("display", "none");
  		}
  	});
