@@ -171,8 +171,18 @@
 #home-page .acessibilidade {
   position: relative;
   left: 20px;
-  top: -40px;
+  top: -40px;  
 }
+
+#home-page .acessibilidade p {
+  float: left;
+}
+
+#home-page .acessibilidade img {
+  cursor: pointer;  
+}
+
+
 /* Fim css acessibilidade*/
 
 
