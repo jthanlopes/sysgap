@@ -15,7 +15,12 @@ class NoticiaController extends Controller
   public function noticiasView() {
     $noticias = Noticia::all();
     return view('admin.noticia.noticias-view', compact('noticias'));
-  }    
+  }
+
+  public function noticiasViewHome() {
+    $noticias = Noticia::all();
+    return view('site.eventos', compact('noticias'));
+  }
 
   public function noticiaNovo() {
     return view('admin.noticia.noticia-novo');

@@ -11,15 +11,18 @@
     <form class="w3-container">
       <p>
         <label>Nome</label><br/>
-        <input class="w3-input w3-animate-input" type="text" style="width:50%" placeholder="Nome"></p>        
+        <input class="w3-input w3-animate-input input-contato-nome" type="text" style="width:50%" placeholder="Nome" required=""></p>        
         <p>
           <label>E-mail</label><br/>
-          <input class="w3-input w3-border w3-animate-input" type="email" style="width:50%" placeholder="E-mail"></p>
+          <input class="w3-input w3-border w3-animate-input input-contato-email" type="email" style="width:50%" placeholder="E-mail" required=""></p>
           <p><label>Mensagem</label><br/>
-            <textarea class="" name="msg" cols="30" rows="10" style="width: 100%" placeholder="Dúvidas, elogios ou sugestões."></textarea></p>
+            <textarea class="textarea-contato-msg" name="msg" cols="30" rows="10" style="width: 100%" placeholder="Dúvidas, elogios ou sugestões." required=""></textarea></p>
             <hr>
-            <button type="submit" class="btn btn-default btn-default-home">Enviar</button>
+            <button type="submit" class="btn btn-default btn-default-home btn-msg-contato">Enviar</button>
           </form>
+          <!-- The actual snackbar -->
+          <div class="snackbar">Mensagem enviada com sucesso!</div>
+          {{-- @include ('site.layouts.footer') --}}
         </div>
       </div>
       @endsection
@@ -33,6 +36,6 @@
           var navHeight = $('.nav-home').height();
           $('html, body').animate({
             scrollTop: $(".block-begin").offset().top - navHeight
-            }, 800); // Tempo em ms que a animação irá durar          
+            }, 800); // Tempo em ms que a animação irá durar
         });
       </script>
