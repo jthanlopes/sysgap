@@ -104,4 +104,25 @@ $(document).ready(function(){
 			$elemento.eq(i).css('font-size', fonts[i]);
 		}
 	});
+
+	// Criar uma session com msg ao enviar formulário de contato
+	$(".btn-msg-contato").click(function(event){
+		if ($( ".input-contato-nome" ).val() != '' && $( ".input-contato-email" ).val() != '' && $( ".textarea-contato-msg" ).val() != '') {
+			sessionStorage.setItem('contato', '1');
+		}		
+	});
+
+	window.setTimeout(function() {
+		// Exibe barra de mensagem, caso exista uma variavel de sessão
+		var data = sessionStorage.getItem('contato');
+		if (data) {    
+    // Get the snackbar DIV
+    var x = document.getElementsByClassName("snackbar")[0];
+    // Add the "show" class to DIV
+    x.className = "snackbar" + " show-snackbar";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show-snackbar", ""); }, 4000);
+    sessionStorage.removeItem('contato');
+  }	
+}, 800);
 })
