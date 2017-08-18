@@ -165,7 +165,6 @@
 #home-page .cancelbtn {
   width: auto;
   padding: 10px 18px;
-  background-color: #f44336;
 }
 
 /* Style do formulário de contato da home */
@@ -186,8 +185,17 @@
 }
 
 #home-page .acessibilidade img {
-  cursor: pointer;  
+  cursor: pointer;
+  margin-left: 5px;
+  margin-top: -4px;
 }
+
+#home-page .acessibilidade img:hover {
+  box-shadow: 3px 3px 3px #aaa;
+  -webkit-box-shadow: 3px 3px 3px #aaa;
+  -moz-box-shadow: 3px 3px 3px #aaa;
+}
+
 
 /* Fim css acessibilidade*/
 
@@ -199,10 +207,50 @@
   height: 260px;
 }
 
+#home-page .eventos .noticia-text p {
+  margin-bottom: 20px;
+}
 
+#home-page .eventos .btn-veja-mais {
+ border-radius: 4px;
+ background-color: #009688;
+ border: none;
+ color: #FFFFFF;
+ text-align: center;
+ transition: all 0.5s;
+ cursor: pointer;
+ margin: 5px;
+ padding: 10px;
+}
 
+#home-page .eventos .btn-veja-mais span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
 
+#home-page .eventos .btn-veja-mais span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
 
+#home-page .eventos .btn-veja-mais:hover span {
+  padding-right: 25px;
+}
+
+#home-page .eventos .btn-veja-mais:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#home-page .eventos .paginacao {
+  text-align: center;
+}
 
 
 
@@ -271,6 +319,7 @@
 
 #home-page .container-modal {
   padding: 16px;
+  padding-top: 0;
 }
 
 #home-page span.psw {
@@ -295,10 +344,14 @@
 /* Modal Content/Box */
 #home-page .modal-content {
   background-color: #fefefe;
-  margin-top: 51px;
-  float: right;
+  margin-top: 31vh;
+  margin-left: 33.5%;
   border: 1px solid #888;
-  width: 33%; /* Could be more or less, depending on screen size */
+  width: 33%;
+}
+
+#home-page .modal-content h3 {
+  margin-left: 10px;
 }
 
 /* The Close Button (x) */

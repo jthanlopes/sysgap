@@ -1,3 +1,5 @@
+var loadImages;
+
 $(document).ready(function(){
 	// Exibe overlay ao abrir a home-page
 	$(".overlay").css({ display: "block" });
