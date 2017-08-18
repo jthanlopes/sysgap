@@ -17,6 +17,7 @@ class CreateFreelancersTable extends Migration {
 			$table->increments('id');
 			$table->string('nome', 100);
 			$table->string('email', 100)->unique();
+			$table->string('cpf', 14);
 			$table->string('password', 60);
 			$table->string('foto_perfil', 100);
 			$table->integer('endereco_id')->unsigned();

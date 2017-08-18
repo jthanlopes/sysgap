@@ -14,7 +14,7 @@ class AddForeignKeysToEmpresasTable extends Migration {
 	{
 		Schema::table('empresas', function(Blueprint $table)
 		{
-			$table->foreign('endereco_id', 'fk_prod_end')->references('id')->on('enderecos')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('endereco_id', 'fk_empresa_end')->references('id')->on('enderecos')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToEmpresasTable extends Migration {
 	{
 		Schema::table('empresas', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_prod_end');
+			$table->dropForeign('fk_empresa_end');
 		});
 	}
 

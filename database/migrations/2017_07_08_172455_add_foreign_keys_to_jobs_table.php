@@ -27,7 +27,7 @@ class AddForeignKeysToJobsTable extends Migration {
 	{
 		Schema::table('jobs', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_job_produtora1');
+			$table->dropForeign('fk_job_empres');
 		});
 	}
 
