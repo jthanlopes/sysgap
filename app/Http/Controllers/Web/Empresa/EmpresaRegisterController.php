@@ -13,7 +13,7 @@ class EmpresaRegisterController extends Controller
         $this->middleware('guest:empresa');
     }
 
-    public function empresaNovo(Request $request) {   
+    public function novo(Request $request) {   
         $endereco = Endereco::create([
             'cep' => request('cep'),
             'logradouro' => request('logradouro'),
@@ -34,7 +34,7 @@ class EmpresaRegisterController extends Controller
             'nome' => $request->nome,
             'email' => $request->email,
             'cnpj' => $request->cnpj,
-            'password' => bcrypt($request->password),
+            'password' => bcrypt($request->senha),
             'categoria' => $request->get('categoria'),
             'endereco_id' => $endereco['id'],
             'foto_perfil' => $filename,

@@ -12,6 +12,6 @@ class EmpresaController extends Controller
     }
 
     public function perfil() {
-        return view('site.empresa.empresa-perfil');
+        return view('site.empresa.perfil');
     }
 }

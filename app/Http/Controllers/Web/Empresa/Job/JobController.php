@@ -18,7 +18,7 @@ class JobController extends Controller
       return $jobs->toArray();
     }
 
-    public function jobCadastrar(Request $request) {
+    public function novo(Request $request) {
       auth()->guard('empresa')->user()->cadastrarJob(
         new Job(['titulo' => $request->titulo, 'descricao' => $request->descricao, 
           'nivel_conhecimento_necessario' => $request->get('nivel'), 'status' => $request->get('status')])

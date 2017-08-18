@@ -15,8 +15,8 @@ class Empresa extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nome', 'email', 'password', 'cnpj', 'categoria', 'endereco_id', 'foto_perfil', 'pontuacao', 
-        'avaliacao_geral' ,'ativo',
+    'nome', 'email', 'password', 'cnpj', 'categoria', 'endereco_id', 'foto_perfil', 'pontuacao', 
+    'avaliacao_geral' ,'ativo',
     ];
 
     /**
@@ -25,7 +25,7 @@ class Empresa extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+    'password', 'remember_token',
     ];
     
     public function endereco() {
