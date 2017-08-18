@@ -8,16 +8,20 @@
     @foreach ($noticias as $noticia)
     <div class="w3-panel w3-card">
       <div class="noticia-img" style="width: 40%; float: left;">
-        <img src="{{ $noticia->imagem }}" alt="Imagem teste">
+        <img src="{{ $noticia->imagem }}" alt="Imagem notícia">
       </div>
       <div class="noticia-text" style="width: 50%; float: right;">
         <h2>{{ $noticia->titulo }}</h2>
-        <p>{{ substr($noticia->conteudo, 0, 200)."..." }}</p>
+        <p>{{ substr($noticia->conteudo, 0, 300)."..." }}</p>
 
-        <button class="w3-button w3-teal" style="background-color: #BFBDC1">Veja mais</button>
+        {{-- <button class="btn-veja-mais" formaction="127.0.0.1:8000/eventos/evento-view/{{ $noticia->id }}"><span>Veja mais </span></button> --}}
+        <a class="btn-veja-mais" href="/eventos/evento-view/{{ $noticia->id }}"><span>Veja mais </span></a>
       </div>
-    </div>
+    </div>    
     @endforeach
+    <div class="paginacao">
+      {{ $noticias->links() }}
+    </div>
   </div>
 </div>
 @endsection

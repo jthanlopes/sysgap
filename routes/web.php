@@ -16,6 +16,7 @@ Route::get('/', function () {
 })->name('home.page');
 
 Route::get('/eventos', 'Noticia\NoticiaController@noticiasViewHome')->name('eventos.page');
+Route::get('/eventos/evento-view/{noticia}', 'Noticia\NoticiaController@noticiaView')->name('evento.view');
 
 Route::get('/contato', function () {
     return view('site.contato');

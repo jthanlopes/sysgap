@@ -241,17 +241,17 @@
 </div>
 </div>
 
-<div id="modal-login-empresa" class="modal">
-
-  <form class="modal-content animate" method="POST" action="{{ route('empresa.login') }}">
+<div id="modal-login-empresa" class="modal">  
+  <form class="modal-content animate" method="POST" action="{{ route('empresa.login') }}">    
     {{ csrf_field() }}
     <div class="imgcontainer">
-      <span onclick="document.getElementById('modal-login-empresa').style.display='none'" class="close-login" title="Close Modal">&times;</span>      
+      <h3>Login de empresa</h3>
+      <hr>
     </div>
 
     <div class="container-modal">
       <label><b>E-mail</b></label>
-      <input type="text" placeholder="Digite seu e-mail" name="email" required>
+      <input type="email" placeholder="Digite seu e-mail" name="email" required>
 
       <label><b>Senha</b></label>
       <input type="password" placeholder="Digite sua senha" name="password" required>
@@ -272,12 +272,13 @@
   <form class="modal-content animate" method="POST" action="{{ route('freelancer.login') }}">
     {{ csrf_field() }}
     <div class="imgcontainer">
-      <span onclick="document.getElementById('modal-login-freelancer').style.display='none'" class="close-login" title="Close Modal">&times;</span>      
+      <h3>Login de freelancer</h3>
+      <hr>
     </div>
 
     <div class="container-modal">
       <label><b>E-mail</b></label>
-      <input type="text" placeholder="Digite seu e-mail" name="email" required>
+      <input type="email" placeholder="Digite seu e-mail" name="email" required>
 
       <label><b>Senha</b></label>
       <input type="password" placeholder="Digite sua senha" name="password" required>
