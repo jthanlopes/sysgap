@@ -62,7 +62,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="categoria">Foto de perfil:</label>                    
-            <input id="input-1a" type="file" class="file" data-show-preview="false">
+            <input id="input-1a" type="file" class="file" data-show-preview="false" name="profile_photo">
           </div>
         </div>
       </div>
@@ -123,7 +123,7 @@
       <button type="submit" class="btn btn-default btn-default-home">Enviar</button>
     </form>
   </div>
-  </div>
+</div>
 </div>
 
 {{-- Modal de registro do freelancer --}}
@@ -137,7 +137,7 @@
       <hr>
     </div>
     <div class="modal-body-register">
-     <form method="POST" action="{{ route('empresa.novo') }}" enctype="multipart/form-data">
+     <form method="POST" action="{{ route('freelancer.novo') }}" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="row">
         <div class="col-md-6">
@@ -177,7 +177,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="categoria" class="ajuste-input-bottom">Foto de perfil:</label>                    
-            <input id="input-1a" type="file" class="file" data-show-preview="false">
+            <input id="input-1a" type="file" class="file" data-show-preview="false" name="profile_photo">
           </div>
         </div>
       </div>
@@ -237,6 +237,58 @@
       <hr>
       <button type="submit" class="btn btn-default btn-default-home">Enviar</button>
     </form>
-    </div>
   </div>
+</div>
+</div>
+
+<div id="modal-login-empresa" class="modal">
+
+  <form class="modal-content animate" method="POST" action="{{ route('empresa.login') }}">
+    {{ csrf_field() }}
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('modal-login-empresa').style.display='none'" class="close-login" title="Close Modal">&times;</span>      
+    </div>
+
+    <div class="container-modal">
+      <label><b>E-mail</b></label>
+      <input type="text" placeholder="Digite seu e-mail" name="email" required>
+
+      <label><b>Senha</b></label>
+      <input type="password" placeholder="Digite sua senha" name="password" required>
+
+      <button type="submit" class="btn-default-home">Logar</button>
+      <input type="checkbox" checked="checked"> Lembre-me
+    </div>
+
+    <div class="container-modal" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('modal-login-empresa').style.display='none'" class="cancelbtn">Cancelar</button>
+      <span class="psw">Esqueceu sua <a href="#">senha?</a></span>
+    </div>
+  </form>
+</div>
+
+<div id="modal-login-freelancer" class="modal">
+
+  <form class="modal-content animate" method="POST" action="{{ route('freelancer.login') }}">
+    {{ csrf_field() }}
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('modal-login-freelancer').style.display='none'" class="close-login" title="Close Modal">&times;</span>      
+    </div>
+
+    <div class="container-modal">
+      <label><b>E-mail</b></label>
+      <input type="text" placeholder="Digite seu e-mail" name="email" required>
+
+      <label><b>Senha</b></label>
+      <input type="password" placeholder="Digite sua senha" name="password" required>
+
+      <button type="submit" class="btn-default-home">Logar</button>
+      <input type="checkbox" checked="checked"> Lembre-me
+    </div>
+
+    <div class="container-modal" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('modal-login-freelancer').style.display='none'" class="cancelbtn">Cancelar</button>
+      <span class="psw">Esqueceu sua <a href="#">senha?</a></span>
+    </div>
+  </form>
 </div>

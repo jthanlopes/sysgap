@@ -45,7 +45,7 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
-        'freela' => [
+        'freelancer' => [
             'driver' => 'session',
             'provider' => 'freelas',
         ],

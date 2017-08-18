@@ -2,13 +2,35 @@
 
 namespace App;
 
-class Freelancer extends Model {
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-	public function endereco() {
-		return $this->hasOne(Endereco::class);
-	}
+class Freelancer extends Authenticatable {
+  use Notifiable;
 
-	public function cadastrarEndereco(Endereco $endereco) {
-    $this->enderecos()->save($endereco);
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+    'nome', 'email', 'password', 'cpf', 'ativo', 'foto_perfil', 'pontuacao', 'avaliacao_geral', 'endereco_id',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+    'password', 'remember_token',
+    ];
+
+    public function endereco() {
+      return $this->hasOne(Endereco::class);
+    }
+
+    public function cadastrarEndereco(Endereco $endereco) {
+      $this->enderecos()->save($endereco);
+    }
   }
-}
