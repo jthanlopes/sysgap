@@ -260,9 +260,9 @@
 }
 
 /* Full-width input fields */
-#home-page input[type=text], input[type=password] {
+#home-page input[type=text], input[type=password], input[type=email] {
   width: 100%;
-  /*padding: 12px 20px;*/
+  padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
@@ -295,7 +295,8 @@
 /* Modal Content/Box */
 #home-page .modal-content {
   background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin-top: 51px;
+  float: right;
   border: 1px solid #888;
   width: 33%; /* Could be more or less, depending on screen size */
 }
