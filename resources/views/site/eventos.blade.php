@@ -1,4 +1,4 @@
-@extends ('site.layouts.master')
+@extends ('site.layouts.home.master')
 
 @section ('conteudo')
 <div class="w3-row-padding w3-padding-64 w3-container block-begin eventos">

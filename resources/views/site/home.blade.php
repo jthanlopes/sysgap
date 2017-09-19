@@ -1,4 +1,4 @@
-@extends ('site.layouts.master')
+@extends ('site.layouts.home.master')
 
 @section ('conteudo')
 {{-- Overlay mostrado sobre a home page ao carregar a página --}}
@@ -18,11 +18,10 @@
   <div class="w3-content">
     <div class="w3-twothird">
       <h1>Sobre o Projeto</h1>
-      <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+      <h5 class="w3-padding-32">Com a atual expansão do mercado de TI e o lançamento de novas tecnologias para os mais variados sistemas, algumas empresas de grande porte acabam terceirizando alguns serviços para empresas menores especialistas nessas tecnologias ou também para freelancers.</h5>
 
-      <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p class="w3-text-grey">Aqui você pode fazer o cadastro e gerenciamento de um perfil, para agências, produtoras, freelancers ou outros tipos de empresas. Facilitando a comunicação entre esses três meios. </p>
+      <p><a href="https://github.com/jthanlopes/sysgap" target="_blank">Link para o GitHub do projeto.</a></p>
       </div>
 
       <div class="w3-third w3-center">
@@ -40,12 +39,19 @@
 
       <div class="w3-twothird">
         <h1>Diferenciais</h1>
-        <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
-
-        <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
+        <h5 class="w3-padding-32">Alguns dos diferencias do sistema são:</h5>
+        <ul class="w3-text-grey">
+            <li>Perfil de usuário gerenciável;</li>
+            <li>Criação de grupos de freelancers;</li>
+            <li>Cadastro de experiências e conhecimentos;</li>
+            <li>Cadastro de portifólio;</li>
+            <li>Filtros avançados de pesquisa;</li>            
+            <li>Criação de projetos e jobs;</li>            
+            <li>Troca de mensagens entre os usuários;</li>
+            <li>Sistema de avaliação e pagamento para os jobs;</li>
+            <li>Sistema de pontuação com ranking.</li>
+          </ul>  
+      </div>
       </div>
     </div>
 

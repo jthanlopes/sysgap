@@ -1,4 +1,4 @@
-@extends ('site.layouts.master-perfil')
+@extends ('site.layouts.nav-home')
 
-@section ('conteudo')             
+@section ('conteudo')
 @endsection

@@ -181,7 +181,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-text-yellow,.w3-hover-text-yellow:hover{color:#ffeb3b!important}
 .w3-text-white,.w3-hover-text-white:hover{color:#fff!important}
 .w3-text-black,.w3-hover-text-black:hover{color:#000!important}
-.w3-text-grey,.w3-hover-text-grey:hover,.w3-text-gray,.w3-hover-text-gray:hover{color:#757575!important}
+.w3-text-grey,.w3-hover-text-grey:hover,.w3-text-gray,.w3-hover-text-gray:hover{color:#757575!important;padding-bottom:32px;}
 .w3-text-amber{color:#ffc107!important}
 .w3-text-aqua{color:#00ffff!important}
 .w3-text-light-blue{color:#87CEEB!important}

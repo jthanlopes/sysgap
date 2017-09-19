@@ -342,10 +342,11 @@
 }
 
 /* Modal Content/Box */
-#home-page .modal-content {
-  background-color: #fefefe;
-  margin-top: 31vh;
-  margin-left: 33.5%;
+#home-page .modal-content {  
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;  
   border: 1px solid #888;
   width: 33%;
 }

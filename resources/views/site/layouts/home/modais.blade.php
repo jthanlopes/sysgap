@@ -242,7 +242,7 @@
 </div>
 
 <div id="modal-login-empresa" class="modal">  
-  <form class="modal-content animate" method="POST" action="{{ route('empresa.login') }}">    
+  <form class="modal-content" method="POST" action="{{ route('empresa.login') }}">    
     {{ csrf_field() }}
     <div class="imgcontainer">
       <h3>Login de empresa</h3>
@@ -269,7 +269,7 @@
 
 <div id="modal-login-freelancer" class="modal">
 
-  <form class="modal-content animate" method="POST" action="{{ route('freelancer.login') }}">
+  <form class="modal-content" method="POST" action="{{ route('freelancer.login') }}">
     {{ csrf_field() }}
     <div class="imgcontainer">
       <h3>Login de freelancer</h3>

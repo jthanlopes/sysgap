@@ -1,4 +1,4 @@
-@extends ('site.layouts.master-perfil')
+@extends ('site.layouts.perfil.master-perfil')
 
-@section ('conteudo')             
+@section ('conteudo')
 @endsection

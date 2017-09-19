@@ -31,14 +31,14 @@
 	<link rel="stylesheet" href="/site-assets/css/style.css" />
 </head>
 <body>	
-	<div id="home-page">		
-		@include ('site.layouts.nav-home')
-		@include ('site.layouts.header')
+	<div id="home-page">
+		@include ('site.layouts.home.nav-home')
+		@include ('site.layouts.home.header')
 		@yield ('conteudo')
 		{{-- @include ('site.layouts.footer') --}}
-		@include ('site.layouts.modais')
-		@include ('site.layouts.scripts')
-		@include ('site.layouts.footer')
+		@include ('site.layouts.home.modais')
+		@include ('site.layouts.home.scripts')
+		@include ('site.layouts.home.footer')
 	</div>
 
 	<script>
