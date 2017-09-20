@@ -21,6 +21,7 @@ class CreateJobsTable extends Migration {
 			$table->string('status', 45);
 			$table->timestamps();
 			$table->integer('empresa_id')->unsigned();
+			$table->integer('projeto_id')->unsigned();
 		});
 	}
 

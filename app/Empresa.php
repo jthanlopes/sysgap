@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Empresa extends Authenticatable
 {
-    use Notifiable;
+  use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -15,8 +15,8 @@ class Empresa extends Authenticatable
      * @var array
      */
     protected $fillable = [
-    'id', 'nome', 'email', 'password', 'cnpj', 'categoria', 'endereco_id', 'foto_perfil', 'pontuacao', 
-    'avaliacao_geral' ,'ativo',
+      'id', 'nome', 'email', 'password', 'cnpj', 'categoria', 'endereco_id', 'foto_perfil', 'pontuacao', 
+      'avaliacao_geral' ,'ativo',
     ];
 
     /**
@@ -25,7 +25,7 @@ class Empresa extends Authenticatable
      * @var array
      */
     protected $hidden = [
-    'password', 'remember_token',
+      'password', 'remember_token',
     ];
     
     public function endereco() {
@@ -33,10 +33,18 @@ class Empresa extends Authenticatable
     }
 
     public function jobs() {
-        return $this->hasMany(Job::class);
+      return $this->hasMany(Job::class);
+    }
+
+    public function projeto() {
+      return $this->hasMany(Projeto::class);
     }
 
     public function cadastrarJob(Job $job) {
-        $this->jobs()->save($job);
+      $this->jobs()->save($job);
     }
-}
+
+    public function noticias() {
+      return $this->hasMany(Noticia::class);
+    }
+  }

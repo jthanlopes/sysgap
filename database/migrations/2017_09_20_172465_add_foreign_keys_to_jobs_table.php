@@ -15,6 +15,8 @@ class AddForeignKeysToJobsTable extends Migration {
 		Schema::table('jobs', function(Blueprint $table)
 		{
 			$table->foreign('empresa_id', 'fk_job_empres')->references('id')->on('empresas')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+
+			$table->foreign('projeto_id', 'fk_job_projet')->references('id')->on('projetos')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -28,6 +30,7 @@ class AddForeignKeysToJobsTable extends Migration {
 		Schema::table('jobs', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_job_empres');
+			$table->dropForeign('fk_job_projet');
 		});
 	}
 

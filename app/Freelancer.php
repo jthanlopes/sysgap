@@ -14,7 +14,7 @@ class Freelancer extends Authenticatable {
      * @var array
      */
     protected $fillable = [
-    'nome', 'email', 'password', 'cpf', 'ativo', 'foto_perfil', 'pontuacao', 'avaliacao_geral', 'endereco_id',
+      'nome', 'email', 'password', 'cpf', 'ativo', 'foto_perfil', 'pontuacao', 'avaliacao_geral', 'endereco_id',
     ];
 
     /**
@@ -23,7 +23,7 @@ class Freelancer extends Authenticatable {
      * @var array
      */
     protected $hidden = [
-    'password', 'remember_token',
+      'password', 'remember_token',
     ];
 
     public function endereco() {
@@ -32,5 +32,9 @@ class Freelancer extends Authenticatable {
 
     public function cadastrarEndereco(Endereco $endereco) {
       $this->enderecos()->save($endereco);
+    }
+
+    public function noticias() {
+      return $this->hasMany(Noticia::class);
     }
   }
