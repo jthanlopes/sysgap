@@ -1,8 +1,9 @@
+<div id="home-page">
 <!-- Navbar -->
 <div class="w3-top nav-home">
   <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="showNavMobile()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="{{ route('home.page') }}" id="home" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
+    <a href="{{ route('home.page') }}" id="home" class="w3-bar-item w3-button w3-padding-large w3-hover-white"><i class="fa fa-home w3-margin-right"></i>Home</a>
     <a href="{{ route('eventos.page') }}" id="eventos" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Eventos</a>
     <a href="{{ route('contato.page') }}" id="contato" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contato</a>
     @if (auth()->guard('empresa')->check())
@@ -16,7 +17,7 @@
         <a href="#" class="w3-bar-item w3-button" onclick="document.getElementById('modal-register-empresa').style.display='block'">Sou empresa</a>
         <a href="#" class="w3-bar-item w3-button" onclick="document.getElementById('modal-register-freelancer').style.display='block'">Sou freelancer</a>
       </div>
-    </div>
+    </div>  
     <div class="w3-dropdown-hover w3-right">
       <button class="w3-button ajuste">Login</button>
       <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
@@ -25,6 +26,13 @@
       </div>
     </div>
     @endif
+    <div class="w3-dropdown-hover w3-right">
+      @if (auth()->guard('empresa')->check())
+      <a href="{{ route('empresa.perfil') }}" id="empresa-perfil" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Perfil</a>
+      @elseif (auth()->guard('freelancer')->check())
+      <a href="{{ route('freelancer.perfil') }}" id="freelancer-perfil" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Perfil</a>
+      @endif
+    </div>
   </div>
 
   <!-- Navbar on small screens -->

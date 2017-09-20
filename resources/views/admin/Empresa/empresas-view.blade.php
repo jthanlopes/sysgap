@@ -56,6 +56,7 @@
                 <th>CNPJ</th>
                 <th>Email</th>               
                 <th>Status</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody class="admin-view">
@@ -65,6 +66,9 @@
                   <td>{{ $empresa->cnpj }}</td>
                   <td>{{ $empresa->email }}</td>
                   <td>Ativo</td>
+                  <td>                    
+                    <a href="{{-- {{ route('noticia.perfil') }} --}}" class="btn btn-success">
+                      Enviar E-mail</a>                    
                 </tr>
               @endforeach
               </tbody>

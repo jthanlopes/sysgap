@@ -10,6 +10,6 @@
   </div>
   <p>Powered by Jonathan Lopes</p>
 </footer>
-
+</div>
 </body>
 </html>

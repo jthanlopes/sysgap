@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class NoticiaController extends Controller
 {
   public function noticiasViewHome() {
-    $noticias = Noticia::paginate(3);
+    $noticias = Noticia::paginate(5);
     return view('site.eventos', compact('noticias'));
   }
 

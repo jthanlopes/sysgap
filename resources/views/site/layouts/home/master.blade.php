@@ -5,10 +5,8 @@
 	<title>Home Page SysGAP</title>	
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">	
-
 	{{-- Bootstrap --}}
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	
 	{{-- Fonts Google e CloudFlare --}}
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -30,8 +28,7 @@
 	{{-- Css Geral --}}
 	<link rel="stylesheet" href="/site-assets/css/style.css" />
 </head>
-<body>	
-	<div id="home-page">
+<body>
 		@include ('site.layouts.home.nav-home')
 		@include ('site.layouts.home.header')
 		@yield ('conteudo')
@@ -39,11 +36,10 @@
 		@include ('site.layouts.home.modais')
 		@include ('site.layouts.home.scripts')
 		@include ('site.layouts.home.footer')
-	</div>
+	
+	{{-- <script> --}}
 
-	<script>
-
-	// 	['response' => true, 'message'=> 'item salvo com sucesso!']
+	{{-- // 	['response' => true, 'message'=> 'item salvo com sucesso!']
 		
 	// 	return response()->json(['response' => true, 'message'=> 'item salvo com sucesso!']);
 		
@@ -67,6 +63,6 @@
 	// 			});
 
 	// 		})
-	// 	});
+	// 	}); --}}
 {{-- </script> --}}
 	

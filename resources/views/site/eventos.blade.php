@@ -3,7 +3,7 @@
 @section ('conteudo')
 <div class="w3-row-padding w3-padding-64 w3-container block-begin eventos">
   <div class="w3-content">
-    <h1>Notícias / Eventos</h1>
+    <h1>Eventos / Notícias</h1>
     <hr>
     @foreach ($noticias as $noticia)
     <div class="w3-panel w3-card">

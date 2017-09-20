@@ -250,6 +250,11 @@
 
 
 
+
+
+
+
+
 #home-page .login-options {
 	position: absolute;
   display: none;
@@ -304,6 +309,15 @@
 
 /* Full-width input fields */
 #home-page .login input[type=text], #home-page .login input[type=password], #home-page .login input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#home-page .contato input[type=text], #home-page .contato input[type=password], #home-page .contato input[type=email] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;

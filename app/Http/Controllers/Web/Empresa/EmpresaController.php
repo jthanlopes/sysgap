@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Empresa;
 
 use App\Empresa;
+use Auth;
 use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
@@ -12,6 +13,8 @@ class EmpresaController extends Controller
     }
 
     public function perfil() {
-        return view('site.empresa.perfil');
+        $id = Auth::user()->id;
+        $empresa = Empresa::find($id);
+        return view('site.empresa.perfil', compact('empresa'));
     }
 }

@@ -30,7 +30,7 @@ class AdminRegisterController extends Controller
         //     // 'profile_photo' => 'required|image',
         // ]);
 
-        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->email, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();
+        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->email, '_') . '_' . $request->file('profile_photo')->getClientOriginalName();
         $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
 
     	$create = Admin::updateOrCreate([
@@ -58,7 +58,7 @@ class AdminRegisterController extends Controller
         //     'nivel'  => 'required',
         // ]);        
 
-        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->name, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();
+        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->email, '_') . '_' . $request->file('profile_photo')->getClientOriginalName();
         $request->profile_photo->storeAs('admins/perfil', $filename, 'public');        
 
         $update = Admin::where( 'id', Auth::id() )
@@ -87,7 +87,7 @@ class AdminRegisterController extends Controller
         //     'nivel'  => 'required',
         // ]);
 
-        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->name, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();      
+        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->email, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();      
         $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
 
         $update = Admin::where( 'id', $request->id )

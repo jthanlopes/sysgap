@@ -13,7 +13,7 @@ class NoticiaController extends Controller
   }
 
   public function noticiasView() {
-    $noticias = Noticia::all();
+    $noticias = Noticia::paginate(10);
     return view('admin.noticia.noticias-view', compact('noticias'));
   }
 

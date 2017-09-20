@@ -26,7 +26,7 @@ class FreelancerRegisterController extends Controller
 
         // // Salvar primeiramente o endereço
         // $endereco->save();
-        $filename = config('app.name') . '_foto_perfil' . str_slug($request->email, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();
+        $filename = config('app.name') . '_foto_perfil' . str_slug($request->email, '_') . '_' . $request->file('profile_photo')->getClientOriginalName();
         $request->profile_photo->storeAs('freelancers/perfil', $filename, 'public');
 
         $empresa = Freelancer::create([

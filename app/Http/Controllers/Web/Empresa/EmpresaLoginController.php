@@ -7,26 +7,27 @@ use Illuminate\Http\Request;
 
 class EmpresaLoginController extends Controller
 {
-    public function __construct() {
-        $this->middleware('guest:empresa')->except('logout');
+  public function __construct() {
+    $this->middleware('guest:empresa')->except('logout');
+  }
+
+  public function login(Request $request) {
+    $this->validate($request, [
+      'email' => 'required|email',
+      'password' => 'required|min:6'
+    ]);
+
+    if (auth()->guard('empresa')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) {  
+        
+      return redirect()->route('empresa.perfil');
     }
 
-    public function login(Request $request) {
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required|min:6'
-            ]);
+    return redirect()->back()->withInput($request->only('email', 'remember'));
+  }
 
-        if (auth()->guard('empresa')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) {            
-            return redirect()->route('empresa.perfil');
-        }
-
-        return redirect()->back()->withInput($request->only('email', 'remember'));
-    }    
-
-    public function logout()                
-    {                                        
-        auth()->guard('empresa')->logout();
-        return redirect('/');
-    }
+  public function logout()                
+  {                                        
+    auth()->guard('empresa')->logout();
+    return redirect('/');
+  }
 }

@@ -18,7 +18,7 @@
 
 @section ('content')
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper noticias-admin">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -102,7 +102,10 @@
                   </div>
                   @endforeach       
                 </tbody>
-              </table>    
+              </table>
+              <div class="paginacao">
+                {{ $noticias->links() }}
+              </div>
             </div>
           </div>
         </section>        
