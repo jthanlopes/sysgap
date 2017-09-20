@@ -89,11 +89,6 @@
   }
 }
 
-
-#home-page .ajuste-input-bottom {
-  margin-bottom: 13px;
-}
-
 #home-page .msg-cep {
   color: red;
 }
@@ -308,7 +303,7 @@
 }
 
 /* Full-width input fields */
-#home-page input[type=text], input[type=password], input[type=email] {
+#home-page .login input[type=text], #home-page .login input[type=password], #home-page .login input[type=email] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -424,17 +419,6 @@
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 #admin-perfil .show {display:block;}
-
-/* Css modal de criar job*/
-/* Full-width input fields */
-#admin-perfil input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
 
 /* Set a style for all buttons */
 #admin-perfil button {

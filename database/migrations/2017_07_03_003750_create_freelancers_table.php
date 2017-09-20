@@ -20,7 +20,7 @@ class CreateFreelancersTable extends Migration {
 			$table->string('cpf', 14);
 			$table->string('password', 60);
 			$table->string('foto_perfil', 100);
-			$table->integer('endereco_id')->unsigned();
+			$table->integer('endereco_id')->unsigned()->nullable();
 			$table->integer('pontuacao')->default(0);
 			$table->integer('avaliacao_geral')->default(0);
 			$table->timestamps();

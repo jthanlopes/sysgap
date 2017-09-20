@@ -43,7 +43,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="categoria" class="ajuste-input-bottom">Categoria:</label>
+            <label for="categoria">Categoria:</label>
             <select class="form-control" id="categoria" name="categoria" required>                        
               <option value="agência">Agência</option>
               <option value="produtora">Produtora</option>
@@ -87,7 +87,7 @@
         </div>
         <div class="col-md-3">
           <div class="form-group">
-            <label for="logradouro" class="ajuste-input-bottom">Número</label>
+            <label for="logradouro">Número</label>
             <input type="number" class="form-control numero" placeholder="Número" name="numero" min="1">
           </div>
         </div>                  
@@ -176,64 +176,11 @@
         </div>      
         <div class="col-md-6">
           <div class="form-group">
-            <label for="categoria" class="ajuste-input-bottom">Foto de perfil:</label>                    
+            <label for="categoria">Foto de perfil:</label>                    
             <input id="input-1a" type="file" class="file" data-show-preview="false" name="profile_photo">
           </div>
         </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-md-5">
-          <div class="form-group">
-            <label for="cep">CEP</label>
-            <input type="text" class="form-control cep" placeholder="CEP" name="cep">
-            <span class="msg-cep"></span>
-          </div>
-        </div>
-        <div class="col-md-7"></div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-5">
-          <div class="form-group">
-            <label for="logradouro">Logradouro</label>
-            <input type="text" class="form-control logradouro" placeholder="Logradouro" name="logradouro" readonly="true">
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="logradouro" class="ajuste-input-bottom">Número</label>
-            <input type="number" class="form-control numero" placeholder="Número" name="numero" min="1">
-          </div>
-        </div>                  
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="complemento">Complemento</label>
-            <input type="text" class="form-control complemento" placeholder="Complemento" name="complemento">
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-5">
-          <div class="form-group">
-            <label for="bairro">Bairro</label>
-            <input type="text" class="form-control bairro" placeholder="Bairro" name="bairro" readonly="true">
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div class="form-group">
-            <label for="cidade">Cidade</label>
-            <input type="text" class="form-control cidade" placeholder="Cidade" name="cidade" readonly="true">
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="uf">UF</label>
-            <input type="text" class="form-control uf" placeholder="UF" name="uf" readonly="true">
-          </div>
-        </div>
-      </div>
+      </div>      
       <hr>
       <button type="submit" class="btn btn-default btn-default-home">Enviar</button>
     </form>
@@ -241,7 +188,7 @@
 </div>
 </div>
 
-<div id="modal-login-empresa" class="modal">  
+<div id="modal-login-empresa" class="modal login">  
   <form class="modal-content" method="POST" action="{{ route('empresa.login') }}">    
     {{ csrf_field() }}
     <div class="imgcontainer">
@@ -267,7 +214,7 @@
   </form>
 </div>
 
-<div id="modal-login-freelancer" class="modal">
+<div id="modal-login-freelancer" class="modal login">
 
   <form class="modal-content" method="POST" action="{{ route('freelancer.login') }}">
     {{ csrf_field() }}

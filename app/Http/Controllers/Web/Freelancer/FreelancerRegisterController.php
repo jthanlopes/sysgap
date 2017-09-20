@@ -14,19 +14,18 @@ class FreelancerRegisterController extends Controller
     }
 
     public function novo(Request $request) {   
-        $endereco = Endereco::create([
-            'cep' => request('cep'),
-            'logradouro' => request('logradouro'),
-            'numero' => request('numero'),
-            'complemento' => request('complemento'),
-            'bairro' => request('bairro'),
-            'cidade' => request('cidade'),
-            'uf' => request('uf'),
-        ]);
+        // $endereco = Endereco::create([
+        //     'cep' => request('cep'),
+        //     'logradouro' => request('logradouro'),
+        //     'numero' => request('numero'),
+        //     'complemento' => request('complemento'),
+        //     'bairro' => request('bairro'),
+        //     'cidade' => request('cidade'),
+        //     'uf' => request('uf'),
+        // ]);
 
-        // Salvar primeiramente o endereço
-        $endereco->save();        
-
+        // // Salvar primeiramente o endereço
+        // $endereco->save();
         $filename = config('app.name') . '_foto_perfil' . str_slug($request->email, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();
         $request->profile_photo->storeAs('freelancers/perfil', $filename, 'public');
 
@@ -35,7 +34,7 @@ class FreelancerRegisterController extends Controller
             'email' => $request->email,
             'cpf' => $request->cpf,
             'password' => bcrypt($request->senha),
-            'endereco_id' => $endereco['id'],
+            // 'endereco_id' => $endereco['id'],
             'foto_perfil' => $filename,
             'ativo' => 1,
         ]);
