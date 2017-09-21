@@ -11,7 +11,7 @@
 	{{-- Css Home --}}
 	{{-- <link rel="stylesheet" href="/site-assets/css/perfil.css"> --}}
 	{{-- Css Geral --}}
-	{{-- <link rel="stylesheet" href="/site-assets/css/style.css" /> --}}
+	<link rel="stylesheet" href="/site-assets/css/style.css" />
 	{{-- Css W3C --}}
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
@@ -23,7 +23,11 @@
 </head>
 <body class="w3-theme-l5">	
 		@include ('site.layouts.perfil.nav-perfil')
+		@if (auth()->guard('empresa')->check())
 		@include ('site.layouts.perfil.aside-left')
+		@else
+		@include ('site.layouts.perfil.aside-left-freelancer')
+		@endif
 		@yield ('conteudo')
 		@include ('site.layouts.perfil.aside-right')
 		<!-- Snackbar cadastro de Job -->
