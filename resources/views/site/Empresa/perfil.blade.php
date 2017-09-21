@@ -8,9 +8,9 @@
         <div class="w3-col m12">
           <div class="w3-card-2 w3-round w3-white">
             <div class="w3-container w3-padding">
-              <h6 class="w3-opacity">Social Media template by w3.css</h6>
-              <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
-              <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> &nbsp;Post</button> 
+              <h6 class="w3-opacity">Publique aqui notícias e/ou eventos.</h6>
+              <p contenteditable="true" class="w3-border w3-padding">Status: ...</p>
+              <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> &nbsp;Postar</button> 
             </div>
           </div>
         </div>
@@ -33,28 +33,6 @@
         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button> 
         <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button> 
       </div>
-      
-      <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-        <img src="/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">16 min</span>
-        <h4>Jane Doe</h4><br>
-        <hr class="w3-clear">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button> 
-      </div>  
-
-      <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-        <img src="/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">32 min</span>
-        <h4>Angie Jane</h4><br>
-        <hr class="w3-clear">
-        <p>Have you seen this?</p>
-        <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button> 
-      </div> 
       
     <!-- End Middle Column -->
     </div>      

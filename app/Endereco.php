@@ -4,10 +4,10 @@ namespace App;
 
 class Endereco extends Model {
 	public function empresa() {
-		return $this->belongsTo(Empresa::class);
+		return $this->hasOne(Empresa::class);
 	}
 
 	public function freelancer() {
-		return $this->belongsTo(Freelancer::class);
+		return $this->hasOne(Freelancer::class);
 	}
 }

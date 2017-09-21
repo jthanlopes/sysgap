@@ -7,12 +7,12 @@
       <!-- Profile -->
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container">
-         <h4 class="w3-center">Perfil: {{ $empresa->nome }}</h4>
+         <h4 class="w3-center">Perfil de Empresa</h4>
          <p class="w3-center"><img src="{{ asset('storage') . '/empresas/perfil/' . $empresa->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da empresa"></p>
          <hr>
-         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+         <p title="Nome de usuário"><i class="fa fa-address-card-o fa-fw w3-margin-right w3-text-theme"></i> {{ $empresa->nome }}</p>
+         <p title="Endereço do usuário"><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ $empresa->endereco->logradouro . ", " . $empresa->endereco->cidade . " - " . $empresa->endereco->uf}}</p>
+         <p title="Usuário desde"><i class="fa fa-calendar fa-fw w3-margin-right w3-text-theme"></i> {{ $empresa->created_at->format('d/m/Y') }}</p>
         </div>
       </div>
       <br>
@@ -20,7 +20,7 @@
       <!-- Accordion -->
       <div class="w3-card-2 w3-round">
         <div class="w3-white">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
+          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Meus Grupos</button>
           <div id="Demo1" class="w3-hide w3-container">
             <p>Some text..</p>
           </div>
@@ -59,7 +59,7 @@
       <!-- Interests --> 
       <div class="w3-card-2 w3-round w3-white w3-hide-small">
         <div class="w3-container">
-          <p>Interests</p>
+          <p>Tecnologias</p>
           <p>
             <span class="w3-tag w3-small w3-theme-d5">News</span>
             <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
