@@ -435,7 +435,7 @@
 #admin-perfil .show {display:block;}
 
 /* Set a style for all buttons */
-#admin-perfil button {
+#admin-perfil .geral button {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;    
@@ -564,4 +564,14 @@
   to {bottom: 0; opacity: 0;}
 }
 
+/* Set a style for all buttons */
+#admin-perfil .groups button {
+  margin-top: 15px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;    
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
 /* ----------------------------------------- */

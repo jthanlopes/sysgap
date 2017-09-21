@@ -7,9 +7,9 @@
     <a href="{{ route('eventos.page') }}" id="eventos" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Eventos</a>
     <a href="{{ route('contato.page') }}" id="contato" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contato</a>
     @if (auth()->guard('empresa')->check())
-    <a href="{{ route('empresa.logout') }}" id="contato" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">Logout</a>
+    <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">Logout</a>
     @elseif (auth()->guard('freelancer')->check())
-    <a href="{{ route('freelancer.logout') }}" id="contato" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">Logout</a>
+    <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">Logout</a>
     @else
     <div class="w3-dropdown-hover">
       <button class="w3-button ajuste">Registro</button>

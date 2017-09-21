@@ -26,7 +26,7 @@ class NoticiaController extends Controller
     return view('admin.noticia.noticia-novo');
   }
 
-  public function conhecimentoCadastrar(Request $request) {
+  public function noticiaCadastrar(Request $request) {
     	// $this->validate(request(), [
      //        'title' => 'required|max:15',
      //        'body' => 'required'
@@ -35,11 +35,18 @@ class NoticiaController extends Controller
     $file = 'teste';
 
     auth()->user()->cadastrarNoticia(
-      new Noticia(['titulo' => $request->titulo, 'conteudo' => $request->conteudo, 'imagem' => $file, 'data_final' => $request->data_final, 'ativo' => 1])
+      $create = new Noticia(['titulo' => $request->titulo, 'conteudo' => $request->conteudo, 'imagem' => $file, 'data_final' => $request->data_final, 'ativo' => 1])
     );
 
     // Adicionar mensagem de sucesso e retornar para a view
+    if ($create)
+    {
+      $message = parent::returnMessage('success', 'Registro efetuado com sucesso!');
+    } else
+    {
+      $message = parent::returnMessage('danger', 'Erro ao efetuar o registro!');
+    }
 
-    return redirect()->route('noticias.view');
+    return redirect()->route('noticias.view')->with('message', $message);
   }
 }

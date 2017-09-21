@@ -7,7 +7,7 @@
       <!-- Profile -->
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container">
-         <h4 class="w3-center">Perfil de Empresa</h4>
+         <h4 class="w3-center">Perfil Empresa</h4>
          <p class="w3-center"><img src="{{ asset('storage') . '/empresas/perfil/' . $empresa->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da empresa"></p>
          <hr>
          <p title="Nome de usuário"><i class="fa fa-address-card-o fa-fw w3-margin-right w3-text-theme"></i> {{ $empresa->nome }}</p>
@@ -19,14 +19,22 @@
       
       <!-- Accordion -->
       <div class="w3-card-2 w3-round">
-        <div class="w3-white">
+        <div class="w3-white groups">
           <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Meus Grupos</button>
           <div id="Demo1" class="w3-hide w3-container">
-            <p>Some text..</p>
+            <button class="geral">Criar Grupo</button>
+            <hr>
+            <p><a href="">Grupo 1</a></p>
+            <p><a href="">Grupo 2</a></p>
+            <p><a href="">Grupo 3</a></p>
           </div>
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Meus Projetos</button>
           <div id="Demo2" class="w3-hide w3-container">
-            <p>Some other text..</p>
+            <button class="geral">Criar Projeto</button>
+            <hr>
+            <p><a href="">Projeto 1</a></p>
+            <p><a href="">Projeto 2</a></p>
+            <p><a href="">Projeto 3</a></p>
           </div>
           <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
           <div id="Demo3" class="w3-hide w3-container">

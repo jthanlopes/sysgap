@@ -63,7 +63,7 @@ class Handler extends ExceptionHandler
         $guard = array_get($exception->guards(), 0);
 
         switch ($guard) {
-            case 'freela':
+            case 'freelancer':
                 $login = 'home.page';
                 break;         
 
@@ -74,6 +74,6 @@ class Handler extends ExceptionHandler
                 $login = 'admin.show-login-form';
                 break;
         }
-        return redirect()->guest(route($login));        
+        return redirect()->guest(route($login));
     }
 }
