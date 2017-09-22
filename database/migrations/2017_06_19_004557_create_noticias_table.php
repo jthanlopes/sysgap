@@ -21,6 +21,7 @@ class CreateNoticiasTable extends Migration {
 			$table->date('data_final')->nullable();
 			$table->timestamps();
 			$table->boolean('ativo');
+			$table->boolean('principal');
 			$table->integer('admin_id')->unsigned()->nullable();
 			$table->integer('empresa_id')->unsigned()->nullable();
 			$table->integer('freelancer_id')->unsigned()->nullable();
