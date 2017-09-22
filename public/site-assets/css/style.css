@@ -385,6 +385,23 @@
 
 /* css dropdown menu perfil admin*/
 
+#admin-perfil .form-news {
+  height: 10%;
+  overflow: hidden;
+}
+
+#admin-perfil .form-news input {
+  width: 100%;
+  max-width: 100%;
+  padding: 5px;
+}
+
+#admin-perfil .form-news textarea {
+  width: 100%;
+  max-width: 100%;  
+  padding: 5px;
+}
+
 #admin-perfil {
   margin: 0;
   padding: 0;

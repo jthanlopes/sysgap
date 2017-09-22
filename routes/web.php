@@ -41,6 +41,10 @@ Route::prefix('empresa')->group(function () {
 
 	// Json dos jobs
 	Route::get('/jobs/json', 'Empresa\Job\JobController@jobsViewJson')->name('empresa.jobs.json');
+
+  // Rotas do projeto
+  Route::get('/projeto/novo', 'Empresa\EmpresaController@novoProjeto')->name('projeto.show-form-novo');
+  Route::post('/projeto/novo/', 'Empresa\EmpresaController@criarProjeto')->name('projeto.novo');
 });
 
 Route::prefix('freelancer')->group(function () { 

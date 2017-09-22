@@ -17,4 +17,14 @@ class EmpresaController extends Controller
         $empresa = Empresa::find($id);
         return view('site.empresa.perfil', compact('empresa'));
     }
+
+    public function novoProjeto() {
+      $id = Auth::user()->id;
+      $empresa = Empresa::find($id);
+      return view('site.empresa.criar-projeto', compact('empresa'));
+    }
+
+    public function criarProjeto() {
+
+    }
 }

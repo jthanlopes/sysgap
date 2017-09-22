@@ -30,7 +30,9 @@
           </div>
           <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Meus Projetos</button>
           <div id="Demo2" class="w3-hide w3-container">
-            <button class="geral">Criar Projeto</button>
+            <form method="get" action="{{ route('projeto.show-form-novo') }}">
+              <button type="input" class="geral">Criar Projeto</button>
+            </form>            
             <hr>
             <p><a href="">Projeto 1</a></p>
             <p><a href="">Projeto 2</a></p>
