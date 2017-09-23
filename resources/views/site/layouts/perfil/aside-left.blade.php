@@ -10,57 +10,29 @@
          <h4 class="w3-center">Perfil Empresa</h4>
          <p class="w3-center"><img src="{{ asset('storage') . '/empresas/perfil/' . $empresa->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da empresa"></p>
          <hr>
-         <p title="Nome de usuário"><i class="fa fa-address-card-o fa-fw w3-margin-right w3-text-theme"></i> {{ $empresa->nome }}</p>
-         <p title="Endereço do usuário"><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ $empresa->endereco->logradouro . ", " . $empresa->endereco->cidade . " - " . $empresa->endereco->uf}}</p>
-         <p title="Usuário desde"><i class="fa fa-calendar fa-fw w3-margin-right w3-text-theme"></i> {{ $empresa->created_at->format('d/m/Y') }}</p>
+         <p title="Nome de usuário"><i class="fa fa-address-card-o fa-fw w3-margin-right w3-text-theme"></i> {{ $empresa->categoria . ": " . $empresa->nome }}</p>
+         <p title="Cidade/Estado"><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ $empresa->endereco->cidade . " - " . $empresa->endereco->uf}}</p>
+         <p title="Data de cadastro"><i class="fa fa-calendar fa-fw w3-margin-right w3-text-theme"></i> {{ $empresa->created_at->format('d/m/Y') }}</p>
         </div>
       </div>
       <br>
       
       <!-- Accordion -->
       <div class="w3-card-2 w3-round">
-        <div class="w3-white groups">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Meus Grupos</button>
-          <div id="Demo1" class="w3-hide w3-container">
-            <button class="geral">Criar Grupo</button>
-            <hr>
-            <p><a href="">Grupo 1</a></p>
-            <p><a href="">Grupo 2</a></p>
-            <p><a href="">Grupo 3</a></p>
-          </div>
+        <div class="w3-white groups">          
           <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Meus Projetos</button>
           <div id="Demo2" class="w3-hide w3-container">
             <form method="get" action="{{ route('projeto.show-form-novo') }}">
               <button type="input" class="geral">Criar Projeto</button>
-            </form>            
+            </form>
             <hr>
-            <p><a href="">Projeto 1</a></p>
-            <p><a href="">Projeto 2</a></p>
-            <p><a href="">Projeto 3</a></p>
+            <p><a href="">Gerenciar projetos</a></p>
           </div>
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
-          <div id="Demo3" class="w3-hide w3-container">
-         <div class="w3-row-padding">
-         <br>
-           <div class="w3-half">
-             <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/fjords.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-         </div>
+          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Avaliações</button>
+          <div id="Demo1" class="w3-hide w3-container">
+            <hr>
+            <p><a href="">Minhas avaliações</a></p>
+            <p><a href="">Avaliações recebidas</a></p>
           </div>
         </div>      
       </div>

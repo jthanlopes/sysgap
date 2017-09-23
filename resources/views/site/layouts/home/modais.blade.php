@@ -45,9 +45,9 @@
           <div class="form-group">
             <label for="categoria">Categoria:</label>
             <select class="form-control" id="categoria" name="categoria" required>                        
-              <option value="agência">Agência</option>
-              <option value="produtora">Produtora</option>
-              <option value="outra_empresa">Outra empresa</option>
+              <option value="Agência">Agência</option>
+              <option value="Produtora">Produtora</option>
+              <option value="Empresa">Outra empresa</option>
             </select>
           </div>
         </div>
@@ -173,7 +173,9 @@
             <label for="cpf">CPF:</label>
             <input type="text" class="form-control cpf" placeholder="CPF" name="cpf">
           </div>
-        </div>      
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <label for="categoria">Foto de perfil:</label>                    

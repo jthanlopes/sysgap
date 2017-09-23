@@ -43,8 +43,8 @@ Route::prefix('empresa')->group(function () {
 	Route::get('/jobs/json', 'Empresa\Job\JobController@jobsViewJson')->name('empresa.jobs.json');
 
   // Rotas do projeto
-  Route::get('/projeto/novo', 'Empresa\EmpresaController@novoProjeto')->name('projeto.show-form-novo');
-  Route::post('/projeto/novo/', 'Empresa\EmpresaController@criarProjeto')->name('projeto.novo');
+  Route::get('/projeto/novo', 'Empresa\Projeto\ProjetoController@novoProjeto')->name('projeto.show-form-novo');
+  Route::post('/projeto/novo/', 'Empresa\Projeto\ProjetoController@criarProjeto')->name('projeto.novo');
 });
 
 Route::prefix('freelancer')->group(function () { 

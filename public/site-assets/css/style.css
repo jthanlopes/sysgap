@@ -80,7 +80,7 @@
   padding: 10px;
   border: 1px solid #888;
   border-radius: 6px;
-  width: 60%; /* Could be more or less, depending on screen size */
+  width: 50%; /* Could be more or less, depending on screen size */
 }
 
 @media screen and (max-width: 636px) {

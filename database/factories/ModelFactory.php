@@ -32,6 +32,7 @@ $factory->define(App\Noticia::class, function (Faker\Generator $faker) {
         'data_final' => $faker->date('Y-m-d'),
         'imagem' => $faker->imageUrl(408, 237, 'animals', true, 'Faker'),
         'admin_id' => 1,
-        'ativo' => 1
+        'ativo' => 1,
+        'principal' => 0
     ];
 });
