@@ -11,22 +11,25 @@ class EmpresaLoginController extends Controller
     $this->middleware('guest:empresa')->except('logout');
   }
 
+  public function loginView() {
+    return view('site.login-empresa');
+  }
+
   public function login(Request $request) {
     $this->validate($request, [
       'email' => 'required|email',
       'password' => 'required|min:6'
     ]);
 
-    if (auth()->guard('empresa')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) {  
-        
+    if (auth()->guard('empresa')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) {
       return redirect()->route('empresa.perfil');
     }
 
     return redirect()->back()->withInput($request->only('email', 'remember'));
   }
 
-  public function logout()                
-  {                                        
+  public function logout()
+  {                 
     auth()->guard('empresa')->logout();
     return redirect('/');
   }

@@ -64,11 +64,11 @@ class Handler extends ExceptionHandler
 
         switch ($guard) {
             case 'freelancer':
-                $login = 'home.page';
+                $login = 'freelancer.login-view';
                 break;         
 
             case 'empresa':
-                $login = 'home.page';
+                $login = 'empresa.login-view';
                 break;         
             default:
                 $login = 'admin.show-login-form';

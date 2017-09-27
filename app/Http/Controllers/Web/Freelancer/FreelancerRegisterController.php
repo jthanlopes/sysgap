@@ -13,6 +13,10 @@ class FreelancerRegisterController extends Controller
         $this->middleware('guest:freelancer');
     }
 
+    public function registroView() {
+        return view('site.registro-freelancer');
+    }
+
     public function novo(Request $request) {   
         // $endereco = Endereco::create([
         //     'cep' => request('cep'),

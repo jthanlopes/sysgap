@@ -27,8 +27,14 @@ Route::prefix('empresa')->group(function () {
 	// Rotas de logout
 	Route::get('/perfil', 'Empresa\EmpresaController@perfil')->name('empresa.perfil');
 
+  // Abre o formulário de cadastro da empresa
+  Route::get('/novo', 'Empresa\EmpresaRegisterController@registroView')->name('empresa.registro-view');
+
   // Salvar formulário 
   Route::post('/novo', 'Empresa\EmpresaRegisterController@novo')->name('empresa.novo');
+
+  // Abre o formulário de login da empresa
+  Route::get('/login', 'Empresa\EmpresaLoginController@loginView')->name('empresa.login-view');
 
   // Submete o formulário de login
 	Route::post('/login', 'Empresa\EmpresaLoginController@login')->name('empresa.login');
@@ -52,8 +58,14 @@ Route::prefix('freelancer')->group(function () {
   // Rotas de logout
   Route::get('/perfil', 'Freelancer\FreelancerController@perfil')->name('freelancer.perfil');
 
+  // Abre o formulário de cadastro do freelancer
+  Route::get('/novo', 'Freelancer\FreelancerRegisterController@registroView')->name('freelancer.registro-view');
+
   // Salvar formulário
   Route::post('/novo', 'Freelancer\FreelancerRegisterController@novo')->name('freelancer.novo');
+
+  // Abre o formulário de login do freelancer
+  Route::get('/login', 'Freelancer\FreelancerLoginController@loginView')->name('freelancer.login-view');
 
   // Submete o formulário de login
   Route::post('/login', 'Freelancer\FreelancerLoginController@login')->name('freelancer.login');

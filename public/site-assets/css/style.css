@@ -38,7 +38,8 @@
 
 /* Ajuste itens do menu */
 #home-page .nav-home .ajuste {
-  padding-top: 12px;
+  padding-top: 11px;
+  padding-bottom: 13px;
 }
 
 /* Alterar fonte do título principal da home */
@@ -146,7 +147,7 @@
   background-color: #357266;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin: 30px 0;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -247,74 +248,8 @@
   text-align: center;
 }
 
-
-
-
-
-
-
-
-
-#home-page .login-options {
-	position: absolute;
-  display: none;
-  right: 0px;
-  height: 200px;
-  width: 300px;
-  background-color: #EEEEEE;
-  z-index: 99999;
-  top: 51px;
-  border: 1px black;
-  padding: 10px;
-  -webkit-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
-  -moz-box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);
-  box-shadow: -8px 9px 34px -5px rgba(0,0,0,0.75);    
-}
-
-#home-page .options-buttons-login {
-	text-align: center;
-	margin-top: 26px;
-}
-
-
-@media (max-width: 768px) {
-  #home-page .login-options {
-    left: 0px !important;
-    top: 274px;
-  }
-}
-
-#home-page .btn-login-home {
-  -webkit-border-radius: 10;
-  -moz-border-radius: 10;
-  border-radius: 10px;
-  font-family: Georgia;
-  color: #ffffff;
-  font-size: 15px;
-  background: #333;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  width: 215px;
-}
-
-#home-page .btn-login-home:hover {
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-  text-decoration: none;
-}
-
-/* Full-width input fields */
-#home-page .login input[type=text], #home-page .login input[type=password], #home-page .login input[type=email] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+#home-page .login-redes-sociais img {
+  padding-left: 16px;
 }
 
 #home-page .contato input[type=text], #home-page .contato input[type=password], #home-page .contato input[type=email] {
@@ -326,9 +261,8 @@
   box-sizing: border-box;
 }
 
-#home-page .container-modal {
-  padding: 16px;
-  padding-top: 0;
+#home-page .login .ajuste-label-login {
+  margin-top: 20px;
 }
 
 #home-page span.psw {
@@ -336,53 +270,7 @@
   padding-top: 16px;
 }
 
-/* The Modal (background) */
-#home-page .modal {
-  display: none; /* Hidden by default */
-  position: fixed;  Stay in place 
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */    
-}
-
-/* Modal Content/Box */
-#home-page .modal-content {  
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fefefe;  
-  border: 1px solid #888;
-  width: 33%;
-}
-
-#home-page .modal-content h3 {
-  margin-left: 10px;
-}
-
-/* The Close Button (x) */
-#home-page .close-login {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  line-height: 1;
-  font-weight: bold;
-  opacity: .2;
-  text-shadow: 0 1px 0 #fff;
-}
-
-#home-page .close-login:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
-
+/* Formatação da página de login*/
 /* css dropdown menu perfil admin*/
 
 #admin-perfil .form-news {

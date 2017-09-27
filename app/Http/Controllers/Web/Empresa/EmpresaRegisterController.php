@@ -13,7 +13,11 @@ class EmpresaRegisterController extends Controller
         $this->middleware('guest:empresa');
     }
 
-    public function novo(Request $request) {   
+    public function registroView() {
+        return view('site.registro-empresa');
+    }
+
+    public function novo(Request $request) {
         $endereco = Endereco::create([
             'cep' => request('cep'),
             'logradouro' => request('logradouro'),

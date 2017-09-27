@@ -20,15 +20,13 @@ class RedirectIfAuthenticated
         switch ($guard) {
             case 'freela':
                 if (Auth::guard($guard)->check()) {
-                    return redirect()->route('freela');
-                    //return redirect('admin');
+                    return redirect()->route('freelancer.perfil');
                 }
                 break;
             
             case 'empresa':
                 if (Auth::guard($guard)->check()) {
-                    return redirect()->route('empresa');
-                    //return redirect('admin');
+                    return redirect()->route('empresa.perfil');
                 }
                 break;
 
