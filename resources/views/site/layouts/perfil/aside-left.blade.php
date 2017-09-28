@@ -26,7 +26,7 @@
               <button type="input" class="geral">Criar Projeto</button>
             </form>
             <hr>
-            <p><a href="">Gerenciar projetos</a></p>
+            <p><a href="{{ route('projetos.view') }}">Gerenciar projetos</a></p>
           </div>
           <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Avaliações</button>
           <div id="Demo1" class="w3-hide w3-container">

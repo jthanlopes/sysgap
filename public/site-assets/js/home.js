@@ -127,4 +127,10 @@ $(document).ready(function(){
     sessionStorage.removeItem('contato');
   }	
 }, 800);
+
+  // Acessibilidade, aumenta a fonte do site
+  $(".publicar-empresa").click(function(event){
+    console.log("Teste entrou");
+    $(".form-publicar").slideToggle("slow");
+  });
 })

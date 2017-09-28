@@ -22,6 +22,13 @@ function openNav() {
     }
 }
 </script>
+{{-- Header Site --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/site-assets/js/cep-correios.js"></script>
+<script src="/site-assets/js/browser-update.js"></script>
+<script src="/site-assets/js/jquery-mask/dist/jquery.mask.js"></script>
+<script src="/site-assets/js/home.js"></script>
 </div>{{-- Final do admin-perfil --}}
 </body>
 </html>

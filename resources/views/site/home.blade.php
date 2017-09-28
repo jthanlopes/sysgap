@@ -12,8 +12,8 @@
 <div class="w3-row-padding w3-padding-64 w3-container block-begin">
   <div class="acessibilidade">
     <p><strong>Fonte: </strong></p>
-    <img id="diminuir-fonte" src="/site-assets/img/home/diminuirFonte.png" alt="Icone de lupa para diminuir a fonte." title="Diminuir fonte da página.">
-    <img id="aumentar-fonte" src="/site-assets/img/home/aumentarFonte.png" alt="Icone de lupa para aumentar a fonte." title="Aumentar fonte da página.">
+    <img id="diminuir-fonte" src="/site-assets/img/home/diminuirFonte.png" alt="Icone lupa -" title="Diminuir fonte da página.">
+    <img id="aumentar-fonte" src="/site-assets/img/home/aumentarFonte.png" alt="Icone lupa +" title="Aumentar fonte da página.">
   </div>
   <div class="w3-content">
     <div class="w3-twothird">

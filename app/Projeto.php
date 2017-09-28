@@ -1,11 +1,10 @@
 <?php
 
 namespace App;
-use Illuminate\Notifications\Notifiable;
 
 class Projeto extends Model
 {
-  use Notifiable;
+  protected $dates = ['created_at'];
 
   public function jobs() {
     return $this->hasMany(Job::class);

@@ -8,14 +8,23 @@ use Auth;
 use Illuminate\Http\Request;
 
 class ProjetoController extends Controller
-{
-  public function __construct() {
+{  
+  public function __construct() {    
     $this->middleware('auth:empresa');
+  }
+
+  public function projetosView() {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $projetos = Projeto::all()->where('empresa_id', $id);
+
+    return view('site.empresa.projetos-view', compact('empresa', 'projetos'));
   }
 
   public function novoProjeto() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+    
     return view('site.empresa.criar-projeto', compact('empresa'));
   }
 
