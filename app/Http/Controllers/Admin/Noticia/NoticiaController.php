@@ -13,7 +13,7 @@ class NoticiaController extends Controller
   }
 
   public function noticiasView() {
-    $noticias = Noticia::paginate(10)->orderBy('date');
+    $noticias = Noticia::orderBy('created_at', 'desc')->paginate(10);
     return view('admin.noticia.noticias-view', compact('noticias'));
   }
 
@@ -33,9 +33,16 @@ class NoticiaController extends Controller
      //  ]);
 
     $file = 'teste';
+    $principal;    
+
+    if($request->get('principal') == "Não") {
+      $principal = 0;
+    } else {
+      $principal = 1;
+    }
 
     auth()->user()->cadastrarNoticia(
-      $create = new Noticia(['titulo' => $request->titulo, 'conteudo' => $request->conteudo, 'imagem' => $file, 'data_final' => $request->data_final, 'ativo' => 1])
+      $create = new Noticia(['titulo' => $request->titulo, 'conteudo' => $request->conteudo, 'imagem' => $file, 'data_final' => $request->data_final, 'ativo' => 1, 'principal' => $principal])
     );
 
     // Adicionar mensagem de sucesso e retornar para a view
