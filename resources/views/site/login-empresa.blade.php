@@ -1,10 +1,17 @@
 @extends ('site.layouts.home.master')
 
 @section ('conteudo')
-<div class="w3-row-padding w3-padding-64 w3-container block-begin login">
+<div class="w3-row">
+<div class="w3-padding-64 w3-container login" style="width: 25%;margin-left: 37.5%;">
   <div class="w3-content">
     <div class="w3-container">
       <h2>Login Empresa</h2>
+      @if(session()->has('message'))
+            <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              {{ session()->get('message')['message'] }}
+            </div>
+          @endif
       <hr>    
       <form method="POST" action="{{ route('empresa.login') }}">
         {{ csrf_field() }}
@@ -23,17 +30,13 @@
     </div>
   </div>
 </div>
+</div>
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script>
   $(document).ready(function(){
     $( "#home, .ajuste" ).removeClass( "w3-white" );
-    $( ".ajuste" ).addClass( "w3-white" );
-
-    var navHeight = $('.nav-home').height();
-    $('html, body').animate({
-      scrollTop: $(".block-begin").offset().top - navHeight
-            }, 800); // Tempo em ms que a animação irá durar
+    $( ".ajuste" ).addClass( "w3-white" );  
   });
 </script>

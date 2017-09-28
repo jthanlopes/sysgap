@@ -21,16 +21,24 @@ class FreelancerLoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (auth()->guard('freelancer')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) {
-            return redirect()->route('freelancer.perfil');
-        }
+        $freelancer = Freelancer::where('email', $request->email)->first();
 
-        return redirect()->back()->withInput($request->only('email', 'remember'));
-    }
+        if (!$freelancer) {
+          $message = parent::returnMessage('danger', 'E-mail não encontrado!');
+          return redirect()->back()->withInput($request->only('email'))->with('message', $message);
+      }
+      if (auth()->guard('freelancer')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) {
+          return redirect()->route('freelancer.perfil');
+      } else {
+          $message = parent::returnMessage('danger', 'Senha incorreta! Tente novamente.');
+      }
 
-    public function logout()
-    {
-        auth()->guard('freelancer')->logout();
-        return redirect('/');
-    }
+      return redirect()->back()->withInput($request->only('email'))->with('message', $message);     
+  }
+
+  public function logout()
+  {
+    auth()->guard('freelancer')->logout();
+    return redirect('/');
+}
 }

@@ -1,10 +1,16 @@
 @extends ('site.layouts.home.master')
 
 @section ('conteudo')
-<div class="w3-row-padding w3-padding-64 w3-container block-begin login">
+<div class="w3-row-padding w3-padding-64 w3-container login" style="width: 25%;margin-left: 37.5%;>
   <div class="w3-content">
     <div class="w3-container">
       <h2>Login Freelancer</h2>
+      @if(session()->has('message'))
+            <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              {{ session()->get('message')['message'] }}
+            </div>
+          @endif
       <hr>    
       <form method="POST" action="{{ route('freelancer.login') }}">
         {{ csrf_field() }}
@@ -30,10 +36,5 @@
   $(document).ready(function(){
     $( "#home, .ajuste" ).removeClass( "w3-white" );
     $( ".ajuste" ).addClass( "w3-white" );
-
-    var navHeight = $('.nav-home').height();
-    $('html, body').animate({
-      scrollTop: $(".block-begin").offset().top - navHeight
-            }, 800); // Tempo em ms que a animação irá durar
   });
 </script>
