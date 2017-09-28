@@ -349,78 +349,9 @@
   width: 100%;
 }
 
-/* Set a style for all buttons */
-#admin-perfil .modal-job button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;    
-  border: none;
-  cursor: pointer;
-  width: 50%;
-}
-
-/* Extra styles for the cancel button */
-#admin-perfil .modal-job .cancelbtn-job {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-#admin-perfil .modal-job .cancelbtn-job,.signupbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add padding to container elements */
-#admin-perfil .container-job {
-  padding: 16px;
-}
-
-/* The Modal (background) */
-#admin-perfil .modal-job {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-#admin-perfil .modal-content-job {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 60%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-#admin-perfil .close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  color: #000;
-  font-size: 40px;
-  font-weight: bold;
-}
-
-#admin-perfil .close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
-
-/*Clear floats */
-#admin-perfil .clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+#admin-perfil .ajuste {
+  padding: 12px 16px;
+}    
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 .snackbar {

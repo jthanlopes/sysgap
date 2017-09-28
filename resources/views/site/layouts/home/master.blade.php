@@ -29,8 +29,7 @@
 	<link rel="stylesheet" href="/site-assets/css/style.css" />
 </head>
 <body>
-		@include ('site.layouts.home.nav-home')
-		@include ('site.layouts.home.header')
+		@include ('site.layouts.home.nav-home')		
 		@yield ('conteudo')
 		{{-- @include ('site.layouts.footer') --}}		
 		@include ('site.layouts.home.scripts')

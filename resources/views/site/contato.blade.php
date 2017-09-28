@@ -1,7 +1,7 @@
 @extends ('site.layouts.home.master')
 
 @section ('conteudo')
-<div class="w3-row-padding w3-padding-64 w3-container block-begin contato">
+<div class="w3-row-padding w3-padding-64 w3-container contato">
   <div class="w3-content">
     <div class="w3-container">
       <h2>Formulário de Contato</h2>
@@ -40,10 +40,5 @@
         $(document).ready(function(){
           $( "#home, #eventos" ).removeClass( "w3-white" );
           $( "#contato" ).addClass( "w3-white" );
-
-          var navHeight = $('.nav-home').height();
-          $('html, body').animate({
-            scrollTop: $(".block-begin").offset().top - navHeight
-            }, 800); // Tempo em ms que a animação irá durar
         });
       </script>

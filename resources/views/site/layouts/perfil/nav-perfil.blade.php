@@ -19,14 +19,31 @@
         <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
       </div>
     </div>    
-    @if (auth()->guard('empresa')->check())
-    <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">Logout</a>
-    @elseif (auth()->guard('freelancer')->check())
-    <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">Logout</a>
-    @endif
-    <div class="w3-dropdown-hover w3-right">      
-      <a href="{{ route('home.page') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+    @if (auth()->guard('empresa')->check())    
+    <div class="w3-dropdown-hover w3-right">
+      <button class="w3-button ajuste">{{ auth()->guard('empresa')->user()->nome }}</button>
+      <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+        <a href="{{ route('home.page') }}" class="w3-bar-item w3-button">Home page</a>          
+        <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button">Logout</a>
+      </div>
     </div>
+    @elseif (auth()->guard('freelancer')->check())
+    <div class="w3-dropdown-hover w3-right">
+      <button class="w3-button w3-theme-d4 ajuste">{{ auth()->guard('freelancer')->user()->nome }}</button>
+      <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+        <a href="{{ route('home.page') }}" class="w3-bar-item w3-button">Home page</a>          
+        <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button">Logout</a>
+      </div>
+    </div>
+    @else
+    <div class="w3-dropdown-hover w3-right">
+      <button class="w3-button ajuste">Login</button>
+      <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+        <a href="{{ route('empresa.login-view') }}" class="w3-bar-item w3-button">Sou empresa</a>
+        <a href="{{ route('freelancer.login-view') }}" class="w3-bar-item w3-button">Sou freelancer</a>
+      </div>
+    </div>
+    @endif    
   </div>
 </div>
 

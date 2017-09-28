@@ -1,9 +1,10 @@
 @extends ('site.layouts.home.master')
 
 @section ('conteudo')
-<div class="w3-row-padding w3-padding-64 w3-container block-begin registro">
+<div class="w3-row-padding w3-padding-64 w3-container registro">
   <div class="w3-content">
     <div class="w3-container">
+      <a href="{{ route('empresa.login') }}">Voltar para o login</a>
       <h2>Registro Empresa</h2>
       <hr>
       <form method="POST" action="{{ route('empresa.novo') }}" enctype="multipart/form-data">
@@ -127,11 +128,6 @@
 <script>
   $(document).ready(function(){
     $( "#home, .ajuste" ).removeClass( "w3-white" );
-    $( ".ajuste" ).addClass( "w3-white" );
-
-    var navHeight = $('.nav-home').height();
-    $('html, body').animate({
-      scrollTop: $(".block-begin").offset().top - navHeight
-            }, 800); // Tempo em ms que a animação irá durar
+    $( ".ajuste" ).addClass( "w3-white" );  
   });
 </script>

@@ -1,30 +1,38 @@
 <div id="home-page">
-<!-- Navbar -->
-<div class="w3-top nav-home">
-  <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="showNavMobile()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="{{ route('home.page') }}" id="home" class="w3-bar-item w3-button w3-padding-large w3-hover-white"><i class="fa fa-home w3-margin-right"></i>Home</a>
-    <a href="{{ route('eventos.page') }}" id="eventos" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Eventos</a>
-    <a href="{{ route('contato.page') }}" id="contato" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contato</a>
-    @if (auth()->guard('empresa')->check())
-    <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">Logout</a>
-    @elseif (auth()->guard('freelancer')->check())
-    <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">Logout</a>
-    @else    
-    <div class="w3-dropdown-hover w3-right">
-      <button class="w3-button ajuste">Login</button>
-      <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
-        <a href="{{ route('empresa.login-view') }}" class="w3-bar-item w3-button">Sou empresa</a>
-        <a href="{{ route('freelancer.login-view') }}" class="w3-bar-item w3-button">Sou freelancer</a>
+  <!-- Navbar -->
+  <div class="w3-top nav-home">
+    <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="showNavMobile()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="{{ route('home.page') }}" id="home" class="w3-bar-item w3-button w3-padding-large w3-hover-white"><i class="fa fa-home w3-margin-right"></i>Home</a>
+      <a href="{{ route('eventos.page') }}" id="eventos" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Eventos</a>
+      <a href="{{ route('contato.page') }}" id="contato" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contato</a>      
+      <div class="w3-dropdown-hover w3-right">
+       @if (auth()->guard('empresa')->check())
+       <div class="w3-dropdown-hover w3-right">
+        <button class="w3-button w3-white ajuste">{{ auth()->guard('empresa')->user()->nome }}</button>
+        <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+          <a href="{{ route('empresa.perfil') }}" class="w3-bar-item w3-button">Ver perfil</a>
+          <a href="{{-- {{ route('empresa.perfil.editar') }} --}}" class="w3-bar-item w3-button">Editar perfil</a>          
+          <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button" style="border-top: 1px solid;">Logout</a>
+        </div>
       </div>
-    </div>
-    @endif
-    <div class="w3-dropdown-hover w3-right">
-      @if (auth()->guard('empresa')->check())
-      <a href="{{ route('empresa.perfil') }}" id="empresa-perfil" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Perfil</a>
       @elseif (auth()->guard('freelancer')->check())
-      <a href="{{ route('freelancer.perfil') }}" id="freelancer-perfil" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Perfil</a>
-      @endif
+      <div class="w3-dropdown-hover w3-right">
+        <button class="w3-button w3-white ajuste"><i class="fa fa-male w3-margin-right"></i> {{ auth()->guard('freelancer')->user()->nome }}</button>
+        <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+          <a href="{{ route('freelancer.perfil') }}" class="w3-bar-item w3-button">Ver perfil</a>          
+          <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button">Logout</a>
+        </div>
+      </div>
+      @else
+      <div class="w3-dropdown-hover w3-right">
+        <button class="w3-button w3-white ajuste">Login</button>
+        <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+          <a href="{{ route('empresa.login-view') }}" class="w3-bar-item w3-button">Sou empresa</a>
+          <a href="{{ route('freelancer.login-view') }}" class="w3-bar-item w3-button">Sou freelancer</a>
+        </div>
+      </div>
+      @endif        
     </div>
   </div>
 
@@ -46,4 +54,3 @@ function showNavMobile() {
   }
 }
 </script>
-

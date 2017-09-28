@@ -9,7 +9,7 @@
 	{{-- Bower_components --}}	
 	<link href="/bower_resources/bootstrap-fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 	{{-- Css Home --}}
-	{{-- <link rel="stylesheet" href="/site-assets/css/perfil.css"> --}}
+	<link rel="stylesheet" href="/site-assets/css/perfil.css">
 	{{-- Css Geral --}}
 	<link rel="stylesheet" href="/site-assets/css/style.css" />
 	{{-- Css W3C --}}

@@ -21,8 +21,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/admin-assets/dist/css/skins/_all-skins.min.css">  
-  {{-- Bower_components --}}  
-  <link href="/bower_resources/bootstrap-fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />  
 
   {{-- Alterações gerais de css --}}
   <link rel="stylesheet" href="/admin-assets/css/style.css"> 
