@@ -27,7 +27,10 @@ class EmpresaLoginController extends Controller
       $message = parent::returnMessage('danger', 'E-mail não encontrado!');
       return redirect()->back()->withInput($request->only('email'))->with('message', $message);
     }
-    if (auth()->guard('empresa')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) {
+
+    if ($empresa->ativo == 0) {
+      $message = parent::returnMessage('info', 'Confirme sua conta antes de continuar.');
+    } elseif(auth()->guard('empresa')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) {
       return redirect()->route('empresa.perfil');
     } else {
       $message = parent::returnMessage('danger', 'Senha incorreta! Tente novamente.');

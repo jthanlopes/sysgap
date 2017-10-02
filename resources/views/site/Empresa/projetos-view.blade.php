@@ -9,19 +9,20 @@
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
           <h3 class="w3-opacity">Meus Projetos</h3>
+          <hr>
           <table class="w3-table w3-bordered">
             <tr>
-              <th>Título</th>
-              <th>Descrição</th>
+              <th>Título</th>              
               <th>Data de criação</th>
               <th>Status</th>
+              <th>Ações</th>
             </tr>
             @foreach ($projetos as $projeto)
             <tr>
-              <td>{{ $projeto->titulo }}</td>
-              <td>{{ $projeto->descricao }}</td>
+              <td>{{ $projeto->titulo }}</td>              
               <td>{{ $projeto->created_at->format('d/m/Y') }}</td>
               <td>{{ $projeto->status }}</td>
+              <td>teste</td>
             </tr>
             @endforeach
           </table>
