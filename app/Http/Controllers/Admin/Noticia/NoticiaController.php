@@ -33,17 +33,13 @@ class NoticiaController extends Controller
      //  ]);
 
     $file = 'teste';
-    $principal;    
+    $principal;
 
     if($request->get('principal') == "Não") {
       $principal = 0;
     } else {
       $principal = 1;
     }
-
-    auth()->user()->cadastrarNoticia(
-      $create = new Noticia(['titulo' => $request->titulo, 'conteudo' => $request->conteudo, 'imagem' => $file, 'data_final' => $request->data_final, 'ativo' => 1, 'principal' => $principal])
-    );
 
     // Adicionar mensagem de sucesso e retornar para a view
     if ($create)

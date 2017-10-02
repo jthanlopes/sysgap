@@ -33,6 +33,9 @@ Route::prefix('empresa')->group(function () {
   // Salvar formulário 
   Route::post('/novo', 'Empresa\EmpresaRegisterController@novo')->name('empresa.novo');
 
+  // Confirmação de conta da empresa
+  // Route::get('/confirmaConta/{email}', 'Empresa\EmpresaRegisterController@confirmaConta')->name('empresa.confirma-conta');
+
   // Abre o formulário de login da empresa
   Route::get('/login', 'Empresa\EmpresaLoginController@loginView')->name('empresa.login-view');
 
@@ -46,12 +49,15 @@ Route::prefix('empresa')->group(function () {
 	Route::post('/job/novo', 'Empresa\Job\JobController@novo')->name('job.novo');
 
 	// Json dos jobs
-	Route::get('/jobs/json', 'Empresa\Job\JobController@jobsViewJson')->name('empresa.jobs.json');
+	Route::get('/jobs/json', 'Empresa\Job\JobController@jobsViewJson')->name('empresa.jobs.json');  
 
   // Rotas do projeto
   Route::get('/projetos', 'Empresa\Projeto\ProjetoController@projetosView')->name('projetos.view');
   Route::get('/projeto/novo', 'Empresa\Projeto\ProjetoController@novoProjeto')->name('projeto.show-form-novo');
   Route::post('/projeto/novo/', 'Empresa\Projeto\ProjetoController@criarProjeto')->name('projeto.novo');
+
+  // Rotas de notícias e eventos
+  Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
 });
 
 Route::prefix('freelancer')->group(function () { 

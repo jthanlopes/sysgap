@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Empresa;
 
 use App\Empresa;
+use App\Noticia;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class EmpresaController extends Controller
     public function perfil() {
         $id = Auth::user()->id;
         $empresa = Empresa::find($id);
-        return view('site.empresa.perfil', compact('empresa'));
+        $noticias = Noticia::all()->where('empresa_id', $id);
+        return view('site.empresa.perfil', compact('empresa', 'noticias'));
     }
 }
