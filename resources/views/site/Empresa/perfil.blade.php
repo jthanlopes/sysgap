@@ -28,7 +28,7 @@
   
   @foreach($noticias as $noticia)
   <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-    <span class="w3-right w3-opacity">1 min</span>
+    <span class="w3-right w3-opacity">{{ $noticia->created_at->format('d/m/Y') }} {{-- 1 min --}}</span>
     <h4>{{ $noticia->titulo }}</h4><br>
     <hr class="w3-clear">
     <p>{{ $noticia->conteudo }}</p>

@@ -16,7 +16,7 @@ class EmpresaController extends Controller
     public function perfil() {
         $id = Auth::user()->id;
         $empresa = Empresa::find($id);
-        $noticias = Noticia::all()->where('empresa_id', $id);
+        $noticias = Noticia::orderBy('created_at', 'desc')->where('empresa_id', $id)->paginate(10);
         return view('site.empresa.perfil', compact('empresa', 'noticias'));
     }
 }

@@ -21,6 +21,7 @@ class ProjetoController extends Controller
     return view('site.empresa.projetos-view', compact('empresa', 'projetos'));
   }
 
+  // Carrega o formulário para cadastro do projeto
   public function novoProjeto() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
@@ -44,6 +45,6 @@ class ProjetoController extends Controller
     $message = parent::returnMessage('danger', 'Erro ao criar o projeto!');
   }
 
-  return redirect()->route('projeto.show-form-novo')->with('message', $message);
+  return redirect()->route('projetos.view')->with('message', $message);
 }
 }

@@ -13,19 +13,18 @@ class NoticiaController extends Controller
   }
 
   public function noticiasView() {
-    $noticias = Noticia::orderBy('created_at', 'desc')->paginate(10);
+    $noticias = Noticia::orderBy('created_at', 'desc')->where('admin_id', '<>', null)->paginate(10);
+
     return view('admin.noticia.noticias-view', compact('noticias'));
   }
 
-  public function noticiasViewHome() {
-    $noticias = Noticia::all();
-    return view('site.eventos', compact('noticias'));
-  }
-
+  // Carrega a página com o formulário de cadastro das notícias
   public function noticiaNovo() {
     return view('admin.noticia.noticia-novo');
   }
 
+  // Submete o formulário e salva a notícia no banco de dados
+  // Depois retorna para a página de visualização das notícias
   public function noticiaCadastrar(Request $request) {
     	// $this->validate(request(), [
      //        'title' => 'required|max:15',
