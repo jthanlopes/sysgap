@@ -20,6 +20,7 @@
 
         <label class="ajuste-label-login"><b>Senha</b></label>
         <input class="w3-input" type="password" placeholder="Digite sua senha" name="password" required>
+        <div class="g-recaptcha" data-sitekey="6Lev2DMUAAAAABPK5PB2YzHF3jchayKrSbYI0hno" style="margin-top: 20px;"></div>
 
         <button type="submit" class="btn-default-home">Logar</button>
       </form>
@@ -33,6 +34,7 @@
 </div>
 @endsection
 
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script>
   $(document).ready(function(){

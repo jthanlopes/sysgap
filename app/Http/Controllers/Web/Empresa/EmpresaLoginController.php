@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Empresa;
 
 use App\Empresa;
+use App\Utilities\Curl;
 use Illuminate\Http\Request;
 
 class EmpresaLoginController extends Controller
@@ -15,7 +16,18 @@ class EmpresaLoginController extends Controller
     return view('site.login-empresa');
   }
 
-  public function login(Request $request) {
+  public function login(Request $request, Curl $curl) {
+    
+    $response = json_decode($curl->post('https://www.google.com/recaptcha/api/siteverify', [
+      'secret' => config('services.recaptcha.secret'),
+      'response' => $request->input('g-recaptcha-response'),
+      'remoteip' => $request->ip()
+    ]));  
+
+    if (!$response->success) {
+      abort(400, 'No no no!');
+    }
+
     $this->validate($request, [
       'email' => 'required|email',
       'password' => 'required|min:6'
