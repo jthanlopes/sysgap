@@ -414,4 +414,8 @@
   cursor: pointer;
   width: 100%;
 }
+
+#admin-perfil .opt-post {
+  font-size: 10pt;  
+}
 /* ----------------------------------------- */
