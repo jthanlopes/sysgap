@@ -58,9 +58,19 @@ Route::prefix('empresa')->group(function () {
 
   // Rotas de notícias e eventos
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
+
+  // Rotas de notícias e eventos
+  // Cadastrar notícia/evento
+  Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
+
+  // Excluir notícia/evento
+  Route::get('/noticia/excluir/{noticia}', 'Empresa\Noticia\NoticiaController@excluirNoticia')->name('noticia.excluir');
+
+  //
+  Route::get('/conhecimento/add', 'Empresa\Conhecimento\ConhecimentoController@addConhecimento')->name('conhecimento.add');  
 });
 
-Route::prefix('freelancer')->group(function () { 
+Route::prefix('freelancer')->group(function () {
   Route::get('/', 'Freelancer\FreelancerController@perfil');
   // Rotas de logout
   Route::get('/perfil', 'Freelancer\FreelancerController@perfil')->name('freelancer.perfil');
