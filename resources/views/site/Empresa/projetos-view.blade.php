@@ -16,19 +16,17 @@
           </div>
           @endif
           <hr>
-          <table class="w3-table w3-bordered">
+          <input class="w3-input w3-border" type="text" placeholder="Buscar projeto">
+          <table class="w3-table w3-centered w3-bordered table-projetos">
             <tr>
               <th>Título</th>              
-              <th>Data de criação</th>
-              <th>Status</th>
               <th>Ações</th>
             </tr>
             @foreach ($projetos as $projeto)
             <tr>
               <td>{{ $projeto->titulo }}</td>              
-              <td>{{ $projeto->created_at->format('d/m/Y') }}</td>
-              <td>{{ $projeto->status }}</td>
-              <td>teste</td>
+              <td><button class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</button>
+              <button class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</button></td>
             </tr>
             @endforeach
           </table>

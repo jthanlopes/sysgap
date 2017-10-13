@@ -47,4 +47,8 @@ class Empresa extends Authenticatable
     public function noticias() {
       return $this->hasMany(Noticia::class);
     }
+
+    public function conhecimentos() {
+      return $this->belongsToMany(Conhecimento::class);
+    }
   }

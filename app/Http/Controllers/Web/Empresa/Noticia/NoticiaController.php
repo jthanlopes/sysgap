@@ -28,6 +28,28 @@ class NoticiaController extends Controller
       'principal' => 0,
     ]);
 
-    return redirect()->route('empresa.perfil');
+    if ($create)
+    {
+      $message = parent::returnMessage('success', 'Notícia/evento postado com sucesso!');
+    } else 
+    {
+      $message = parent::returnMessage('danger', 'Erro ao postar a notícia/evento!');
+    }
+
+    return redirect()->route('empresa.perfil')->with('message', $message);
+  }
+
+  public function excluirNoticia(Noticia $noticia) {
+    $delete = $noticia->delete();
+
+    if ($delete)
+    {
+      $message = parent::returnMessage('success', 'Notícia/evento excluído com sucesso!');
+    } else 
+    {
+      $message = parent::returnMessage('danger', 'Erro ao excluir a notícia/evento!');
+    }
+
+    return redirect()->route('empresa.perfil')->with('message', $message);
   }
 }

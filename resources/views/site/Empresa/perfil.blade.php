@@ -3,13 +3,19 @@
 @section ('conteudo')
 <!-- Middle Column -->
 <div class="w3-col m7">
-  
+
   <div class="w3-row-padding">
     <div class="w3-col m12">
-      <div class="w3-card-2 w3-round w3-white">
+      @if(session()->has('message'))
+      <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ session()->get('message')['message'] }}
+      </div>
+      @endif
+      <div class="w3-card-2 w3-round w3-white">        
         <div class="w3-container w3-padding form-news">
           <div class="publicar-empresa"> 
-            <h6 class="w3-opacity" style="cursor: pointer;">Publique aqui notícias e/ou eventos.</h6>      
+            <h6 class="w3-opacity" style="cursor: pointer;">Publique aqui notícias e/ou eventos.</h6>
           </div>
           <div class="form-publicar">
             <form method="POST" action="{{ route('noticia.novo') }}" enctype="multipart/form-data">
@@ -29,7 +35,7 @@
   @foreach($noticias as $noticia)
   <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
     <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
-    <h4>{{ $noticia->titulo }} <span class="opt-post">[<a href="">Editar</a>, <a href="">Excluir</a>]</span></h4><br>
+    <h4>{{ $noticia->titulo }} <span class="opt-post">[<a href="">Editar</a>][<a href="/empresa/noticia/excluir/{{ $noticia->id }}">Excluir</a>]</span></h4><br>
     <hr class="w3-clear">
     <p>{{ $noticia->conteudo }}</p>
     <div class="w3-row-padding" style="margin:0 -16px">

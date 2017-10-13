@@ -418,4 +418,12 @@
 #admin-perfil .opt-post {
   font-size: 10pt;  
 }
+
+#admin-perfil .opt-tec {
+  font-size: 8pt;  
+}
+
+#admin-perfil .table-projetos {
+  margin-top: 20px;
+}
 /* ----------------------------------------- */

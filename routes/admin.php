@@ -73,7 +73,7 @@ Route::get('/conhecimento-view/editar/{conhecimento}', 'Conhecimento\Conheciment
 Route::post('/conhecimento-view/editar', 'Conhecimento\ConhecimentoController@conhecimentoEditar')->name('conhecimento.editar');
 
 // Excluir o conhecimento
-Route::delete('/conhecimento-view/excluir/{conhecimento}', 'Conhecimento\ConhecimentoController@conhecimentoExcluir')->name('conhecimento.excluir');
+Route::get('/conhecimento-view/excluir/{conhecimento}', 'Conhecimento\ConhecimentoController@conhecimentoExcluir')->name('conhecimento.excluir');
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 // Rotas de notícias ---------------------------------------------------------------------------------------------------------------------
