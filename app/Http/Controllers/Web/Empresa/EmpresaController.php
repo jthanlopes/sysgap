@@ -21,4 +21,11 @@ class EmpresaController extends Controller
         $noticias = Noticia::orderBy('created_at', 'desc')->where('empresa_id', $id)->paginate(10);
         return view('site.empresa.perfil', compact('empresa', 'noticias'));
     }
+
+    public function editarPerfil() {        
+        $id = Auth::user()->id;
+        $empresa = Empresa::find($id);
+
+        return view('site.empresa.perfil-editar', compact('empresa'));
+    }
 }

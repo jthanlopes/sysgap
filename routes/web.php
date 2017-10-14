@@ -45,6 +45,9 @@ Route::prefix('empresa')->group(function () {
 	// Rotas de logout
 	Route::get('/logout', 'Empresa\EmpresaLoginController@logout')->name('empresa.logout');
 
+  // Abrir formulário de editar perfil
+  Route::get('/editar-perfil', 'Empresa\EmpresaController@editarPerfil')->name('empresa.editar-perfil.view');
+
 	// Rotas de job	
 	Route::post('/job/novo', 'Empresa\Job\JobController@novo')->name('job.novo');
 

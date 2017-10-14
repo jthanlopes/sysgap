@@ -118,7 +118,7 @@
         </div>
         <hr>
         <button type="submit" class="btn btn-default btn-default-home">Registrar</button>
-      </form>      
+      </form>
     </div>
   </div>
 </div>

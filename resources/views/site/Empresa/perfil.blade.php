@@ -40,7 +40,7 @@
     <p>{{ $noticia->conteudo }}</p>
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-half">        
-        <img src="{{ asset('storage')  . '/empresas/posts/' . Auth::user()->nome . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">    
+        <img src="{{ asset('storage')  . '/empresas/posts/' . str_slug(Auth::user()->nome, '_') . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">    
       </div>      
     </div>    
   </div>

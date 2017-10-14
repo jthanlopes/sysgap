@@ -57,5 +57,5 @@ class EmpresaRegisterController extends Controller
     }
 
     return redirect()->route('empresa.login-view')->with('message', $message);
-  }
+  }  
 }

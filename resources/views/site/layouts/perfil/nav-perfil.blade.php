@@ -9,7 +9,7 @@
     <a href="{{ route('freelancer.perfil') }}" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Perfil</a>
     @endif
     {{-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a> --}}
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Editar perfil"><i class="fa fa-user"></i></a>
+    <a href="{{ route('empresa.editar-perfil.view') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Editar perfil"><i class="fa fa-user"></i></a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Mensagens"><i class="fa fa-envelope"></i></a>
     <div class="w3-dropdown-hover w3-hide-small">
       <button class="w3-button w3-padding-large" title="Notificações"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>     
