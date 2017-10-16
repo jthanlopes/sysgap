@@ -14,8 +14,7 @@ class Curl
     curl_setopt($verify, CURLOPT_POSTFIELDS, $payload);
     curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($verify);
-
+    $response = curl_exec($verify);    
     curl_close($verify);
 
     return $response;

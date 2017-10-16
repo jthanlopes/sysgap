@@ -22,7 +22,7 @@ class EmpresaLoginController extends Controller
       'secret' => config('services.recaptcha.secret'),
       'response' => $request->input('g-recaptcha-response'),
       'remoteip' => $request->ip()
-    ]));  
+    ]));
 
     if (!$response->success) {
       abort(400, 'No no no!');

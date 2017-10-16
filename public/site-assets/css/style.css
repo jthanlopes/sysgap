@@ -426,4 +426,12 @@
 #admin-perfil .table-projetos {
   margin-top: 20px;
 }
+
+#admin-perfil .table-conhecimentos {
+  margin-top: 20px;
+}
+
+#admin-perfil .add-conhecimento {
+  margin-left: 20px;
+}
 /* ----------------------------------------- */
