@@ -70,7 +70,10 @@ Route::prefix('empresa')->group(function () {
   Route::get('/noticia/excluir/{noticia}', 'Empresa\Noticia\NoticiaController@excluirNoticia')->name('noticia.excluir');
 
   //
-  Route::get('/conhecimento/add', 'Empresa\Conhecimento\ConhecimentoController@addConhecimento')->name('conhecimento.add');  
+  Route::get('/conhecimentos', 'Empresa\Conhecimento\ConhecimentoController@conhecimentosView')->name('tecnologias.view');
+
+  //
+  Route::post('/conhecimentos/add', 'Empresa\Conhecimento\ConhecimentoController@addConhecimento')->name('conhecimento.add');
 });
 
 Route::prefix('freelancer')->group(function () {

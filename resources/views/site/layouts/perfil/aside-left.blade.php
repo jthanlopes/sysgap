@@ -41,7 +41,7 @@
       <!-- Interests --> 
       <div class="w3-card-2 w3-round w3-white w3-hide-small">
         <div class="w3-container">
-          <p>Tecnologias <span class="opt-tec">[<a href="{{ route('conhecimento.add') }}">Adicionar</a>][<a href="">Remover</a>]</span></p>
+          <p>Conhecimentos <span class="opt-tec">[<a href="{{ route('tecnologias.view') }}">Gerenciar Conhecimentos</a>]</span></p>
           <p>
             @foreach ($empresa->conhecimentos as $conhecimento)
               <span class="w3-tag w3-small w3-theme-d5">{{ $conhecimento->titulo }}</span>
