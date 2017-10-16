@@ -19,13 +19,13 @@
           <input class="w3-input w3-border" type="text" placeholder="Buscar projeto">
           <table class="w3-table w3-centered w3-bordered table-projetos">
             <tr>
-              <th>Título</th>              
+              <th>Título</th>
               <th>Ações</th>
             </tr>
             @foreach ($projetos as $projeto)
             <tr>
               <td>{{ $projeto->titulo }}</td>              
-              <td><button class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</button>
+              <td><a href="/empresa/projeto/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
               <button class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</button></td>
             </tr>
             @endforeach

@@ -127,7 +127,11 @@
             </div>
             <hr>
             <button type="submit" class="btn btn-default btn-default-home">Editar</button>
-          </form>      
+          </form>
+          <div class="">
+            <hr>
+            <button class="w3-button w3-red w3-small" title="Desativar Perfil">Desativar Perfil</button></td>
+          </div>
         </div>
       </div>
     </div>

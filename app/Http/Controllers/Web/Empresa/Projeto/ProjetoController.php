@@ -21,6 +21,13 @@ class ProjetoController extends Controller
     return view('site.empresa.projetos-view', compact('empresa', 'projetos'));
   }
 
+  public function viewProjeto(Projeto $projeto) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+
+    return view('site.empresa.projeto-view', compact('empresa', 'projeto'));
+  }
+
   // Carrega o formulário para cadastro do projeto
   public function novoProjeto() {
     $id = Auth::user()->id;

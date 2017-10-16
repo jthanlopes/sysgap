@@ -55,9 +55,10 @@ Route::prefix('empresa')->group(function () {
 	Route::get('/jobs/json', 'Empresa\Job\JobController@jobsViewJson')->name('empresa.jobs.json');  
 
   // Rotas do projeto
-  Route::get('/projetos', 'Empresa\Projeto\ProjetoController@projetosView')->name('projetos.view');
-  Route::get('/projeto/novo', 'Empresa\Projeto\ProjetoController@novoProjeto')->name('projeto.show-form-novo');
+  Route::get('/projetos', 'Empresa\Projeto\ProjetoController@projetosView')->name('projetos.view');  
+  Route::get('/projeto/novo/', 'Empresa\Projeto\ProjetoController@novoProjeto')->name('projeto.show-form-novo');
   Route::post('/projeto/novo/', 'Empresa\Projeto\ProjetoController@criarProjeto')->name('projeto.novo');
+  Route::get('/projeto/{projeto}', 'Empresa\Projeto\ProjetoController@viewProjeto')->name('view.projeto');
 
   // Rotas de notícias e eventos
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
@@ -73,7 +74,10 @@ Route::prefix('empresa')->group(function () {
   Route::get('/conhecimentos', 'Empresa\Conhecimento\ConhecimentoController@conhecimentosView')->name('tecnologias.view');
 
   //
-  Route::post('/conhecimentos/add', 'Empresa\Conhecimento\ConhecimentoController@addConhecimento')->name('conhecimento.add');
+  Route::post('/conhecimento/add', 'Empresa\Conhecimento\ConhecimentoController@addConhecimento')->name('conhecimento.add');
+
+  //
+  // Route::get('/conhecimento/excluir/{noticia}', 'Empresa\Noticia\NoticiaController@excluirNoticia')->name('noticia.excluir');
 });
 
 Route::prefix('freelancer')->group(function () {
