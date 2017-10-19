@@ -50,7 +50,7 @@
               <td>{{ $conhecimento->titulo }}</td>
               <td>{{ $conhecimento->descricao }}</td>
               <td>{{ $conhecimento->nivel }}</td>
-              <td><button class="w3-button w3-red w3-small" title="Remover o conhecimento">Remover</button>
+              <td><a href="/empresa/conhecimento/excluir/{{ $conhecimento->id }}" class="w3-button w3-red w3-small" title="Remover o conhecimento">Remover</a>
               </tr>
               @endforeach
             </table>

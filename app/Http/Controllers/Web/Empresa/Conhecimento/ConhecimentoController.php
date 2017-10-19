@@ -32,4 +32,13 @@ class ConhecimentoController extends Controller
 
     return redirect()->route('tecnologias.view')->with('message', $message);
   }
+
+  public function excluirConhecimento(Conhecimento $conhecimento) {    
+    $empresa = Auth::user();
+    $empresa->conhecimentos()->detach($conhecimento);
+    
+    $message = parent::returnMessage('success', 'Conhecimento removido com sucesso!');
+
+    return redirect()->route('tecnologias.view')->with('message', $message);
+  }
 }

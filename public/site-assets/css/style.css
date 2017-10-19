@@ -423,6 +423,10 @@
   font-size: 8pt;  
 }
 
+#admin-perfil .opt-projeto {
+  font-size: 10pt;  
+}
+
 #admin-perfil .table-projetos {
   margin-top: 20px;
 }
