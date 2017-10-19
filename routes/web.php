@@ -59,6 +59,8 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/novo/', 'Empresa\Projeto\ProjetoController@novoProjeto')->name('projeto.show-form-novo');
   Route::post('/projeto/novo/', 'Empresa\Projeto\ProjetoController@criarProjeto')->name('projeto.novo');
   Route::get('/projeto/{projeto}', 'Empresa\Projeto\ProjetoController@viewProjeto')->name('view.projeto');
+  Route::get('/projeto/editar/{projeto}', 'Empresa\Projeto\ProjetoController@editarProjetoView')->name('view.projeto-editar');
+  Route::post('/projeto/editar/', 'Empresa\Projeto\ProjetoController@editarProjeto')->name('projeto.editar');
 
   // Rotas de notícias e eventos
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
@@ -77,7 +79,7 @@ Route::prefix('empresa')->group(function () {
   Route::post('/conhecimento/add', 'Empresa\Conhecimento\ConhecimentoController@addConhecimento')->name('conhecimento.add');
 
   //
-  // Route::get('/conhecimento/excluir/{noticia}', 'Empresa\Noticia\NoticiaController@excluirNoticia')->name('noticia.excluir');
+  Route::get('/conhecimento/excluir/{conhecimento}', 'Empresa\Conhecimento\ConhecimentoController@excluirConhecimento')->name('conhecimento.excluir');
 });
 
 Route::prefix('freelancer')->group(function () {

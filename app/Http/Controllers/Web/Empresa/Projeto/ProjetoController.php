@@ -54,4 +54,31 @@ class ProjetoController extends Controller
 
   return redirect()->route('projetos.view')->with('message', $message);
 }
-}
+
+public function editarProjetoView(Projeto $projeto) {
+      $id = Auth::user()->id;
+      $empresa = Empresa::find($id);
+
+      return view('site.empresa.projeto-editar', compact('empresa', 'projeto'));
+    }
+
+    public function editarProjeto() {      
+      $update = Projeto::where( 'id', request('idProjeto') )
+                                  ->update([
+                                      'titulo' => request('titulo'),
+                                      'descricao' => request('descricao'),
+                                      'status' => 'Aberto',
+                                      'empresa_id' => Auth::user()->id,
+                                  ]);
+      
+      if ($update)
+     {
+      $message = parent::returnMessage('success', 'Projeto alterado com sucesso!');
+    } else 
+    {
+      $message = parent::returnMessage('danger', 'Erro ao alterar o projeto!');
+    }      
+
+      return redirect('/empresa/projeto/' . request('idProjeto'))->with('message', $message);
+    }
+  }
