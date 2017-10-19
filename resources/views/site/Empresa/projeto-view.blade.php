@@ -20,7 +20,20 @@
           <hr>
           <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="">Adicionar membro</a>]</span></h4>
           <hr>
-          <h4 class="w3-opacity">Jobs do Projeto <span class="opt-projeto">[<a href="">Criar job</a>]</span></h4>
+          <h4 class="w3-opacity">Jobs do Projeto <span class="opt-projeto">[<a href="/empresa/job/novo/{{ $projeto->id }}">Criar job</a>]</span></h4>
+          <table class="w3-table w3-centered w3-bordered table-projetos">
+            <tr>
+              <th>Título</th>
+              <th>Ações</th>
+            </tr>
+            @foreach ($jobs as $job)
+            <tr>
+              <td>{{ $job->titulo }}</td>              
+              <td><a href="/empresa/projeto/{{ $job->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
+                <button class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</button></td>
+              </tr>
+              @endforeach
+            </table>
         </div>
       </div>
     </div>

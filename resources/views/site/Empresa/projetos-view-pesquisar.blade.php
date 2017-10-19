@@ -34,7 +34,7 @@
             </tr>
             @foreach ($projetos as $projeto)
             <tr>
-              <td>{{ $projeto->titulo }}</td>
+              <td>{{ $projeto->titulo }}</td>              
               <td><a href="/empresa/projeto/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
                 <button class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</button></td>
               </tr>

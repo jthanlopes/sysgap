@@ -21,6 +21,14 @@ class ProjetoController extends Controller
     return view('site.empresa.projetos-view', compact('empresa', 'projetos'));
   }
 
+  public function projetosPesquisar(Request $request) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);    
+    $projetos = Projeto::orWhere('titulo', 'like', '%' . $request->buscar . '%')->get();
+
+    return view('site.empresa.projetos-view-pesquisar', compact('empresa', 'projetos'));
+  }
+
   public function viewProjeto(Projeto $projeto) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);

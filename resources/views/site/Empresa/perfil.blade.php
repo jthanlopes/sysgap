@@ -19,12 +19,34 @@
           </div>
           <div class="form-publicar">
             <form method="POST" action="{{ route('noticia.novo') }}" enctype="multipart/form-data">
-              {{ csrf_field() }}
-              <p><input type="text" name="titulo" placeholder="Título da publicação"></p>
-              <p><textarea name="conteudo" id="" cols="30" rows="10" placeholder="Conteúdo da publicação"></textarea></p>
-              <label for="">Imagem do post:</label>
-              <p><input type="file" name="imagem"></p>
+              {{ csrf_field() }}              
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="titulo">Título da publicação:</label>
+                    <input type="text" class="w3-input" id="titulo" placeholder="Digite o título" name="titulo">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="descricao">Conteúdo da publicação:</label>
+                    <textarea class="w3-input w3-border" name="conteudo" id="" cols="20" rows="5" placeholder="Digite a descrição"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="imagem">Imagem do post:</label>
+                    <input type="file" name="imagem">
+                  </div>
+                </div>
+              </div>
               <button type="input" name="postar" class="w3-button w3-theme"><i class="fa fa-pencil"></i> &nbsp;Postar</button>
+
             </form>
           </div>
         </div>
