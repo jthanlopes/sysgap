@@ -46,16 +46,23 @@ Route::prefix('empresa')->group(function () {
 	Route::get('/logout', 'Empresa\EmpresaLoginController@logout')->name('empresa.logout');
 
   // Abrir formulário de editar perfil
-  Route::get('/editar-perfil', 'Empresa\EmpresaController@editarPerfil')->name('empresa.editar-perfil.view');
+  Route::get('/editar-perfil', 'Empresa\EmpresaController@editarPerfil')->name('empresa.editar-perfil.view');  
 
-	// Rotas de job	
+	// Rotas de job
+
+  // Abrir formulário de criação do Job
+  Route::get('/job/novo/{projeto}', 'Empresa\Job\JobController@novoForm')->name('job.novo.form');
+
+  // Salvar Job
 	Route::post('/job/novo', 'Empresa\Job\JobController@novo')->name('job.novo');
 
 	// Json dos jobs
 	Route::get('/jobs/json', 'Empresa\Job\JobController@jobsViewJson')->name('empresa.jobs.json');  
 
   // Rotas do projeto
-  Route::get('/projetos', 'Empresa\Projeto\ProjetoController@projetosView')->name('projetos.view');  
+  Route::get('/projetos', 'Empresa\Projeto\ProjetoController@projetosView')->name('projetos.view');
+  // Pesquisar por projeto
+  Route::post('/projetos/pesquisar', 'Empresa\Projeto\ProjetoController@projetosPesquisar')->name('projetos.view.pesquisar');
   Route::get('/projeto/novo/', 'Empresa\Projeto\ProjetoController@novoProjeto')->name('projeto.show-form-novo');
   Route::post('/projeto/novo/', 'Empresa\Projeto\ProjetoController@criarProjeto')->name('projeto.novo');
   Route::get('/projeto/{projeto}', 'Empresa\Projeto\ProjetoController@viewProjeto')->name('view.projeto');

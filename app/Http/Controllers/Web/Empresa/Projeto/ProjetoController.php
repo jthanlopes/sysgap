@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Empresa\Projeto;
 
 use App\Projeto;
 use App\Empresa;
+use App\Job;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -32,8 +33,9 @@ class ProjetoController extends Controller
   public function viewProjeto(Projeto $projeto) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+    $jobs = Job::all()->where('projeto_id', $projeto->id);
 
-    return view('site.empresa.projeto-view', compact('empresa', 'projeto'));
+    return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs'));
   }
 
   // Carrega o formulário para cadastro do projeto
