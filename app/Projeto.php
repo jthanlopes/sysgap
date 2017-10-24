@@ -13,4 +13,8 @@ class Projeto extends Model
   public function empresa() {
    return $this->belongsTo(Empresa::class);
  }
+
+ public function freelancers() {
+  return $this->belongsToMany(Freelancer::class);
+}
 }

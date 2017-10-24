@@ -22,6 +22,7 @@ class ProjetoController extends Controller
     return view('site.empresa.projetos-view', compact('empresa', 'projetos'));
   }
 
+  // Recebe um valor por POST e retorna somente os projetos correspondentes
   public function projetosPesquisar(Request $request) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);    
@@ -33,9 +34,10 @@ class ProjetoController extends Controller
   public function viewProjeto(Projeto $projeto) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    $jobs = Job::all()->where('projeto_id', $projeto->id);
-
-    return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs'));
+    $jobs = Job::all()->where('projeto_id', $projeto->id);    
+    $freelancers = $projeto->freelancers()->orderBy('nome')->get();
+    
+    return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs', 'freelancers'));
   }
 
   // Carrega o formulário para cadastro do projeto

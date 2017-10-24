@@ -39,6 +39,10 @@ class Freelancer extends Authenticatable {
     }
 
     public function cadastrarNoticia(Noticia $noticia) {
-        $this->noticias()->save($noticia);
+      $this->noticias()->save($noticia);
+    }
+
+    public function projetos() {
+      return $this->belongsToMany(Projeto::class);
     }
   }
