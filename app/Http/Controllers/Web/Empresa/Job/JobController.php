@@ -21,6 +21,21 @@ class JobController extends Controller
     return $jobs->toArray();
   }
 
+  public function jobView(Projeto $projeto, Job $job) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+
+    return view('site.empresa.job.job-view', compact('empresa', 'job'));
+  }
+
+  public function editarJobView() {
+    
+  }
+
+  public function editarJob() {
+    
+  }
+
   public function novoForm(Projeto $projeto) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);

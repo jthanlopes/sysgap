@@ -4,7 +4,7 @@
 <!-- Middle Column -->
 <div class="w3-col m7">
 
-  <div class="w3-row-padding">
+  <div class="w3-row-padding projeto-view">
     <div class="w3-col m12">
       @if(session()->has('message'))
       <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
@@ -13,12 +13,15 @@
       </div>
       @endif
       <div class="w3-card-2 w3-round w3-white">
-        <div class="w3-container w3-padding">          
+        <div class="w3-container w3-padding">
+          <a href="{{ route('projetos.view') }}" class="link-voltar">voltar para os projetos</a>
           <h3 class="w3-opacity">{{ $projeto->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/editar/{{ $projeto->id }}">Editar projeto</a>]</span></h3>
           <p class="w3-opacity">Descrição: {{ $projeto->descricao }}</p>
-          <p class="w3-opacity">Data de criação: {{ $projeto->created_at->format('d/m/Y') }}</p>          
+          <p class="w3-opacity">Data de criação: {{ $projeto->created_at->format('d/m/Y') }}</p>
+          <p class="w3-opacity">Número de integrantes: {{ count($freelancers) }}</p>
+          <p class="w3-opacity">Número de jobs: {{ count($jobs) }}</p>
           <hr>
-          <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="">Adicionar membro</a>]</span></h4>
+          <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="">Adicionar integrante</a>]</span></h4>
           <table class="w3-table w3-centered w3-bordered table-projetos">
             <tr>
               <th>Nome</th>
@@ -44,7 +47,7 @@
             @foreach ($jobs as $job)
             <tr>
               <td>{{ $job->titulo }}</td>              
-              <td><a href="/empresa/projeto/{{ $job->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
+              <td><a href="/empresa/projeto/{{ $projeto->id }}/job/{{$job->id}}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
                 <button class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</button></td>
               </tr>
               @endforeach
