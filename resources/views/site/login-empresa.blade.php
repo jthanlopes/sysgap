@@ -16,7 +16,7 @@
       <form method="POST" action="{{ route('empresa.login') }}">
         {{ csrf_field() }}
         <label><b>E-mail</b></label>
-        <input class="w3-input" type="email" placeholder="Digite seu e-mail" name="email" required>
+        <input class="w3-input" type="email" placeholder="Digite seu e-mail" name="email" required autofocus>
 
         <label class="ajuste-label-login"><b>Senha</b></label>
         <input class="w3-input" type="password" placeholder="Digite sua senha" name="password" required>        

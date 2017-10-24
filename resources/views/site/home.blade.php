@@ -53,6 +53,23 @@
       </ul>  
     </div>
   </div>
+
+</div>
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">  
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Eventos / Notícias</h1>      
+      <div class="w3-padding-32">
+        <h2>{{ $noticia->titulo }}</h2>
+        <p>{{ substr($noticia->conteudo, 0, 300)."..." }}</p>
+        <a class="btn-veja-mais" href="/eventos/evento-view/{{ $noticia->id }}"><span>Veja mais </span></a>
+      </div>
+    </div>
+    <div class="w3-third w3-center">
+      <img style="border-radius: 100%;" src="{{ $noticia->imagem }}" alt="Imagem notícia">
+    </div>
+  </div>
 </div>
 
 <div class="w3-container w3-black w3-center w3-opacity w3-padding-64 acessi-text">

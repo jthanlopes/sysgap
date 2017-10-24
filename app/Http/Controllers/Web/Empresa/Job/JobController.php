@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Web\Empresa\Job;
 
 use App\Job;
 use App\Projeto;
-use Auth;
 use App\Empresa;
 
+use Auth;
 use Illuminate\Http\Request;
 
 class JobController extends Controller

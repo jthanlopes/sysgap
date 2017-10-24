@@ -13,7 +13,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="nome">Nome:</label>
-              <input type="text" class="w3-input" id="nome" placeholder="Nome" name="nome">
+              <input type="text" class="w3-input" id="nome" placeholder="Nome" name="nome" autofocus>
             </div>
           </div>
           <div class="col-md-6">
