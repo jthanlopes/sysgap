@@ -29,11 +29,11 @@ class JobController extends Controller
   }
 
   public function editarJobView() {
-    
+
   }
 
   public function editarJob() {
-    
+
   }
 
   public function novoForm(Projeto $projeto) {
@@ -51,7 +51,25 @@ class JobController extends Controller
     );
 
     $message = parent::returnMessage('success', 'Job cadastrado com sucesso!');
-  
+
     return redirect('/empresa/projeto/' . $request->projeto)->with('message', $message);
+  }
+
+  public function finalizarJob(Projeto $projeto, Job $job) {
+    $job->status = "Finalizado";
+    $job->save();
+
+    $message = parent::returnMessage('success', 'Job finalizado com sucesso!');
+
+    return redirect()->back()->with('message', $message);
+  }
+
+  public function reabrirJob(Projeto $projeto, Job $job) {
+    $job->status = "Aberto";
+    $job->save();
+
+    $message = parent::returnMessage('success', 'Job reaberto com sucesso!');
+
+    return redirect()->back()->with('message', $message);
   }
 }

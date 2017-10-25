@@ -68,6 +68,10 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/{projeto}/job/editar', 'Empresa\Job\JobController@editarJobView')->name('view.job-editar');
   //
   Route::post('/projeto/{projeto}/job/editar', 'Empresa\Job\JobController@editarJob')->name('job.editar');
+  // Finalizar job
+  Route::get('/projeto/{projeto}/job/finalizar/{job}', 'Empresa\Job\JobController@finalizarJob')->name('job.finalizar');
+  // Reabrir job
+  Route::get('/projeto/{projeto}/job/reabrir/{job}', 'Empresa\Job\JobController@reabrirJob')->name('job.reabrir');
   // Rotas de notícias e eventos
   // Submeter e criar uma nova notícia
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
