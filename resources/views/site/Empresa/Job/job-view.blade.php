@@ -16,6 +16,7 @@
         <div class="w3-container w3-padding">          
           <h3 class="w3-opacity">{{ $job->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/editar/{{ $job->id }}">Editar job</a>]</span></h3>
           <p class="w3-opacity">Descrição: {{ $job->descricao }}</p>
+          <p class="w3-opacity">Status: {{ $job->status }}</p>
           <p class="w3-opacity">Data de criação: {{ $job->created_at->format('d/m/Y') }}</p>          
           <hr>
           <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="">Adicionar membro</a>]</span></h4>

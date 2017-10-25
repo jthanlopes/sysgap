@@ -17,6 +17,7 @@
           <a href="{{ route('projetos.view') }}" class="link-voltar">voltar para os projetos</a>
           <h3 class="w3-opacity">{{ $projeto->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/editar/{{ $projeto->id }}">Editar projeto</a>]</span></h3>
           <p class="w3-opacity">Descrição: {{ $projeto->descricao }}</p>
+          <p class="w3-opacity">Status: {{ $projeto->status }}</p>
           <p class="w3-opacity">Data de criação: {{ $projeto->created_at->format('d/m/Y') }}</p>
           <p class="w3-opacity">Número de integrantes: {{ count($freelancers) }}</p>
           <p class="w3-opacity">Número de jobs: {{ count($jobs) }}</p>
@@ -37,25 +38,32 @@
               </tr>
               @endforeach
             </table>
-          <hr>
-          <h4 class="w3-opacity">Jobs do Projeto <span class="opt-projeto">[<a href="/empresa/job/novo/{{ $projeto->id }}">Criar job</a>]</span></h4>
-          <table class="w3-table w3-centered w3-bordered table-projetos">
-            <tr>
-              <th>Título</th>
-              <th>Ações</th>
-            </tr>
-            @foreach ($jobs as $job)
-            <tr>
-              <td>{{ $job->titulo }}</td>              
-              <td><a href="/empresa/projeto/{{ $projeto->id }}/job/{{$job->id}}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
-                <button class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</button></td>
+            <hr>
+            <h4 class="w3-opacity">Jobs do Projeto <span class="opt-projeto">[<a href="/empresa/job/novo/{{ $projeto->id }}">Criar job</a>]</span></h4>
+            <table class="w3-table w3-centered w3-bordered table-projetos">
+              <tr>
+                <th>Título</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+              @foreach ($jobs as $job)
+              <tr>
+                <td>{{ $job->titulo }}</td>
+                <td>{{ $job->status }}</td>
+                <td><a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
+                  @if( $job->status == "Aberto")
+                  <a href="/empresa/projeto/{{ $projeto->id }}/job/finalizar/{{ $job->id }}" class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</a>
+                  @else
+                  <a href="/empresa/projeto/{{ $projeto->id }}/job/reabrir/{{ $job->id }}" class="w3-button w3-red w3-small" title="Finalizar o projeto">Reabrir</a>
+                  @endif
+                </td>
               </tr>
               @endforeach
             </table>
+          </div>
         </div>
       </div>
     </div>
+    <!-- End Middle Column -->
   </div>
-  <!-- End Middle Column -->
-</div>
-@endsection
+  @endsection

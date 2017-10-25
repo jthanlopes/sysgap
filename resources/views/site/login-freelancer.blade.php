@@ -19,7 +19,7 @@
 
         <label class="ajuste-label-login"><b>Senha</b></label>
         <input class="w3-input" type="password" placeholder="Digite sua senha" name="password" required>
-        <div class="g-recaptcha" data-sitekey="6Lev2DMUAAAAABPK5PB2YzHF3jchayKrSbYI0hno" style="margin-top: 20px;"></div>
+        <div class="g-recaptcha" data-sitekey="6Lc6vTUUAAAAAMEVI6QcZX1uCmFxouVoTzgWKpT5" style="margin-top: 20px;"></div>
 
         <button type="submit" class="btn-default-home">Logar</button>
       </form>

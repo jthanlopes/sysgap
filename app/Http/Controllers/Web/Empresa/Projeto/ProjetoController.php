@@ -34,7 +34,8 @@ class ProjetoController extends Controller
   public function viewProjeto(Projeto $projeto) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    $jobs = Job::all()->where('projeto_id', $projeto->id);    
+    $jobs = Job::orderBy('status', 'asc')->where('projeto_id', $projeto->id)->get();
+
     $freelancers = $projeto->freelancers()->orderBy('nome')->get();
     
     return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs', 'freelancers'));
