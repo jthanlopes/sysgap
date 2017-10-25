@@ -33,7 +33,7 @@ class ConhecimentoController extends Controller
            $create = Conhecimento::create([
                 'titulo' => request('titulo'), 
                 'descricao' => request('descricao'),
-                'nivel' => request('nivel'),
+                'nivel' =>  request('nivel'),
                 'padrao' => 1,
             ]);
 

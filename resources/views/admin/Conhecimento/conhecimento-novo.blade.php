@@ -6,13 +6,13 @@
     <i class="fa fa-dashboard"></i> <span>Cadastros</span>
     <span class="pull-right-container">
       <i class="fa fa-angle-left pull-right"></i>
-    </span>
-  </a>
-  <ul class="treeview-menu">
+  </span>
+</a>
+<ul class="treeview-menu">
     <li><a href="{{ route('admins.view') }}"><i class="fa fa-circle-o"></i> Administradores</a></li>
     <li><a href="{{ route('noticias.view') }}"><i class="fa fa-circle-o"></i> Notícias </a></li>
     <li><a href="{{ route('conhecimentos.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
-  </ul>
+</ul>
 </li>
 @endsection
 
@@ -55,7 +55,11 @@
                     <div class="form-group{{ $errors->has('nivel') ? ' has-error' : '' }}">
                         <label for="nivel" class="col-sm-2 control-label">Nível</label>
                         <div class="col-sm-10">
-                            <input id="nivel" type="text" class="form-control" name="nivel" placeholder="Digite o nível" required>
+                            <select class="form-control" id="nivel" name="nivel" required>
+                                <option value="Básico">Básico</option>
+                                <option value="Intermediário">Intermediário</option>
+                                <option value="Avançado">Avançado</option>
+                            </select>
                             @if ($errors->has('nivel'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('nivel') }}</strong>
@@ -66,12 +70,12 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                           <button type="submit" class="btn btn-primary"> Cadastrar </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>        
+                         <button type="submit" class="btn btn-primary"> Cadastrar </button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+ </section>        
 </div>
 @endsection
