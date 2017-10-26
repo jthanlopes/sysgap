@@ -13,8 +13,8 @@
       </div>
       @endif
       <div class="w3-card-2 w3-round w3-white">
-        <div class="w3-container w3-padding">          
-          <h3 class="w3-opacity">{{ $job->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/editar/{{ $job->id }}">Editar job</a>]</span></h3>
+        <div class="w3-container w3-padding"> 
+          <h3 class="w3-opacity">{{ $job->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/job/editar/{{ $job->id }}">Editar job</a>]</span></h3>
           <p class="w3-opacity">Descrição: {{ $job->descricao }}</p>
           <p class="w3-opacity">Status: {{ $job->status }}</p>
           <p class="w3-opacity">Data de criação: {{ $job->created_at->format('d/m/Y') }}</p>          

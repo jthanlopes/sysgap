@@ -39,14 +39,7 @@ Route::prefix('empresa')->group(function () {
 	// Rotas de logout
 	Route::get('/logout', 'Empresa\EmpresaLoginController@logout')->name('empresa.logout');
   // Abrir formulário de editar perfil
-  Route::get('/editar-perfil', 'Empresa\EmpresaController@editarPerfil')->name('empresa.editar-perfil.view');  
-	// Rotas de job
-  // Abrir formulário de criação do Job
-  Route::get('/job/novo/{projeto}', 'Empresa\Job\JobController@novoForm')->name('job.novo.form');
-  // Salvar Job
-	Route::post('/job/novo', 'Empresa\Job\JobController@novo')->name('job.novo');
-	// Json dos jobs
-	Route::get('/jobs/json', 'Empresa\Job\JobController@jobsViewJson')->name('empresa.jobs.json');  
+  Route::get('/editar-perfil', 'Empresa\EmpresaController@editarPerfil')->name('empresa.editar-perfil.view');
   // Rotas do projeto
   Route::get('/projetos', 'Empresa\Projeto\ProjetoController@projetosView')->name('projetos.view');
   // Pesquisar por projeto
@@ -62,12 +55,16 @@ Route::prefix('empresa')->group(function () {
   // Submeter e atualizar projeto
   Route::post('/projeto/editar/', 'Empresa\Projeto\ProjetoController@editarProjeto')->name('projeto.editar');
   // Rotas de jobs
-  //   
+  // Abrir formulário de criação do Job
+  Route::get('/projeto/{projeto}/job/novo', 'Empresa\Job\JobController@novoForm')->name('job.novo.form');
+  // Salvar Job
+  Route::post('/projeto/job/novo', 'Empresa\Job\JobController@novo')->name('job.novo');
+  // 
   Route::get('/projeto/{projeto}/job/{job}', 'Empresa\Job\JobController@jobView')->name('job.view');
   // Abrir formulário de editar job
-  Route::get('/projeto/{projeto}/job/editar', 'Empresa\Job\JobController@editarJobView')->name('view.job-editar');
+  Route::get('/projeto/job/editar/{job}', 'Empresa\Job\JobController@editarJobView')->name('view.job-editar');
   //
-  Route::post('/projeto/{projeto}/job/editar', 'Empresa\Job\JobController@editarJob')->name('job.editar');
+  Route::post('/projeto/job/editar', 'Empresa\Job\JobController@editarJob')->name('job.editar');
   // Finalizar job
   Route::get('/projeto/{projeto}/job/finalizar/{job}', 'Empresa\Job\JobController@finalizarJob')->name('job.finalizar');
   // Reabrir job

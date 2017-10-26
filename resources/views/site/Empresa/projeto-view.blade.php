@@ -21,6 +21,7 @@
           <p class="w3-opacity">Data de criação: {{ $projeto->created_at->format('d/m/Y') }}</p>
           <p class="w3-opacity">Número de integrantes: {{ count($freelancers) }}</p>
           <p class="w3-opacity">Número de jobs: {{ count($jobs) }}</p>
+          <a href="">Gerar relatório do projeto</a>
           <hr>
           <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="">Adicionar integrante</a>]</span></h4>
           <table class="w3-table w3-centered w3-bordered table-projetos">
@@ -39,7 +40,7 @@
               @endforeach
             </table>
             <hr>
-            <h4 class="w3-opacity">Jobs do Projeto <span class="opt-projeto">[<a href="/empresa/job/novo/{{ $projeto->id }}">Criar job</a>]</span></h4>
+            <h4 class="w3-opacity">Jobs do Projeto <span class="opt-projeto">[<a href="/empresa/projeto/{{ $projeto->id }}/job/novo">Criar job</a>]</span></h4>
             <table class="w3-table w3-centered w3-bordered table-projetos">
               <tr>
                 <th>Título</th>

@@ -34,7 +34,7 @@ class ProjetoController extends Controller
   public function viewProjeto(Projeto $projeto) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    $jobs = Job::orderBy('status', 'asc')->where('projeto_id', $projeto->id)->get();
+    $jobs = Job::orderBy('status', 'asc')->orderBy('created_at', 'desc')->where('projeto_id', $projeto->id)->get();
 
     $freelancers = $projeto->freelancers()->orderBy('nome')->get();
     
@@ -69,29 +69,29 @@ class ProjetoController extends Controller
 }
 
 public function editarProjetoView(Projeto $projeto) {
-      $id = Auth::user()->id;
-      $empresa = Empresa::find($id);
+  $id = Auth::user()->id;
+  $empresa = Empresa::find($id);
 
-      return view('site.empresa.projeto-editar', compact('empresa', 'projeto'));
-    }
+  return view('site.empresa.projeto-editar', compact('empresa', 'projeto'));
+}
 
-    public function editarProjeto() {      
-      $update = Projeto::where( 'id', request('idProjeto') )
-                                  ->update([
-                                      'titulo' => request('titulo'),
-                                      'descricao' => request('descricao'),
-                                      'status' => 'Aberto',
-                                      'empresa_id' => Auth::user()->id,
-                                  ]);
-      
-      if ($update)
-     {
-      $message = parent::returnMessage('success', 'Projeto alterado com sucesso!');
-    } else 
-    {
-      $message = parent::returnMessage('danger', 'Erro ao alterar o projeto!');
-    }      
+public function editarProjeto() {      
+  $update = Projeto::where( 'id', request('idProjeto') )
+  ->update([
+    'titulo' => request('titulo'),
+    'descricao' => request('descricao'),
+    'status' => 'Aberto',
+    'empresa_id' => Auth::user()->id,
+  ]);
+  
+  if ($update)
+  {
+    $message = parent::returnMessage('success', 'Projeto alterado com sucesso!');
+  } else 
+  {
+    $message = parent::returnMessage('danger', 'Erro ao alterar o projeto!');
+  }      
 
-      return redirect('/empresa/projeto/' . request('idProjeto'))->with('message', $message);
-    }
-  }
+  return redirect('/empresa/projeto/' . request('idProjeto'))->with('message', $message);
+}
+}
