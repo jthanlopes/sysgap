@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Empresa\Projeto;
 
 use App\Projeto;
+use App\Freelancer;
 use App\Empresa;
 use App\Job;
 use Auth;
@@ -17,7 +18,7 @@ class ProjetoController extends Controller
   public function projetosView() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    $projetos = Projeto::all()->where('empresa_id', $id);
+    $projetos = Projeto::orderBy('created_at', 'desc')->where('empresa_id', $id)->get();
 
     return view('site.empresa.projetos-view', compact('empresa', 'projetos'));
   }
@@ -75,7 +76,7 @@ public function editarProjetoView(Projeto $projeto) {
   return view('site.empresa.projeto-editar', compact('empresa', 'projeto'));
 }
 
-public function editarProjeto() {      
+public function editarProjeto() {
   $update = Projeto::where( 'id', request('idProjeto') )
   ->update([
     'titulo' => request('titulo'),
@@ -93,5 +94,55 @@ public function editarProjeto() {
   }      
 
   return redirect('/empresa/projeto/' . request('idProjeto'))->with('message', $message);
+}
+
+public function novoFormIntegrantes(Projeto $projeto) {
+  $id = Auth::user()->id;
+  $empresa = Empresa::find($id);
+  $results = Freelancer::all();
+
+  return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results'));
+}
+
+public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
+  $categoria = $request->get('categoria');
+  $id = Auth::user()->id;
+  $empresa = Empresa::find($id);
+
+  if ($categoria == 0) {
+    $results = Freelancer::orWhere('nome', 'like', '%' . $request->nome . '%')->get();
+    
+    return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results'));
+  } else {
+    $results = Empresa::orWhere('nome', 'like', '%' . $request->nome . '%')
+    ->where('categoria', 'Produtora')->get();
+    $categoria = "produtora";
+  }
+
+  return view('site.empresa.integrante.add-integrante-produtora', compact('empresa', 'projeto', 'results'));
+}
+
+public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
+  $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'tempo_experiencia' => 0]);  
+
+  $message = parent::returnMessage('success', $freelancer->nome . ' foi adicionado(a) ao projeto!');
+
+  return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
+}
+
+public function addProdutora(Projeto $projeto, Empresa $empresa) {
+  $projeto->freelancers()->attach($empresa);
+
+  $message = parent::returnMessage('success', $empresa->nome . ' foi adicionado(a) ao projeto!');
+
+  return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
+}
+
+public function removerFreelancer(Projeto $projeto, Freelancer $freelancer) {
+  $projeto->freelancers()->detach($freelancer);
+
+  $message = parent::returnMessage('success', $freelancer->nome . ' foi removido(a) do projeto!');
+
+  return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
 }
 }

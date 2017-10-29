@@ -21,8 +21,8 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <select class="w3-select" name="tecnologia">
-                    <option value="0" disabled selected>Escolha a tecnologia</option>
+                  <select class="w3-select" name="tecnologia" required>
+                    <option value="" disabled selected>Escolha a tecnologia</option>
                     @foreach ($conhecimentos as $conhecimento)
                     <option  value="{{ $conhecimento->id }}">{{ $conhecimento->titulo . '-' . $conhecimento->nivel }}</option>
                     @endforeach

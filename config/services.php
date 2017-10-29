@@ -37,12 +37,7 @@ return [
 
     'recaptcha' => [
       'secret' => env('RECAPTCHA_SECRET'),
-    ],
-
-    'recaptcha' => [
       'public' => env('RECAPTCHA_PUBLIC'),
     ],
-
-
 
   ];

@@ -23,7 +23,7 @@
           <p class="w3-opacity">Número de jobs: {{ count($jobs) }}</p>
           <a href="">Gerar relatório do projeto</a>
           <hr>
-          <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="">Adicionar integrante</a>]</span></h4>
+          <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="/empresa/projeto/{{ $projeto->id }}/integrante/novo">Adicionar integrante</a>]</span></h4>
           <table class="w3-table w3-centered w3-bordered table-projetos">
             <tr>
               <th>Nome</th>
@@ -35,7 +35,7 @@
               <td>{{ $freelancer->nome }}</td>
               <td>{{ $freelancer->email }}</td>
               <td><a href="" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Enviar E-mail</a>
-                <button class="w3-button w3-red w3-small" title="Finalizar o projeto">Remover</button></td>
+                <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover/{{ $freelancer->id }}" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a></td>
               </tr>
               @endforeach
             </table>

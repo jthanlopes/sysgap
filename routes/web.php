@@ -69,6 +69,16 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/{projeto}/job/finalizar/{job}', 'Empresa\Job\JobController@finalizarJob')->name('job.finalizar');
   // Reabrir job
   Route::get('/projeto/{projeto}/job/reabrir/{job}', 'Empresa\Job\JobController@reabrirJob')->name('job.reabrir');
+  // Rotas para adicionar membros ao projeto
+  // Abrir formulário de adição de membros
+  Route::get('/projeto/{projeto}/integrante/novo', 'Empresa\Projeto\ProjetoController@novoFormIntegrantes')->name('integrante.novo.form');
+  // Pesquisar por membros
+  Route::post('/projeto/{projeto}/integrante/pesquisar', 'Empresa\Projeto\ProjetoController@pesquisarIntegrantes')->name('integrante.pesquisar.form');
+  // Adicionar freelancer e produtora ao projeto
+  Route::get('/projeto/{projeto}/integrante/addFreelancer/{freelancer}', 'Empresa\Projeto\ProjetoController@addFreelancer')->name('integrante.add-freelancer.form');
+  Route::get('/projeto/{projeto}/integrante/addProdutora/{empresa}', 'Empresa\Projeto\ProjetoController@addProdutora')->name('integrante.add-produtora.form');
+  // Remover freelancer e produtora ao projeto
+  Route::get('/projeto/{projeto}/integrante/remover/{freelancer}', 'Empresa\Projeto\ProjetoController@removerFreelancer')->name('integrante.remover-freelancer.form');
   // Rotas de notícias e eventos
   // Submeter e criar uma nova notícia
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
