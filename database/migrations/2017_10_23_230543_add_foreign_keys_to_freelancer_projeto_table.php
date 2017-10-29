@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeysToProjetoFreelancerTable extends Migration
+class AddForeignKeysToFreelancerProjetoTable extends Migration
 {
     /**
      * Run the migrations.
