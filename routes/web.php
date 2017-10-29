@@ -69,6 +69,12 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/{projeto}/job/finalizar/{job}', 'Empresa\Job\JobController@finalizarJob')->name('job.finalizar');
   // Reabrir job
   Route::get('/projeto/{projeto}/job/reabrir/{job}', 'Empresa\Job\JobController@reabrirJob')->name('job.reabrir');
+  // Mostrar integrantes para add ao job
+  Route::get('/projeto/{projeto}/job/{job}/integrante/novo', 'Empresa\Job\JobController@novoFormIntegrantes')->name('job.add.integrantes.form');
+  // Adicionar freelancer ao job
+  Route::get('/projeto/{projeto}/job/{job}/integrante/{freelancer}/add', 'Empresa\Job\JobController@addFreelancer')->name('job.add.integrante');
+  // Remover freelancer e produtora do job
+  Route::get('/projeto/{projeto}/job/{job}/integrante/{freelancer}/remover', 'Empresa\Job\JobController@removerFreelancer')->name('job.remover-freelancer');
   // Rotas para adicionar membros ao projeto
   // Abrir formulário de adição de membros
   Route::get('/projeto/{projeto}/integrante/novo', 'Empresa\Projeto\ProjetoController@novoFormIntegrantes')->name('integrante.novo.form');

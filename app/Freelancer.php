@@ -45,4 +45,8 @@ class Freelancer extends Authenticatable {
     public function projetos() {
       return $this->belongsToMany(Projeto::class);
     }
+
+    public function jobs() {
+      return $this->belongsToMany(Job::class);
+    }
   }

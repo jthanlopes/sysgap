@@ -35,12 +35,13 @@ class ProjetoController extends Controller
   public function viewProjeto(Projeto $projeto) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+
     $jobs = Job::orderBy('status', 'asc')->orderBy('created_at', 'desc')->where('projeto_id', $projeto->id)->get();
 
     $freelancers = $projeto->freelancers()->orderBy('nome')->get();
-    $empresas = $projeto->empresas()->orderBy('nome')->get();
+    $produtoras = $projeto->empresas()->orderBy('nome')->get();
     
-    return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs', 'freelancers', 'empresas'));
+    return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs', 'freelancers', 'produtoras'));
   }
 
   // Carrega o formulário para cadastro do projeto
@@ -124,7 +125,7 @@ public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
 }
 
 public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
-  $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);  
+  $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
 
   $message = parent::returnMessage('success', $freelancer->nome . ' foi adicionado(a) ao projeto "' . $projeto->titulo .'"!');
 

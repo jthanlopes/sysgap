@@ -19,7 +19,7 @@
           <p class="w3-opacity">Descrição: {{ $projeto->descricao }}</p>
           <p class="w3-opacity">Status: {{ $projeto->status }}</p>
           <p class="w3-opacity">Data de criação: {{ $projeto->created_at->format('d/m/Y') }}</p>
-          <p class="w3-opacity">Número de integrantes: {{ count($freelancers) + count($empresas) }}</p>
+          <p class="w3-opacity">Número de integrantes: {{ count($freelancers) + count($produtoras) }}</p>
           <p class="w3-opacity">Número de jobs: {{ count($jobs) }}</p>
           <a href="">Gerar relatório do projeto</a>
           <hr>
@@ -39,11 +39,11 @@
                 @endforeach
               </tr>
               <tr>
-              @foreach ($empresas as $empresa)            
-              <td>{{ $empresa->nome }}</td>
-              <td>{{ $empresa->email }}</td>
+              @foreach ($produtoras as $produtora)            
+              <td>{{ $produtora->nome }}</td>
+              <td>{{ $produtora->email }}</td>
               <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para a produtora">Enviar E-mail</a>
-                <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover-produtora/{{ $empresa->id }}" class="w3-button w3-red w3-small" title="Remover produtora">Remover</a></td>          
+                <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover-produtora/{{ $produtora->id }}" class="w3-button w3-red w3-small" title="Remover produtora">Remover</a></td>          
                 @endforeach
               </tr>
             </table>

@@ -8,7 +8,7 @@
     <div class="w3-col m12">
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
-          <h3 class="w3-opacity">Meus Projetos</h3>
+          <h3 class="w3-opacity">Meus Projetos <span class="opt-post">[<a href="{{ route('projeto.show-form-novo') }}">Criar projeto</a>]</span></h3>
           @if(session()->has('message'))
           <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

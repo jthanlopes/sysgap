@@ -19,26 +19,27 @@
           <p class="w3-opacity">Status: {{ $job->status }}</p>
           <p class="w3-opacity">Data de criação: {{ $job->created_at->format('d/m/Y') }}</p>          
           <hr>
-          <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="">Adicionar membro</a>]</span></h4>
-          {{-- <table class="w3-table w3-centered w3-bordered table-projetos">
+          <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante/novo">Adicionar membro</a>]</span></h4>
+          <table class="w3-table w3-centered w3-bordered table-projetos">
             <tr>
               <th>Nome</th>
               <th>E-mail</th>
               <th>Ações</th>
-            </tr>
-            @foreach ($freelancers as $freelancer)
+            </tr>        
             <tr>
+              @foreach ($freelancers as $freelancer)
               <td>{{ $freelancer->nome }}</td>
               <td>{{ $freelancer->email }}</td>
-              <td><a href="" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Enviar E-mail</a>
-                <button class="w3-button w3-red w3-small" title="Finalizar o projeto">Remover</button></td>
+              <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para o freelancer">Enviar E-mail</a>
+                <a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante/{{ $freelancer->id }}/remover" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a>
+              </td>
+                @endforeach
               </tr>
-              @endforeach
-            </table> --}}
+              </table>
+            </div>
           </div>
         </div>
       </div>
+      <!-- End Middle Column -->
     </div>
-    <!-- End Middle Column -->
-  </div>
-  @endsection
+    @endsection

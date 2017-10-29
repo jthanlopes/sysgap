@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Empresa\Job;
 use App\Job;
 use App\Projeto;
 use App\Empresa;
+use App\Freelancer;
 
 use Auth;
 use Illuminate\Http\Request;
@@ -18,8 +19,9 @@ class JobController extends Controller
   public function jobView(Projeto $projeto, Job $job) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+    $freelancers = $job->freelancers()->orderBy('nome')->get();
 
-    return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto'));
+    return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto', 'freelancers'));
   }
 
   public function novoForm(Projeto $projeto) {
@@ -88,5 +90,30 @@ class JobController extends Controller
     $message = parent::returnMessage('success', 'Job reaberto com sucesso!');
 
     return redirect()->back()->with('message', $message);
+  }
+
+  public function novoFormIntegrantes(Projeto $projeto, Job $job) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $results = $projeto->freelancers()->orderBy('nome')->get();
+    // $produtoras = $projeto->empresas()->orderBy('nome')->get();
+
+    return view('site.empresa.integrante.add-integrante-job', compact('empresa', 'projeto', 'results', 'job'));
+  }
+
+  public function addFreelancer(Projeto $projeto, Job $job, Freelancer $freelancer) {
+    $job->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+
+    $message = parent::returnMessage('success', $freelancer->nome . ' foi adicionado(a) a este job!');
+
+    return redirect('/empresa/projeto/' . $projeto->id . '/job/' . $job->id)->with('message', $message);
+  }
+
+  public function removerFreelancer(Projeto $projeto, Job $job, Freelancer $freelancer) {
+    $job->freelancers()->detach($freelancer);
+
+    $message = parent::returnMessage('success', $freelancer->nome . ' foi removido(a) do job!');
+
+    return redirect('/empresa/projeto/' . $projeto->id . '/job/' . $job->id)->with('message', $message);
   }
 }

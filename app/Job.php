@@ -11,4 +11,8 @@ class Job extends Model
  public function projeto() {
   return $this->belongsTo(Projeto::class);
 }
+
+public function freelancers() {
+  return $this->belongsToMany(Freelancer::class);
+}
 }
