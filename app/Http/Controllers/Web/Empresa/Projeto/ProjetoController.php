@@ -38,8 +38,9 @@ class ProjetoController extends Controller
     $jobs = Job::orderBy('status', 'asc')->orderBy('created_at', 'desc')->where('projeto_id', $projeto->id)->get();
 
     $freelancers = $projeto->freelancers()->orderBy('nome')->get();
+    $empresas = $projeto->empresas()->orderBy('nome')->get();
     
-    return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs', 'freelancers'));
+    return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs', 'freelancers', 'empresas'));
   }
 
   // Carrega o formulário para cadastro do projeto
@@ -123,7 +124,7 @@ public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
 }
 
 public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
-  $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'tempo_experiencia' => 0]);  
+  $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);  
 
   $message = parent::returnMessage('success', $freelancer->nome . ' foi adicionado(a) ao projeto "' . $projeto->titulo .'"!');
 
@@ -131,7 +132,7 @@ public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
 }
 
 public function addProdutora(Projeto $projeto, Empresa $empresa) {
-  $projeto->freelancers()->attach($empresa);
+  $projeto->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
 
   $message = parent::returnMessage('success', $empresa->nome . ' foi adicionado(a) ao projeto "' . $projeto->titulo . '"!');
 
@@ -142,6 +143,14 @@ public function removerFreelancer(Projeto $projeto, Freelancer $freelancer) {
   $projeto->freelancers()->detach($freelancer);
 
   $message = parent::returnMessage('success', $freelancer->nome . ' foi removido(a) do projeto "' . $projeto->titulo .'"!');
+
+  return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
+}
+
+public function removerProdutora(Projeto $projeto, Empresa $empresa) {
+  $projeto->empresas()->detach($empresa);
+
+  $message = parent::returnMessage('success', $empresa->nome . ' foi removido(a) do projeto "' . $projeto->titulo .'"!');
 
   return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
 }

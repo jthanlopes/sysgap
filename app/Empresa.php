@@ -51,4 +51,8 @@ class Empresa extends Authenticatable
     public function conhecimentos() {
       return $this->belongsToMany(Conhecimento::class);
     }
+
+    public function projetos() {
+      return $this->belongsToMany(Projeto::class);
+    }
   }

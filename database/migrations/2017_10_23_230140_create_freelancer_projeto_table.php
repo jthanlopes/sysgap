@@ -15,8 +15,7 @@ class CreateFreelancerProjetoTable extends Migration
     {
         Schema::create('freelancer_projeto', function (Blueprint $table) {
             $table->integer('projeto_id')->unsigned();
-            $table->integer('freelancer_id')->unsigned();
-            $table->integer('tempo_experiencia');
+            $table->integer('freelancer_id')->unsigned();            
             $table->timestamps();
         });
     }

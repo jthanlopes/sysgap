@@ -79,6 +79,7 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/{projeto}/integrante/addProdutora/{empresa}', 'Empresa\Projeto\ProjetoController@addProdutora')->name('integrante.add-produtora.form');
   // Remover freelancer e produtora ao projeto
   Route::get('/projeto/{projeto}/integrante/remover/{freelancer}', 'Empresa\Projeto\ProjetoController@removerFreelancer')->name('integrante.remover-freelancer.form');
+  Route::get('/projeto/{projeto}/integrante/remover-produtora/{empresa}', 'Empresa\Projeto\ProjetoController@removerProdutora')->name('integrante.remover-produtora.form');
   // Rotas de notícias e eventos
   // Submeter e criar uma nova notícia
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');

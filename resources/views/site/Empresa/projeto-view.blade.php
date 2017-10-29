@@ -19,7 +19,7 @@
           <p class="w3-opacity">Descrição: {{ $projeto->descricao }}</p>
           <p class="w3-opacity">Status: {{ $projeto->status }}</p>
           <p class="w3-opacity">Data de criação: {{ $projeto->created_at->format('d/m/Y') }}</p>
-          <p class="w3-opacity">Número de integrantes: {{ count($freelancers) }}</p>
+          <p class="w3-opacity">Número de integrantes: {{ count($freelancers) + count($empresas) }}</p>
           <p class="w3-opacity">Número de jobs: {{ count($jobs) }}</p>
           <a href="">Gerar relatório do projeto</a>
           <hr>
@@ -30,14 +30,22 @@
               <th>E-mail</th>
               <th>Ações</th>
             </tr>
-            @foreach ($freelancers as $freelancer)            
             <tr>
+              @foreach ($freelancers as $freelancer)            
               <td>{{ $freelancer->nome }}</td>
               <td>{{ $freelancer->email }}</td>
-              <td><a href="" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Enviar E-mail</a>
-                <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover/{{ $freelancer->id }}" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a></td>
+              <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para o freelancer">Enviar E-mail</a>
+                <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover/{{ $freelancer->id }}" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a></td>              
+                @endforeach
               </tr>
-              @endforeach
+              <tr>
+              @foreach ($empresas as $empresa)            
+              <td>{{ $empresa->nome }}</td>
+              <td>{{ $empresa->email }}</td>
+              <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para a produtora">Enviar E-mail</a>
+                <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover-produtora/{{ $empresa->id }}" class="w3-button w3-red w3-small" title="Remover produtora">Remover</a></td>          
+                @endforeach
+              </tr>
             </table>
             <hr>
             <h4 class="w3-opacity">Jobs do Projeto <span class="opt-projeto">[<a href="/empresa/projeto/{{ $projeto->id }}/job/novo">Criar job</a>]</span></h4>

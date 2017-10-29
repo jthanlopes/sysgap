@@ -7,8 +7,8 @@
   <div class="w3-row-padding">
     <div class="w3-col m12">
       <div class="w3-card-2 w3-round w3-white">
-        <div class="w3-container w3-padding form-news">
-          <h3 class="w3-opacity">Adicionar integrante</h3>   
+        <div class="w3-container w3-padding form-news">          
+          <h3 class="w3-opacity">Adicionar integrante</h3>
           <hr>
           <form method="POST" action="/empresa/projeto/{{ $projeto->id }}/integrante/pesquisar">
             {{-- <input type="hidden" name="projeto" value="{{ $projeto->id }}"> --}}
@@ -17,7 +17,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="categoria">Categoria:</label>
-                  <select class="w3-select" id="categoria" name="categoria" required>                        
+                  <select class="w3-select" id="categoria" name="categoria" required>
                     <option value="0">Freelancers</option>
                     <option value="1">Produtoras</option>                 
                   </select>
