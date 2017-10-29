@@ -125,7 +125,7 @@ public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
 public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
   $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'tempo_experiencia' => 0]);  
 
-  $message = parent::returnMessage('success', $freelancer->nome . ' foi adicionado(a) ao projeto!');
+  $message = parent::returnMessage('success', $freelancer->nome . ' foi adicionado(a) ao projeto "' . $projeto->titulo .'"!');
 
   return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
 }
@@ -133,7 +133,7 @@ public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
 public function addProdutora(Projeto $projeto, Empresa $empresa) {
   $projeto->freelancers()->attach($empresa);
 
-  $message = parent::returnMessage('success', $empresa->nome . ' foi adicionado(a) ao projeto!');
+  $message = parent::returnMessage('success', $empresa->nome . ' foi adicionado(a) ao projeto "' . $projeto->titulo . '"!');
 
   return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
 }
@@ -141,7 +141,7 @@ public function addProdutora(Projeto $projeto, Empresa $empresa) {
 public function removerFreelancer(Projeto $projeto, Freelancer $freelancer) {
   $projeto->freelancers()->detach($freelancer);
 
-  $message = parent::returnMessage('success', $freelancer->nome . ' foi removido(a) do projeto!');
+  $message = parent::returnMessage('success', $freelancer->nome . ' foi removido(a) do projeto "' . $projeto->titulo .'"!');
 
   return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
 }
