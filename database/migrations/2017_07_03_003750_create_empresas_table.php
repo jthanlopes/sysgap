@@ -26,6 +26,7 @@ class CreateEmpresasTable extends Migration {
 			$table->integer('avaliacao_geral')->default(0);
 			$table->timestamps();
 			$table->rememberToken();
+			$table->string('account_confirmation');
 			$table->boolean('ativo');
 		});
 	}

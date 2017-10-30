@@ -20,7 +20,7 @@ class EmpresaLoginController extends Controller
     $this->validate($request, [
       'email' => 'required|email',
       'password' => 'required|min:6',
-      // 'recaptcha' => ''
+      // 'g-recaptcha-response' => 'required|captcha',
     ]);
 
     $response = json_decode($curl->post('https://www.google.com/recaptcha/api/siteverify', [

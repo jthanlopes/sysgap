@@ -89,3 +89,23 @@ Route::post('/noticias-view/novo', 'Noticia\NoticiaController@noticiaCadastrar')
 
 // Rotas de empresas
 Route::get('/empresas-view', 'Empresa\EmpresaController@empresasView')->name('empresas.view');
+
+//-------------------------------------------------------------------------------------------------------
+
+// Rotas de itens
+Route::get('/itens-view', 'Item\ItemController@itensView')->name('itens.view');
+
+// Formulário de cadastro do item (perguntas)
+Route::get('/itens-view/novo', 'Item\ItemController@itemNovo')->name('item.show-form-novo');
+
+// Salvar formulário do item (pergunta)
+Route::post('/itens-view/novo', 'Item\ItemController@itemCadastrar')->name('item.cadastrar');
+
+// Chama o formulário de edição do item (pergunta)
+Route::get('/item-view/editar/{item}', 'Item\ItemController@editarForm')->name('item.show-form-edit');
+
+// Submete o formulário de edição do item (pergunta)
+Route::post('/item-view/editar', 'Item\ItemController@itemEditar')->name('item.editar');
+
+// Excluir o item (pergunta)
+Route::get('/item-view/excluir/{item}', 'Item\ItemController@itemExcluir')->name('item.excluir');

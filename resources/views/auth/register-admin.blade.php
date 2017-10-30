@@ -10,8 +10,9 @@
   </a>
   <ul class="treeview-menu">
     <li><a href="{{ route('admins.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Administradores</a></li>
-    <li><a href="index2.html"><i class="fa fa-circle-o"></i> Notícias </a></li>
+    <li><a href="{{ route('noticias.view') }}"><i class="fa fa-circle-o"></i> Notícias </a></li>
     <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
+    <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Itens </a></li>
   </ul>
 </li>
 @endsection
