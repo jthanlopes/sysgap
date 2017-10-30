@@ -17,6 +17,7 @@
           <div class="publicar-empresa"> 
             <h6 class="w3-opacity" style="cursor: pointer;">Publique aqui notícias e/ou eventos.</h6>
           </div>
+          <hr>
           <div class="form-publicar">
             <form method="POST" action="{{ route('noticia.novo') }}" enctype="multipart/form-data">
               {{ csrf_field() }}              

@@ -47,6 +47,12 @@
                 @endforeach
               </tr>
             </table>
+            @if(count($freelancers) == 0 && count($produtoras) == 0)
+            <div></div>            
+            <div style="text-align: center;">
+              Adicione os integrantes que participarão deste projeto.
+            </div>
+            @endif
             <hr>
             <h4 class="w3-opacity">Jobs do Projeto <span class="opt-projeto">[<a href="/empresa/projeto/{{ $projeto->id }}/job/novo">Criar job</a>]</span></h4>
             <table class="w3-table w3-centered w3-bordered table-projetos">

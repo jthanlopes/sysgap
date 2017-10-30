@@ -17,7 +17,12 @@ class EmpresaLoginController extends Controller
   }
 
   public function login(Request $request, Curl $curl) {
-    
+    $this->validate($request, [
+      'email' => 'required|email',
+      'password' => 'required|min:6',
+      // 'recaptcha' => ''
+    ]);
+
     $response = json_decode($curl->post('https://www.google.com/recaptcha/api/siteverify', [
       'secret' => config('services.recaptcha.secret'),
       'response' => $request->input('g-recaptcha-response'),
@@ -27,11 +32,6 @@ class EmpresaLoginController extends Controller
     if (!$response->success) {
       abort(400, 'No no no!');
     }
-
-    $this->validate($request, [
-      'email' => 'required|email',
-      'password' => 'required|min:6'
-    ]);
 
     $empresa = Empresa::where('email', $request->email)->first();
 
@@ -55,5 +55,13 @@ class EmpresaLoginController extends Controller
   {                 
     auth()->guard('empresa')->logout();
     return redirect('/');
+  }
+
+  public function messages()
+  {
+    return [
+      'email.required' => 'Digite seu e-mail',
+      'password.required'  => 'Digite sua senha',
+    ];
   }
 }

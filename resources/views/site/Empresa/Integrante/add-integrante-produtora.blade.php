@@ -8,10 +8,11 @@
     <div class="w3-col m12">
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding form-news">
-          <h3 class="w3-opacity">Adicionar integrante</h3>   
+          <h3 class="w3-opacity">Adicionar integrante ao projeto</h3>   
           <hr>
           <form method="POST" action="/empresa/projeto/{{ $projeto->id }}/integrante/pesquisar">
             {{ csrf_field() }}
+            <h4 class="w3-opacity">Pesquisar por usuários</h4>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">

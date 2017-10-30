@@ -16,7 +16,7 @@
               <th>E-mail</th>
               <th>Ações</th>
             </tr>
-            @foreach ($results as $result)            
+            @foreach ($results as $result)
             <tr>
               <td><a href="" title="Ver perfil">{{ $result->nome }}</a></td>
               <td>{{ $result->email }}</td>
@@ -25,6 +25,11 @@
               </tr>
               @endforeach
             </table>
+            @if(count($results) == 0)
+            <div style="text-align: center;">
+              Primeiramente adicione integrantes ao projeto.
+            </div>
+            @endif
           </div>
         </div>
       </div>

@@ -40,6 +40,11 @@
               </tr>
               @endforeach
             </table>
+            @if(count($projetos) == 0)
+            <div style="text-align: center;">
+              Crie seu projeto na opção acima.
+            </div>
+            @endif
           </div>
         </div>
       </div>
