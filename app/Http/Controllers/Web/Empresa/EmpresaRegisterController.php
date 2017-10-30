@@ -30,7 +30,7 @@ class EmpresaRegisterController extends Controller
     ]);
 
         // Salvar o endereço primeiro
-    $endereco->save();        
+    $endereco->save();
 
     $filename = config('app.name') . '_foto_perfil' . str_slug($request->email, '_') . '_' . $request->file('profile_photo')->getClientOriginalName();
     $request->profile_photo->storeAs('empresas/perfil', $filename, 'public');
@@ -43,7 +43,8 @@ class EmpresaRegisterController extends Controller
       'categoria' => $request->get('categoria'),
       'endereco_id' => $endereco['id'],
       'foto_perfil' => $filename,
-      'ativo' => 1,
+      'ativo' => 0,
+      'account_confirmation' => hash_hmac('sha256', str_random(40), config('app.key')),
     ]);
 
     \Mail::to($empresa)->send(new ConfirmaConta($empresa));

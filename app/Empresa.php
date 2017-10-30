@@ -16,7 +16,7 @@ class Empresa extends Authenticatable
      */
     protected $fillable = [
       'id', 'nome', 'email', 'password', 'cnpj', 'categoria', 'endereco_id', 'foto_perfil', 'pontuacao', 
-      'avaliacao_geral' ,'ativo',
+      'avaliacao_geral' ,'ativo', 'account_confirmation',
     ];
 
     /**
