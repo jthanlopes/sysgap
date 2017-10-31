@@ -113,13 +113,7 @@ composer run post-create-project-cmd
 php artisan migrate
 ```
 
-7º Para instalar os componentes do Bower, execute:
-
-```
-bower install
-```
-
-8º Por fim, rode no terminal:
+7º Por fim, rode no terminal:
 
 ```
 php artisan serve
