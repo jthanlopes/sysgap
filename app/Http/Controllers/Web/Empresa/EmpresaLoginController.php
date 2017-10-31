@@ -56,12 +56,4 @@ class EmpresaLoginController extends Controller
     auth()->guard('empresa')->logout();
     return redirect('/');
   }
-
-  public function messages()
-  {
-    return [
-      'email.required' => 'Digite seu e-mail',
-      'password.required'  => 'Digite sua senha',
-    ];
-  }
 }

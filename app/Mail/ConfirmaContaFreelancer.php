@@ -2,26 +2,26 @@
 
 namespace App\Mail;
 
-use App\Empresa;
+use App\Freelancer;
 use Auth;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ConfirmaConta extends Mailable
+class ConfirmaContaFreelancer extends Mailable
 {
     use Queueable, SerializesModels;
-    public $empresa;
+    public $freelancer;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Empresa $empresa)
+    public function __construct(Freelancer $freelancer)
     {
-        $this->empresa = $empresa;
+        $this->freelancer = $freelancer;
     }
 
     /**
@@ -31,6 +31,6 @@ class ConfirmaConta extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.confirma-conta-empresa');
+        return $this->view('emails.confirma-conta-freelancer');
     }
 }

@@ -14,7 +14,7 @@ class Freelancer extends Authenticatable {
      * @var array
      */
     protected $fillable = [
-      'nome', 'email', 'password', 'cpf', 'ativo', 'foto_perfil', 'pontuacao', 'avaliacao_geral', 'endereco_id', 'account_confirmation',
+      'nome', 'email', 'password', 'cpf', 'ativo', 'foto_perfil', 'pontuacao', 'avaliacao_geral', 'account_confirmation',
     ];
 
     /**

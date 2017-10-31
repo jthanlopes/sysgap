@@ -15,10 +15,6 @@
   {{-- Icones Google --}}
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  {{-- Bower_components --}}  
-  <link href="/bower_resources/bootstrap-fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css"
-  />
-
   {{-- Animate.css --}}
   <link rel="stylesheet" href="/site-assets/css/animate.css">
 

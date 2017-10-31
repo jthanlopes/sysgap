@@ -9,7 +9,7 @@ class NoticiaController extends Controller
 {
   public function noticiasViewHome() {
     $noticias = Noticia::orderBy('created_at', 'desc')->where('admin_id', '<>', null)
-                                                      ->paginate(5);
+    ->paginate(5);
     
     return view('site.eventos', compact('noticias'));
   }

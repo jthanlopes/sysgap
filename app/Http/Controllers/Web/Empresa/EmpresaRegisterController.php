@@ -51,12 +51,28 @@ class EmpresaRegisterController extends Controller
 
     if ( $empresa )
     {
-      $message = parent::returnMessage('success', 'Registro efetuado com sucesso!');
+      $message = parent::returnMessage('info', 'Um e-mail de confirmação de conta foi enviado para ' . $empresa->email);
     } else 
     {
       $message = parent::returnMessage('danger', 'Erro ao fazer o registro!');
     }
 
     return redirect()->route('empresa.login-view')->with('message', $message);
-  }  
+  }
+
+  public function confirmaConta($token) {
+    $empresa = Empresa::where('account_confirmation', $token)->first();
+
+    if(count($empresa) > 0) {
+     $empresa->ativo = 1;
+     $empresa->save();
+     $message = parent::returnMessage('success', 'Conta confirmada com sucesso!');
+
+     return redirect()->route('empresa.login-view')->with('message', $message);
+   }
+
+   $message = parent::returnMessage('danger', 'Usuário não encontrado!');
+
+   return redirect()->route('empresa.login-view')->with('message', $message);
+ }
 }

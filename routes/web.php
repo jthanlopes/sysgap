@@ -31,7 +31,7 @@ Route::prefix('empresa')->group(function () {
   // Salvar formulário 
   Route::post('/novo', 'Empresa\EmpresaRegisterController@novo')->name('empresa.novo');
   // Confirmação de conta da empresa
-  // Route::get('/confirmaConta/{email}', 'Empresa\EmpresaRegisterController@confirmaConta')->name('empresa.confirma-conta');
+  Route::get('/confirmaConta/{token}', 'Empresa\EmpresaRegisterController@confirmaConta')->name('empresa.confirma-conta');
   // Abre o formulário de login da empresa
   Route::get('/login', 'Empresa\EmpresaLoginController@loginView')->name('empresa.login-view');
   // Submete o formulário de login
@@ -111,6 +111,9 @@ Route::prefix('freelancer')->group(function () {
 
   // Salvar formulário
   Route::post('/novo', 'Freelancer\FreelancerRegisterController@novo')->name('freelancer.novo');
+
+  // Confirmação de conta do freelancer
+  Route::get('/confirmaConta/{token}', 'Freelancer\FreelancerRegisterController@confirmaConta')->name('freelancer.confirma-conta');
 
   // Abre o formulário de login do freelancer
   Route::get('/login', 'Freelancer\FreelancerLoginController@loginView')->name('freelancer.login-view');
