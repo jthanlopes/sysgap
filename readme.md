@@ -75,13 +75,15 @@ composer run post-root-package-install
 
 4º Abra o arquivo .env que foi criado na raíz do projeto e faça as seguintes alterações:
 
-* Configurar a base de dados:
+Configurar a base de dados:
+
 ```
 DB_DATABASE=sysgap_db   =>  Nome do banco criado na primeira etapa.
 DB_USERNAME=root        =>  Nome do usuário do banco, padrão => root.
 DB_PASSWORD=            =>  Senha do usuário do banco, no meu caso é vazia.
 ```
-* Configurar o mailtrap, acesse https://mailtrap.io/ e crie uma conta.
+
+Configurar o mailtrap, acesse https://mailtrap.io/ e crie uma conta.
 
 ```
 MAIL_DRIVER=smtp
@@ -90,30 +92,35 @@ MAIL_PORT=2525
 MAIL_USERNAME=user      =>  Nome de usuário gerado no mailtrap.io
 MAIL_PASSWORD=pass      =>  Senha de usuário gerado no mailtrap.io
 MAIL_ENCRYPTION=null
-
-```
-* Configurar o reCAPTCHA no projeto, acesse https://www.google.com/recaptcha/admin e gere um reCAPTCHA
 ```
 
+Configurar o reCAPTCHA no projeto, acesse https://www.google.com/recaptcha/admin e gere um reCAPTCHA
+
+```
 RECAPTCHA_SECRET=secret =>  Secret key gerada no Google reCAPCHA.
 RECAPTCHA_PUBLIC=public =>  Site key gerada no Google reCAPTCHA.
+```
 
 5º Agora digite esse comando para gerar a _key_ da aplicação:
+
 ```
 composer run post-create-project-cmd
 ```
 
 6º Para criar as tabelas do banco rode o seguinte comando:
+
 ```
 php artisan migrate
 ```
 
 7º Para instalar os componentes do Bower, execute:
+
 ```
 bower install
 ```
 
 8º Por fim, rode no terminal:
+
 ```
 php artisan serve
 ```
