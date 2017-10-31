@@ -23,13 +23,13 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Lista de Empresas
+      Lista de Jobs
     </h1>
     <hr>
     <ol class="breadcrumb">
       <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
       <li>Registros</li>
-      <li class="active">Empresas</li>
+      <li class="active">Jobs</li>
     </ol>
 
     <div class="row">
@@ -53,23 +53,21 @@
         <table class="table table-hover table-striped">
           <thead class="thead-inverse">
             <tr>
-              <th>Nome</th>
-              <th>CNPJ</th>
-              <th>Email</th>
+              <th>Titulo</th>
+              <th>Nivel de conhecimento</th>
               <th>Status</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody class="admin-view">
-            @foreach ($empresas as $empresa)
+            @foreach ($jobs as $job)
             <tr>
-              <td>{{ $empresa->nome }}</td>
-              <td>{{ $empresa->cnpj }}</td>
-              <td>{{ $empresa->email }}</td>
-              <td><?php echo ($empresa->ativo == 1)? 'Ativo':'Inativo';?></td>
+              <td>{{ $job->titulo }}</td>
+              <td>{{ $job->nivel_conhecimento_necessario }}</td>
+              <td>{{ $job->status }}</td>
               <td>
                 <a href="{{-- {{ route('noticia.perfil') }} --}}" class="btn btn-success">
-                Enviar E-mail</a>
+                Mais informações</a>
               </tr>
               @endforeach
             </tbody>

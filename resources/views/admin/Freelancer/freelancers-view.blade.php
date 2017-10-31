@@ -23,13 +23,13 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Lista de Empresas
+      Lista de Freelancers
     </h1>
     <hr>
     <ol class="breadcrumb">
       <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
       <li>Registros</li>
-      <li class="active">Empresas</li>
+      <li class="active">Freelancers</li>
     </ol>
 
     <div class="row">
@@ -54,19 +54,19 @@
           <thead class="thead-inverse">
             <tr>
               <th>Nome</th>
-              <th>CNPJ</th>
+              <th>CPF</th>
               <th>Email</th>
               <th>Status</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody class="admin-view">
-            @foreach ($empresas as $empresa)
+            @foreach ($freelancers as $freelancer)
             <tr>
-              <td>{{ $empresa->nome }}</td>
-              <td>{{ $empresa->cnpj }}</td>
-              <td>{{ $empresa->email }}</td>
-              <td><?php echo ($empresa->ativo == 1)? 'Ativo':'Inativo';?></td>
+              <td>{{ $freelancer->nome }}</td>
+              <td>{{ $freelancer->cpf }}</td>
+              <td>{{ $freelancer->email }}</td>
+              <td><?php echo ($freelancer->ativo == 1)? 'Ativo':'Inativo';?></td>
               <td>
                 <a href="{{-- {{ route('noticia.perfil') }} --}}" class="btn btn-success">
                 Enviar E-mail</a>

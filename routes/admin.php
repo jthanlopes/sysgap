@@ -109,3 +109,15 @@ Route::post('/item-view/editar', 'Item\ItemController@itemEditar')->name('item.e
 
 // Excluir o item (pergunta)
 Route::get('/item-view/excluir/{item}', 'Item\ItemController@itemExcluir')->name('item.excluir');
+
+//------------------------------------------------------------------------------------------------------
+
+// Rotas de freelancer
+Route::get('/freelancers-view', 'Freelancer\FreelancerController@freelancersView')->name('freelancers.view');
+
+//-------------------------------------------------------------------------------------------------------
+
+// Rotas dos jobs
+Route::get('/jobs-view', 'Job\JobController@jobsView')->name('jobs.view');
+
+//-------------------------------------------------------------------------------------------------------

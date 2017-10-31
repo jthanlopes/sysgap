@@ -12,15 +12,15 @@
         {{ session()->get('message')['message'] }}
       </div>
       @endif
-      <div class="w3-card-2 w3-round w3-white">        
+      <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding form-news">
-          <div class="publicar-empresa"> 
+          <div class="publicar-empresa">
             <h6 class="w3-opacity" style="cursor: pointer;">Publique aqui notícias e/ou eventos.</h6>
           </div>
           <hr>
           <div class="form-publicar">
             <form method="POST" action="{{ route('noticia.novo') }}" enctype="multipart/form-data">
-              {{ csrf_field() }}              
+              {{ csrf_field() }}
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
@@ -47,14 +47,13 @@
                 </div>
               </div>
               <button type="input" name="postar" class="w3-button w3-theme"><i class="fa fa-pencil"></i> &nbsp;Postar</button>
-
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+
   @foreach($noticias as $noticia)
   <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
     <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
@@ -62,13 +61,13 @@
     <hr class="w3-clear">
     <p>{{ $noticia->conteudo }}</p>
     <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-half">        
-        <img src="{{ asset('storage')  . '/empresas/posts/' . str_slug(Auth::user()->nome, '_') . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">    
-      </div>      
-    </div>    
+      <div class="w3-half">
+        <img src="{{ asset('storage')  . '/empresas/posts/' . str_slug(Auth::user()->nome, '_') . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">
+      </div>
+    </div>
   </div>
   @endforeach
 
   <!-- End Middle Column -->
-</div>      
+</div>
 @endsection

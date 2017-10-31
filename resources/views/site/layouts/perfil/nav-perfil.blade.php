@@ -12,18 +12,19 @@
     <a href="{{ route('empresa.editar-perfil.view') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Editar perfil"><i class="fa fa-user"></i></a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Mensagens"><i class="fa fa-envelope"></i></a>
     <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-button w3-padding-large" title="Notificações"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>     
+      <button class="w3-button w3-padding-large" title="Notificações"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>
       <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
         <a href="#" class="w3-bar-item w3-button">One new friend request</a>
         <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
         <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
       </div>
-    </div>    
-    @if (auth()->guard('empresa')->check())    
+    </div>
+    <a href="{{ route('pesquisa.form') }}" class="w3-button w3-padding-large" title="Pesquisar usuários"><i class="fa fa-search"></i></a>
+    @if (auth()->guard('empresa')->check())
     <div class="w3-dropdown-hover w3-right">
       <button class="w3-button w3-theme-d4 ajuste">{{ auth()->guard('empresa')->user()->nome }}</button>
       <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
-        <a href="{{ route('home.page') }}" class="w3-bar-item w3-button">Home page</a>          
+        <a href="{{ route('home.page') }}" class="w3-bar-item w3-button">Home page</a>
         <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button">Logout</a>
       </div>
     </div>
@@ -31,7 +32,7 @@
     <div class="w3-dropdown-hover w3-right">
       <button class="w3-button w3-theme-d4 ajuste">{{ auth()->guard('freelancer')->user()->nome }}</button>
       <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
-        <a href="{{ route('home.page') }}" class="w3-bar-item w3-button">Home page</a>          
+        <a href="{{ route('home.page') }}" class="w3-bar-item w3-button">Home page</a>
         <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button">Logout</a>
       </div>
     </div>
@@ -43,7 +44,7 @@
         <a href="{{ route('freelancer.login-view') }}" class="w3-bar-item w3-button">Sou freelancer</a>
       </div>
     </div>
-    @endif    
+    @endif
   </div>
 </div>
 

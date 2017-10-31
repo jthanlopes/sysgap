@@ -7,9 +7,9 @@
   <div class="w3-row-padding">
     <div class="w3-col m12">
       <div class="w3-card-2 w3-round w3-white">
-        <div class="w3-container w3-padding form-news">          
+        <div class="w3-container w3-padding form-news">
           <h3 class="w3-opacity">Adicionar integrante ao job</h3>
-          <hr>      
+          <hr>
           <table class="w3-table w3-centered w3-bordered table-projetos">
             <tr>
               <th>Nome</th>
@@ -35,7 +35,6 @@
       </div>
     </div>
 
-
     <!-- End Middle Column -->
-  </div>      
+  </div>
   @endsection
