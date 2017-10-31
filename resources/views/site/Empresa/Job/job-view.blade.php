@@ -3,7 +3,6 @@
 @section ('conteudo')
 <!-- Middle Column -->
 <div class="w3-col m7">
-
   <div class="w3-row-padding">
     <div class="w3-col m12">
       @if(session()->has('message'))
@@ -37,13 +36,13 @@
             </tr>
             </table
             @if(count($freelancers) == 0)
-            <div></div>            
             <div style="text-align: center;">
               Adicione os integrantes que irão realizar esse job.
             </div>
             @endif
           </div>
         </div>
+      </div>
       </div>
     </div>
     <!-- End Middle Column -->

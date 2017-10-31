@@ -40,6 +40,7 @@ class FreelancerRegisterController extends Controller
       'password' => bcrypt($request->senha),            
       'foto_perfil' => $filename,
       'ativo' => 1,
+      'account_confirmation' => hash_hmac('sha256', str_random(40), config('app.key')),
     ]);
 
         // Salva a empresa

@@ -67,7 +67,7 @@
       </div>
     </div>
     <div class="w3-third w3-center">
-      <img style="border-radius: 100%;" src="{{ $noticia->imagem }}" alt="Imagem notícia">
+      <img style="border-radius: 100%; width: 280px; height: 280px;" src="{{ $noticia->imagem }}" alt="Imagem notícia">
     </div>
   </div>
 </div>
