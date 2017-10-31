@@ -18,8 +18,8 @@
                 <div class="form-group">
                   <label for="categoria">Categoria:</label>
                   <select class="w3-select" id="categoria" name="categoria" required>          
-                    <option value="0">Freelancers</option>
                     <option value="1">Produtoras</option>
+                    <option value="0">Freelancers</option>                    
                   </select>
                 </div>
               </div>
@@ -36,7 +36,7 @@
             <hr>
             <input type="submit" value="Pesquisar">
           </form>
-
+          <h4 class="w3-opacity" style="margin-top: 40px;">Listagem de produtoras</h4>
           <table class="w3-table w3-centered w3-bordered table-projetos">
             <tr>
               <th>Nome</th>
@@ -52,6 +52,11 @@
               </tr>
               @endforeach
             </table>
+             @if(count($results) == 0)
+            <div style="text-align: center; margin-top: 10px;">
+              Nenhuma produtora encontrada.
+            </div>
+            @endif
           </div>
         </div>
       </div>

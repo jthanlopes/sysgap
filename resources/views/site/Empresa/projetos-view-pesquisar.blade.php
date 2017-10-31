@@ -41,7 +41,7 @@
               @endforeach
             </table>
             @if(count($projetos) == 0)
-            <div style="text-align: center;">
+            <div style="text-align: center; margin-top: 10px;">
               Crie seu projeto na opção acima.
             </div>
             @endif

@@ -14,8 +14,8 @@
       @endif
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
-          <a href="{{ route('projetos.view') }}" class="link-voltar">voltar para os projetos</a>
-          <h3 class="w3-opacity">{{ $projeto->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/editar/{{ $projeto->id }}">Editar projeto</a>]</span></h3>
+          <a href="{{ route('projetos.view') }}" class="link-voltar">ver todos os proo</a>
+          <h3 class="w3-opacity">Projeto {{ $projeto->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/editar/{{ $projeto->id }}">Editar projeto</a>]</span></h3>
           <p class="w3-opacity">Descrição: {{ $projeto->descricao }}</p>
           <p class="w3-opacity">Status: {{ $projeto->status }}</p>
           <p class="w3-opacity">Data de criação: {{ $projeto->created_at->format('d/m/Y') }}</p>
@@ -47,9 +47,8 @@
                 </tr>                  
                 @endforeach                
               </table>
-              @if(count($freelancers) == 0 && count($produtoras) == 0)
-              <div></div>            
-              <div style="text-align: center;">
+              @if(count($freelancers) == 0 && count($produtoras) == 0)    
+              <div style="text-align: center; margin-top: 10px;">
                 Adicione os integrantes que participarão deste projeto.
               </div>
               @endif
@@ -75,6 +74,11 @@
                 </tr>
                 @endforeach
               </table>
+              @if(count($jobs) == 0)
+              <div style="text-align: center; margin-top: 10px;">
+                Crie jobs para este projeto.
+              </div>
+              @endif
             </div>
           </div>
         </div>

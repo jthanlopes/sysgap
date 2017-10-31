@@ -37,8 +37,8 @@
             <hr>
             <input type="submit" value="Pesquisar">
           </form>
-
-          <table class="w3-table w3-centered w3-bordered table-projetos">
+          <h4 class="w3-opacity" style="margin-top: 40px;">Listagem de freelancers</h4>
+          <table class="w3-table w3-centered w3-bordered table-projetos"> 
             <tr>
               <th>Nome</th>
               <th>E-mail</th>
@@ -53,6 +53,11 @@
               </tr>
               @endforeach
             </table>
+            @if(count($results) == 0)
+            <div style="text-align: center; margin-top: 10px;">
+              Nenhum freelancer encontrado.
+            </div>
+            @endif
           </div>
         </div>
       </div>
