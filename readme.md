@@ -110,8 +110,10 @@ composer run post-create-project-cmd
 6º Para criar as tabelas do banco rode o seguinte comando:
 
 ```
-php artisan migrate
+php artisan migrate --seed
 ```
+
+O parâmetro --seed irá popular as tabelas de Noticias e admins, admin default criado: email: admin@admin.com, senha: admin123.
 
 7º Por fim, rode no terminal:
 
