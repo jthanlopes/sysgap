@@ -14,7 +14,6 @@ Quais tecnologias são necessárias para rodar o projeto:
   <li>Laravel 5.4 => (https://laravel.com/);</li>
   <li>MariaDB => (https://mariadb.org/);</li>
   <li>NodeJS e NPM (https://nodejs.org/en/);</li>
-  <li>Bower (https://bower.io/).</li>
 </ul>
 
 ## Começando
@@ -37,14 +36,9 @@ Após a instalação do Composer devemos instalar o Laravel, abra o terminal e d
 composer global require "laravel/installer"
 ```
 
-Agora iremos instalar o NodeJS/NPM, faça o download no link a seguir e após o download o instale:
+Para finalizar devemos instalar o NodeJS/NPM, faça o download no link a seguir e após o download faça a instação:
 ```
 https://nodejs.org/en/
-```
-
-Para finalizar devemos instalar o Bower, digite o seguinte comando no terminal:
-```
-npm install -g bower
 ```
 
 Pronto, o ambiente de desenvolvimento está instalado.
@@ -80,11 +74,29 @@ composer run post-root-package-install
 ```
 
 4º Abra o arquivo .env que foi criado na raíz do projeto e faça as seguintes alterações:
+
+* Configurar a base de dados:
 ```
 DB_DATABASE=sysgap_db   =>  Nome do banco criado na primeira etapa.
 DB_USERNAME=root        =>  Nome do usuário do banco, padrão => root.
 DB_PASSWORD=            =>  Senha do usuário do banco, no meu caso é vazia.
 ```
+* Configurar o mailtrap, acesse https://mailtrap.io/ e crie uma conta.
+
+```
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=user      =>  Nome de usuário gerado no mailtrap.io
+MAIL_PASSWORD=pass      =>  Senha de usuário gerado no mailtrap.io
+MAIL_ENCRYPTION=null
+
+```
+* Configurar o reCAPTCHA no projeto, acesse https://www.google.com/recaptcha/admin e gere um reCAPTCHA
+```
+
+RECAPTCHA_SECRET=secret =>  Secret key gerada no Google reCAPCHA.
+RECAPTCHA_PUBLIC=public =>  Site key gerada no Google reCAPTCHA.
 
 5º Agora digite esse comando para gerar a _key_ da aplicação:
 ```
