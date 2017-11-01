@@ -12,11 +12,11 @@
       </div>
       @endif
       <div class="w3-card-2 w3-round w3-white">
-        <div class="w3-container w3-padding"> 
+        <div class="w3-container w3-padding">
           <h3 class="w3-opacity">Job {{ $job->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/job/editar/{{ $job->id }}">Editar job</a>]@if($job->status == "Aberto")[<a href="/empresa/projeto/{{ $projeto->id }}/job/finalizar/{{ $job->id }}">Finalizar job</a>]@else[<a href="/empresa/projeto/{{ $projeto->id }}/job/reabrir/{{ $job->id }}">Reabrir job</a>]@endif</span></h3>
           <p class="w3-opacity">Descrição: {{ $job->descricao }}</p>
           <p class="w3-opacity">Status: {{ $job->status }}</p>
-          <p class="w3-opacity">Data de criação: {{ $job->created_at->format('d/m/Y') }}</p>   
+          <p class="w3-opacity">Data de criação: {{ $job->created_at->format('d/m/Y') }}</p>
           <hr>
           <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante/novo">Adicionar integrante</a>]</span></h4>
           <table class="w3-table w3-centered w3-bordered table-projetos">
@@ -24,8 +24,7 @@
               <th>Nome</th>
               <th>E-mail</th>
               <th>Ações</th>
-            </tr>        
-            
+            </tr>
             @foreach ($freelancers as $freelancer)
             <tr>
               <td>{{ $freelancer->nome }}</td>

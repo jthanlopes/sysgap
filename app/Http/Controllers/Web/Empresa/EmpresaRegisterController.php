@@ -52,7 +52,7 @@ class EmpresaRegisterController extends Controller
     if ( $empresa )
     {
       $message = parent::returnMessage('info', 'Um e-mail de confirmação de conta foi enviado para ' . $empresa->email);
-    } else 
+    } else
     {
       $message = parent::returnMessage('danger', 'Erro ao fazer o registro!');
     }

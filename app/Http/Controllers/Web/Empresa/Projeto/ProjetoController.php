@@ -10,8 +10,8 @@ use Auth;
 use Illuminate\Http\Request;
 
 class ProjetoController extends Controller
-{  
-  public function __construct() {    
+{
+  public function __construct() {
     $this->middleware('auth:empresa');
   }
 
@@ -26,7 +26,7 @@ class ProjetoController extends Controller
   // Recebe um valor por POST e retorna somente os projetos correspondentes
   public function projetosPesquisar(Request $request) {
     $id = Auth::user()->id;
-    $empresa = Empresa::find($id);    
+    $empresa = Empresa::find($id);
     $projetos = Projeto::orWhere('titulo', 'like', '%' . $request->buscar . '%')->get();
 
     return view('site.empresa.projetos-view-pesquisar', compact('empresa', 'projetos'));
@@ -40,7 +40,7 @@ class ProjetoController extends Controller
 
     $freelancers = $projeto->freelancers()->orderBy('nome')->get();
     $produtoras = $projeto->empresas()->orderBy('nome')->get();
-    
+
     return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs', 'freelancers', 'produtoras'));
   }
 
@@ -48,7 +48,7 @@ class ProjetoController extends Controller
   public function novoProjeto() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    
+
     return view('site.empresa.criar-projeto', compact('empresa'));
   }
 
@@ -63,7 +63,7 @@ class ProjetoController extends Controller
    if ($create)
    {
     $message = parent::returnMessage('success', 'Projeto criado com sucesso!');
-  } else 
+  } else
   {
     $message = parent::returnMessage('danger', 'Erro ao criar o projeto!');
   }
@@ -86,14 +86,14 @@ public function editarProjeto() {
     'status' => 'Aberto',
     'empresa_id' => Auth::user()->id,
   ]);
-  
+
   if ($update)
   {
     $message = parent::returnMessage('success', 'Projeto alterado com sucesso!');
-  } else 
+  } else
   {
     $message = parent::returnMessage('danger', 'Erro ao alterar o projeto!');
-  }      
+  }
 
   return redirect('/empresa/projeto/' . request('idProjeto'))->with('message', $message);
 }
@@ -113,7 +113,7 @@ public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
 
   if ($categoria == 0) {
     $results = Freelancer::orWhere('nome', 'like', '%' . $request->nome . '%')->get();
-    
+
     return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results'));
   } else {
     $results = Empresa::orWhere('nome', 'like', '%' . $request->nome . '%')

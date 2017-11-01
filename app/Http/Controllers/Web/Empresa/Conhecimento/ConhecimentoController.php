@@ -25,18 +25,18 @@ class ConhecimentoController extends Controller
   public function addConhecimento(Request $request) {
     $id = $request->get('tecnologia');
     $conhecimento = Conhecimento::find($id);
-    $empresa = Auth::user();    
+    $empresa = Auth::user();
     $add = $empresa->conhecimentos()->attach($conhecimento);
-    
+
     $message = parent::returnMessage('success', 'Conhecimento adicionado com sucesso!');
 
     return redirect()->route('tecnologias.view')->with('message', $message);
   }
 
-  public function excluirConhecimento(Conhecimento $conhecimento) {    
+  public function excluirConhecimento(Conhecimento $conhecimento) {
     $empresa = Auth::user();
     $empresa->conhecimentos()->detach($conhecimento);
-    
+
     $message = parent::returnMessage('success', 'Conhecimento removido com sucesso!');
 
     return redirect()->route('tecnologias.view')->with('message', $message);

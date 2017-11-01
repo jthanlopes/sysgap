@@ -24,14 +24,14 @@ class AdminLoginController extends Controller
     		'password' => 'required|min:6'
     	]);
 
-    	if (auth()->guard('web')->attempt(['email' => $request->email, 'password' => $request->password, 'active' => 1], $request->remember)) {           	
+    	if (auth()->guard('web')->attempt(['email' => $request->email, 'password' => $request->password, 'active' => 1], $request->remember)) {
     		return redirect()->intended(route('admin.dashboard'));
-    	}        
+    	}
     	return redirect()->back()->withInput($request->only('email', 'remember'));
-    }    
+    }
 
     public function logout()
-    {                                        
+    {
         auth()->guard('web')->logout();
         return redirect('/admin');
     }

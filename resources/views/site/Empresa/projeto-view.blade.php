@@ -14,7 +14,7 @@
       @endif
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
-          <a href="{{ route('projetos.view') }}" class="link-voltar">ver todos os proo</a>
+          <a href="{{ route('projetos.view') }}" class="link-voltar">ver todos os projetos</a>
           <h3 class="w3-opacity">Projeto {{ $projeto->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/editar/{{ $projeto->id }}">Editar projeto</a>]</span></h3>
           <p class="w3-opacity">Descrição: {{ $projeto->descricao }}</p>
           <p class="w3-opacity">Status: {{ $projeto->status }}</p>

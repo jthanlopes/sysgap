@@ -88,8 +88,10 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/{projeto}/integrante/remover-produtora/{empresa}', 'Empresa\Projeto\ProjetoController@removerProdutora')->name('integrante.remover-produtora.form');
   //
   // Rotas de pesquisa de usuários
-  //
-  Route::get('/pesquisar', 'Empresa\Pesquisa\PesquisaController@pesquisarView')->name('pesquisa.form');
+  // Abrir formulário de pesquisa
+  Route::get('/pesquisar', 'Empresa\Pesquisa\PesquisaController@pesquisarView')->name('pesquisa.form.usuarios');
+  // Subemeter fomulário de pesquisa
+  Route::post('/pesquisar', 'Empresa\Pesquisa\PesquisaController@pesquisar')->name('pesquisa.usuarios');
   // Rotas de notícias e eventos
   // Submeter e criar uma nova notícia
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');

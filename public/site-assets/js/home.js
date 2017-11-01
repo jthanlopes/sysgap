@@ -91,7 +91,7 @@ $(document).ready(function(){
  	}
 
 	// Acessibilidade, diminui a fonte do site
-	$("#diminuir-fonte").click(function(event){		
+	$("#diminuir-fonte").click(function(event){
 		for (var i = 0; i < $elemento.length; i++) {
 			if (fonts[i] > fontsMin[i]) {
 				$elemento.eq(i).css('font-size', --fonts[i]);
@@ -111,13 +111,13 @@ $(document).ready(function(){
 	$(".btn-msg-contato").click(function(event){
 		if ($( ".input-contato-nome" ).val() != '' && $( ".input-contato-email" ).val() != '' && $( ".textarea-contato-msg" ).val() != '') {
 			sessionStorage.setItem('contato', '1');
-		}		
+		}
 	});
 
 	window.setTimeout(function() {
 		// Exibe barra de mensagem, caso exista uma variavel de sessão
 		var data = sessionStorage.getItem('contato');
-		if (data) {    
+		if (data) {
     // Get the snackbar DIV
     var x = document.getElementsByClassName("snackbar")[0];
     // Add the "show" class to DIV
@@ -125,12 +125,15 @@ $(document).ready(function(){
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show-snackbar", ""); }, 4000);
     sessionStorage.removeItem('contato');
-  }	
+  }
 }, 800);
 
   // Acessibilidade, aumenta a fonte do site
   $(".publicar-empresa").click(function(event){
-    console.log("Teste entrou");
     $(".form-publicar").slideToggle("slow");
+  });
+  // Acessibilidade, aumenta a fonte do site
+  $(".opcoes-pesquisa").click(function(event){
+    $(".show-opcoes-pesquisa").slideToggle("slow");
   });
 })

@@ -19,7 +19,7 @@
         <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
       </div>
     </div>
-    <a href="{{ route('pesquisa.form') }}" class="w3-button w3-padding-large" title="Pesquisar usuários"><i class="fa fa-search"></i></a>
+    <a href="{{ route('pesquisa.form.usuarios') }}" class="w3-button w3-padding-large" title="Pesquisar usuários"><i class="fa fa-search"></i></a>
     @if (auth()->guard('empresa')->check())
     <div class="w3-dropdown-hover w3-right">
       <button class="w3-button w3-theme-d4 ajuste">{{ auth()->guard('empresa')->user()->nome }}</button>
