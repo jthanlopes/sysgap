@@ -2,11 +2,11 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
 	<meta charset="UTF-8">
-	<title>SysGAP - Perfil</title>	
+	<title>SysGAP - Perfil</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	{{-- Icones Google --}}
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	{{-- Bower_components --}}	
+	{{-- Bower_components --}}
 	<link href="/bower_resources/bootstrap-fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 	{{-- Css Home --}}
 	<link rel="stylesheet" href="/site-assets/css/perfil.css">
@@ -21,16 +21,16 @@
 		html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif;}
 	</style>
 </head>
-<body class="w3-theme-l5">	
-		@include ('site.layouts.perfil.nav-perfil')
-		@if (auth()->guard('empresa')->check())
-		@include ('site.layouts.perfil.aside-left')
-		@else
-		@include ('site.layouts.perfil.aside-left-freelancer')
-		@endif
-		@yield ('conteudo')
-		@include ('site.layouts.perfil.aside-right')
-		<!-- Snackbar cadastro de Job -->
-		{{-- <div class="snackbar">Job cadastrado com sucesso.</div> --}}
-		@include ('site.layouts.perfil.footer')
-		@include ('site.layouts.perfil.scripts')
+<body class="w3-theme-l5">
+	@include ('site.layouts.perfil.nav-perfil')
+	@if (auth()->guard('empresa')->check())
+	@include ('site.layouts.perfil.aside-left')
+	@else
+	@include ('site.layouts.perfil.aside-left-freelancer')
+	@endif
+	@yield ('conteudo')
+	@include ('site.layouts.perfil.aside-right')
+	<!-- Snackbar cadastro de Job -->
+	{{-- <div class="snackbar">Job cadastrado com sucesso.</div> --}}
+	@include ('site.layouts.perfil.footer')
+	@include ('site.layouts.perfil.scripts')

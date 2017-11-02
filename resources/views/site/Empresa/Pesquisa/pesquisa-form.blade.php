@@ -43,7 +43,7 @@
                       <div class="form-group">
                         <label for="categoria">Cidade:</label>
                         <select class="w3-select" id="cidade" name="cidade" required>
-                          <option value="">Todas</option>
+                          <option value="0">Todas</option>
                           @foreach ( $cidades as $cidade)
                           <option value="{{ $cidade->cidade }}">{{ $cidade->cidade }}</option>
                           @endforeach
@@ -76,7 +76,7 @@
             <tr>
               <td>{{ $produtora->nome }}</td>
               <td>{{ $produtora->email }}</td>
-              <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para o freelancer">Ver perfil</a>
+              <td><a href="/empresa/pesquisa/perfil-produtora/{{ $produtora->id }}" class="w3-button w3-blue w3-small" title="Ver perfil da produtora">Ver perfil</a>
               </td>
             </tr>
             @endforeach

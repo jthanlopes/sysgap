@@ -25,19 +25,19 @@ Route::prefix('empresa')->group(function () {
 	// Rota de perfil da empresa
   Route::get('/', 'Empresa\EmpresaController@perfil');
 	// Rotas de logout
-	Route::get('/perfil', 'Empresa\EmpresaController@perfil')->name('empresa.perfil');
+  Route::get('/perfil', 'Empresa\EmpresaController@perfil')->name('empresa.perfil');
   // Abre o formulário de cadastro da empresa
   Route::get('/novo', 'Empresa\EmpresaRegisterController@registroView')->name('empresa.registro-view');
-  // Salvar formulário 
+  // Salvar formulário
   Route::post('/novo', 'Empresa\EmpresaRegisterController@novo')->name('empresa.novo');
   // Confirmação de conta da empresa
   Route::get('/confirmaConta/{token}', 'Empresa\EmpresaRegisterController@confirmaConta')->name('empresa.confirma-conta');
   // Abre o formulário de login da empresa
   Route::get('/login', 'Empresa\EmpresaLoginController@loginView')->name('empresa.login-view');
   // Submete o formulário de login
-	Route::post('/login', 'Empresa\EmpresaLoginController@login')->name('empresa.login');
+  Route::post('/login', 'Empresa\EmpresaLoginController@login')->name('empresa.login');
 	// Rotas de logout
-	Route::get('/logout', 'Empresa\EmpresaLoginController@logout')->name('empresa.logout');
+  Route::get('/logout', 'Empresa\EmpresaLoginController@logout')->name('empresa.logout');
   // Abrir formulário de editar perfil
   Route::get('/editar-perfil', 'Empresa\EmpresaController@editarPerfil')->name('empresa.editar-perfil.view');
   // Rotas do projeto
@@ -59,7 +59,7 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/{projeto}/job/novo', 'Empresa\Job\JobController@novoForm')->name('job.novo.form');
   // Salvar Job
   Route::post('/projeto/job/novo', 'Empresa\Job\JobController@novo')->name('job.novo');
-  // 
+  //
   Route::get('/projeto/{projeto}/job/{job}', 'Empresa\Job\JobController@jobView')->name('job.view');
   // Abrir formulário de editar job
   Route::get('/projeto/job/editar/{job}', 'Empresa\Job\JobController@editarJobView')->name('view.job-editar');
@@ -92,6 +92,8 @@ Route::prefix('empresa')->group(function () {
   Route::get('/pesquisar', 'Empresa\Pesquisa\PesquisaController@pesquisarView')->name('pesquisa.form.usuarios');
   // Subemeter fomulário de pesquisa
   Route::post('/pesquisar', 'Empresa\Pesquisa\PesquisaController@pesquisar')->name('pesquisa.usuarios');
+  // Visualizar perfil de  uma produtora
+  Route::get('/pesquisa/perfil-produtora/{produtora}', 'Empresa\Pesquisa\PesquisaController@viewPerfilProdutora')->name('view.perfil-produtora');
   // Rotas de notícias e eventos
   // Submeter e criar uma nova notícia
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
