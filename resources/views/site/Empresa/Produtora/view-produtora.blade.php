@@ -32,7 +32,7 @@
         <!-- Profile -->
         <div class="w3-card-2 w3-round w3-white">
           <div class="w3-container">
-           <h4 class="w3-center"><a href="{{ route('empresa.perfil') }}">Perfil Empresa</a></h4>
+           <h4 class="w3-center">Perfil Empresa</h4>
            <p class="w3-center"><img src="{{ asset('storage') . '/empresas/perfil/' . $produtora->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da produtora"></p>
            <hr>
            <p title="Nome de usuário"><i class="fa fa-address-card-o fa-fw w3-margin-right w3-text-theme"></i> {{ $produtora->categoria . ": " . $produtora->nome }}</p>
@@ -61,11 +61,15 @@
       <!-- Interests -->
       <div class="w3-card-2 w3-round w3-white w3-hide-small">
         <div class="w3-container">
-          <p>Conhecimentos <span class="opt-tec"></span></p>
+          <p>Conhecimentos</p>
           <p>
+            @if(count($produtora->conhecimentos) > 0)
             @foreach ($produtora->conhecimentos as $conhecimento)
             <span class="w3-tag w3-small w3-theme-d5">{{ $conhecimento->titulo }}</span>
             @endforeach
+            @else
+            Nenhum conhecimento cadastrado!
+            @endif
           </p>
         </div>
       </div>
@@ -74,7 +78,7 @@
     </div>
     <!-- Middle Column -->
     <div class="w3-col m7">
-      @if($noticias != [])
+      @if(count($noticias) > 0)
       @foreach($noticias as $noticia)
       <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;"><br>
         <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
@@ -89,7 +93,9 @@
       </div>
       @endforeach
       @else
-      <h3>Nenum post feito por este usuário!</h3>
+      <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;">
+      <h4>Nenhum post feito por este usuário!</h4>
+      </div>
       @endif
 
       <!-- End Middle Column -->

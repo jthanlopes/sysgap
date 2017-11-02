@@ -41,7 +41,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="categoria">Categoria:</label>
-              <select class="w3-select" id="categoria" name="categoria" required>                        
+              <select class="w3-select" id="categoria" name="categoria" required>
                 <option value="Agência">Agência</option>
                 <option value="Produtora">Produtora</option>
                 <option value="Empresa">Outra empresa</option>
@@ -58,7 +58,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="categoria">Foto de perfil:</label>                    
+              <label for="categoria">Foto de perfil:</label>
               <input id="input-1a" type="file" class="file" data-show-preview="false" name="profile_photo">
             </div>
           </div>
@@ -87,7 +87,7 @@
               <label for="logradouro">Número</label>
               <input type="number" class="w3-input numero" placeholder="Número" name="numero" min="1">
             </div>
-          </div>                  
+          </div>
           <div class="col-md-4">
             <div class="form-group">
               <label for="complemento">Complemento</label>
@@ -128,6 +128,6 @@
 <script>
   $(document).ready(function(){
     $( "#home, .ajuste" ).removeClass( "w3-white" );
-    $( ".ajuste" ).addClass( "w3-white" );  
+    $( ".ajuste" ).addClass( "w3-white" );
   });
 </script>

@@ -15,7 +15,7 @@ class Empresa extends Authenticatable
      * @var array
      */
     protected $fillable = [
-      'id', 'nome', 'email', 'password', 'cnpj', 'categoria', 'endereco_id', 'foto_perfil', 'pontuacao', 
+      'id', 'nome', 'email', 'password', 'cnpj', 'categoria', 'endereco_id', 'foto_perfil', 'pontuacao',
       'avaliacao_geral' ,'ativo', 'account_confirmation',
     ];
 
@@ -27,7 +27,7 @@ class Empresa extends Authenticatable
     protected $hidden = [
       'password', 'remember_token',
     ];
-    
+
     public function endereco() {
     	return $this->belongsTo(Endereco::class);
     }

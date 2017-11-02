@@ -45,7 +45,7 @@
                         <select class="w3-select" id="cidade" name="cidade" required>
                           <option value="0">Todas</option>
                           @foreach ( $cidades as $cidade)
-                          <option value="{{ $cidade->cidade }}">{{ $cidade->cidade }}</option>
+                          <option value="{{ $cidade->cidade }}">{{ $cidade->cidade}}/{{ $cidade->uf }}</option>
                           @endforeach
                         </select>
                       </div>
@@ -68,7 +68,7 @@
             <tr>
               <td>{{ $freelancer->nome }}</td>
               <td>{{ $freelancer->email }}</td>
-              <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para o freelancer">Ver perfil</a>
+              <td><a href="/empresa/pesquisa/perfil-freelancer/{{ $freelancer->id }}" class="w3-button w3-blue w3-small" title="Ver perfil do freelancer">Ver perfil</a>
               </td>
             </tr>
             @endforeach

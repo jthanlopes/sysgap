@@ -94,6 +94,8 @@ Route::prefix('empresa')->group(function () {
   Route::post('/pesquisar', 'Empresa\Pesquisa\PesquisaController@pesquisar')->name('pesquisa.usuarios');
   // Visualizar perfil de  uma produtora
   Route::get('/pesquisa/perfil-produtora/{produtora}', 'Empresa\Pesquisa\PesquisaController@viewPerfilProdutora')->name('view.perfil-produtora');
+  // Visualizar perfil de  um freelancer
+  Route::get('/pesquisa/perfil-freelancer/{freelancer}', 'Empresa\Pesquisa\PesquisaController@viewPerfilFreelancer')->name('view.perfil-freelancer');
   // Rotas de notícias e eventos
   // Submeter e criar uma nova notícia
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');

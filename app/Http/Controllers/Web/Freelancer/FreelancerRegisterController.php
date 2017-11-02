@@ -19,6 +19,19 @@ class FreelancerRegisterController extends Controller
   }
 
   public function novo(Request $request) {
+    $endereco = Endereco::create([
+      'cep' => request('cep'),
+      'logradouro' => request('logradouro'),
+      'numero' => request('numero'),
+      'complemento' => request('complemento'),
+      'bairro' => request('bairro'),
+      'cidade' => request('cidade'),
+      'uf' => request('uf'),
+    ]);
+
+    // Salvar o endereço primeiro
+    $endereco->save();
+
     $filename = config('app.name') . '_foto_perfil' . str_slug($request->email, '_') . '_' . $request->file('profile_photo')->getClientOriginalName();
     $request->profile_photo->storeAs('freelancers/perfil', $filename, 'public');
 
@@ -26,8 +39,9 @@ class FreelancerRegisterController extends Controller
       'nome' => $request->nome,
       'email' => $request->email,
       'cpf' => $request->cpf,
-      'password' => bcrypt($request->senha),            
+      'password' => bcrypt($request->senha),
       'foto_perfil' => $filename,
+      'endereco_id' => $endereco['id'],
       'ativo' => 1,
       'account_confirmation' => hash_hmac('sha256', str_random(40), config('app.key')),
     ]);
@@ -49,7 +63,7 @@ class FreelancerRegisterController extends Controller
 
   public function confirmaConta($token) {
     $freelancer = Freelancer::where('account_confirmation', $token)->first();
-    
+
     if(count($freelancer) > 0) {
      $freelancer->ativo = 1;
      $freelancer->save();
