@@ -27,7 +27,7 @@
             </tr>
             @foreach ($freelancers as $freelancer)
             <tr>
-              <td>{{ $freelancer->nome }}</td>
+              <td><a href="/empresa/pesquisa/perfil-freelancer/{{ $freelancer->id }}">{{ $freelancer->nome }}</a></td>
               <td>{{ $freelancer->email }}</td>
               <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para o freelancer">Enviar E-mail</a>
                 <a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante/{{ $freelancer->id }}/remover" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a>

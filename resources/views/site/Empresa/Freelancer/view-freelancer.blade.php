@@ -45,21 +45,18 @@
        <!-- Accordion -->
        <div class="w3-card-2 w3-round">
         <div class="w3-white groups">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Meus Grupos</button>
+          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Grupos</button>
           <div id="Demo1" class="w3-hide w3-container">
-            <button class="geral">Criar Grupo</button>
             <hr>
             <p><a href="">Grupo 1</a></p>
             <p><a href="">Grupo 2</a></p>
             <p><a href="">Grupo 3</a></p>
           </div>
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Lorem</button>
+          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Avaliações</button>
           <div id="Demo2" class="w3-hide w3-container">
-            <button class="geral">Lorem</button>
             <hr>
-            <p><a href="">Projeto 1</a></p>
-            <p><a href="">Projeto 2</a></p>
-            <p><a href="">Projeto 3</a></p>
+            <p><a href="">Avaliações recebidas</a></p>
+            <p><a href="">Avaliações feitas</a></p>
           </div>
           <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
           <div id="Demo3" class="w3-hide w3-container">

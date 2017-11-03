@@ -21,7 +21,7 @@
           <p class="w3-opacity">Data de criação: {{ $projeto->created_at->format('d/m/Y') }}</p>
           <p class="w3-opacity">Número de integrantes: {{ count($freelancers) + count($produtoras) }}</p>
           <p class="w3-opacity">Número de jobs: {{ count($jobs) }}</p>
-          <a href="">Gerar relatório do projeto</a>
+          <a href="/empresa/projeto/{{ $projeto->id }}/pdf">Gerar relatório do projeto</a>
           <hr>
           <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="/empresa/projeto/{{ $projeto->id }}/integrante/novo">Adicionar integrante</a>]</span></h4>
           <table class="w3-table w3-centered w3-bordered table-projetos">
@@ -29,25 +29,25 @@
               <th>Nome</th>
               <th>E-mail</th>
               <th>Ações</th>
-            </tr>            
-            @foreach ($freelancers as $freelancer)            
+            </tr>
+            @foreach ($freelancers as $freelancer)
             <tr>
-              <td>{{ $freelancer->nome }}</td>
+              <td><a href="/empresa/pesquisa/perfil-freelancer/{{ $freelancer->id }}">{{ $freelancer->nome }}</a></td>
               <td>{{ $freelancer->email }}</td>
               <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para o freelancer">Enviar E-mail</a>
                 <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover/{{ $freelancer->id }}" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a></td>
               </tr>
-              @endforeach              
+              @endforeach
               @foreach ($produtoras as $produtora)
               <tr>
-                <td>{{ $produtora->nome }}</td>
+                <td><a href="/empresa/pesquisa/perfil-produtora/{{ $produtora->id }}">{{ $produtora->nome }}</a></td>
                 <td>{{ $produtora->email }}</td>
                 <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para a produtora">Enviar E-mail</a>
                   <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover-produtora/{{ $produtora->id }}" class="w3-button w3-red w3-small" title="Remover produtora">Remover</a></td>
-                </tr>                  
-                @endforeach                
+                </tr>
+                @endforeach
               </table>
-              @if(count($freelancers) == 0 && count($produtoras) == 0)    
+              @if(count($freelancers) == 0 && count($produtoras) == 0)
               <div style="text-align: center; margin-top: 10px;">
                 Adicione os integrantes que participarão deste projeto.
               </div>

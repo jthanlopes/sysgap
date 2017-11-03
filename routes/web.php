@@ -108,7 +108,11 @@ Route::prefix('empresa')->group(function () {
   Route::post('/conhecimento/add', 'Empresa\Conhecimento\ConhecimentoController@addConhecimento')->name('conhecimento.add');
   //
   Route::get('/conhecimento/excluir/{conhecimento}', 'Empresa\Conhecimento\ConhecimentoController@excluirConhecimento')->name('conhecimento.excluir');
+
+  // Rotas pra gerar PDFs
+  Route::get('/projeto/{projeto}/pdf', 'pdfController@pdfProjeto')->name('pdf.projeto');
 });
+
 
 // Rotas de freelancer
 Route::prefix('freelancer')->group(function () {
