@@ -40,12 +40,20 @@
              <p title="E-mail">{{ $freelancer->email }}</p>
              <p title="Data de cadastro">{{ $freelancer->created_at->format('d/m/Y') }}</p>
            </div>
-         </div>
-       </div>
-       <br>
+           <div class="w3-row">
+            <div class="w3-half">
+              <button class="w3-button w3-block w3-green w3-section" title="Accept">Enviar E-mail</button>
+            </div>
+            <div class="w3-half">
+              <button class="w3-button w3-block w3-red w3-section" title="Decline">Enviar Mensagem</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
 
-       <!-- Accordion -->
-       <div class="w3-card-2 w3-round">
+      <!-- Accordion -->
+      <div class="w3-card-2 w3-round">
         <div class="w3-white groups">
           <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Grupos</button>
           <div id="Demo1" class="w3-hide w3-container">

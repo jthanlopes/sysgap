@@ -151,6 +151,13 @@ Route::prefix('freelancer')->group(function () {
   Route::post('/noticias/novo/', 'Freelancer\Noticia\NoticiaController@criarNoticia')->name('noticia.novo.freelancer');
   // Excluir notícia/evento
   Route::get('/noticia/excluir/{noticia}', 'Freelancer\Noticia\NoticiaController@excluirNoticia')->name('noticia.excluir.freelancer');
+  // Rotas dos jobs
+  // Visualizar todos os jobs
+  Route::get('/jobs', 'Freelancer\Job\JobController@jobsView')->name('jobs.view.freelancer');
+  // Visualizar os jobs por projeto
+  Route::get('/jobs-projetos', 'Freelancer\Job\JobController@jobsViewProjeto')->name('jobs.projeto.view');
+  // Visualizar os jobs por projeto
+  Route::get('/jobs-projetos/{projeto}', 'Freelancer\Job\JobController@jobsView')->name('jobs.projeto.pesquisa');
 });
 
 Auth::routes();

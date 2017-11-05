@@ -18,8 +18,8 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-    html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif;}
-  </style>
+  html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif;}
+</style>
 </head>
 <body class="w3-theme-l5">
   @include ('site.layouts.perfil.nav-perfil')
@@ -35,15 +35,25 @@
            <h4 class="w3-center">Perfil Empresa</h4>
            <p class="w3-center"><img src="{{ asset('storage') . '/empresas/perfil/' . $produtora->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da produtora"></p>
            <hr>
-           <p title="Nome de usuário">{{ $produtora->categoria . ": " . $produtora->nome }}</p>
-           <p title="E-mail">{{ $produtora->email }}</p>
-           <p title="Cidade/Estado">{{ $produtora->endereco->cidade . " - " . $produtora->endereco->uf}}</p>
-           <p title="Data de cadastro">{{ $produtora->created_at->format('d/m/Y') }}</p>
-         </div>
-       </div>
-       <br>
-       <!-- Accordion -->
-       <div class="w3-card-2 w3-round">
+           <div style="text-align: center;">
+             <p title="Nome de usuário">{{ $produtora->categoria . ": " . $produtora->nome }}</p>
+             <p title="E-mail">{{ $produtora->email }}</p>
+             <p title="Cidade/Estado">{{ $produtora->endereco->cidade . " - " . $produtora->endereco->uf}}</p>
+             <p title="Data de cadastro">{{ $produtora->created_at->format('d/m/Y') }}</p>
+           </div>
+           <div class="w3-row">
+            <div class="w3-half">
+              <button class="w3-button w3-block w3-green w3-section" title="Accept">Enviar E-mail</button>
+            </div>
+            <div class="w3-half">
+              <button class="w3-button w3-block w3-red w3-section" title="Decline">Enviar Mensagem</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <!-- Accordion -->
+      <div class="w3-card-2 w3-round">
         <div class="w3-white groups">
           <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Projetos</button>
           <div id="Demo2" class="w3-hide w3-container">
@@ -95,7 +105,7 @@
       @endforeach
       @else
       <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;">
-      <h4>Nenhum post feito por este usuário!</h4>
+        <h4>Nenhum post feito por este usuário!</h4>
       </div>
       @endif
 

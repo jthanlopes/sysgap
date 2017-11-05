@@ -7,7 +7,7 @@
       <!-- Profile -->
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container">
-         <h4 class="w3-center">Perfil Freelancer</h4>
+         <h4 class="w3-center"><a href="{{ route('freelancer.perfil') }}">Perfil Freelancer</a></h4>
          <p class="w3-center"><img src="{{ asset('storage') . '/freelancers/perfil/' . $freelancer->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da freelancer"></p>
          <hr>
          <div style="text-align: center;">
@@ -30,10 +30,11 @@
           <p><a href="">Grupo 2</a></p>
           <p><a href="">Grupo 3</a></p>
         </div>
-        <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Jobs</button>
+        <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Meus Jobs</button>
         <div id="Demo2" class="w3-hide w3-container">
           <hr>
-          <p><a href="">Ver meus jobs</a></p>
+          <p><a href="{{ route('jobs.view.freelancer') }}">Visualizar todos</a></p>
+          <p><a href="{{ route('jobs.projeto.view') }}">Filtrar por projeto</a></p>
         </div>
         <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
         <div id="Demo3" class="w3-hide w3-container">
