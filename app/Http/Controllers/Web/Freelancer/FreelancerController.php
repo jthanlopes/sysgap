@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Freelancer;
 
 use App\Freelancer;
+use App\Noticia;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class FreelancerController extends Controller
   public function perfil() {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
-    return view('site.freelancer.perfil', compact('freelancer'));    
+    $noticias = Noticia::orderBy('created_at', 'desc')->where('freelancer_id', $id)->paginate(10);
+    return view('site.freelancer.perfil', compact('freelancer', 'noticias'));
   }
 }

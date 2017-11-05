@@ -146,6 +146,11 @@ Route::prefix('freelancer')->group(function () {
   Route::post('/conhecimento/add', 'Freelancer\Conhecimento\ConhecimentoController@addConhecimento')->name('conhecimento.add.freelancer');
   //
   Route::get('/conhecimento/excluir/{conhecimento}', 'Freelancer\Conhecimento\ConhecimentoController@excluirConhecimento')->name('conhecimento.excluir.freelancer');
+  // Rotas de notícias e eventos
+  // Submeter e criar uma nova notícia
+  Route::post('/noticias/novo/', 'Freelancer\Noticia\NoticiaController@criarNoticia')->name('noticia.novo.freelancer');
+  // Excluir notícia/evento
+  Route::get('/noticia/excluir/{noticia}', 'Freelancer\Noticia\NoticiaController@excluirNoticia')->name('noticia.excluir.freelancer');
 });
 
 Auth::routes();
