@@ -26,7 +26,7 @@ class ConhecimentoController extends Controller
     $id = $request->get('tecnologia');
     $conhecimento = Conhecimento::find($id);
     $empresa = Auth::user();
-    $add = $empresa->conhecimentos()->attach($conhecimento);
+    $add = $empresa->conhecimentos()->attach($conhecimento, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
 
     $message = parent::returnMessage('success', 'Conhecimento adicionado com sucesso!');
 

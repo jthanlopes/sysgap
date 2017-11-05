@@ -48,7 +48,7 @@ class FreelancerRegisterController extends Controller
 
     $freelancer->save();
 
-    ($freelancer)->send(new ConfirmaContaFreelancer($freelancer));
+    \Mail::to($freelancer)->send(new ConfirmaContaFreelancer($freelancer));
 
     if ( $freelancer )
     {

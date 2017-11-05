@@ -16,10 +16,10 @@
           </div>
           @endif
           <hr>
-          <form method="POST" action="{{ route('conhecimento.add') }}">
+          <form method="POST" action="{{ route('conhecimento.add.freelancer') }}">
             {{ csrf_field() }}
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <select class="w3-select" name="tecnologia" required>
                     <option value="" disabled selected>Escolha a tecnologia</option>
@@ -29,6 +29,15 @@
                   </select>
                 </div>
               </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input class="w3-input" type="text" name="tempo_experiencia" placeholder="Tempo de experiência (Exs.: 6 meses, 2 anos)">
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   {{-- <input class="w3-button w3-circle w3-black add-conhecimento" type="input" value="+" title="Adicionar tecnologia"> --}}
@@ -43,6 +52,7 @@
               <th>Tecnologia</th>
               <th>Descrição</th>
               <th>Nível</th>
+              <th>Tempo<br>Experiência</th>
               <th>Ações</th>
             </tr>
             @foreach ($freelancer->conhecimentos as $conhecimento)
@@ -50,7 +60,8 @@
               <td>{{ $conhecimento->titulo }}</td>
               <td>{{ $conhecimento->descricao }}</td>
               <td>{{ $conhecimento->nivel }}</td>
-              <td><a href="/empresa/conhecimento/excluir/{{ $conhecimento->id }}" class="w3-button w3-red w3-small" title="Remover o conhecimento">Remover</a>
+              <td>{{ $conhecimento->pivot->tempo_experiencia }}</td>
+              <td><a href="/freelancer/conhecimento/excluir/{{ $conhecimento->id }}" class="w3-button w3-red w3-small" title="Remover o conhecimento">Remover</a>
               </tr>
               @endforeach
             </table>

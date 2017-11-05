@@ -117,16 +117,20 @@ return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtora
 }
 
 public function viewPerfilProdutora(Empresa $produtora) {
-  $produtora = Empresa::find($produtora->id);
   $noticias = Noticia::orderBy('created_at', 'desc')->where('empresa_id', $produtora->id)->paginate(10);
 
   return view('site.empresa.produtora.view-produtora', compact('produtora', 'noticias'));
 }
 
 public function viewPerfilFreelancer(Freelancer $freelancer) {
-  $freelancer = Freelancer::find($freelancer->id);
   $noticias = Noticia::orderBy('created_at', 'desc')->where('freelancer_id', $freelancer->id)->paginate(10);
 
   return view('site.empresa.freelancer.view-freelancer', compact('freelancer', 'noticias'));
+}
+
+public function viewConhecimentosFreelancer(Freelancer $freelancer) {
+  $freelancer = Freelancer::find($freelancer->id);
+
+  return view('site.empresa.freelancer.conhecimentos-view-freelancer', compact('freelancer', 'noticias'));
 }
 }

@@ -49,4 +49,13 @@ class Freelancer extends Authenticatable {
     public function jobs() {
       return $this->belongsToMany(Job::class);
     }
+
+    public function conhecimentos() {
+      return $this->belongsToMany(Conhecimento::class)
+      ->withPivot('tempo_experiencia');
+    }
+
+    public function grupos() {
+      return $this->hasMany(Grupo::class);
+    }
   }

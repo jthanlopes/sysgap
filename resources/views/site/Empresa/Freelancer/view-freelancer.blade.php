@@ -35,9 +35,11 @@
            <h4 class="w3-center">Perfil Freelancer</h4>
            <p class="w3-center"><img src="{{ asset('storage') . '/freelancers/perfil/' . $freelancer->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da freelancer"></p>
            <hr>
-           <p title="Nome de usuário"><i class="fa fa-address-card-o fa-fw w3-margin-right w3-text-theme"></i> {{ $freelancer->nome }}</p>
-           <p title="Função"><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Freelancer</p>
-           <p title="Usuário desde"><i class="fa fa-calendar fa-fw w3-margin-right w3-text-theme"></i> {{ $freelancer->created_at->format('d/m/Y') }}</p>
+           <div style="text-align: center;">
+             <p title="Nome de usuário">{{ $freelancer->nome }}</p>
+             <p title="E-mail">{{ $freelancer->email }}</p>
+             <p title="Data de cadastro">{{ $freelancer->created_at->format('d/m/Y') }}</p>
+           </div>
          </div>
        </div>
        <br>
@@ -89,19 +91,13 @@
      <!-- Interests -->
      <div class="w3-card-2 w3-round w3-white w3-hide-small">
       <div class="w3-container">
-        <p>Tecnologias</p>
+        <p>Conhecimentos <span class="opt-tec">[<a href="/empresa/pesquisa/perfil-freelancer/conhecimentos/{{ $freelancer->id }}">Ver detalhes</a>]</span></p>
         <p>
-          <span class="w3-tag w3-small w3-theme-d5">News</span>
-          <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
-          <span class="w3-tag w3-small w3-theme-d3">Labels</span>
-          <span class="w3-tag w3-small w3-theme-d2">Games</span>
-          <span class="w3-tag w3-small w3-theme-d1">Friends</span>
-          <span class="w3-tag w3-small w3-theme">Games</span>
-          <span class="w3-tag w3-small w3-theme-l1">Friends</span>
-          <span class="w3-tag w3-small w3-theme-l2">Food</span>
-          <span class="w3-tag w3-small w3-theme-l3">Design</span>
-          <span class="w3-tag w3-small w3-theme-l4">Art</span>
-          <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+          <p>
+            @foreach ($freelancer->conhecimentos as $conhecimento)
+            <span class="w3-tag w3-small w3-theme-l{{ rand(1, 5) }}">{{ $conhecimento->titulo }}</span>
+            @endforeach
+          </p>
         </p>
       </div>
     </div>

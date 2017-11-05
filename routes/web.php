@@ -92,10 +92,12 @@ Route::prefix('empresa')->group(function () {
   Route::get('/pesquisar', 'Empresa\Pesquisa\PesquisaController@pesquisarView')->name('pesquisa.form.usuarios');
   // Subemeter fomulário de pesquisa
   Route::post('/pesquisar', 'Empresa\Pesquisa\PesquisaController@pesquisar')->name('pesquisa.usuarios');
-  // Visualizar perfil de  uma produtora
+  // Visualizar perfil de uma produtora
   Route::get('/pesquisa/perfil-produtora/{produtora}', 'Empresa\Pesquisa\PesquisaController@viewPerfilProdutora')->name('view.perfil-produtora');
-  // Visualizar perfil de  um freelancer
+  // Visualizar perfil de um freelancer
   Route::get('/pesquisa/perfil-freelancer/{freelancer}', 'Empresa\Pesquisa\PesquisaController@viewPerfilFreelancer')->name('view.perfil-freelancer');
+  // Visualizar perfil/conhecimentos de um freelancer
+  Route::get('/pesquisa/perfil-freelancer/conhecimentos/{freelancer}', 'Empresa\Pesquisa\PesquisaController@viewConhecimentosFreelancer')->name('view.conhecimentos-freelancer');
   // Rotas de notícias e eventos
   // Submeter e criar uma nova notícia
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
@@ -137,6 +139,13 @@ Route::prefix('freelancer')->group(function () {
 
   // Rotas de logout
   Route::get('/logout', 'Freelancer\FreelancerLoginController@logout')->name('freelancer.logout');
+  // Rotas de conhecimentos do freelancer
+  //
+  Route::get('/conhecimentos', 'Freelancer\Conhecimento\ConhecimentoController@conhecimentosView')->name('tecnologias.view.freelancer');
+  //
+  Route::post('/conhecimento/add', 'Freelancer\Conhecimento\ConhecimentoController@addConhecimento')->name('conhecimento.add.freelancer');
+  //
+  Route::get('/conhecimento/excluir/{conhecimento}', 'Freelancer\Conhecimento\ConhecimentoController@excluirConhecimento')->name('conhecimento.excluir.freelancer');
 });
 
 Auth::routes();

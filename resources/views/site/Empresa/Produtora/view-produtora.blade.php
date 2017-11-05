@@ -35,9 +35,10 @@
            <h4 class="w3-center">Perfil Empresa</h4>
            <p class="w3-center"><img src="{{ asset('storage') . '/empresas/perfil/' . $produtora->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da produtora"></p>
            <hr>
-           <p title="Nome de usuário"><i class="fa fa-address-card-o fa-fw w3-margin-right w3-text-theme"></i> {{ $produtora->categoria . ": " . $produtora->nome }}</p>
-           <p title="Cidade/Estado"><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ $produtora->endereco->cidade . " - " . $produtora->endereco->uf}}</p>
-           <p title="Data de cadastro"><i class="fa fa-calendar fa-fw w3-margin-right w3-text-theme"></i> {{ $produtora->created_at->format('d/m/Y') }}</p>
+           <p title="Nome de usuário">{{ $produtora->categoria . ": " . $produtora->nome }}</p>
+           <p title="E-mail">{{ $produtora->email }}</p>
+           <p title="Cidade/Estado">{{ $produtora->endereco->cidade . " - " . $produtora->endereco->uf}}</p>
+           <p title="Data de cadastro">{{ $produtora->created_at->format('d/m/Y') }}</p>
          </div>
        </div>
        <br>
@@ -65,7 +66,7 @@
           <p>
             @if(count($produtora->conhecimentos) > 0)
             @foreach ($produtora->conhecimentos as $conhecimento)
-            <span class="w3-tag w3-small w3-theme-d5">{{ $conhecimento->titulo }}</span>
+            <span class="w3-tag w3-small w3-theme-l{{ rand(1, 5) }}">{{ $conhecimento->titulo }}</span>
             @endforeach
             @else
             Nenhum conhecimento cadastrado!
