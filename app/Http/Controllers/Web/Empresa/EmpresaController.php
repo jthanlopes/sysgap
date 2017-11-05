@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Empresa;
 
 use App\Empresa;
+use App\Endereco;
 use App\Noticia;
 use App\Conhecimento;
 use Auth;
@@ -28,5 +29,35 @@ class EmpresaController extends Controller
         $empresa = Empresa::find($id);
 
         return view('site.empresa.perfil-editar', compact('empresa'));
+    }
+
+    public function editarInfomacoes(Request $request) {
+        Endereco::where('id', $request->enderecoId)
+        ->update(['cep' => $request->cep,
+            'logradouro' => $request->logradouro,
+            'numero' => $request->numero,
+            'complemento' => $request->complemento,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'uf' => $request->uf]);
+
+        $message = parent::returnMessage('success', 'Informações editadas com sucesso!');
+
+        return redirect()->route('empresa.editar-perfil.view')->with('message', $message);
+    }
+
+    public function editarEndereco(Request $request) {
+        Endereco::where('id', $request->enderecoId)
+        ->update(['cep' => $request->cep,
+            'logradouro' => $request->logradouro,
+            'numero' => $request->numero,
+            'complemento' => $request->complemento,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'uf' => $request->uf]);
+
+        $message = parent::returnMessage('success', 'Endereço editado com sucesso!');
+
+        return redirect()->route('empresa.editar-perfil.view')->with('message', $message);
     }
 }

@@ -40,6 +40,10 @@ Route::prefix('empresa')->group(function () {
   Route::get('/logout', 'Empresa\EmpresaLoginController@logout')->name('empresa.logout');
   // Abrir formulário de editar perfil
   Route::get('/editar-perfil', 'Empresa\EmpresaController@editarPerfil')->name('empresa.editar-perfil.view');
+  //
+  Route::post('/editar-perfil/informacoes-pessoais', 'Empresa\EmpresaController@editarInfomacoes');
+  //
+  Route::post('/editar-perfil/endereco', 'Empresa\EmpresaController@editarEndereco')->name('empresa.editar.endereco');
   // Rotas do projeto
   Route::get('/projetos', 'Empresa\Projeto\ProjetoController@projetosView')->name('projetos.view');
   // Pesquisar por projeto
@@ -158,6 +162,8 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/jobs-projetos', 'Freelancer\Job\JobController@jobsViewProjeto')->name('jobs.projeto.view');
   // Visualizar os jobs por projeto
   Route::get('/jobs-projetos/{projeto}', 'Freelancer\Job\JobController@jobsView')->name('jobs.projeto.pesquisa');
+  // Rotas grupos
+  Route::get('/grupos/add', 'Freelancer\Grupo\GrupoController@grupoNovo')->name('grupo.add');
 });
 
 Auth::routes();
