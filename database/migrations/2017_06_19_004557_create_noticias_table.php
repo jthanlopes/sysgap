@@ -17,11 +17,13 @@ class CreateNoticiasTable extends Migration {
 			$table->increments('id');
 			$table->string('titulo', 45);
 			$table->text('conteudo');
-			$table->string('imagem', 100);			
+			$table->string('imagem', 100);
 			$table->date('data_final')->nullable();
 			$table->timestamps();
 			$table->boolean('ativo');
 			$table->boolean('principal');
+			$table->string('cidade', 45)->nullable();
+			$table->string('uf', 3)->nullable();
 			$table->integer('admin_id')->unsigned()->nullable();
 			$table->integer('empresa_id')->unsigned()->nullable();
 			$table->integer('freelancer_id')->unsigned()->nullable();
