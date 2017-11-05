@@ -21,9 +21,11 @@ class RedirectIfAuthenticated
             case 'freela':
                 if (Auth::guard($guard)->check()) {
                     return redirect()->route('freelancer.perfil');
+                } else {
+                    return redirect()->route('home.page');
                 }
                 break;
-            
+
             case 'empresa':
                 if (Auth::guard($guard)->check()) {
                     return redirect()->route('empresa.perfil');

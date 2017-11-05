@@ -3,17 +3,23 @@
 namespace App\Http\Controllers\Web\Empresa;
 
 use App\Empresa;
+use Auth;
 use App\Utilities\Curl;
 use Illuminate\Http\Request;
 
 class EmpresaLoginController extends Controller
 {
   public function __construct() {
+    return redirect()->route('home.page');
     $this->middleware('guest:empresa')->except('logout');
   }
 
   public function loginView() {
-    return view('site.login-empresa');
+    if(Auth::guard('freelancer')->check()) {
+      return redirect()->route('home.page');
+    } else {
+      return view('site.login-empresa');
+    }
   }
 
   public function login(Request $request, Curl $curl) {
@@ -47,12 +53,12 @@ class EmpresaLoginController extends Controller
     } else {
       $message = parent::returnMessage('danger', 'Senha incorreta! Tente novamente.');
     }
-    
+
     return redirect()->back()->withInput($request->only('email'))->with('message', $message);
   }
 
   public function logout()
-  {                 
+  {
     auth()->guard('empresa')->logout();
     return redirect('/');
   }

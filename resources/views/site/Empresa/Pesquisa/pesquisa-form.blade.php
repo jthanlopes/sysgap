@@ -7,7 +7,7 @@
   <div class="w3-row-padding">
     <div class="w3-col m12">
       <div class="w3-card-2 w3-round w3-white">
-        <div class="w3-container w3-padding form-news">
+        <div class="w3-container w3-padding">
           <h3 class="w3-opacity">Pesquisar perfil de usuário</h3>
           <hr>
           <form method="POST" action="{{ route('pesquisa.usuarios') }}">
@@ -41,13 +41,23 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="categoria">Cidade:</label>
-                        <select class="w3-select" id="cidade" name="cidade" required>
-                          <option value="0">Todas</option>
-                          @foreach ( $cidades as $cidade)
-                          <option value="{{ $cidade->cidade }}">{{ $cidade->cidade}}/{{ $cidade->uf }}</option>
-                          @endforeach
-                        </select>
+                        <label for="categoria">Cidades:</label> <br/>
+                        @foreach ( $cidades as $cidade)
+                        <input class="w3-check" type="checkbox" name="cidades[]" value="{{ $cidade->cidade }}">
+                        <label style="font-weight: normal; margin-right: 10px;">{{ $cidade->cidade }}</label>
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="nome">Tecnologias:</label> <br/>
+                        @foreach ( $tecnologias as $tecnologia)
+                        <input class="w3-check" type="checkbox" name="tecnologias[]" value={{ $tecnologia->titulo }}>
+                        <label style="font-weight: normal; margin-right: 10px;">{{ $tecnologia->titulo }}/{{ $tecnologia->descricao }}</label>
+                        @endforeach
                       </div>
                     </div>
                   </div>

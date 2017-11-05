@@ -28,13 +28,10 @@
             <p><a href="">Grupo 2</a></p>
             <p><a href="">Grupo 3</a></p>
           </div>
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Lorem</button>
+          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Jobs</button>
           <div id="Demo2" class="w3-hide w3-container">
-            <button class="geral">Lorem</button>
             <hr>
-            <p><a href="">Projeto 1</a></p>
-            <p><a href="">Projeto 2</a></p>
-            <p><a href="">Projeto 3</a></p>
+            <p><a href="">Ver meus jobs</a></p>
           </div>
           <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
           <div id="Demo3" class="w3-hide w3-container">

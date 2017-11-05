@@ -2,7 +2,7 @@
 
 @section ('conteudo')
 <div class="w3-row">
-  <div class="w3-padding-64 w3-container login" style="width: 50%;margin-left: 25%;">
+  <div class="w3-padding-64 w3-container login" style="width: 40%;margin-left: 30%;">
     <div class="w3-content">
       <div class="w3-container">
         <h2>Login Empresa</h2>
@@ -19,14 +19,14 @@
           @endforeach
         </div>
         @endif
-        <hr>    
+        <hr>
         <form method="POST" action="{{ route('empresa.login') }}">
           {{ csrf_field() }}
           <label><b>E-mail</b></label>
           <input class="w3-input" type="email" placeholder="Digite seu e-mail" name="email" required autofocus>
 
           <label class="ajuste-label-login"><b>Senha</b></label>
-          <input class="w3-input" type="password" placeholder="Digite sua senha" name="password" required>       
+          <input class="w3-input" type="password" placeholder="Digite sua senha" name="password" required>
           <div class="g-recaptcha" name="recaptcha" data-sitekey={{ config('services.recaptcha.public') }} style="margin-top: 20px;"></div>
 
           <button type="submit" class="btn-default-home">Logar</button>
@@ -46,6 +46,6 @@
 <script>
   $(document).ready(function(){
     $( "#home, .ajuste" ).removeClass( "w3-white" );
-    $( ".ajuste" ).addClass( "w3-white" );  
+    $( ".ajuste" ).addClass( "w3-white" );
   });
 </script>

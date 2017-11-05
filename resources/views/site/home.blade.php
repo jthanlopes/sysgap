@@ -20,8 +20,13 @@
       <h1>Sobre o Projeto</h1>
       <h5 class="w3-padding-32">Com a atual expansão do mercado de TI e o lançamento de novas tecnologias para os mais variados sistemas, algumas empresas de grande porte acabam terceirizando alguns serviços para empresas menores especialistas nessas tecnologias ou também para freelancers.</h5>
 
-      <p class="w3-text-grey">Aqui você pode fazer o cadastro e gerenciamento de um perfil, para agências, produtoras, freelancers ou outros tipos de empresas. Facilitando a comunicação entre esses três meios. </p>
+      <p class="w3-text-grey" style="padding-bottom: 0!important;">Aqui você pode fazer o cadastro e gerenciamento de um perfil, para agências, produtoras, freelancers ou outros tipos de empresas. Facilitando a busca por profissionais qualificados ou vagas de freela. Clique nos links abaixo para fazer seu login ou cadastro.</p>
+
+      Você é uma empresa? <a href="{{ route('empresa.login-view') }}">Clique aqui</a> e faça seu login ou cadastro. <br>
+      Você é um freelancer? <a href="{{ route('freelancer.login-view') }}">Clique aqui</a> e faça seu login ou cadastro. <br><br><br>
+
       <p><a href="https://github.com/jthanlopes/sysgap" target="_blank">Link para o GitHub do projeto.</a></p>
+      <p><a href="https://www.overleaf.com/11934003zdnngqxnftps#/45250684/" target="_blank">Link para o Overleaf do projeto.</a></p>
     </div>
 
     <div class="w3-third w3-center">
@@ -45,21 +50,21 @@
         <li>Criação de grupos de freelancers;</li>
         <li>Cadastro de experiências e conhecimentos;</li>
         <li>Cadastro de portifólio;</li>
-        <li>Filtros avançados de pesquisa;</li>            
-        <li>Criação de projetos e jobs;</li>            
+        <li>Filtros avançados de pesquisa;</li>
+        <li>Criação de projetos e jobs;</li>
         <li>Troca de mensagens entre os usuários;</li>
         <li>Sistema de avaliação e pagamento para os jobs;</li>
         <li>Sistema de pontuação com ranking.</li>
-      </ul>  
+      </ul>
     </div>
   </div>
 
 </div>
 <!-- First Grid -->
-<div class="w3-row-padding w3-padding-64 w3-container">  
+<div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-twothird">
-      <h1>Eventos / Notícias</h1>      
+      <h1>Eventos / Notícias</h1>
       <div class="w3-padding-32">
         <h2>{{ $noticia->titulo }}</h2>
         <p>{{ substr($noticia->conteudo, 0, 300)."..." }}</p>

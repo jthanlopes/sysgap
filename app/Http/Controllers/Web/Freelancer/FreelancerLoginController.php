@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Freelancer;
 
 use App\Freelancer;
+use Auth;
 use App\Utilities\Curl;
 use Illuminate\Http\Request;
 
@@ -13,16 +14,20 @@ class FreelancerLoginController extends Controller
   }
 
   public function loginView() {
-    return view('site.login-freelancer');
+    if(Auth::guard('empresa')->check()) {
+      return redirect()->route('home.page');
+    } else {
+      return view('site.login-freelancer');
+    }
   }
 
   public function login(Request $request, Curl $curl) {
-    
+
     $response = json_decode($curl->post('https://www.google.com/recaptcha/api/siteverify', [
       'secret' => config('services.recaptcha.secret'),
       'response' => $request->input('g-recaptcha-response'),
       'remoteip' => $request->ip()
-    ]));  
+    ]));
 
     if (!$response->success) {
       abort(400, 'No no no!');
@@ -48,7 +53,7 @@ class FreelancerLoginController extends Controller
       $message = parent::returnMessage('danger', 'Senha incorreta! Tente novamente.');
     }
 
-    return redirect()->back()->withInput($request->only('email'))->with('message', $message);     
+    return redirect()->back()->withInput($request->only('email'))->with('message', $message);
   }
 
   public function logout()

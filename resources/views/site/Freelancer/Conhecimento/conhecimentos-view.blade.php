@@ -45,7 +45,7 @@
               <th>Nível</th>
               <th>Ações</th>
             </tr>
-            @foreach ($empresa->conhecimentos as $conhecimento)
+            @foreach ($freelancer->conhecimentos as $conhecimento)
             <tr>
               <td>{{ $conhecimento->titulo }}</td>
               <td>{{ $conhecimento->descricao }}</td>
