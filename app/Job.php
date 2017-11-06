@@ -15,4 +15,8 @@ class Job extends Model
 public function freelancers() {
   return $this->belongsToMany(Freelancer::class);
 }
+
+public function conhecimentos() {
+  return $this->belongsToMany(Conhecimento::class);
+}
 }

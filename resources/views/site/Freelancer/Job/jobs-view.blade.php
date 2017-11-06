@@ -36,7 +36,7 @@
             </table>
             @if(count($jobs) == 0)
             <div style="text-align: center; margin-top: 10px;">
-              Você não tem nenhum job.
+              Você não tem nenhum job no momento.
             </div>
             @endif
             <div style="text-align: center;">

@@ -6,6 +6,7 @@ use App\Job;
 use App\Projeto;
 use App\Empresa;
 use App\Freelancer;
+use App\Conhecimento;
 
 use Auth;
 use Illuminate\Http\Request;
@@ -20,8 +21,9 @@ class JobController extends Controller
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
     $freelancers = $job->freelancers()->orderBy('nome')->get();
+    $conhecimentos = Conhecimento::orderBy('titulo')->get();
 
-    return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto', 'freelancers'));
+    return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto', 'freelancers', 'conhecimentos'));
   }
 
   public function novoForm(Projeto $projeto) {
@@ -115,5 +117,23 @@ class JobController extends Controller
     $message = parent::returnMessage('success', $freelancer->nome . ' foi removido(a) do job!');
 
     return redirect('/empresa/projeto/' . $projeto->id . '/job/' . $job->id)->with('message', $message);
+  }
+
+  public function addConhecimento(Projeto $projeto, Job $job, Request $request) {
+    $id = $request->get('tecnologia');
+    $conhecimento = Conhecimento::find($id);
+    $add = $job->conhecimentos()->attach($conhecimento, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+
+    $message = parent::returnMessage('success', 'Conhecimento adicionado com sucesso!');
+
+    return redirect()->back()->with('message', $message);
+  }
+
+  public function removerConhecimento(Projeto $projeto, Job $job, Conhecimento $conhecimento) {
+    $job->conhecimentos()->detach($conhecimento);
+
+    $message = parent::returnMessage('success', 'Conhecimento removido com sucesso!');
+
+    return redirect()->back()->with('message', $message);
   }
 }

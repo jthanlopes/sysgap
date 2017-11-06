@@ -34,7 +34,7 @@
             </table>
             @if(count($projetos) == 0)
             <div style="text-align: center; margin-top: 10px;">
-              Você não está em nenhum projeto.
+              Você não está em nenhum projeto no momento.
             </div>
             @endif
           </div>

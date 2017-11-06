@@ -11,4 +11,8 @@ class Conhecimento extends Model
   public function freelancers() {
     return $this->belongsToMany(Freelancer::class);
   }
+
+  public function jobs() {
+    return $this->belongsToMany(Job::class);
+  }
 }

@@ -40,10 +40,53 @@
             Adicione os integrantes que irão realizar esse job.
           </div>
           @endif
+          <hr>
+          <h4 class="w3-opacity">Conhecimentos Necessários</h4>
+          <form method="POST" action="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/conhecimento/add">
+            {{ csrf_field() }}
+            <div class="row">
+              <div class="col-md-10">
+                <div class="form-group">
+                  <select class="w3-select" name="tecnologia" required>
+                    <option value="" disabled selected>Escolha a tecnologia</option>
+                    @foreach ($conhecimentos as $conhecimento)
+                    <option  value="{{ $conhecimento->id }}">{{ $conhecimento->titulo . '/' . $conhecimento->descricao . '/' . $conhecimento->nivel }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group" style="margin-top: 4px;">
+                  <input type="submit" value="Adicionar">
+                </div>
+              </div>
+            </div>
+          </form>
+          <table class="w3-table w3-centered w3-bordered table-conhecimentos">
+            <tr>
+              <th>Tecnologia</th>
+              <th>Descrição</th>
+              <th>Nível</th>
+              <th>Ações</th>
+            </tr>
+            @foreach ($job->conhecimentos as $conhecimento)
+            <tr>
+              <td>{{ $conhecimento->titulo }}</td>
+              <td>{{ $conhecimento->descricao }}</td>
+              <td>{{ $conhecimento->nivel }}</td>
+              <td><a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/conhecimento/{{ $conhecimento->id }}/remover" class="w3-button w3-red w3-small" title="Remover o conhecimento">Remover</a>
+              </tr>
+              @endforeach
+            </table>
+            @if(count($job->conhecimentos) == 0)
+            <div style="text-align: center; margin-top: 10px;">
+              Nenhum conhecimento cadastrado para esse job.
+            </div>
+            @endif
+          </div>
         </div>
       </div>
     </div>
+    <!-- End Middle Column -->
   </div>
-  <!-- End Middle Column -->
-</div>
-@endsection
+  @endsection
