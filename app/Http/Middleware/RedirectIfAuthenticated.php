@@ -17,27 +17,30 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        switch ($guard) {
-            case 'freela':
-                if (Auth::guard($guard)->check()) {
-                    return redirect()->route('freelancer.perfil');
-                } else {
-                    return redirect()->route('home.page');
-                }
-                break;
-
-            case 'empresa':
-                if (Auth::guard($guard)->check()) {
-                    return redirect()->route('empresa.perfil');
-                }
-                break;
-
-            default:
-                if (Auth::guard($guard)->check()) {
-                    return redirect('admin');
-                }
-                break;
+      switch ($guard) {
+        case 'freelancer':
+        if (Auth::guard($guard)->check()) {
+          return redirect()->route('freelancer.perfil');
+        } elseif(Auth::guard('empresa')->check()) {
+          return redirect()->route('empresa.perfil');
         }
-        return $next($request);
+        break;
+        case 'empresa':
+              // dd('teste 2');
+        if (Auth::guard($guard)->check()) {
+          return redirect()->route('empresa.perfil');
+        } elseif(Auth::guard('freelancer')->check()) {
+          return redirect()->route('freelancer.perfil');
+        }
+        break;
+
+        default:
+        dd('teste 3');
+        if (Auth::guard($guard)->check()) {
+          return redirect('admin');
+        }
+        break;
+      }
+      return $next($request);
     }
-}
+  }

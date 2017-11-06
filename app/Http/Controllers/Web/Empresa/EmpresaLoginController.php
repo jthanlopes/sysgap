@@ -10,16 +10,11 @@ use Illuminate\Http\Request;
 class EmpresaLoginController extends Controller
 {
   public function __construct() {
-    return redirect()->route('home.page');
     $this->middleware('guest:empresa')->except('logout');
   }
 
   public function loginView() {
-    if(Auth::guard('freelancer')->check()) {
-      return redirect()->route('home.page');
-    } else {
-      return view('site.login-empresa');
-    }
+    return view('site.login-empresa');
   }
 
   public function login(Request $request, Curl $curl) {

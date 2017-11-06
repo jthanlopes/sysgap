@@ -14,11 +14,7 @@ class FreelancerLoginController extends Controller
   }
 
   public function loginView() {
-    if(Auth::guard('empresa')->check()) {
-      return redirect()->route('home.page');
-    } else {
-      return view('site.login-freelancer');
-    }
+    return view('site.login-freelancer');
   }
 
   public function login(Request $request, Curl $curl) {
