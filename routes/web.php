@@ -79,6 +79,10 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/{projeto}/job/{job}/integrante/{freelancer}/add', 'Empresa\Job\JobController@addFreelancer')->name('job.add.integrante');
   // Remover freelancer e produtora do job
   Route::get('/projeto/{projeto}/job/{job}/integrante/{freelancer}/remover', 'Empresa\Job\JobController@removerFreelancer')->name('job.remover-freelancer');
+  //
+  Route::post('/projeto/{projeto}/job/{job}/conhecimento/add', 'Empresa\Job\JobController@addConhecimento')->name('job.conhecimento.add');
+  //
+  Route::get('/projeto/{projeto}/job/{job}/conhecimento/{conhecimento}/remover', 'Empresa\Job\JobController@removerConhecimento')->name('job.conhecimento.remover');
   // Rotas para adicionar membros ao projeto
   // Abrir formulário de adição de membros
   Route::get('/projeto/{projeto}/integrante/novo', 'Empresa\Projeto\ProjetoController@novoFormIntegrantes')->name('integrante.novo.form');
@@ -163,7 +167,12 @@ Route::prefix('freelancer')->group(function () {
   // Visualizar os jobs por projeto
   Route::get('/jobs-projetos/{projeto}', 'Freelancer\Job\JobController@jobsView')->name('jobs.projeto.pesquisa');
   // Rotas grupos
-  Route::get('/grupos/add', 'Freelancer\Grupo\GrupoController@grupoNovo')->name('grupo.add');
+  // Abrir formulário de cadastro de grupo
+  Route::get('/grupos', 'Freelancer\Grupo\GrupoController@gruposView')->name('grupos.view');
+  // Abrir formulário de cadastro de grupo
+  Route::get('/grupos/add', 'Freelancer\Grupo\GrupoController@novoGrupo')->name('grupo.novo');
+  // Submeter e criar novo grupo
+  Route::post('/grupos/add', 'Freelancer\Grupo\GrupoController@criarGrupo')->name('grupo.criar');
 });
 
 Auth::routes();

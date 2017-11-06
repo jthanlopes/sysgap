@@ -10,7 +10,7 @@
         <div class="w3-container w3-padding form-news">
           <h3 class="w3-opacity">Cadastro de Grupo</h3>
           <hr>
-          <form method="POST" action="{{ route('projeto.novo') }}">
+          <form method="POST" action="{{ route('grupo.criar') }}">
             {{ csrf_field() }}
             <div class="row">
               <div class="col-md-12">
@@ -35,8 +35,6 @@
       </div>
     </div>
   </div>
-
-
   <!-- End Middle Column -->
 </div>
 @endsection
