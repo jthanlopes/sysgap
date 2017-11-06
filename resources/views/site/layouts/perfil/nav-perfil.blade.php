@@ -4,9 +4,9 @@
    <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
     @if (auth()->guard('empresa')->check())
-    <a href="{{ route('empresa.perfil') }}" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Perfil</a>
+    <a href="{{ route('empresa.perfil') }}" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Meu Perfil</a>
     @elseif (auth()->guard('freelancer')->check())
-    <a href="{{ route('freelancer.perfil') }}" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Perfil</a>
+    <a href="{{ route('freelancer.perfil') }}" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Meu Perfil</a>
     @endif
     {{-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a> --}}
     <a href="{{ route('empresa.editar-perfil.view') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Editar perfil"><i class="fa fa-user"></i></a>

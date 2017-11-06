@@ -76,7 +76,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <button type="submit" class="btn btn-default btn-default-home">Editar</button>
+                  <button type="submit" class="btn btn-success btn-default-home">Editar</button>
                 </div>
               </div>
             </div>
@@ -138,7 +138,7 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-default btn-default-home">Editar</button>
+            <button type="submit" class="btn btn-success btn-default-home">Editar</button>
           </form>
           <div class="">
             <hr>

@@ -40,7 +40,7 @@
                 <div class="show-opcoes-pesquisa" style="display: none;">
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="form-group">
+                      <div class="form-group" style="margin-top: 30px;">
                         <label for="categoria">Cidades:</label> <br/>
                         @foreach ( $cidades as $cidade)
                         <input class="w3-check" type="checkbox" name="cidades[]" value="{{ $cidade->cidade }}">
@@ -91,10 +91,15 @@
             </tr>
             @endforeach
           </table>
-        </div>
+          @if(count($freelancers) == 0 && count($produtoras) == 0)
+            <div style="text-align: center; margin-top: 10px;">
+              Nenhum resultado para a pesquisa.
+            </div>
+            @endif
       </div>
     </div>
   </div>
-  <!-- End Middle Column -->
+</div>
+<!-- End Middle Column -->
 </div>
 @endsection
