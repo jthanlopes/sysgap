@@ -17,8 +17,9 @@ class GrupoController extends Controller
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
     $grupos = Grupo::orderBy('created_at', 'desc')->where('freelancer_id', $id)->get();
+    $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.freelancer.grupo.grupos-view', compact('freelancer', 'grupos'));
+    return view('site.freelancer.grupo.grupos-view', compact('freelancer', 'grupos', 'notificacoes'));
   }
 
   // Recebe um valor por POST e retorna somente os projetos correspondentes
@@ -46,8 +47,9 @@ class GrupoController extends Controller
   public function novoGrupo() {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
+    $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.freelancer.grupo.criar-grupo', compact('freelancer'));
+    return view('site.freelancer.grupo.criar-grupo', compact('freelancer', 'notificacoes'));
   }
 
   public function criarGrupo() {

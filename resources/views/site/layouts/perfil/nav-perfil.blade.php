@@ -11,14 +11,19 @@
     {{-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a> --}}
     <a href="{{ route('empresa.editar-perfil.view') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Editar perfil"><i class="fa fa-user"></i></a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Mensagens"><i class="fa fa-envelope"></i></a>
+    @if (auth()->guard('freelancer')->check())
     <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-button w3-padding-large" title="Notificações"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>
+      <button class="w3-button w3-padding-large" title="Notificações"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">{{ count($notificacoes) }}</span></button>
       <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-        <a href="#" class="w3-bar-item w3-button">One new friend request</a>
-        <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
-        <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
+        @foreach($notificacoes as $notificacao)
+          <a href="{{ route('jobs.projeto.view') }}" class="w3-bar-item w3-button">Convite para o projeto {{ $notificacao->titulo}}</a>
+        @endforeach
+        @if(count($notificacoes) == 0)
+        <p class="w3-bar-item w3-button">Nenhuma nova notificação!</p>
+        @endif
       </div>
     </div>
+    @endif
     <a href="{{ route('pesquisa.form.usuarios') }}" class="w3-button w3-padding-large" title="Pesquisar usuários"><i class="fa fa-search"></i></a>
     @if (auth()->guard('empresa')->check())
     <div class="w3-dropdown-hover w3-right">

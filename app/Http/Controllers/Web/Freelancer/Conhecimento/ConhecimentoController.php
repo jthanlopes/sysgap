@@ -18,8 +18,9 @@ class ConhecimentoController extends Controller
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
     $conhecimentos = Conhecimento::orderBy('titulo')->get();
+    $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.freelancer.conhecimento.conhecimentos-view', compact('freelancer', 'conhecimentos'));
+    return view('site.freelancer.conhecimento.conhecimentos-view', compact('freelancer', 'conhecimentos', 'notificacoes'));
   }
 
   public function addConhecimento(Request $request) {

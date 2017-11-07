@@ -17,6 +17,8 @@ class FreelancerController extends Controller
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
     $noticias = Noticia::orderBy('created_at', 'desc')->where('freelancer_id', $id)->paginate(10);
-    return view('site.freelancer.perfil', compact('freelancer', 'noticias'));
+    $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+
+    return view('site.freelancer.perfil', compact('freelancer', 'noticias', 'notificacoes'));
   }
 }

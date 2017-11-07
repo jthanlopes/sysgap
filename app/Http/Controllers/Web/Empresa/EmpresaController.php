@@ -21,6 +21,7 @@ class EmpresaController extends Controller
         $id = Auth::user()->id;
         $empresa = Empresa::find($id);
         $noticias = Noticia::orderBy('created_at', 'desc')->where('empresa_id', $id)->paginate(10);
+
         return view('site.empresa.perfil', compact('empresa', 'noticias'));
     }
 

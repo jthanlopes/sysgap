@@ -120,7 +120,10 @@ Route::prefix('empresa')->group(function () {
   Route::get('/conhecimento/excluir/{conhecimento}', 'Empresa\Conhecimento\ConhecimentoController@excluirConhecimento')->name('conhecimento.excluir');
 
   // Rotas pra gerar PDFs
+  // PDF do projeto
   Route::get('/projeto/{projeto}/pdf', 'pdfController@pdfProjeto')->name('pdf.projeto');
+  // PDF do job
+  Route::get('/job/{job}/pdf', 'pdfController@pdfJob')->name('pdf.job');
 });
 
 

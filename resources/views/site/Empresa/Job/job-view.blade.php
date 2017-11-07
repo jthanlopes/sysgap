@@ -17,6 +17,7 @@
           <p class="w3-opacity">Descrição: {{ $job->descricao }}</p>
           <p class="w3-opacity">Status: {{ $job->status }}</p>
           <p class="w3-opacity">Data de criação: {{ $job->created_at->format('d/m/Y') }}</p>
+          <a href="/empresa/job/{{ $job->id }}/pdf">Gerar relatório do job</a>
           <hr>
           <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante/novo">Adicionar integrante</a>]</span></h4>
           <table class="w3-table w3-centered w3-bordered table-projetos">

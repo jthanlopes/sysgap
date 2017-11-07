@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Pdf Projeto</title>
+  <title>Pdf Job</title>
   {{-- Bootstrap --}}
   <style>
   * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -15,15 +15,16 @@
 <body>
   <header>
     <hgroup>
-      <h1>Projeto {{ $projeto->titulo }}</h1>
-      <h4>Descrição: {{ $projeto->descricao }}</h4>
-      <h4>Criado em: {{ $projeto->created_at->format('d/m/Y')}}
+      <h1>Projeto {{ $job->projeto->titulo }}</h1>
+      <hr>
+      <h2>Job {{ $job->titulo }}</h2>
+      <h4>Descrição: {{ $job->descricao }}</h4>
+      <h4>Criado em: {{ $job->created_at->format('d/m/Y')}}
         <h4>Número de integrantes: {{ count($freelancers) + count($produtoras) }}</h4>
-        <h4>Número de jobs: {{ count($jobs) }}</h4>
       </hgroup>
     </header>
     <hr>
-    <h3>Integrantes do projeto</h3>
+    <h3>Integrantes do job</h3>
     <table class="table table-striped table-responsive">
       <tr>
         <th>Nome</th>
@@ -47,28 +48,28 @@
     </table>
     @if(count($freelancers) == 0 && count($produtoras) == 0)
     <div style="text-align: center; margin-top: 10px;">
-      Nenhum integrante neste projeto.
+      Nenhum integrante neste job.
     </div>
     @endif
     <hr>
-    <h3>Jobs do projeto</h3>
+    <h3>Conhecimentos necessários</h3>
     <table class="table table-striped table-responsive">
       <tr>
         <th>Título</th>
         <th>Descrição</th>
-        <th>Status</th>
+        <th>Nível</th>
       </tr>
-      @foreach ($jobs as $job)
+      @foreach ($job->conhecimentos as $conhecimento)
       <tr>
-        <td>{{ $job->titulo }}</td>
-        <td>{{ $job->descricao }}</td>
-        <td>{{ $job->status }}</td>
+        <td>{{ $conhecimento->titulo }}</td>
+        <td>{{ $conhecimento->descricao }}</td>
+        <td>{{ $conhecimento->nivel }}</td>
       </tr>
       @endforeach
     </table>
-    @if(count($jobs) == 0)
+    @if(count($job->conhecimentos) == 0)
     <div style="text-align: center; margin-top: 10px;">
-      Nenhum job cadastrado.
+      Nenhum conhecimento associado.
     </div>
     @endif
   </body>
