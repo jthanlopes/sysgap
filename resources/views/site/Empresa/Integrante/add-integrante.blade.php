@@ -11,7 +11,6 @@
           <h3 class="w3-opacity">Adicionar integrante ao projeto</h3>
           <hr>
           <form method="POST" action="/empresa/projeto/{{ $projeto->id }}/integrante/pesquisar">
-            {{-- <input type="hidden" name="projeto" value="{{ $projeto->id }}"> --}}
             {{ csrf_field() }}
             <h4 class="w3-opacity">Pesquisar por usuários</h4>
             <div class="row">
@@ -49,7 +48,7 @@
               <td><a href="" title="Ver perfil">{{ $result->nome }}</a></td>
               <td>{{ $result->email }}</td>
               <td>
-                <a href="/empresa/projeto/{{ $projeto->id }}/integrante/addFreelancer/{{ $result->id }}" class="w3-button w3-blue w3-small" title="Adicionar integrante">Adicionar</a></td>
+                <a href="/empresa/projeto/{{ $projeto->id }}/integrante/addFreelancer/{{ $result->id }}" class="w3-button w3-blue w3-small" title="Adicionar integrante">Convidar</a></td>
               </tr>
               @endforeach
             </table>

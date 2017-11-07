@@ -97,7 +97,7 @@ class JobController extends Controller
   public function novoFormIntegrantes(Projeto $projeto, Job $job) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    $results = $projeto->freelancers()->orderBy('nome')->get();
+    $results = $projeto->freelancers()->where('aceito', '=', 1)->orderBy('nome')->get();
     // $produtoras = $projeto->empresas()->orderBy('nome')->get();
 
     return view('site.empresa.integrante.add-integrante-job', compact('empresa', 'projeto', 'results', 'job'));

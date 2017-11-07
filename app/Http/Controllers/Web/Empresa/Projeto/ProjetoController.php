@@ -125,7 +125,7 @@ public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
 }
 
 public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
-  $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+  $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0]);
 
   $message = parent::returnMessage('success', $freelancer->nome . ' foi adicionado(a) ao projeto "' . $projeto->titulo .'"!');
 

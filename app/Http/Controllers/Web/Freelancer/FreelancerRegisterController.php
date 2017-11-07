@@ -42,7 +42,7 @@ class FreelancerRegisterController extends Controller
       'password' => bcrypt($request->senha),
       'foto_perfil' => $filename,
       'endereco_id' => $endereco['id'],
-      'ativo' => 1,
+      'ativo' => 0,
       'account_confirmation' => hash_hmac('sha256', str_random(40), config('app.key')),
     ]);
 

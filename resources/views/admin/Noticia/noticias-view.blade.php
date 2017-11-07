@@ -32,15 +32,15 @@
     </ol>
     <a href="{{ route('noticia.show-form-novo') }}" class="btn btn-success btn-sm btn-add">
     ADICIONAR NOVA</a>
-    
+
     <div class="row">
-      <div class="col-lg-10 col-md-offset-1 pesquisa-admin-view">          
+      <div class="col-lg-10 col-md-offset-1 pesquisa-admin-view">
         <form class="form-inline" role="form" method="POST" action="{{-- {{ route('noticias.view.pesquisar') }} --}}">
           {{ csrf_field() }}
-          <input id="pesquisa" type="text" class="form-control" name="pesquisa" placeholder="Pesquisar por título">              
-          <button type="submit" class="btn btn-primary"> Pesquisar </button>              
-        </form>          
-      </div>       
+          <input id="pesquisa" type="text" class="form-control" name="pesquisa" placeholder="Pesquisar por título">
+          <button type="submit" class="btn btn-primary"> Pesquisar </button>
+        </form>
+      </div>
     </div>
 
     <div class="row">
@@ -53,9 +53,9 @@
         @endif
         <table class="table table-hover table-striped">
           <thead class="thead-inverse">
-            <tr>                          
+            <tr>
               <th>Imagem</th>
-              <th>Titulo</th>                
+              <th>Titulo</th>
               <th>Data Cadastro</th>
               <th>Data Final</th>
               <th>Autor</th>
@@ -65,23 +65,23 @@
           </thead>
           <tbody class="noticia-view">
             @foreach ($noticias as $noticia)
-            <tr>                  
+            <tr>
               <td>Teste Imagem{{-- <img src="{{ asset('storage') . '/noticias/perfil/' . $noticia->profile_photo }}" class="user-image img-circle" alt="User Image"> --}}</td>
-              <td>{{ $noticia->titulo }}</td>                  
+              <td>{{ $noticia->titulo }}</td>
               <td>{{ $noticia->created_at->format('d/m/Y') }}</td>
               <td>{{ $noticia->data_final->format('d/m/Y') }}</td>
               <td>{{ $noticia->admin->name }}</td>
               <td><?php echo ($noticia->ativo == 1) ? "Ativo" : "Inativo"; ?></td>
               <td>
                 <a href="{{-- {{ route('noticia.inativar', $noticia->id) }} --}}" class="btn btn-info">
-                Visualizar</a>         
+                Visualizar</a>
                 <a href="{{-- {{ route('noticia.perfil') }} --}}" class="btn btn-warning">
-                Editar</a>                    
+                Editar</a>
                 <a href="{{-- {{ route('noticia.inativar', $noticia->id) }} --}}" class="btn btn-danger">
-                Inativar</a>                                            
+                Inativar</a>
               </td>
             </tr>
-            @endforeach       
+            @endforeach
           </tbody>
         </table>
         <div class="paginacao">
@@ -89,6 +89,6 @@
         </div>
       </div>
     </div>
-  </section>        
+  </section>
 </div>
 @endsection

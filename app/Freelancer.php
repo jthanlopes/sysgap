@@ -43,7 +43,8 @@ class Freelancer extends Authenticatable {
     }
 
     public function projetos() {
-      return $this->belongsToMany(Projeto::class);
+      return $this->belongsToMany(Projeto::class)
+      ->withPivot('aceito');
     }
 
     public function jobs() {
