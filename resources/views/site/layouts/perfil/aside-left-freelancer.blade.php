@@ -28,9 +28,7 @@
             <button type="input" class="geral">Criar Grupo</button>
           </form>
           <hr>
-          <p><a href="">Grupo 1</a></p>
-          <p><a href="">Grupo 2</a></p>
-          <p><a href="">Grupo 3</a></p>
+          <p><a href="{{ route('grupos.view') }}">Gerenciar grupos</a></p>
         </div>
         <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Meus Jobs</button>
         <div id="Demo2" class="w3-hide w3-container">

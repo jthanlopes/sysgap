@@ -31,18 +31,6 @@ class GrupoController extends Controller
   //   return view('site.empresa.projetos-view-pesquisar', compact('empresa', 'projetos'));
   // }
 
-  // public function viewProjeto(Projeto $projeto) {
-  //   $id = Auth::user()->id;
-  //   $empresa = Empresa::find($id);
-
-  //   $jobs = Job::orderBy('status', 'asc')->orderBy('created_at', 'desc')->where('projeto_id', $projeto->id)->get();
-
-  //   $freelancers = $projeto->freelancers()->orderBy('nome')->get();
-  //   $produtoras = $projeto->empresas()->orderBy('nome')->get();
-
-  //   return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs', 'freelancers', 'produtoras'));
-  // }
-
   // Carrega o formulário para cadastro do grupo
   public function novoGrupo() {
     $id = Auth::user()->id;
@@ -69,4 +57,19 @@ class GrupoController extends Controller
 
   return redirect()->route('grupos.view')->with('message', $message);
 }
+
+public function grupoView(Grupo $grupo) {
+    $id = Auth::user()->id;
+    $freelancer = Freelancer::find($id);
+    $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+
+    // $conhecimentos = Job::orderBy('status', 'asc')->orderBy('created_at', 'desc')->where('projeto_id', $projeto->id)->get();
+    // $freelancers = $projeto->freelancers()->orderBy('nome')->get();
+    // $produtoras = $projeto->empresas()->orderBy('nome')->get();
+    $freelancers = [];
+    $produtoras = [];
+    $conhecimentos = [];
+
+    return view('site.freelancer.grupo.grupo-view', compact('freelancer', 'grupo', 'conhecimentos', 'freelancers', 'produtoras', 'notificacoes'));
+  }
 }

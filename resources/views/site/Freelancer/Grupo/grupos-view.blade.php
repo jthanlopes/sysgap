@@ -36,17 +36,17 @@
           <table class="w3-table w3-centered w3-bordered table-projetos">
             <tr>
               <th>Título</th>
-              <th>Descrição</th>
               <th>Data<br/>Criação</th>
               <th>Ações</th>
             </tr>
             @foreach ($grupos as $grupo)
             <tr>
               <td>{{ $grupo->titulo }}</td>
-              <td>{{ $grupo->descricao }}</td>
               <td>{{ $grupo->created_at->format('d-m-Y') }}</td>
-              <td><a href="/empresa/projeto/{{ $grupo->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
-                <button class="w3-button w3-red w3-small" title="Fechar o grupo">Fechar</button></td>
+              <td>
+                <a href="/freelancer/grupo/{{ $grupo->id }}" class="w3-button w3-blue w3-small" title="Visualizar e gerenciar o grupo">Visualizar</a>
+                <a href="" class="w3-button w3-red w3-small" title="Fechar o grupo">Fechar</a>
+              </td>
               </tr>
               @endforeach
             </table>
