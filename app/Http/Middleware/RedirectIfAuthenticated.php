@@ -35,7 +35,6 @@ class RedirectIfAuthenticated
         break;
 
         default:
-        dd('teste 3');
         if (Auth::guard($guard)->check()) {
           return redirect('admin');
         }

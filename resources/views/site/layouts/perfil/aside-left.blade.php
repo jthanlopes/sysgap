@@ -8,7 +8,7 @@
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container">
          <h4 class="w3-center"><a href="{{ route('empresa.perfil') }}">Perfil Empresa</a></h4>
-         <p class="w3-center"><img src="{{ asset('storage') . '/empresas/perfil/' . $empresa->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da empresa"></p>
+         <p class="w3-center"><img src="{{ asset('storage') . '/empresas/perfil/' . $empresa->foto_perfil }}" class="w3-circle" style="height:130px;width:130px" alt="Imagem da empresa"></p>
          <hr>
          <div style="text-align: center;">
            <p title="Nome de usuário">{{ $empresa->categoria . ": " . $empresa->nome }}</p>
