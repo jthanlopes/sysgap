@@ -19,4 +19,8 @@ public function freelancers() {
 public function conhecimentos() {
   return $this->belongsToMany(Conhecimento::class);
 }
+
+public function grupos() {
+  return $this->belongsTo(Grupo::class);
+}
 }

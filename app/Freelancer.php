@@ -59,4 +59,8 @@ class Freelancer extends Authenticatable {
     public function grupos() {
       return $this->hasMany(Grupo::class);
     }
+
+    public function portifolios() {
+      return $this->hasMany(Portifolio::class);
+    }
   }
