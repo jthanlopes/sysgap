@@ -35,13 +35,13 @@ class JobController extends Controller
 
   public function novo(Request $request) {
     auth()->guard('empresa')->user()->cadastrarJob(
-      new Job(['titulo' => $request->titulo, 'descricao' => $request->descricao,
+      $job = new Job(['titulo' => $request->titulo, 'descricao' => $request->descricao,
         'nivel_conhecimento_necessario' => $request->get('nivel'), 'status' => 'Aberto', 'projeto_id' => $request->projeto])
     );
 
     $message = parent::returnMessage('success', 'Job cadastrado com sucesso!');
 
-    return redirect('/empresa/projeto/' . $request->projeto)->with('message', $message);
+    return redirect('/empresa/projeto/' . $request->projeto . '/job/' . $job->id)->with('message', $message);
   }
 
   public function editarJobView(Projeto $projeto, Job $job) {
@@ -97,10 +97,10 @@ class JobController extends Controller
   public function novoFormIntegrantes(Projeto $projeto, Job $job) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    $results = $projeto->freelancers()->where('aceito', '=', 1)->orderBy('nome')->get();
-    // $produtoras = $projeto->empresas()->orderBy('nome')->get();
+    $freelancers = $projeto->freelancers()->where('aceito', '=', 1)->orderBy('nome')->get();
+    $produtoras = $projeto->empresas()->where('aceito', '=', 1)->orderBy('nome')->get();
 
-    return view('site.empresa.integrante.add-integrante-job', compact('empresa', 'projeto', 'results', 'job'));
+    return view('site.empresa.integrante.add-integrante-job', compact('empresa', 'projeto', 'freelancers', 'produtoras', 'job'));
   }
 
   public function addFreelancer(Projeto $projeto, Job $job, Freelancer $freelancer) {

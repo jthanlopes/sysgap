@@ -15,7 +15,8 @@ class CreateEmpresaProjetoTable extends Migration
     {
         Schema::create('empresa_projeto', function (Blueprint $table) {
             $table->integer('projeto_id')->unsigned();
-            $table->integer('empresa_id')->unsigned();            
+            $table->integer('empresa_id')->unsigned();
+            $table->boolean('aceito');
             $table->timestamps();
         });
     }

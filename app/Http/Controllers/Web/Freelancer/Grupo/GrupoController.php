@@ -55,7 +55,7 @@ class GrupoController extends Controller
     $message = parent::returnMessage('danger', 'Erro ao criar o grupo!');
   }
 
-  return redirect()->route('grupos.view')->with('message', $message);
+  return redirect('/freelancer/grupo/' . $create->id)->with('message', $message);
 }
 
 public function grupoView(Grupo $grupo) {

@@ -32,63 +32,78 @@
               <th>Ações</th>
             </tr>
             @foreach ($freelancers as $freelancer)
-            @foreach ($freelancer->projetos as $projeto)
+            @foreach ($freelancer->projetos as $projetoFreela)
+            @if($projetoFreela->id == $projeto->id)
             <tr>
               <td><a href="/empresa/pesquisa/perfil-freelancer/{{ $freelancer->id }}">{{ $freelancer->nome }}</a></td>
               <td>{{ $freelancer->email }}</td>
-              <td><?php echo ($projeto->pivot->aceito == 0) ? "Convite<br/>Enviado" : "Ativo"; ?></td>
+              @if($projetoFreela->pivot->aceito == 0)
+              <td>Convite<br/>Enviado</td>
+              @elseif($projetoFreela->pivot->aceito == 3)
+              <td>Convite<br/>Recusado</td>
+              @else
+              <td>Ativo</td>
+              @endif
               <td>
                 <a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para o freelancer">Enviar E-mail</a>
                 <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover/{{ $freelancer->id }}" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a>
               </td>
             </tr>
+            @endif
             @endforeach
             @endforeach
             @foreach ($produtoras as $produtora)
+            @foreach ($produtora->projetos as $projetoProd)
+            @if($projetoProd->id == $projeto->id)
             <tr>
               <td><a href="/empresa/pesquisa/perfil-produtora/{{ $produtora->id }}">{{ $produtora->nome }}</a></td>
               <td>{{ $produtora->email }}</td>
-              <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para a produtora">Enviar E-mail</a>
-                <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover-produtora/{{ $produtora->id }}" class="w3-button w3-red w3-small" title="Remover produtora">Remover</a></td>
-              </tr>
-              @endforeach
-            </table>
-            @if(count($freelancers) == 0 && count($produtoras) == 0)
-            <div style="text-align: center; margin-top: 10px;">
-              Adicione os integrantes que participarão deste projeto.
-            </div>
+              <td><?php echo ($projetoProd->pivot->aceito == 0) ? "Convite<br/>Enviado" : "Ativo"; ?></td>
+              <td>
+                <a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para a produtora">Enviar E-mail</a>
+                <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover-produtora/{{ $produtora->id }}" class="w3-button w3-red w3-small" title="Remover produtora">Remover</a>
+              </td>
+            </tr>
             @endif
-            <hr>
-            <h4 class="w3-opacity">Jobs do Projeto <span class="opt-projeto">[<a href="/empresa/projeto/{{ $projeto->id }}/job/novo">Criar job</a>]</span></h4>
-            <table class="w3-table w3-centered w3-bordered table-projetos">
-              <tr>
-                <th>Título</th>
-                <th>Status</th>
-                <th>Ações</th>
-              </tr>
-              @foreach ($jobs as $job)
-              <tr>
-                <td>{{ $job->titulo }}</td>
-                <td>{{ $job->status }}</td>
-                <td><a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
-                  @if( $job->status == "Aberto")
-                  <a href="/empresa/projeto/{{ $projeto->id }}/job/finalizar/{{ $job->id }}" class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</a>
-                  @else
-                  <a href="/empresa/projeto/{{ $projeto->id }}/job/reabrir/{{ $job->id }}" class="w3-button w3-red w3-small" title="Finalizar o projeto">Reabrir</a>
-                  @endif
-                </td>
-              </tr>
-              @endforeach
-            </table>
-            @if(count($jobs) == 0)
-            <div style="text-align: center; margin-top: 10px;">
-              Crie jobs para este projeto.
-            </div>
-            @endif
+            @endforeach
+            @endforeach
+          </table>
+          @if(count($freelancers) == 0 && count($produtoras) == 0)
+          <div style="text-align: center; margin-top: 10px;">
+            Adicione os integrantes que participarão deste projeto.
           </div>
+          @endif
+          <hr>
+          <h4 class="w3-opacity">Jobs do Projeto <span class="opt-projeto">[<a href="/empresa/projeto/{{ $projeto->id }}/job/novo">Criar job</a>]</span></h4>
+          <table class="w3-table w3-centered w3-bordered table-projetos">
+            <tr>
+              <th>Título</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+            @foreach ($jobs as $job)
+            <tr>
+              <td>{{ $job->titulo }}</td>
+              <td>{{ $job->status }}</td>
+              <td><a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
+                @if( $job->status == "Aberto")
+                <a href="/empresa/projeto/{{ $projeto->id }}/job/finalizar/{{ $job->id }}" class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</a>
+                @else
+                <a href="/empresa/projeto/{{ $projeto->id }}/job/reabrir/{{ $job->id }}" class="w3-button w3-red w3-small" title="Finalizar o projeto">Reabrir</a>
+                @endif
+              </td>
+            </tr>
+            @endforeach
+          </table>
+          @if(count($jobs) == 0)
+          <div style="text-align: center; margin-top: 10px;">
+            Crie jobs para este projeto.
+          </div>
+          @endif
         </div>
       </div>
     </div>
-    <!-- End Middle Column -->
   </div>
-  @endsection
+  <!-- End Middle Column -->
+</div>
+@endsection

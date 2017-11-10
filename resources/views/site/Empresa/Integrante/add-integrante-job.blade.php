@@ -16,16 +16,16 @@
               <th>E-mail</th>
               <th>Ações</th>
             </tr>
-            @foreach ($results as $result)
+            @foreach ($freelancers as $freelancer)
             <tr>
-              <td><a href="" title="Ver perfil">{{ $result->nome }}</a></td>
-              <td>{{ $result->email }}</td>
+              <td><a href="" title="Ver perfil">{{ $freelancer->nome }}</a></td>
+              <td>{{ $freelancer->email }}</td>
               <td>
-                <a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante/{{ $result->id }}/add" class="w3-button w3-blue w3-small" title="Adicionar integrante">Adicionar</a></td>
+                <a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante/{{ $freelancer->id }}/add" class="w3-button w3-blue w3-small" title="Adicionar integrante">Adicionar</a></td>
               </tr>
               @endforeach
             </table>
-            @if(count($results) == 0)
+            @if(count($freelancers) == 0)
             <div style="text-align: center;">
               Primeiramente adicione integrantes ao projeto.
             </div>

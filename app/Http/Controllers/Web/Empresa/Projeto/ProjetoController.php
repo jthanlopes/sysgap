@@ -68,7 +68,7 @@ class ProjetoController extends Controller
     $message = parent::returnMessage('danger', 'Erro ao criar o projeto!');
   }
 
-  return redirect()->route('projetos.view')->with('message', $message);
+  return redirect('/empresa/projeto/' . $create->id)->with('message', $message);
 }
 
 public function editarProjetoView(Projeto $projeto) {
@@ -112,12 +112,11 @@ public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
   $empresa = Empresa::find($id);
 
   if ($categoria == 0) {
-    $results = Freelancer::orWhere('nome', 'like', '%' . $request->nome . '%')->get();
+    $results = Freelancer::where('nome', 'like', '%' . $request->nome . '%')->orWhere('email', 'like', '%' . $request->nome . '%')->get();
 
     return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results'));
   } else {
-    $results = Empresa::orWhere('nome', 'like', '%' . $request->nome . '%')
-    ->where('categoria', 'Produtora')->get();
+    $results = Empresa::where([['nome', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->orWhere([['email', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->get();
     $categoria = "produtora";
   }
 
@@ -127,7 +126,7 @@ public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
 public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
   $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0]);
 
-  $message = parent::returnMessage('success', $freelancer->nome . ' foi adicionado(a) ao projeto "' . $projeto->titulo .'"!');
+  $message = parent::returnMessage('success', $freelancer->nome . ' foi convidado(a) para o projeto!');
 
   return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
 }
@@ -135,7 +134,7 @@ public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
 public function addProdutora(Projeto $projeto, Empresa $empresa) {
   $projeto->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
 
-  $message = parent::returnMessage('success', $empresa->nome . ' foi adicionado(a) ao projeto "' . $projeto->titulo . '"!');
+  $message = parent::returnMessage('success', $empresa->nome . ' foi convidado(a) para o projeto!');
 
   return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
 }

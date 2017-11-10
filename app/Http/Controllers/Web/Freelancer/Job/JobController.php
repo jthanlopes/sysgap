@@ -32,9 +32,29 @@ class JobController extends Controller
   public function jobsViewProjeto() {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
-    $projetos = Freelancer::find($id)->projetos()->get();
+    $projetos = Freelancer::find($id)->projetos()->where('aceito', '!=', 3)->get();
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
 
     return view('site.freelancer.job.jobs-view-projeto', compact('freelancer', 'projetos', 'notificacoes'));
+  }
+
+  public function aceitarProjeto(Projeto $projeto) {
+    $id = Auth::user()->id;
+    $freelancer = Freelancer::find($id);
+    $freelancer->projetos()->updateExistingPivot($projeto->id, ['aceito' => 1]);
+
+    $message = parent::returnMessage('success', 'Você aceitou o convite. Bem-vindo ao projeto!');
+
+    return redirect('/freelancer/jobs-projetos/' . $projeto->id)->with('message', $message);
+  }
+
+  public function recusarProjeto(Projeto $projeto) {
+    $id = Auth::user()->id;
+    $freelancer = Freelancer::find($id);
+    $freelancer->projetos()->updateExistingPivot($projeto->id, ['aceito' => 3]);
+
+    $message = parent::returnMessage('success', 'Você recusou o convite!');
+
+    return redirect()->route('jobs.projeto.view')->with('message', $message);
   }
 }

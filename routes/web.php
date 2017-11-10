@@ -167,8 +167,12 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/jobs', 'Freelancer\Job\JobController@jobsView')->name('jobs.view.freelancer');
   // Visualizar os jobs por projeto
   Route::get('/jobs-projetos', 'Freelancer\Job\JobController@jobsViewProjeto')->name('jobs.projeto.view');
-  // Visualizar os jobs por projeto
+  // Visualizar os jobs de um projeto
   Route::get('/jobs-projetos/{projeto}', 'Freelancer\Job\JobController@jobsView')->name('jobs.projeto.pesquisa');
+  // Aceitar projeto
+  Route::get('/jobs-projetos/{projeto}/aceitar', 'Freelancer\Job\JobController@aceitarProjeto')->name('jobs.projeto.aceitar');
+  // Recusar projeto
+  Route::get('/jobs-projetos/{projeto}/recusar', 'Freelancer\Job\JobController@recusarProjeto')->name('jobs.projeto.recusar');
   // Rotas grupos
   // Abrir formulário de cadastro de grupo
   Route::get('/grupos', 'Freelancer\Grupo\GrupoController@gruposView')->name('grupos.view');

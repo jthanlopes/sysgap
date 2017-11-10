@@ -28,19 +28,26 @@
               <td>{{ $projeto->titulo }}</td>
               <td>{{ $projeto->empresa->nome }}</td>
               <td>{{ $projeto->status }}</td>
-              <td><a href="/freelancer/jobs-projetos/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Finalizar o projeto">Ver jobs</a>
-              </tr>
-              @endforeach
-            </table>
-            @if(count($projetos) == 0)
-            <div style="text-align: center; margin-top: 10px;">
-              Você não está em nenhum projeto no momento.
-            </div>
-            @endif
+              <td>
+                @if($projeto->pivot->aceito == 1)
+                <a href="/freelancer/jobs-projetos/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Finalizar o projeto">Ver jobs</a>
+                @else
+                <a href="/freelancer/jobs-projetos/{{ $projeto->id }}/aceitar" class="w3-button w3-blue w3-small" title="Aceitar convite">Aceitar convite</a>
+                <a href="/freelancer/jobs-projetos/{{ $projeto->id }}/recusar" class="w3-button w3-red w3-small" title="Recusar convite">Recusar convite</a>
+                @endif
+              </td>
+            </tr>
+            @endforeach
+          </table>
+          @if(count($projetos) == 0)
+          <div style="text-align: center; margin-top: 10px;">
+            Você não está em nenhum projeto no momento.
           </div>
+          @endif
         </div>
       </div>
     </div>
-    <!-- End Middle Column -->
   </div>
-  @endsection
+  <!-- End Middle Column -->
+</div>
+@endsection
