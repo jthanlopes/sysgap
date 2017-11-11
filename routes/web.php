@@ -129,7 +129,14 @@ Route::prefix('empresa')->group(function () {
 
 // Rotas de freelancer
 Route::prefix('freelancer')->group(function () {
+  // Rotas do perfil de freelancer
   Route::get('/', 'Freelancer\FreelancerController@perfil');
+  // Abrir formulário de editar perfil
+  Route::get('/editar-perfil', 'Freelancer\FreelancerController@editarPerfil')->name('freelancer.editar-perfil.view');
+  //
+  Route::post('/editar-perfil/informacoes-pessoais', 'Freelancer\FreelancerController@editarInfomacoes');
+  //
+  Route::post('/editar-perfil/endereco', 'Freelancer\FreelancerController@editarEndereco')->name('freelancer.editar.endereco');
   // Rotas de logout
   Route::get('/perfil', 'Freelancer\FreelancerController@perfil')->name('freelancer.perfil');
 

@@ -9,6 +9,7 @@ use App\Conhecimento;
 use Auth;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Storage;
 
 class EmpresaController extends Controller
 {
@@ -33,14 +34,25 @@ class EmpresaController extends Controller
     }
 
     public function editarInfomacoes(Request $request) {
-        Endereco::where('id', $request->enderecoId)
-        ->update(['cep' => $request->cep,
-            'logradouro' => $request->logradouro,
-            'numero' => $request->numero,
-            'complemento' => $request->complemento,
-            'bairro' => $request->bairro,
-            'cidade' => $request->cidade,
-            'uf' => $request->uf]);
+
+        if ($request->profile_photo == null) {
+            $empresaOld = Empresa::find($request->empresa);
+            $filename = $empresaOld->foto_perfil;
+        } else {
+            $filename = config('app.name') . '_foto_perfil' . str_slug($request->email, '_') . '_' . $request->file('profile_photo')->getClientOriginalName();
+            $request->profile_photo->storeAs('empresas/perfil', $filename, 'public');
+        }
+
+        Empresa::where('id', $request->empresa)
+        ->update(['nome' => $request->nome,
+          'email' => $request->email,
+          'cnpj' => $request->cnpj,
+          'password' => bcrypt($request->senha),
+          'categoria' => $request->get('categoria'),
+          'endereco_id' => $request->endereco,
+          'foto_perfil' => $filename,
+          'ativo' => 1,
+          'account_confirmation' => hash_hmac('sha256', str_random(40), config('app.key'))]);
 
         $message = parent::returnMessage('success', 'Informações editadas com sucesso!');
 

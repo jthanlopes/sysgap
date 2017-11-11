@@ -12,7 +12,7 @@
         <button class="w3-button w3-white ajuste">{{ auth()->guard('empresa')->user()->nome }} +</button>
         <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
           <a href="{{ route('empresa.perfil') }}" class="w3-bar-item w3-button">Ver perfil</a>
-          <a href="{{-- {{ route('empresa.perfil.editar') }} --}}" class="w3-bar-item w3-button">Editar perfil</a>
+          <a href="{{ route('empresa.editar-perfil.view') }}" class="w3-bar-item w3-button">Editar perfil</a>
           <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button" style="border-top: 1px solid;">Logout</a>
         </div>
       </div>
@@ -21,7 +21,7 @@
         <button class="w3-button w3-white ajuste"><i class="fa fa-male w3-margin-right"></i> {{ auth()->guard('freelancer')->user()->nome }} +</button>
         <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
           <a href="{{ route('freelancer.perfil') }}" class="w3-bar-item w3-button">Ver perfil</a>
-          <a href="{{-- {{ route('empresa.perfil.editar') }} --}}" class="w3-bar-item w3-button">Editar perfil</a>
+          <a href="{{ route('freelancer.editar-perfil.view') }}" class="w3-bar-item w3-button">Editar perfil</a>
           <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button" style="border-top: 1px solid;">Logout</a>
         </div>
       </div>
