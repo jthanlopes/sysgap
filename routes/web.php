@@ -189,6 +189,8 @@ Route::prefix('freelancer')->group(function () {
   Route::post('/grupos/add', 'Freelancer\Grupo\GrupoController@criarGrupo')->name('grupo.criar');
   // View grupo
   Route::get('/grupo/{grupo}', 'Freelancer\Grupo\GrupoController@grupoView')->name('grupo.view');
+  // Fechar grupo
+  Route::get('/grupo/{grupo}/fechar', 'Freelancer\Grupo\GrupoController@fecharGrupo')->name('grupo.fechar');
 });
 
 Auth::routes();

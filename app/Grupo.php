@@ -11,4 +11,8 @@ class Grupo extends Model
   public function jobs() {
     return $this->belongsTo(Job::class);
   }
+
+  public function freelancers() {
+    return $this->belongsToMany(Freelancer::class);
+  }
 }

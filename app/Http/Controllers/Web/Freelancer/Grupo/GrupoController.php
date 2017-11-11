@@ -16,7 +16,7 @@ class GrupoController extends Controller
   public function gruposView() {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
-    $grupos = Grupo::orderBy('created_at', 'desc')->where('freelancer_id', $id)->get();
+    $grupos = Freelancer::find($id)->grupos()->where('status', 1)->get();
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
 
     return view('site.freelancer.grupo.grupos-view', compact('freelancer', 'grupos', 'notificacoes'));
@@ -45,6 +45,7 @@ class GrupoController extends Controller
     'titulo' => request('titulo'),
     'descricao' => request('descricao'),
     'freelancer_id' => Auth::user()->id,
+    'status' => 1,
   ]);
 
    if ($create)
@@ -55,21 +56,31 @@ class GrupoController extends Controller
     $message = parent::returnMessage('danger', 'Erro ao criar o grupo!');
   }
 
+  $id = Auth::user()->id;
+  $freelancer = Freelancer::find($id);
+
+  $create->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+
   return redirect('/freelancer/grupo/' . $create->id)->with('message', $message);
 }
 
 public function grupoView(Grupo $grupo) {
-    $id = Auth::user()->id;
-    $freelancer = Freelancer::find($id);
-    $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+  $id = Auth::user()->id;
+  $freelancer = Freelancer::find($id);
+  $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+  $freelancers = $grupo->freelancers()->orderBy('nome')->get();
+  $produtoras = [];
+  $conhecimentos = [];
 
-    // $conhecimentos = Job::orderBy('status', 'asc')->orderBy('created_at', 'desc')->where('projeto_id', $projeto->id)->get();
-    // $freelancers = $projeto->freelancers()->orderBy('nome')->get();
-    // $produtoras = $projeto->empresas()->orderBy('nome')->get();
-    $freelancers = [];
-    $produtoras = [];
-    $conhecimentos = [];
+  return view('site.freelancer.grupo.grupo-view', compact('freelancer', 'grupo', 'conhecimentos', 'freelancers', 'notificacoes'));
+}
 
-    return view('site.freelancer.grupo.grupo-view', compact('freelancer', 'grupo', 'conhecimentos', 'freelancers', 'produtoras', 'notificacoes'));
-  }
+public function fecharGrupo(Grupo $grupo) {
+  $grupo->status = 0;
+  $grupo->save();
+
+  $message = parent::returnMessage('success', 'Grupo fechado com sucesso!');
+
+  return redirect()->route('grupos.view')->with('message', $message);
+}
 }

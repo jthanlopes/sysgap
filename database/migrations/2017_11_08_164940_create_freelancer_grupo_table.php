@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGrupoFreelancerTable extends Migration
+class CreateFreelancerGrupoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGrupoFreelancerTable extends Migration
      */
     public function up()
     {
-        Schema::create('grupo_freelancer', function (Blueprint $table) {
+        Schema::create('freelancer_grupo', function (Blueprint $table) {
             $table->integer('grupo_id')->unsigned();
             $table->integer('freelancer_id')->unsigned();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateGrupoFreelancerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grupo_freelancer');
+        Schema::dropIfExists('freelancer_grupo');
     }
 }

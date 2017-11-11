@@ -18,7 +18,7 @@
             </tr>
             @foreach ($freelancers as $freelancer)
             <tr>
-              <td><a href="" title="Ver perfil">{{ $freelancer->nome }}</a></td>
+              <td><a href="/empresa/pesquisa/perfil-freelancer/{{ $freelancer->id }}" title="Ver perfil">{{ $freelancer->nome }}</a></td>
               <td>{{ $freelancer->email }}</td>
               <td>
                 <a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante/{{ $freelancer->id }}/add" class="w3-button w3-blue w3-small" title="Adicionar integrante">Adicionar</a></td>

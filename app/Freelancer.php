@@ -56,8 +56,12 @@ class Freelancer extends Authenticatable {
       ->withPivot('tempo_experiencia');
     }
 
-    public function grupos() {
+    public function grupoAdmin() {
       return $this->hasMany(Grupo::class);
+    }
+
+    public function grupos() {
+      return $this->belongsToMany(Grupo::class);
     }
 
     public function portifolios() {
