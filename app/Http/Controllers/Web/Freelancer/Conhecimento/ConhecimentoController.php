@@ -17,7 +17,8 @@ class ConhecimentoController extends Controller
   public function conhecimentosView() {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
-    $conhecimentos = Conhecimento::orderBy('titulo')->get();
+    $freelancerConhe = $freelancer->conhecimentos()->select('id')->get()->pluck('id')->toArray();
+    $conhecimentos = Conhecimento::orderBy('titulo')->wherenotin('id', $freelancerConhe)->get();
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
 
     return view('site.freelancer.conhecimento.conhecimentos-view', compact('freelancer', 'conhecimentos', 'notificacoes'));

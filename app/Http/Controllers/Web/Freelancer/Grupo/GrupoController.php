@@ -23,13 +23,14 @@ class GrupoController extends Controller
   }
 
   // Recebe um valor por POST e retorna somente os projetos correspondentes
-  // public function projetosPesquisar(Request $request) {
-  //   $id = Auth::user()->id;
-  //   $empresa = Empresa::find($id);
-  //   $projetos = Projeto::orWhere('titulo', 'like', '%' . $request->buscar . '%')->get();
+  public function gruposPesquisar(Request $request) {
+    $id = Auth::user()->id;
+    $freelancer = Freelancer::find($id);
+    $grupos = Freelancer::find($id)->grupos()->where([['status', 1], ['titulo', 'like', '%' . $request->buscar . '%']])->get();
+    $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
 
-  //   return view('site.empresa.projetos-view-pesquisar', compact('empresa', 'projetos'));
-  // }
+    return view('site.freelancer.grupo.grupos-view-pesquisar', compact('freelancer', 'grupos', 'notificacoes'));
+  }
 
   // Carrega o formulário para cadastro do grupo
   public function novoGrupo() {

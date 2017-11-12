@@ -183,6 +183,8 @@ Route::prefix('freelancer')->group(function () {
   // Rotas grupos
   // Abrir formulário de cadastro de grupo
   Route::get('/grupos', 'Freelancer\Grupo\GrupoController@gruposView')->name('grupos.view');
+  // Pesquisar por grupos
+  Route::post('/grupos/pesquisar', 'Freelancer\Grupo\GrupoController@gruposPesquisar')->name('grupos.view.pesquisar');
   // Abrir formulário de cadastro de grupo
   Route::get('/grupos/add', 'Freelancer\Grupo\GrupoController@novoGrupo')->name('grupo.novo');
   // Submeter e criar novo grupo

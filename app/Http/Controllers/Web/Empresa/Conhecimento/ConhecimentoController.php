@@ -17,7 +17,8 @@ class ConhecimentoController extends Controller
   public function conhecimentosView() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    $conhecimentos = Conhecimento::orderBy('titulo')->get();
+    $empresaConhe = $empresa->conhecimentos()->select('id')->get()->pluck('id')->toArray();
+    $conhecimentos = Conhecimento::orderBy('titulo')->wherenotin('id', $empresaConhe)->get();
 
     return view('site.empresa.conhecimentos-view', compact('empresa', 'conhecimentos'));
   }

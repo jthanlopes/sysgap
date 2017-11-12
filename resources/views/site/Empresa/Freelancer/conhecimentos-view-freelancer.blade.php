@@ -47,7 +47,7 @@
        <!-- Accordion -->
        <div class="w3-card-2 w3-round">
         <div class="w3-white groups">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Grupos</button>
+          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> Grupos</button>
           <div id="Demo1" class="w3-hide w3-container">
             <hr>
             <p><a href="">Grupo 1</a></p>
@@ -60,7 +60,7 @@
             <p><a href="">Avaliações recebidas</a></p>
             <p><a href="">Avaliações feitas</a></p>
           </div>
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Portifólio</button>
           <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">
              <br>

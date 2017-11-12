@@ -22,7 +22,7 @@
      <!-- Accordion -->
      <div class="w3-card-2 w3-round">
       <div class="w3-white groups">
-        <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Meus Grupos</button>
+        <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> Meus Grupos</button>
         <div id="Demo1" class="w3-hide w3-container">
           <form method="get" action="{{ route('grupo.novo') }}">
             <button type="input" class="geral">Criar Grupo</button>
@@ -36,7 +36,7 @@
           <p><a href="{{ route('jobs.view.freelancer') }}">Visualizar todos</a></p>
           <p><a href="{{ route('jobs.projeto.view') }}">Filtrar por projeto</a></p>
         </div>
-        <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+        <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Portifólio</button>
         <div id="Demo3" class="w3-hide w3-container">
          <div class="w3-row-padding">
            <br>
