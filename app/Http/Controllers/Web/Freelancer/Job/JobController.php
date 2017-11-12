@@ -57,4 +57,14 @@ class JobController extends Controller
 
     return redirect()->route('jobs.projeto.view')->with('message', $message);
   }
+
+  public function jobView(Job $job) {
+    $projeto = Projeto::find($job->projeto->id);
+    $id = Auth::user()->id;
+    $freelancer = Freelancer::find($id);
+    $freelancers = $job->freelancers()->orderBy('nome')->get();
+    $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+
+    return view('site.freelancer.job.job-view', compact('freelancer', 'job', 'projeto', 'freelancers', 'notificacoes'));
+  }
 }

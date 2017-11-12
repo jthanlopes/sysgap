@@ -44,7 +44,7 @@
               <td>{{ $projeto->titulo }}</td>
               <td>{{ $projeto->created_at->format('d-m-Y') }}</td>
               <td><a href="/empresa/projeto/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
-                <button class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</button></td>
+                <a href="/empresa/projeto/{{ $projeto->id }}/finalizar" class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</a></td>
               </tr>
               @endforeach
             </table>

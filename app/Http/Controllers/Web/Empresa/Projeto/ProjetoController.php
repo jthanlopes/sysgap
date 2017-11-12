@@ -154,4 +154,8 @@ public function removerProdutora(Projeto $projeto, Empresa $empresa) {
 
   return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
 }
+
+public function finalizarProjetoView(Projeto $projeto) {
+  return view('site.empresa.projeto-view-finalizar', compact('projeto'));
+}
 }

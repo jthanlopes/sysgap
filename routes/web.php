@@ -94,6 +94,8 @@ Route::prefix('empresa')->group(function () {
   // Remover freelancer e produtora ao projeto
   Route::get('/projeto/{projeto}/integrante/remover/{freelancer}', 'Empresa\Projeto\ProjetoController@removerFreelancer')->name('integrante.remover-freelancer.form');
   Route::get('/projeto/{projeto}/integrante/remover-produtora/{empresa}', 'Empresa\Projeto\ProjetoController@removerProdutora')->name('integrante.remover-produtora.form');
+  // Finalizar projeto
+  Route::get('/projeto/{projeto}/finalizar', 'Empresa\Projeto\ProjetoController@finalizarProjetoView')->name('projeto-view.finalizar');
   //
   // Rotas de pesquisa de usuários
   // Abrir formulário de pesquisa
@@ -176,10 +178,8 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/jobs-projetos', 'Freelancer\Job\JobController@jobsViewProjeto')->name('jobs.projeto.view');
   // Visualizar os jobs de um projeto
   Route::get('/jobs-projetos/{projeto}', 'Freelancer\Job\JobController@jobsView')->name('jobs.projeto.pesquisa');
-  // Aceitar projeto
-  Route::get('/jobs-projetos/{projeto}/aceitar', 'Freelancer\Job\JobController@aceitarProjeto')->name('jobs.projeto.aceitar');
-  // Recusar projeto
-  Route::get('/jobs-projetos/{projeto}/recusar', 'Freelancer\Job\JobController@recusarProjeto')->name('jobs.projeto.recusar');
+  // Visualizar projeto
+  Route::get('/job/{job}', 'Freelancer\Job\JobController@jobView')->name('job.view.freelancer');
   // Rotas grupos
   // Abrir formulário de cadastro de grupo
   Route::get('/grupos', 'Freelancer\Grupo\GrupoController@gruposView')->name('grupos.view');
