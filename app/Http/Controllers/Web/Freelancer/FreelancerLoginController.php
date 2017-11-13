@@ -26,7 +26,8 @@ class FreelancerLoginController extends Controller
     ]));
 
     if (!$response->success) {
-      abort(400, 'No no no!');
+      $message = parent::returnMessage('danger', 'Marque o campo recaptcha!');
+      return redirect()->back()->withInput($request->only('email'))->with('message', $message);
     }
 
     $this->validate($request, [

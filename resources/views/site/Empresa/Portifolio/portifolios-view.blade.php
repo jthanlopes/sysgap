@@ -8,7 +8,7 @@
     <div class="w3-col m12">
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
-          <h3 class="w3-opacity">Meu Portifólio <span class="opt-post">[<a href="{{ route('portifolio.novo') }}">Novo</a>]</span></h3>
+          <h3 class="w3-opacity">Meu Portifólio <span class="opt-post">[<a href="{{ route('portifolio.novo.empresa') }}">Novo</a>]</span></h3>
           @if(session()->has('message'))
           <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -18,7 +18,7 @@
           <hr>
           @foreach ($portifolios as $portifolio)
           <div class="w3-card-4" style="width:100%; margin-bottom: 30px;">
-            <a href="{{ $portifolio->link }}" target="_blank"><img src="{{ asset('storage')  . '/freelancers/portifolio/' . Auth::user()->id . '/' . $portifolio->imagem  }}" alt="Norway" style="width:100%; height: 200px;"></a>
+            <a href="{{ $portifolio->link }}" target="_blank"><img src="{{ asset('storage')  . '/empresas/portifolio/' . Auth::user()->id . '/' . $portifolio->imagem  }}" alt="Norway" style="width:100%; height: 200px;"></a>
             <div class="w3-container w3-center">
               <hr>
               <p style="font-weight: bold;">{{ $portifolio->titulo }}</p>

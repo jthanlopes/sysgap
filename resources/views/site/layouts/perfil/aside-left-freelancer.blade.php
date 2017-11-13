@@ -63,8 +63,8 @@
     <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
       <i class="fa fa-remove"></i>
     </span>
-    <p><strong>Hey!</strong></p>
-    <p>People are looking at your profile. Find out who.</p>
+    <p><strong>Alertas e Dicas!</strong></p>
+    <p>Alertas e dicas para o usuário!</p>
   </div>
 
   <!-- End Left Column -->

@@ -126,6 +126,13 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/{projeto}/pdf', 'pdfController@pdfProjeto')->name('pdf.projeto');
   // PDF do job
   Route::get('/job/{job}/pdf', 'pdfController@pdfJob')->name('pdf.job');
+
+  // Rotas de portifólio
+  Route::get('/portifolios', 'Empresa\Portifolio\PortifolioController@portifoliosView')->name('portifolios.view.empresa');
+  //
+  Route::get('/portifolio/novo', 'Empresa\Portifolio\PortifolioController@criarPortifolioView')->name('portifolio.novo.empresa');
+  //
+  Route::post('/portifolio/novo', 'Empresa\Portifolio\PortifolioController@criarPortifolio')->name('portifolio.criar.empresa');
 });
 
 
