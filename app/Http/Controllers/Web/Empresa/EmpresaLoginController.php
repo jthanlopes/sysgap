@@ -21,7 +21,6 @@ class EmpresaLoginController extends Controller
     $this->validate($request, [
       'email' => 'required|email',
       'password' => 'required|min:6',
-      // 'g-recaptcha-response' => 'required|captcha',
     ]);
 
     $response = json_decode($curl->post('https://www.google.com/recaptcha/api/siteverify', [
@@ -31,7 +30,8 @@ class EmpresaLoginController extends Controller
     ]));
 
     if (!$response->success) {
-      abort(400, 'No no no!');
+      $message = parent::returnMessage('danger', 'Marque o campo recaptcha!');
+      return redirect()->back()->withInput($request->only('email'))->with('message', $message);
     }
 
     $empresa = Empresa::where('email', $request->email)->first();

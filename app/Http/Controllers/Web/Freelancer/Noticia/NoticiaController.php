@@ -14,9 +14,8 @@ class NoticiaController extends Controller
   }
 
   public function criarNoticia(Request $request) {
-    // $filename = config('app.name') . $request->file('imagem')->getClientOriginalName();
     $filename = config('app.name') . '_post_' . Auth::user()->id . '_' . $request->file('imagem')->getClientOriginalName();
-    $storage = 'freelancers/posts/' .  str_slug(Auth::user()->nome, '_');
+    $storage = 'freelancers/posts/' .  Auth::user()->id;
     $request->imagem->storeAs($storage, $filename, 'public');
 
     $create = Noticia::create([

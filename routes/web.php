@@ -193,6 +193,12 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/grupo/{grupo}', 'Freelancer\Grupo\GrupoController@grupoView')->name('grupo.view');
   // Fechar grupo
   Route::get('/grupo/{grupo}/fechar', 'Freelancer\Grupo\GrupoController@fecharGrupo')->name('grupo.fechar');
+  // Rotas de portifólio
+  Route::get('/portifolios', 'Freelancer\Portifolio\PortifolioController@portifoliosView')->name('portifolios.view');
+  //
+  Route::get('/portifolio/novo', 'Freelancer\Portifolio\PortifolioController@criarPortifolioView')->name('portifolio.novo');
+  //
+  Route::post('/portifolio/novo', 'Freelancer\Portifolio\PortifolioController@criarPortifolio')->name('portifolio.criar');
 });
 
 Auth::routes();
