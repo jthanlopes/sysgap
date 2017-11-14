@@ -7,6 +7,7 @@ use App\Endereco;
 use App\Mail\ConfirmaContaFreelancer;
 use Illuminate\Http\Request;
 use Storage;
+use Validator;
 
 class FreelancerRegisterController extends Controller
 {
@@ -19,6 +20,35 @@ class FreelancerRegisterController extends Controller
   }
 
   public function novo(Request $request) {
+    $messages = [
+      'min'    => 'Senha deve tem no minímo seis caracteres!',
+      'required' => 'Preencha o campo :attribute!',
+      'profile_photo.required' => 'Adicione uma foto para o seu perfil!',
+      'email' => 'Formato do e-mail esta incorreto!',
+      'confirmed' => 'Senha e confirmação de senha são diferentes!',
+      'unique' => 'Este e-mail já esta cadastrado!'
+    ];
+
+    $validator = Validator::make($request->all(), [
+      'nome' => 'required',
+      'email' => 'required|unique:freelancers',
+      'senha' => 'required|min:6',
+      'cpf' => 'required',
+      'profile_photo' => 'required',
+      'cep' => 'required',
+      'logradouro' => 'required',
+      'numero' => 'required',
+      'bairro' => 'required',
+      'cidade' => 'required',
+      'uf' => 'required',
+    ], $messages);
+
+    if ($validator->fails()) {
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();
+    }
+
     $endereco = Endereco::create([
       'cep' => request('cep'),
       'logradouro' => request('logradouro'),
@@ -39,7 +69,7 @@ class FreelancerRegisterController extends Controller
       'nome' => $request->nome,
       'email' => $request->email,
       'cpf' => $request->cpf,
-      'password' => bcrypt($request->senha),
+      'password' => bcrypt($request->password),
       'foto_perfil' => $filename,
       'endereco_id' => $endereco['id'],
       'ativo' => 0,

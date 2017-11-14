@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Freelancer;
 
 use App\Freelancer;
 use Auth;
+use Validator;
 use App\Utilities\Curl;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,23 @@ class FreelancerLoginController extends Controller
   }
 
   public function login(Request $request, Curl $curl) {
+    $messages = [
+      'min'    => 'Senha deve tem no minímo seis caracteres!',
+      'required' => 'Preencha o campo :attribute!',
+      'password.required' => 'Preencha o campo senha!',
+      'email' => 'Formato do e-mail esta incorreto!',
+    ];
+
+    $validator = Validator::make($request->all(), [
+      'email' => 'required|email',
+      'password' => 'required|min:6',
+    ], $messages);
+
+    if ($validator->fails()) {
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();
+    }
 
     $response = json_decode($curl->post('https://www.google.com/recaptcha/api/siteverify', [
       'secret' => config('services.recaptcha.secret'),

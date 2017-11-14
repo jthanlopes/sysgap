@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Empresa;
 use App\Empresa;
 use App\Endereco;
 use App\Mail\ConfirmaConta;
+use Validator;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -19,6 +20,35 @@ class EmpresaRegisterController extends Controller
   }
 
   public function novo(Request $request) {
+    $messages = [
+      'min'    => 'Senha deve tem no minímo seis caracteres!',
+      'required' => 'Preencha o campo :attribute!',
+      'profile_photo.required' => 'Adicione uma foto para o seu perfil!',
+      'email' => 'Formato do e-mail esta incorreto!',
+      'confirmed' => 'Senha e confirmação de senha são diferentes!',
+      'unique' => 'Este e-mail já esta cadastrado!'
+    ];
+
+    $validator = Validator::make($request->all(), [
+      'nome' => 'required',
+      'email' => 'required|unique:empresas',
+      'senha' => 'required|min:6',
+      'cnpj' => 'required',
+      'profile_photo' => 'required',
+      'cep' => 'required',
+      'logradouro' => 'required',
+      'numero' => 'required',
+      'bairro' => 'required',
+      'cidade' => 'required',
+      'uf' => 'required',
+    ], $messages);
+
+    if ($validator->fails()) {
+      return redirect()->back()
+      ->withErrors($validator)
+      ->withInput();
+    }
+
     $endereco = Endereco::create([
       'cep' => request('cep'),
       'logradouro' => request('logradouro'),
@@ -29,7 +59,7 @@ class EmpresaRegisterController extends Controller
       'uf' => request('uf'),
     ]);
 
-        // Salvar o endereço primeiro
+    // Salvar o endereço primeiro
     $endereco->save();
 
     $filename = config('app.name') . '_foto_perfil' . str_slug($request->email, '_') . '_' . $request->file('profile_photo')->getClientOriginalName();

@@ -11,6 +11,13 @@
       {{ session()->get('message')['message'] }}
     </div>
     @endif
+    @if ($errors->any())
+    <div class="alert alert-danger alert-dismissable">
+      @foreach ($errors->all() as $error)
+      <p>{{ $error }}</p>
+      @endforeach
+    </div>
+    @endif
     <hr>
     <form method="POST" action="{{ route('freelancer.login') }}">
       {{ csrf_field() }}
