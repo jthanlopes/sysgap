@@ -17,7 +17,7 @@ class PortifolioController extends Controller
   public function portifoliosView() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    $portifolios = Portifolio::where('empresa_id', $id)->get();
+    $portifolios = Portifolio::where('empresa_id', $id)->paginate(5);
 
     return view('site.empresa.portifolio.portifolios-view', compact('empresa', 'portifolios'));
   }
@@ -52,17 +52,46 @@ class PortifolioController extends Controller
     return redirect()->route('portifolios.view.empresa')->with('message', $message);
   }
 
-  public function excluirNoticia(Noticia $noticia) {
-    $delete = $noticia->delete();
+  public function editarPortifolioView(Portifolio $portifolio) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+
+    return view('site.empresa.portifolio.portifolio-editar', compact('empresa', 'portifolio'));
+  }
+
+  public function editarPortifolio(Request $request) {
+    if ($request->file('imagem') == null) {
+      $portifolio = Portifolio::find($request->portifolio);
+      $filename = $portifolio->imagem;
+    } else {
+      $filename = config('app.name') . '_portifolio_' . Auth::user()->id . '_' . $request->file('imagem')->getClientOriginalName();
+      $storage = 'empresas/portifolio/' .  Auth::user()->id;
+      $request->imagem->storeAs($storage, $filename, 'public');
+    }
+
+    Portifolio::where('id', $request->portifolio)
+    ->update(['titulo' => $request->titulo,
+      'link' => $request->link,
+      'empresa_id' => Auth::user()->id,
+      'imagem' => $filename,
+    ]);
+
+    $message = parent::returnMessage('success', 'Portifólio editado com sucesso!');
+
+    return redirect()->route('portifolios.view.empresa')->with('message', $message);
+  }
+
+  public function excluirPortifolio(Portifolio $portifolio) {
+    $delete = $portifolio->delete();
 
     if ($delete)
     {
-      $message = parent::returnMessage('success', 'Notícia/evento excluído com sucesso!');
+      $message = parent::returnMessage('success', 'Portifólio excluído com sucesso!');
     } else
     {
-      $message = parent::returnMessage('danger', 'Erro ao excluir a notícia/evento!');
+      $message = parent::returnMessage('danger', 'Erro ao excluir o Portifólio!');
     }
 
-    return redirect()->route('freelancer.perfil')->with('message', $message);
+    return redirect()->route('portifolios.view.empresa')->with('message', $message);
   }
 }

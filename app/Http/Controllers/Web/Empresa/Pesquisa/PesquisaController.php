@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Empresa\Pesquisa;
 
 use App\Conhecimento;
+use App\Portifolio;
 use App\Endereco;
 use App\Empresa;
 use App\Noticia;
@@ -126,8 +127,24 @@ public function viewPerfilFreelancer(Freelancer $freelancer) {
 }
 
 public function viewConhecimentosFreelancer(Freelancer $freelancer) {
-  $freelancer = Freelancer::find($freelancer->id);
+  return view('site.empresa.freelancer.conhecimentos-view-freelancer', compact('freelancer'));
+}
 
-  return view('site.empresa.freelancer.conhecimentos-view-freelancer', compact('freelancer', 'noticias'));
+public function viewConhecimentosProdutora(Empresa $empresa) {
+  $produtora = $empresa;
+  return view('site.empresa.produtora.conhecimentos-view-produtora', compact('produtora'));
+}
+
+public function viewPortifoliosFreelancer(Freelancer $freelancer) {
+  $portifolios = Portifolio::orderBy('created_at', 'desc')->where('freelancer_id', $freelancer->id)->paginate(5);
+
+  return view('site.empresa.freelancer.portifolio-view-freelancer', compact('freelancer', 'portifolios'));
+}
+
+public function viewPortifoliosProdutora(Empresa $empresa) {
+  $portifolios = Portifolio::orderBy('created_at', 'desc')->where('empresa_id', $empresa->id)->paginate(5);
+  $produtora = $empresa;
+
+  return view('site.empresa.produtora.portifolios-view-produtora', compact('produtora', 'portifolios'));
 }
 }

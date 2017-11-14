@@ -19,9 +19,9 @@
         <div>
           <p style="float: right; padding-top: 14px;">{{ $noticia->created_at->format('d/m/Y') }}</p>
           <a class="btn-veja-mais" href="/eventos/evento-view/{{ $noticia->id }}"><span>Veja mais </span></a>
-        </div>        
+        </div>
       </div>
-    </div>    
+    </div>
     @endforeach
     <div class="paginacao">
       {{ $noticias->links() }}

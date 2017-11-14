@@ -71,33 +71,16 @@
           <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Portifólio</button>
           <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">
-             <br>
-             <div class="w3-half">
-               <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/fjords.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-     <br>
+            <hr>
+            <p><a href="/empresa/pesquisa/perfil-freelancer/portifolios/{{ $freelancer->id }}">Ver portifólios</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
 
-     <!-- Interests -->
-     <div class="w3-card-2 w3-round w3-white w3-hide-small">
+    <!-- Interests -->
+    <div class="w3-card-2 w3-round w3-white w3-hide-small">
       <div class="w3-container">
         <p>Conhecimentos <span class="opt-tec">[<a href="/empresa/pesquisa/perfil-freelancer/conhecimentos/{{ $freelancer->id }}">Ver detalhes</a>]</span></p>
         <p>

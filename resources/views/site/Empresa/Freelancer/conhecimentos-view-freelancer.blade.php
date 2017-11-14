@@ -63,25 +63,8 @@
           <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Portifólio</button>
           <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">
-             <br>
-             <div class="w3-half">
-               <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
-             <div class="w3-half">
-               <img src="/w3images/fjords.jpg" style="width:100%" class="w3-margin-bottom">
-             </div>
+             <hr>
+             <p><a href="/empresa/pesquisa/perfil-freelancer/portifolios/{{ $freelancer->id }}">Ver portifólios</a></p>
            </div>
          </div>
        </div>
@@ -111,7 +94,7 @@
       <div class="w3-col m12">
         <div class="w3-card-2 w3-round w3-white">
           <div class="w3-container w3-padding">
-            <h3 class="w3-opacity">Meus Conhecimentos</h3>
+            <h3 class="w3-opacity">Conhecimentos</h3>
             @if(session()->has('message'))
             <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

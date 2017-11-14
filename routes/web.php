@@ -108,6 +108,12 @@ Route::prefix('empresa')->group(function () {
   Route::get('/pesquisa/perfil-freelancer/{freelancer}', 'Empresa\Pesquisa\PesquisaController@viewPerfilFreelancer')->name('view.perfil-freelancer');
   // Visualizar perfil/conhecimentos de um freelancer
   Route::get('/pesquisa/perfil-freelancer/conhecimentos/{freelancer}', 'Empresa\Pesquisa\PesquisaController@viewConhecimentosFreelancer')->name('view.conhecimentos-freelancer');
+  // Visualizar portifolio de um freelancer
+  Route::get('/pesquisa/perfil-freelancer/portifolios/{freelancer}', 'Empresa\Pesquisa\PesquisaController@viewPortifoliosFreelancer')->name('view.portifolios-freelancer');
+  // Visualizar perfil/conhecimentos de uma produtora
+  Route::get('/pesquisa/perfil-produtora/conhecimentos/{empresa}', 'Empresa\Pesquisa\PesquisaController@viewConhecimentosProdutora')->name('view.conhecimentos-empresa');
+  // Visualizar portifolio de uma produtora
+  Route::get('/pesquisa/perfil-produtora/portifolios/{empresa}', 'Empresa\Pesquisa\PesquisaController@viewPortifoliosProdutora')->name('view.portifolios-produtora');
   // Rotas de notícias e eventos
   // Submeter e criar uma nova notícia
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
@@ -133,6 +139,12 @@ Route::prefix('empresa')->group(function () {
   Route::get('/portifolio/novo', 'Empresa\Portifolio\PortifolioController@criarPortifolioView')->name('portifolio.novo.empresa');
   //
   Route::post('/portifolio/novo', 'Empresa\Portifolio\PortifolioController@criarPortifolio')->name('portifolio.criar.empresa');
+  // Excluir portifólio
+  Route::get('/portifolio/{portifolio}/excluir', 'Empresa\Portifolio\PortifolioController@excluirPortifolio')->name('portifolio.excluir.empresa');
+  // Abrir formulário de editar portifólio
+  Route::get('/portifolio/{portifolio}/editar', 'Empresa\Portifolio\PortifolioController@editarPortifolioView')->name('portifolio.editar.view.empresa');
+  // Editar portifólio
+  Route::post('/portifolio/editar', 'Empresa\Portifolio\PortifolioController@editarPortifolio')->name('portifolio.editar.empresa');
 });
 
 
@@ -206,6 +218,12 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/portifolio/novo', 'Freelancer\Portifolio\PortifolioController@criarPortifolioView')->name('portifolio.novo');
   //
   Route::post('/portifolio/novo', 'Freelancer\Portifolio\PortifolioController@criarPortifolio')->name('portifolio.criar');
+  // Excluir portifólio
+  Route::get('/portifolio/{portifolio}/excluir', 'Freelancer\Portifolio\PortifolioController@excluirPortifolio')->name('portifolio.excluir');
+  // Abrir formulário de editar portifólio
+  Route::get('/portifolio/{portifolio}/editar', 'Freelancer\Portifolio\PortifolioController@editarPortifolioView')->name('portifolio.editar.view');
+  // Editar portifólio
+  Route::post('/portifolio/editar', 'Freelancer\Portifolio\PortifolioController@editarPortifolio')->name('portifolio.editar');
 });
 
 Auth::routes();

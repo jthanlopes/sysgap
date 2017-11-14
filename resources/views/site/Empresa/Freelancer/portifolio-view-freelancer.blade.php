@@ -32,36 +32,30 @@
         <!-- Profile -->
         <div class="w3-card-2 w3-round w3-white">
           <div class="w3-container">
-           <h4 class="w3-center">Perfil Empresa</h4>
-           <p class="w3-center"><img src="{{ asset('storage') . '/empresas/perfil/' . $produtora->foto_perfil }}" class="w3-circle" style="height:130px;width:130px" alt="Imagem da produtora"></p>
+           <h4 class="w3-center">Perfil Freelancer</h4>
+           <p class="w3-center"><img src="{{ asset('storage') . '/freelancers/perfil/' . $freelancer->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da freelancer"></p>
            <hr>
            <div style="text-align: center;">
-             <p title="Nome de usuário">{{ $produtora->categoria . ": " . $produtora->nome }}</p>
-             <p title="E-mail">{{ $produtora->email }}</p>
-             <p title="Cidade/Estado">{{ $produtora->endereco->cidade . " - " . $produtora->endereco->uf}}</p>
-             <p title="Data de cadastro">{{ $produtora->created_at->format('d/m/Y') }}</p>
+             <p title="Nome de usuário">{{ $freelancer->nome }}</p>
+             <p title="E-mail">{{ $freelancer->email }}</p>
+             <p title="Data de cadastro">{{ $freelancer->created_at->format('d/m/Y') }}</p>
            </div>
-           <div class="w3-row">
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-green w3-section" title="Accept">Enviar E-mail</button>
-            </div>
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-red w3-section" title="Decline">Enviar Mensagem</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <!-- Accordion -->
-      <div class="w3-card-2 w3-round">
+         </div>
+       </div>
+       <br>
+
+       <!-- Accordion -->
+       <div class="w3-card-2 w3-round">
         <div class="w3-white groups">
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Projetos</button>
-          <div id="Demo2" class="w3-hide w3-container">
-            <hr>
-            <p><a href="">Ver projetos</a></p>
-          </div>
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Avaliações</button>
+          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> Grupos</button>
           <div id="Demo1" class="w3-hide w3-container">
+            <hr>
+            <p><a href="">Grupo 1</a></p>
+            <p><a href="">Grupo 2</a></p>
+            <p><a href="">Grupo 3</a></p>
+          </div>
+          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Avaliações</button>
+          <div id="Demo2" class="w3-hide w3-container">
             <hr>
             <p><a href="">Avaliações recebidas</a></p>
             <p><a href="">Avaliações feitas</a></p>
@@ -70,54 +64,69 @@
           <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">
              <hr>
-             <p><a href="/empresa/pesquisa/perfil-produtora/portifolios/{{ $produtora->id }}">Ver portifólios</a></p>
+             <p><a href="/empresa/pesquisa/perfil-freelancer/portifolios/{{ $freelancer->id }}">Ver portifólios</a></p>
            </div>
          </div>
        </div>
      </div>
      <br>
+
      <!-- Interests -->
      <div class="w3-card-2 w3-round w3-white w3-hide-small">
       <div class="w3-container">
-        <p>Conhecimentos <span class="opt-tec">[<a href="/empresa/pesquisa/perfil-produtora/conhecimentos/{{ $produtora->id }}">Ver detalhes</a>]</span></p>
+        <p>Conhecimentos <span class="opt-tec">[<a href="/empresa/pesquisa/perfil-freelancer/conhecimentos/{{ $freelancer->id }}">Ver detalhes</a>]</span></p>
         <p>
-          @if(count($produtora->conhecimentos) > 0)
-          @foreach ($produtora->conhecimentos as $conhecimento)
-          <span class="w3-tag w3-small w3-theme-l{{ rand(1, 5) }}">{{ $conhecimento->titulo }}</span>
-          @endforeach
-          @else
-          Nenhum conhecimento cadastrado!
-          @endif
+          <p>
+            @foreach ($freelancer->conhecimentos as $conhecimento)
+            <span class="w3-tag w3-small w3-theme-l{{ rand(1, 5) }}">{{ $conhecimento->titulo }}</span>
+            @endforeach
+          </p>
         </p>
       </div>
     </div>
     <br>
     <!-- End Left Column -->
   </div>
+
   <!-- Middle Column -->
   <div class="w3-col m7">
-    @if(count($noticias) > 0)
-    @foreach($noticias as $noticia)
-    <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;"><br>
-      <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
-      <h4>{{ $noticia->titulo }}</h4><br>
-      <hr class="w3-clear">
-      <p>{{ $noticia->conteudo }}</p>
-      <div class="w3-row-padding" style="margin:0 -16px">
-        <div class="w3-half">
-          <img src="{{ asset('storage')  . '/empresas/posts/' . str_slug($produtora->nome, '_') . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">
+
+    <div class="w3-row-padding">
+      <div class="w3-col m12">
+        <div class="w3-card-2 w3-round w3-white">
+          <div class="w3-container w3-padding">
+            <h3 class="w3-opacity">Portifólio</h3>
+            @if(session()->has('message'))
+            <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              {{ session()->get('message')['message'] }}
+            </div>
+            @endif
+            <hr>
+            @foreach ($portifolios as $portifolio)
+            <div class="w3-card-4" style="width:100%; margin-bottom: 30px;">
+              <a href="{{ $portifolio->link }}" target="_blank"><img src="{{ asset('storage')  . '/freelancers/portifolio/' . $freelancer->id  . '/' . $portifolio->imagem  }}" alt="Norway" style="width:100%; height: 200px;"></a>
+              <div class="w3-container w3-center">
+                <hr>
+                <p style="font-weight: bold;">{{ $portifolio->titulo }} </p>
+              </div>
+            </div>
+            @endforeach
+            @if(count($portifolios) == 0)
+            <div style="text-align: center; margin-top: 10px;">
+              Nenhum portifólio cadastrado.
+            </div>
+            @endif
+            <div style="text-align: center;">
+              {{ $portifolios->links() }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    @endforeach
-    @else
-    <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;">
-      <h4>Nenhum post feito por este usuário!</h4>
-    </div>
-    @endif
-
     <!-- End Middle Column -->
   </div>
+
   <!-- Right Column -->
   <div class="w3-col m2">
     <div class="w3-card-2 w3-round w3-white w3-center">

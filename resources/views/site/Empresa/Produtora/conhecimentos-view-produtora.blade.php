@@ -94,30 +94,43 @@
     <br>
     <!-- End Left Column -->
   </div>
+
   <!-- Middle Column -->
   <div class="w3-col m7">
-    @if(count($noticias) > 0)
-    @foreach($noticias as $noticia)
-    <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;"><br>
-      <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
-      <h4>{{ $noticia->titulo }}</h4><br>
-      <hr class="w3-clear">
-      <p>{{ $noticia->conteudo }}</p>
-      <div class="w3-row-padding" style="margin:0 -16px">
-        <div class="w3-half">
-          <img src="{{ asset('storage')  . '/empresas/posts/' . str_slug($produtora->nome, '_') . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">
+
+    <div class="w3-row-padding">
+      <div class="w3-col m12">
+        <div class="w3-card-2 w3-round w3-white">
+          <div class="w3-container w3-padding">
+            <h3 class="w3-opacity">Conhecimentos</h3>
+            @if(session()->has('message'))
+            <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              {{ session()->get('message')['message'] }}
+            </div>
+            @endif
+            <hr>
+            <table class="w3-table w3-centered w3-bordered table-conhecimentos">
+              <tr>
+                <th>Tecnologia</th>
+                <th>Descrição</th>
+                <th>Nível</th>
+              </tr>
+              @foreach ($produtora->conhecimentos as $conhecimento)
+              <tr>
+                <td>{{ $conhecimento->titulo }}</td>
+                <td>{{ $conhecimento->descricao }}</td>
+                <td>{{ $conhecimento->nivel }}</td>
+              </tr>
+              @endforeach
+            </table>
+          </div>
         </div>
       </div>
     </div>
-    @endforeach
-    @else
-    <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;">
-      <h4>Nenhum post feito por este usuário!</h4>
-    </div>
-    @endif
-
     <!-- End Middle Column -->
   </div>
+
   <!-- Right Column -->
   <div class="w3-col m2">
     <div class="w3-card-2 w3-round w3-white w3-center">

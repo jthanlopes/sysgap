@@ -21,7 +21,7 @@
             <a href="{{ $portifolio->link }}" target="_blank"><img src="{{ asset('storage')  . '/freelancers/portifolio/' . Auth::user()->id . '/' . $portifolio->imagem  }}" alt="Norway" style="width:100%; height: 200px;"></a>
             <div class="w3-container w3-center">
               <hr>
-              <p style="font-weight: bold;">{{ $portifolio->titulo }}</p>
+              <p style="font-weight: bold;">{{ $portifolio->titulo }} <span style="float: right; font-weight: normal;"> [<a href="/freelancer/portifolio/{{ $portifolio->id }}/editar">Editar</a>][<a href="/freelancer/portifolio/{{ $portifolio->id }}/excluir">Excluir</a>]</span></p>
             </div>
           </div>
           @endforeach
@@ -30,6 +30,9 @@
             Você não tem nenhum portifólio cadastrado.
           </div>
           @endif
+          <div style="text-align: center;">
+            {{ $portifolios->links() }}
+          </div>
         </div>
       </div>
     </div>

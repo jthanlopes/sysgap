@@ -94,30 +94,46 @@
     <br>
     <!-- End Left Column -->
   </div>
+
   <!-- Middle Column -->
   <div class="w3-col m7">
-    @if(count($noticias) > 0)
-    @foreach($noticias as $noticia)
-    <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;"><br>
-      <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
-      <h4>{{ $noticia->titulo }}</h4><br>
-      <hr class="w3-clear">
-      <p>{{ $noticia->conteudo }}</p>
-      <div class="w3-row-padding" style="margin:0 -16px">
-        <div class="w3-half">
-          <img src="{{ asset('storage')  . '/empresas/posts/' . str_slug($produtora->nome, '_') . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">
+
+    <div class="w3-row-padding">
+      <div class="w3-col m12">
+        <div class="w3-card-2 w3-round w3-white">
+          <div class="w3-container w3-padding">
+            <h3 class="w3-opacity">Portifólio</h3>
+            @if(session()->has('message'))
+            <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              {{ session()->get('message')['message'] }}
+            </div>
+            @endif
+            <hr>
+            @foreach ($portifolios as $portifolio)
+            <div class="w3-card-4" style="width:100%; margin-bottom: 30px;">
+              <a href="{{ $portifolio->link }}" target="_blank"><img src="{{ asset('storage')  . '/empresas/portifolio/' . $produtora->id  . '/' . $portifolio->imagem  }}" alt="Norway" style="width:100%; height: 200px;"></a>
+              <div class="w3-container w3-center">
+                <hr>
+                <p style="font-weight: bold;">{{ $portifolio->titulo }} </p>
+              </div>
+            </div>
+            @endforeach
+            @if(count($portifolios) == 0)
+            <div style="text-align: center; margin-top: 10px;">
+              Nenhum portifólio cadastrado.
+            </div>
+            @endif
+            <div style="text-align: center;">
+              {{ $portifolios->links() }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    @endforeach
-    @else
-    <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;">
-      <h4>Nenhum post feito por este usuário!</h4>
-    </div>
-    @endif
-
     <!-- End Middle Column -->
   </div>
+
   <!-- Right Column -->
   <div class="w3-col m2">
     <div class="w3-card-2 w3-round w3-white w3-center">
