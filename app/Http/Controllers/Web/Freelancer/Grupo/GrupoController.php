@@ -84,4 +84,31 @@ public function fecharGrupo(Grupo $grupo) {
 
   return redirect()->route('grupos.view')->with('message', $message);
 }
+
+public function editarGrupoView(Grupo $grupo) {
+  $id = Auth::user()->id;
+  $freelancer = Freelancer::find($id);
+  $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+
+  return view('site.freelancer.grupo.grupo-editar', compact('grupo', 'freelancer', 'notificacoes'));
+}
+
+public function editarGrupo(Request $request) {
+  $update = Grupo::where('id', $request->grupo)
+  ->update(['titulo' => request('titulo'),
+    'descricao' => request('descricao'),
+    'freelancer_id' => Auth::user()->id,
+    'status' => 1,
+  ]);
+
+  if ($update)
+  {
+    $message = parent::returnMessage('success', 'Grupo editado com sucesso!');
+  } else
+  {
+    $message = parent::returnMessage('danger', 'Erro ao editar o grupo!');
+  }
+
+  return redirect('/freelancer/grupo/' . $request->grupo)->with('message', $message);
+}
 }

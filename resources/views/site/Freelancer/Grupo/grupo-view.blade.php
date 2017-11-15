@@ -13,7 +13,7 @@
       @endif
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
-          <h3 class="w3-opacity">Grupo {{ $grupo->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/job/editar/{{ $grupo->id }}">Editar grupo</a>]</span></h3>
+          <h3 class="w3-opacity">Grupo {{ $grupo->titulo }} <span class="opt-projeto">[<a href="/freelancer/grupo/{{ $grupo->id }}/editar">Editar grupo</a>]</span></h3>
           <p class="w3-opacity">Descrição: {{ $grupo->descricao }}</p>
           <p class="w3-opacity">Data de criação: {{ $grupo->created_at->format('d/m/Y') }}</p>
           <a href="/freelancer/grupo/{{ $grupo->id }}/pdf">Gerar relatório do grupo</a>

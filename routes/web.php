@@ -200,7 +200,7 @@ Route::prefix('freelancer')->group(function () {
   // Visualizar projeto
   Route::get('/job/{job}', 'Freelancer\Job\JobController@jobView')->name('job.view.freelancer');
   // Rotas grupos
-  // Abrir formulário de cadastro de grupo
+  // Visualizar grupos
   Route::get('/grupos', 'Freelancer\Grupo\GrupoController@gruposView')->name('grupos.view');
   // Pesquisar por grupos
   Route::post('/grupos/pesquisar', 'Freelancer\Grupo\GrupoController@gruposPesquisar')->name('grupos.view.pesquisar');
@@ -212,6 +212,10 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/grupo/{grupo}', 'Freelancer\Grupo\GrupoController@grupoView')->name('grupo.view');
   // Fechar grupo
   Route::get('/grupo/{grupo}/fechar', 'Freelancer\Grupo\GrupoController@fecharGrupo')->name('grupo.fechar');
+  // Abrir formulário de edição de grupo
+  Route::get('/grupo/{grupo}/editar', 'Freelancer\Grupo\GrupoController@editarGrupoView')->name('grupo.editar.view');
+  // Submeter e editar o grupo
+  Route::post('/grupo/editar', 'Freelancer\Grupo\GrupoController@editarGrupo')->name('grupo.editar');
   // Rotas de portifólio
   Route::get('/portifolios', 'Freelancer\Portifolio\PortifolioController@portifoliosView')->name('portifolios.view');
   //
