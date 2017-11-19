@@ -197,6 +197,10 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/jobs-projetos', 'Freelancer\Job\JobController@jobsViewProjeto')->name('jobs.projeto.view');
   // Visualizar os jobs de um projeto
   Route::get('/jobs-projetos/{projeto}', 'Freelancer\Job\JobController@jobsView')->name('jobs.projeto.pesquisa');
+  // Aceitar projeto
+  Route::get('/jobs-projetos/{projeto}/aceitar', 'Freelancer\Job\JobController@aceitarProjeto')->name('jobs.projeto.aceitar');
+  // Recusar projeto
+  Route::get('/jobs-projetos/{projeto}/recusar', 'Freelancer\Job\JobController@recusarProjeto')->name('jobs.projeto.recusar');
   // Visualizar projeto
   Route::get('/job/{job}', 'Freelancer\Job\JobController@jobView')->name('job.view.freelancer');
   // Rotas grupos
@@ -216,6 +220,12 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/grupo/{grupo}/editar', 'Freelancer\Grupo\GrupoController@editarGrupoView')->name('grupo.editar.view');
   // Submeter e editar o grupo
   Route::post('/grupo/editar', 'Freelancer\Grupo\GrupoController@editarGrupo')->name('grupo.editar');
+  // Mostrar freelancers para convidar para o grupo
+  Route::get('/grupo/{grupo}/integrante/novo', 'Freelancer\Grupo\GrupoController@novoFormIntegrantes')->name('grupo.add.integrantes.form');
+  // Adicionar freelancer ao job
+  Route::get('/grupo/{grupo}/integrante/{freelancer}/add', 'Freelancer\Grupo\GrupoController@addFreelancer')->name('grupo.add.integrante');
+  // Remover freelancer do grupo
+  Route::get('/grupo/{grupo}/integrante/{freelancer}/remover', 'Freelancer\Grupo\GrupoController@removerFreelancer')->name('grupo.remover-freelancer');
   // Rotas de portifólio
   Route::get('/portifolios', 'Freelancer\Portifolio\PortifolioController@portifoliosView')->name('portifolios.view');
   //
@@ -228,6 +238,9 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/portifolio/{portifolio}/editar', 'Freelancer\Portifolio\PortifolioController@editarPortifolioView')->name('portifolio.editar.view');
   // Editar portifólio
   Route::post('/portifolio/editar', 'Freelancer\Portifolio\PortifolioController@editarPortifolio')->name('portifolio.editar');
+  // Ver rotas de pesquisa
+  // Visualizar perfil de um freelancer
+  Route::get('/pesquisa/perfil-freelancer/{freelancer}', 'Freelancer\Pesquisa\PesquisaController@viewPerfilFreelancer')->name('view.perfil-freelancer.freelancer');
 });
 
 Auth::routes();

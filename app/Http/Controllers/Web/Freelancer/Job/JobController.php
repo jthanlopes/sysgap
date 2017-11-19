@@ -19,6 +19,7 @@ class JobController extends Controller
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
     if($projeto->titulo == null) {
       $jobs = Freelancer::find($id)->jobs()->paginate(10);
@@ -26,7 +27,7 @@ class JobController extends Controller
       $jobs = Freelancer::find($id)->jobs()->where('projeto_id', $projeto->id)->paginate(10);
     }
 
-    return view('site.freelancer.job.jobs-view', compact('freelancer', 'jobs', 'notificacoes'));
+    return view('site.freelancer.job.jobs-view', compact('freelancer', 'jobs', 'notificacoes', 'notificacoes2'));
   }
 
   public function jobsViewProjeto() {
@@ -34,8 +35,9 @@ class JobController extends Controller
     $freelancer = Freelancer::find($id);
     $projetos = Freelancer::find($id)->projetos()->where('aceito', '!=', 3)->get();
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
-    return view('site.freelancer.job.jobs-view-projeto', compact('freelancer', 'projetos', 'notificacoes'));
+    return view('site.freelancer.job.jobs-view-projeto', compact('freelancer', 'projetos', 'notificacoes', 'notificacoes2'));
   }
 
   public function aceitarProjeto(Projeto $projeto) {
@@ -64,7 +66,8 @@ class JobController extends Controller
     $freelancer = Freelancer::find($id);
     $freelancers = $job->freelancers()->orderBy('nome')->get();
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
-    return view('site.freelancer.job.job-view', compact('freelancer', 'job', 'projeto', 'freelancers', 'notificacoes'));
+    return view('site.freelancer.job.job-view', compact('freelancer', 'job', 'projeto', 'freelancers', 'notificacoes', 'notificacoes2'));
   }
 }

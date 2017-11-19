@@ -61,7 +61,8 @@ class Freelancer extends Authenticatable {
     }
 
     public function grupos() {
-      return $this->belongsToMany(Grupo::class);
+      return $this->belongsToMany(Grupo::class)
+      ->withPivot('aceito');
     }
 
     public function portifolios() {

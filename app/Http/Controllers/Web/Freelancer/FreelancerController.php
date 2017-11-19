@@ -19,16 +19,18 @@ class FreelancerController extends Controller
     $freelancer = Freelancer::find($id);
     $noticias = Noticia::orderBy('created_at', 'desc')->where('freelancer_id', $id)->paginate(10);
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
-    return view('site.freelancer.perfil', compact('freelancer', 'noticias', 'notificacoes'));
+    return view('site.freelancer.perfil', compact('freelancer', 'noticias', 'notificacoes', 'notificacoes2'));
   }
 
   public function editarPerfil() {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
-    return view('site.freelancer.perfil-editar', compact('freelancer', 'notificacoes'));
+    return view('site.freelancer.perfil-editar', compact('freelancer', 'notificacoes', 'notificacoes2'));
   }
 
   public function editarInfomacoes(Request $request) {

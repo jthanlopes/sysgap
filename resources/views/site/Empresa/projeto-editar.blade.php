@@ -8,7 +8,7 @@
     <div class="w3-col m12">
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding form-news">
-          <h3 class="w3-opacity">Editar Projeto</h3>          
+          <h3 class="w3-opacity">Editar Projeto</h3>
           <hr>
           <form method="POST" action="{{ route('projeto.editar') }}">
             {{ csrf_field() }}
@@ -30,14 +30,13 @@
             <hr>
             <input type="submit" value="Editar">
 
-            
-          </form>   
+          </form>
         </div>
       </div>
     </div>
   </div>
 
-  
+
   <!-- End Middle Column -->
-</div>      
+</div>
 @endsection

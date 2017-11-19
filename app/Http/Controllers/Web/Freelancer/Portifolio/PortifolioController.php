@@ -18,17 +18,19 @@ class PortifolioController extends Controller
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
     $portifolios = Portifolio::where('freelancer_id', $id)->paginate(5);
 
-    return view('site.freelancer.portifolio.portifolios-view', compact('freelancer', 'notificacoes', 'portifolios'));
+    return view('site.freelancer.portifolio.portifolios-view', compact('freelancer', 'notificacoes', 'portifolios', 'notificacoes2'));
   }
 
   public function criarPortifolioView() {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
-    return view('site.freelancer.portifolio.portifolio-novo', compact('freelancer', 'notificacoes'));
+    return view('site.freelancer.portifolio.portifolio-novo', compact('freelancer', 'notificacoes', 'notificacoes2'));
   }
 
   public function criarPortifolio(Request $request) {
@@ -58,8 +60,9 @@ class PortifolioController extends Controller
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
-    return view('site.freelancer.portifolio.portifolio-editar', compact('freelancer', 'notificacoes', 'portifolio'));
+    return view('site.freelancer.portifolio.portifolio-editar', compact('freelancer', 'notificacoes', 'portifolio', 'notificacoes2'));
   }
 
   public function editarPortifolio(Request $request) {

@@ -13,26 +13,45 @@
       @endif
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
-          <h3 class="w3-opacity">Grupo {{ $grupo->titulo }} <span class="opt-projeto">[<a href="/freelancer/grupo/{{ $grupo->id }}/editar">Editar grupo</a>]</span></h3>
+          <h3 class="w3-opacity">Grupo {{ $grupo->titulo }} @if(auth()->user()->id == $grupo->freelancer_id) <span class="opt-projeto">[<a href="/freelancer/grupo/{{ $grupo->id }}/editar">Editar grupo</a>]</span>@endif</h3>
           <p class="w3-opacity">Descrição: {{ $grupo->descricao }}</p>
           <p class="w3-opacity">Data de criação: {{ $grupo->created_at->format('d/m/Y') }}</p>
           <a href="/freelancer/grupo/{{ $grupo->id }}/pdf">Gerar relatório do grupo</a>
           <hr>
-          <h4 class="w3-opacity">Gerenciar Equipe <span class="opt-projeto">[<a href="/freelancer/grupo/{{ $grupo->id }}/integrante/novo">Adicionar integrante</a>]</span></h4>
+          <h4 class="w3-opacity">Gerenciar Equipe @if(auth()->user()->id == $grupo->freelancer_id)<span class="opt-projeto">[<a href="/freelancer/grupo/{{ $grupo->id }}/integrante/novo">Adicionar integrante</a>]</span>@endif</h4>
           <table class="w3-table w3-centered w3-bordered table-projetos">
             <tr>
               <th>Nome</th>
               <th>E-mail</th>
+              <th>Status</th>
               <th>Ações</th>
             </tr>
-            @foreach ($freelancers as $freelancer)
+            @foreach ($results as $result)
+            @foreach ($result->grupos as $grupoFreela)
+            @if($grupoFreela->id == $grupo->id)
             <tr>
-              <td><a href="/empresa/pesquisa/perfil-freelancer/{{ $freelancer->id }}">{{ $freelancer->nome }}</a></td>
-              <td>{{ $freelancer->email }}</td>
-              <td>{{-- <a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para o freelancer">Enviar E-mail</a>
-                <a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante/{{ $freelancer->id }}/remover" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a> --}}
+              <td>{{ $result->nome }}</td>
+              <td>{{ $result->email }}</td>
+              @if($grupoFreela->pivot->aceito == 0)
+              <td>Convite<br/>Enviado</td>
+              @elseif($grupoFreela->pivot->aceito == 3)
+              <td>Convite<br/>Recusado</td>
+              @else
+              <td>Ativo</td>
+              @endif
+              @if(auth()->user()->id == $grupo->freelancer_id && auth()->user()->id != $result->id)
+              <td>
+                <a href="/freelancer/pesquisa/perfil-freelancer/{{ $result->id }}" class="w3-button w3-blue w3-small" title="Ver perfil do freelancer">Perfil</a>
+                <a href="/freelancer/grupo/{{ $grupo->id }}/integrante/{{ $result->id }}/remover" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a>
               </td>
+              @else
+              <td>
+                <a href="{{ route('freelancer.perfil') }}" class="w3-button w3-blue w3-small" title="Remover freelancer">Meu Perfil</a>
+              </td>
+              @endif
             </tr>
+            @endif
+            @endforeach
             @endforeach
           </table>
           <hr>
@@ -43,8 +62,8 @@
               <th>Descrição</th>
               <th>Nível</th>
             </tr>
-            @foreach($freelancers as $freelancer)
-            @foreach ($freelancer->conhecimentos as $conhecimento)
+            @foreach($results as $result)
+            @foreach ($result->conhecimentos as $conhecimento)
             <tr>
               <td>{{ $conhecimento->titulo }}</td>
               <td>{{ $conhecimento->descricao }}</td>
