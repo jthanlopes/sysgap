@@ -44,9 +44,17 @@
                 <a href="/freelancer/pesquisa/perfil-freelancer/{{ $result->id }}" class="w3-button w3-blue w3-small" title="Ver perfil do freelancer">Perfil</a>
                 <a href="/freelancer/grupo/{{ $grupo->id }}/integrante/{{ $result->id }}/remover" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a>
               </td>
-              @else
+              @elseif(auth()->user()->id == $grupo->freelancer_id && auth()->user()->id == $result->id)
               <td>
                 <a href="{{ route('freelancer.perfil') }}" class="w3-button w3-blue w3-small" title="Remover freelancer">Meu Perfil</a>
+              </td>
+              @elseif(auth()->user()->id != $grupo->freelancer_id && auth()->user()->id == $result->id)
+              <td>
+                <a href="{{ route('freelancer.perfil') }}" class="w3-button w3-blue w3-small" title="Remover freelancer">Meu Perfil</a>
+              </td>
+              @else
+              <td>
+                <a href="/freelancer/pesquisa/perfil-freelancer/{{ $result->id }}" class="w3-button w3-blue w3-small" title="Ver perfil do freelancer">Perfil</a>
               </td>
               @endif
             </tr>

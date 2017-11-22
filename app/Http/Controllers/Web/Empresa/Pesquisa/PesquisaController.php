@@ -8,6 +8,7 @@ use App\Endereco;
 use App\Empresa;
 use App\Noticia;
 use App\Freelancer;
+use App\Grupo;
 use Auth;
 
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,7 @@ class PesquisaController extends Controller
     $empresa = Empresa::find($id);
     $produtoras = [];
     $freelancers = [];
+    $grupos = [];
     $cidades = Endereco::select('cidade', 'uf')->distinct()->get();
     $tecnologias = Conhecimento::all();
     return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'cidades', 'tecnologias'));
@@ -50,15 +52,19 @@ class PesquisaController extends Controller
     $pesquisa = $request->get('nome');
     $produtoras = [];
     $freelancers = [];
+    $grupos = [];
 
     if ($categoria == 0 && $pesquisa == null && $cidadesCheckBoxes == null) {
       $produtoras = Empresa::where('categoria', 'Produtora')->get();
       $freelancers = Freelancer::all();
+      $grupos = Grupo::all();
     }elseif($categoria == 1 && $pesquisa == null && $cidadesCheckBoxes == null) {
       $freelancers = Freelancer::all();
     }elseif($categoria == 2 && $pesquisa == null && $cidadesCheckBoxes == null) {
       $produtoras = Empresa::where('categoria', 'Produtora')->get();
-    } elseif($categoria == 0 && $pesquisa != null && $cidadesCheckBoxes == null) {
+    }elseif($categoria == 3 && $pesquisa == null && $cidadesCheckBoxes == null) {
+      $grupos = Grupo::all();
+    }elseif($categoria == 0 && $pesquisa != null && $cidadesCheckBoxes == null) {
       $produtoras = Empresa::where([['categoria', 'Produtora'],
         ['nome', 'like', '%' . $pesquisa . '%']])
       ->orwhere([['categoria', 'Produtora'],
@@ -111,7 +117,7 @@ class PesquisaController extends Controller
   ->get();
 }
 
-return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'cidades', 'tecnologias'));
+return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'grupos', 'cidades', 'tecnologias'));
 }
 
 public function viewPerfilProdutora(Empresa $produtora) {

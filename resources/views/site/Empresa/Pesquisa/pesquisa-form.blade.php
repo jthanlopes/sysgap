@@ -20,6 +20,7 @@
                     <option value="0">Todos</option>
                     <option value="1">Freelancers</option>
                     <option value="2">Produtoras</option>
+                    <option value="3">Grupos</option>
                   </select>
                 </div>
               </div>
@@ -28,7 +29,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="nome">Usuário:</label>
-                  <input type="text" class="w3-input" id="nome" placeholder="Digite nome ou email" name="nome">
+                  <input type="text" class="w3-input" id="nome" placeholder="Digite nome, email ou título" name="nome">
                 </div>
               </div>
             </div>
@@ -90,16 +91,24 @@
               </td>
             </tr>
             @endforeach
+            @foreach ( $grupos as $grupo)
+            <tr>
+              <td>{{ $grupo->titulo }}</td>
+              <td>{{ $grupo->freelancer->email }}</td>
+              <td><a href="/empresa/pesquisa/perfil-produtora/{{ $produtora->id }}" class="w3-button w3-blue w3-small" title="Ver perfil da produtora">Ver grupo</a>
+              </td>
+            </tr>
+            @endforeach
           </table>
           @if(count($freelancers) == 0 && count($produtoras) == 0)
-            <div style="text-align: center; margin-top: 10px;">
-              Nenhum resultado para a pesquisa.
-            </div>
-            @endif
+          <div style="text-align: center; margin-top: 10px;">
+            Nenhum resultado para a pesquisa.
+          </div>
+          @endif
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- End Middle Column -->
+  <!-- End Middle Column -->
 </div>
 @endsection

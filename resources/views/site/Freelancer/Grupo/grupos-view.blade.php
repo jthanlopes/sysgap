@@ -46,9 +46,14 @@
               <td>{{ $grupo->created_at->format('d-m-Y') }}</td>
               <td><?php echo ($grupo->freelancer_id == $freelancer->id)? "Você é o admin" : $grupo->freelancer->nome; ?></td>
               <td>
+                @if($grupo->pivot->aceito == 1)
                 <a href="/freelancer/grupo/{{ $grupo->id }}" class="w3-button w3-blue w3-small" title="Visualizar e gerenciar o grupo">Visualizar</a>
                 @if($grupo->freelancer_id == $freelancer->id)
                 <a href="/freelancer/grupo/{{ $grupo->id }}/fechar" class="w3-button w3-red w3-small" title="Fechar o grupo">Fechar</a>
+                @endif
+                @else
+                <a href="/freelancer/grupo/{{ $grupo->id }}/aceitar" class="w3-button w3-blue w3-small" title="Aceitar convite">Aceitar convite</a>
+                <a href="/freelancer/grupo/{{ $grupo->id }}/recusar" class="w3-button w3-red w3-small" title="Recusar convite">Recusar convite</a>
                 @endif
               </td>
             </tr>

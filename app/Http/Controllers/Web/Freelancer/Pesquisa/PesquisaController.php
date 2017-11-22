@@ -138,7 +138,7 @@ class PesquisaController extends Controller
 
   public function viewPortifoliosFreelancer(Freelancer $freelancer) {
     $freela = auth()->user();
-    $notificacoes = $free->projetos()->where('aceito', '=', 0)->get();
+    $notificacoes = $freela->projetos()->where('aceito', '=', 0)->get();
     $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
     $portifolios = Portifolio::orderBy('created_at', 'desc')->where('freelancer_id', $freelancer->id)->paginate(5);
 

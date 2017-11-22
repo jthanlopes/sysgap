@@ -16,7 +16,7 @@ class GrupoController extends Controller
   public function gruposView() {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
-    $grupos = Freelancer::find($id)->grupos()->where('status', 1)->get();
+    $grupos = Freelancer::find($id)->grupos()->whereIn('aceito', [0, 1])->get();
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
     $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
@@ -140,5 +140,25 @@ public function removerFreelancer(Grupo $grupo, Freelancer $freelancer) {
   $message = parent::returnMessage('success', $freelancer->nome . ' foi removido(a) do grupo!');
 
   return redirect('/freelancer/grupo/' . $grupo->id)->with('message', $message);
+}
+
+public function aceitarGrupo(Grupo $grupo) {
+  $id = Auth::user()->id;
+  $freelancer = Freelancer::find($id);
+  $freelancer->grupos()->updateExistingPivot($grupo->id, ['aceito' => 1]);
+
+  $message = parent::returnMessage('success', 'Você aceitou o convite. Bem-vindo ao grupo!');
+
+  return redirect('/freelancer/grupo/' . $grupo->id)->with('message', $message);
+}
+
+public function recusarGrupo(Grupo $grupo) {
+  $id = Auth::user()->id;
+  $freelancer = Freelancer::find($id);
+  $freelancer->grupos()->updateExistingPivot($grupo->id, ['aceito' => 3]);
+
+  $message = parent::returnMessage('success', 'Você recusou o convite!');
+
+  return redirect()->route('grupos.view')->with('message', $message);
 }
 }

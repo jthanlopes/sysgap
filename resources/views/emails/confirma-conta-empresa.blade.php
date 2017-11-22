@@ -9,7 +9,7 @@
 <body style="margin-left: 5%;">
   <h2>Bem-vindo(a) {{ $empresa->nome }} ao SysGAP</h1>
     <hr>
-    <h4><a href="http://127.0.0.1:8000/empresa/confirmaConta/{{ $empresa->account_confirmation }}">Clique aqui</a> para confirmar sua conta.</h4>
+    <h4><a href="{{ env('APP_URL') }}/empresa/confirmaConta/{{ $empresa->account_confirmation }}">Clique aqui</a> para confirmar sua conta.</h4>
     <br/><br/>
     <p>Att,</p>
     <p>Equipe SysGAP</p>

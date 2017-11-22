@@ -72,7 +72,11 @@
           <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">
             <hr>
+            @if(auth()->guard('empresa')->check())
             <p><a href="/empresa/pesquisa/perfil-freelancer/portifolios/{{ $freelancer->id }}">Ver portifólios</a></p>
+            @else
+            <p><a href="/freelancer/pesquisa/perfil-freelancer/portifolios/{{ $freelancer->id }}">Ver portifólios</a></p>
+            @endif
           </div>
         </div>
       </div>
@@ -82,7 +86,11 @@
     <!-- Interests -->
     <div class="w3-card-2 w3-round w3-white w3-hide-small">
       <div class="w3-container">
+        @if(auth()->guard('empresa')->check())
         <p>Conhecimentos <span class="opt-tec">[<a href="/empresa/pesquisa/perfil-freelancer/conhecimentos/{{ $freelancer->id }}">Ver detalhes</a>]</span></p>
+        @else
+        <p>Conhecimentos <span class="opt-tec">[<a href="/freelancer/pesquisa/perfil-freelancer/conhecimentos/{{ $freelancer->id }}">Ver detalhes</a>]</span></p>
+        @endif
         <p>
           <p>
             @foreach ($freelancer->conhecimentos as $conhecimento)

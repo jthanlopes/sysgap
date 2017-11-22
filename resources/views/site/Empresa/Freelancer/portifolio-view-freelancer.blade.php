@@ -64,7 +64,11 @@
           <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">
              <hr>
+             @if(auth()->guard('empresa')->check())
              <p><a href="/empresa/pesquisa/perfil-freelancer/portifolios/{{ $freelancer->id }}">Ver portifólios</a></p>
+             @else
+             <p><a href="/freelancer/pesquisa/perfil-freelancer/portifolios/{{ $freelancer->id }}">Ver portifólios</a></p>
+             @endif
            </div>
          </div>
        </div>
@@ -74,90 +78,93 @@
      <!-- Interests -->
      <div class="w3-card-2 w3-round w3-white w3-hide-small">
       <div class="w3-container">
+        @if(auth()->guard('empresa')->check())
         <p>Conhecimentos <span class="opt-tec">[<a href="/empresa/pesquisa/perfil-freelancer/conhecimentos/{{ $freelancer->id }}">Ver detalhes</a>]</span></p>
+        @else
+        <p>Conhecimentos <span class="opt-tec">[<a href="/freelancer/pesquisa/perfil-freelancer/conhecimentos/{{ $freelancer->id }}">Ver detalhes</a>]</span></p>
+        @endif
         <p>
-          <p>
-            @foreach ($freelancer->conhecimentos as $conhecimento)
-            <span class="w3-tag w3-small w3-theme-l{{ rand(1, 5) }}">{{ $conhecimento->titulo }}</span>
-            @endforeach
-          </p>
+          @foreach ($freelancer->conhecimentos as $conhecimento)
+          <span class="w3-tag w3-small w3-theme-l{{ rand(1, 5) }}">{{ $conhecimento->titulo }}</span>
+          @endforeach
         </p>
-      </div>
+      </p>
     </div>
-    <br>
-    <!-- End Left Column -->
   </div>
+  <br>
+  <!-- End Left Column -->
+</div>
 
-  <!-- Middle Column -->
-  <div class="w3-col m7">
+<!-- Middle Column -->
+<div class="w3-col m7">
 
-    <div class="w3-row-padding">
-      <div class="w3-col m12">
-        <div class="w3-card-2 w3-round w3-white">
-          <div class="w3-container w3-padding">
-            <h3 class="w3-opacity">Portifólio</h3>
-            @if(session()->has('message'))
-            <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
-              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              {{ session()->get('message')['message'] }}
+  <div class="w3-row-padding">
+    <div class="w3-col m12">
+      <div class="w3-card-2 w3-round w3-white">
+        <div class="w3-container w3-padding">
+          <h3 class="w3-opacity">Portifólio</h3>
+          @if(session()->has('message'))
+          <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ session()->get('message')['message'] }}
+          </div>
+          @endif
+          <hr>
+          @foreach ($portifolios as $portifolio)
+          <div class="w3-card-4" style="width:100%; margin-bottom: 30px;">
+            <a href="{{ $portifolio->link }}" target="_blank"><img src="{{ asset('storage')  . '/freelancers/portifolio/' . $freelancer->id  . '/' . $portifolio->imagem  }}" alt="Norway" style="width:100%; height: 200px;"></a>
+            <div class="w3-container w3-center">
+              <hr>
+              <p style="font-weight: bold;">{{ $portifolio->titulo }} </p>
             </div>
-            @endif
-            <hr>
-            @foreach ($portifolios as $portifolio)
-            <div class="w3-card-4" style="width:100%; margin-bottom: 30px;">
-              <a href="{{ $portifolio->link }}" target="_blank"><img src="{{ asset('storage')  . '/freelancers/portifolio/' . $freelancer->id  . '/' . $portifolio->imagem  }}" alt="Norway" style="width:100%; height: 200px;"></a>
-              <div class="w3-container w3-center">
-                <hr>
-                <p style="font-weight: bold;">{{ $portifolio->titulo }} </p>
-              </div>
-            </div>
-            @endforeach
-            @if(count($portifolios) == 0)
-            <div style="text-align: center; margin-top: 10px;">
-              Nenhum portifólio cadastrado.
-            </div>
-            @endif
-            <div style="text-align: center;">
-              {{ $portifolios->links() }}
-            </div>
+          </div>
+          @endforeach
+          @if(count($portifolios) == 0)
+          <div style="text-align: center; margin-top: 10px;">
+            Nenhum portifólio cadastrado.
+          </div>
+          @endif
+          <div style="text-align: center;">
+            {{ $portifolios->links() }}
           </div>
         </div>
       </div>
     </div>
-    <!-- End Middle Column -->
   </div>
+  <!-- End Middle Column -->
+</div>
 
-  <!-- Right Column -->
-  <div class="w3-col m2">
-    <div class="w3-card-2 w3-round w3-white w3-center">
-      <div class="w3-container">
-        <p>Upcoming Events:</p>
-        <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-        <p><strong>Holiday</strong></p>
-        <p>Friday 15:00</p>
-        <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
-      </div>
+<!-- Right Column -->
+<div class="w3-col m2">
+  <div class="w3-card-2 w3-round w3-white w3-center">
+    <div class="w3-container">
+      <p>Upcoming Events:</p>
+      <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
+      <p><strong>Holiday</strong></p>
+      <p>Friday 15:00</p>
+      <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
     </div>
-    <br>
-    <div class="w3-card-2 w3-round w3-white w3-center">
-      <div class="w3-container">
-        <p>Friend Request</p>
-        <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-        <span>Jane Doe</span>
-        <div class="w3-row w3-opacity">
-          <div class="w3-half">
-            <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-          </div>
-          <div class="w3-half">
-            <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-          </div>
+  </div>
+  <br>
+  <div class="w3-card-2 w3-round w3-white w3-center">
+    <div class="w3-container">
+      <p>Friend Request</p>
+      <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
+      <span>Jane Doe</span>
+      <div class="w3-row w3-opacity">
+        <div class="w3-half">
+          <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+        </div>
+        <div class="w3-half">
+          <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
         </div>
       </div>
     </div>
-    <br>
-    <!-- End Right Column -->
   </div>
-  <!-- End Grid -->
+  <br>
+  <!-- End Right Column -->
+</div>
+<!-- End Grid -->
 </div>
 <!-- End Page Container -->
 </div>

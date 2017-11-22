@@ -226,6 +226,10 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/grupo/{grupo}/integrante/{freelancer}/add', 'Freelancer\Grupo\GrupoController@addFreelancer')->name('grupo.add.integrante');
   // Remover freelancer do grupo
   Route::get('/grupo/{grupo}/integrante/{freelancer}/remover', 'Freelancer\Grupo\GrupoController@removerFreelancer')->name('grupo.remover-freelancer');
+  // Aceitar projeto
+  Route::get('/grupo/{grupo}/aceitar', 'Freelancer\Grupo\GrupoController@aceitarGrupo')->name('grupo.aceitar');
+  // Recusar projeto
+  Route::get('/grupo/{grupo}/recusar', 'Freelancer\Grupo\GrupoController@recusarGrupo')->name('grupo.recusar');
   // Rotas de portifólio
   Route::get('/portifolios', 'Freelancer\Portifolio\PortifolioController@portifoliosView')->name('portifolios.view');
   //
@@ -241,6 +245,10 @@ Route::prefix('freelancer')->group(function () {
   // Ver rotas de pesquisa
   // Visualizar perfil de um freelancer
   Route::get('/pesquisa/perfil-freelancer/{freelancer}', 'Freelancer\Pesquisa\PesquisaController@viewPerfilFreelancer')->name('view.perfil-freelancer.freelancer');
+  // Visualizar perfil/conhecimentos de um freelancer
+  Route::get('/pesquisa/perfil-freelancer/conhecimentos/{freelancer}', 'Freelancer\Pesquisa\PesquisaController@viewConhecimentosFreelancer')->name('view.conhecimentos-freelancer.freelancer');
+  // Visualizar portifolio de um freelancer
+  Route::get('/pesquisa/perfil-freelancer/portifolios/{freelancer}', 'Freelancer\Pesquisa\PesquisaController@viewPortifoliosFreelancer')->name('view.portifolios-freelancer.freelancer');
 });
 
 Auth::routes();

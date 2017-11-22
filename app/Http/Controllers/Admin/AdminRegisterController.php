@@ -18,11 +18,11 @@ class AdminRegisterController extends Controller
         $this->middleware('auth:web');
     }
 
-    public function showRegisterForm() {        
+    public function showRegisterForm() {
         return view('auth.register-admin');
     }
 
-    public function register(Request $request) {    	
+    public function register(Request $request) {
         // Validator::make([
         //     'name' => 'required|string|max:255',
         //     'email' => 'required|string|email|max:255|unique:admins',
@@ -33,22 +33,22 @@ class AdminRegisterController extends Controller
         $filename = config('app.name') . '_foto_perfil_' . str_slug($request->email, '_') . '_' . $request->file('profile_photo')->getClientOriginalName();
         $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
 
-    	$create = Admin::updateOrCreate([
+        $create = Admin::updateOrCreate([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'active' => 1,
             'profile_photo' => $filename,
-        ]);        
+        ]);
 
         if ( $create )
         {
-            $message = parent::returnMessage('success', 'Administrador criado com sucesso!'); 
+            $message = parent::returnMessage('success', 'Administrador criado com sucesso!');
         } else
         {
             $message = parent::returnMessage('danger', 'Erro ao criar o administrador!');
         }
-        
+
         return redirect()->route('admins.view')->with('message', $message);
     }
 
@@ -56,28 +56,28 @@ class AdminRegisterController extends Controller
         // $this->validate($request, [
         //     'titulo' => 'required|max:15',
         //     'nivel'  => 'required',
-        // ]);        
+        // ]);
 
         $filename = config('app.name') . '_foto_perfil_' . str_slug($request->email, '_') . '_' . $request->file('profile_photo')->getClientOriginalName();
-        $request->profile_photo->storeAs('admins/perfil', $filename, 'public');        
+        $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
 
         $update = Admin::where( 'id', Auth::id() )
-                                ->update([
-                                    'name' => $request->name,
-                                    'email' => $request->email,
-                                    'password' => bcrypt($request->password),
-                                    'active' => 1,
-                                    'profile_photo' => $filename,
-                                ]);
+        ->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'active' => 1,
+            'profile_photo' => $filename,
+        ]);
 
         if ( $update )
-        {            
-            $message = parent::returnMessage('success', 'Perfil alterado com sucesso!');            
-        } else 
+        {
+            $message = parent::returnMessage('success', 'Perfil alterado com sucesso!');
+        } else
         {
             $message = parent::returnMessage('danger', 'Erro ao alterar o perfil!');
         }
-        
+
         return redirect()->route('admins.view')->with('message', $message);
     }
 
@@ -87,39 +87,39 @@ class AdminRegisterController extends Controller
         //     'nivel'  => 'required',
         // ]);
 
-        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->email, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();      
+        $filename = config('app.name') . '_foto_perfil_' . str_slug($request->email, '_') . '.' . $request->file('profile_photo')->getClientOriginalName();
         $request->profile_photo->storeAs('admins/perfil', $filename, 'public');
 
         $update = Admin::where( 'id', $request->id )
-                                ->update([
-                                    'name' => $request->name,
-                                    'email' => $request->email,
-                                    'password' => bcrypt($request->password),
-                                    'active' => 0,
-                                    'profile_photo' => $filename,
-                                ]);
+        ->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'active' => 0,
+            'profile_photo' => $filename,
+        ]);
 
-        if ( $update )          
-        {            
-            $message = parent::returnMessage('success', 'Perfil alterado com sucesso!');        
-        } else 
+        if ( $update )
+        {
+            $message = parent::returnMessage('success', 'Perfil alterado com sucesso!');
+        } else
         {
             $message = parent::returnMessage('danger', 'Erro ao alterar o perfil!');
         }
-        
+
         return redirect()->route('admins.view-inativos')->with('message', $message);
     }
 
     public function adminInativar($admin) {
         $update = Admin::where( 'id', $admin )
-                                ->update([                                    
-                                    'active' => 0,  
-                                ]);
+        ->update([
+            'active' => 0,
+        ]);
 
         if ( $update )
         {
             $message = parent::returnMessage('success', 'Administrador inativado com sucesso!');
-        } else 
+        } else
         {
             $message = parent::returnMessage('danger', 'Erro ao inativar adiministrador!');
         }
@@ -129,14 +129,14 @@ class AdminRegisterController extends Controller
 
     public function adminAtivar($admin) {
         $update = Admin::where( 'id', $admin )
-                                ->update([                                    
-                                    'active' => 1,  
-                                ]);
+        ->update([
+            'active' => 1,
+        ]);
 
         if ( $update )
         {
             $message = parent::returnMessage('success', 'Administrador ativado com sucesso!');
-        } else 
+        } else
         {
             $message = parent::returnMessage('danger', 'Erro ao ativar adiministrador!');
         }
