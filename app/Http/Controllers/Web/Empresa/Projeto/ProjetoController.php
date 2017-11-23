@@ -116,7 +116,8 @@ public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
 
     return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results'));
   } else {
-    $results = Empresa::where([['nome', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->orWhere([['email', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->get();
+    $results = Empresa::where([['id', '!=', $id], ['nome', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->orWhere([['id', '!=', $id] ,['email', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->get();
+
     $categoria = "produtora";
   }
 

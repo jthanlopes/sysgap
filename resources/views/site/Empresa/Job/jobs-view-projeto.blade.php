@@ -30,10 +30,10 @@
               <td>{{ $projeto->status }}</td>
               <td>
                 @if($projeto->pivot->aceito == 1)
-                <a href="/freelancer/jobs-projetos/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Visualizar o job">Ver jobs</a>
+                <a href="/empresa/jobs-projetos/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Visualizar o job">Ver jobs</a>
                 @else
-                <a href="/freelancer/jobs-projetos/{{ $projeto->id }}/aceitar" class="w3-button w3-blue w3-small" title="Aceitar convite">Aceitar convite</a>
-                <a href="/freelancer/jobs-projetos/{{ $projeto->id }}/recusar" class="w3-button w3-red w3-small" title="Recusar convite">Recusar convite</a>
+                <a href="/empresa/jobs-projetos/{{ $projeto->id }}/aceitar" class="w3-button w3-blue w3-small" title="Aceitar convite">Aceitar convite</a>
+                <a href="/empresa/jobs-projetos/{{ $projeto->id }}/recusar" class="w3-button w3-red w3-small" title="Recusar convite">Recusar convite</a>
                 @endif
               </td>
             </tr>

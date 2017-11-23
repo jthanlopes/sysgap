@@ -23,7 +23,7 @@
      <!-- Accordion -->
      <div class="w3-card-2 w3-round">
       <div class="w3-white groups">
-        <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Meus Projetos</button>
+        <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-book fa-fw w3-margin-right"></i> Meus Projetos</button>
         <div id="Demo2" class="w3-hide w3-container">
           <form method="get" action="{{ route('projeto.show-form-novo') }}">
             <button type="input" class="geral">Criar Projeto</button>
@@ -31,7 +31,15 @@
           <hr>
           <p><a href="{{ route('projetos.view') }}">Gerenciar projetos</a></p>
         </div>
-        <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Avaliações</button>
+        @if(auth()->user()->categoria == "Produtora")
+        <button onclick="myFunction('Demo4')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Meus Jobs</button>
+        <div id="Demo4" class="w3-hide w3-container">
+          <hr>
+          <p><a href="{{ route('jobs.view.produtora') }}">Visualizar todos</a></p>
+          <p><a href="{{ route('jobs-projeto.view.produtora') }}">Filtrar por projeto</a></p>
+        </div>
+        @endif
+        <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-star fa-fw w3-margin-right"></i> Avaliações</button>
         <div id="Demo1" class="w3-hide w3-container">
           <hr>
           <p><a href="">Minhas avaliações</a></p>

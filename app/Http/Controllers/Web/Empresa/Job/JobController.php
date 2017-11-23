@@ -136,4 +136,60 @@ class JobController extends Controller
 
     return redirect()->back()->with('message', $message);
   }
+
+  public function jobsView(Projeto $projeto) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    // $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    // $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
+
+    if($projeto->titulo == null) {
+      $jobs = Empresa::find($id)->jobs()->where([['status', 'Aberto'], ['empresa_id', '!=', $id]])->paginate(10);
+    } else {
+      $jobs = Empresa::find($id)->jobs()->where([['projeto_id', $projeto->id], ['status', 'Aberto'], ['empresa_id', '!=', $id]])->paginate(10);
+    }
+
+    return view('site.empresa.job.jobs-view', compact('empresa', 'jobs'));
+  }
+
+  public function jobsViewProjeto() {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $projetos = Empresa::find($id)->projetos()->where('aceito', '!=', 3)->get();
+    // $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    // $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
+
+    return view('site.empresa.job.jobs-view-projeto', compact('empresa', 'projetos'));
+  }
+
+  public function aceitarProjeto(Projeto $projeto) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $empresa->projetos()->updateExistingPivot($projeto->id, ['aceito' => 1]);
+
+    $message = parent::returnMessage('success', 'Você aceitou o convite. Bem-vindo ao projeto!');
+
+    return redirect('/empresa/jobs-projetos/' . $projeto->id)->with('message', $message);
+  }
+
+  public function recusarProjeto(Projeto $projeto) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $empresa->projetos()->updateExistingPivot($projeto->id, ['aceito' => 3]);
+
+    $message = parent::returnMessage('success', 'Você recusou o convite!');
+
+    return redirect()->route('jobs-projeto.view.produtora')->with('message', $message);
+  }
+
+  public function jobViewProdutora(Job $job) {
+    $projeto = Projeto::find($job->projeto->id);
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $freelancers = $job->freelancers()->orderBy('nome')->get();
+    // $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+    // $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
+
+    return view('site.empresa.job.job-view-produtora', compact('empresa', 'job', 'projeto', 'freelancers'));
+  }
 }

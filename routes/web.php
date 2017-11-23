@@ -145,6 +145,19 @@ Route::prefix('empresa')->group(function () {
   Route::get('/portifolio/{portifolio}/editar', 'Empresa\Portifolio\PortifolioController@editarPortifolioView')->name('portifolio.editar.view.empresa');
   // Editar portifólio
   Route::post('/portifolio/editar', 'Empresa\Portifolio\PortifolioController@editarPortifolio')->name('portifolio.editar.empresa');
+  // Rotas jobs produtora
+  // Visualizar todos os jobs
+  Route::get('/jobs', 'Empresa\Job\JobController@jobsView')->name('jobs.view.produtora');
+  // Visualizar os jobs por projeto
+  Route::get('/jobs-projetos', 'Empresa\Job\JobController@jobsViewProjeto')->name('jobs-projeto.view.produtora');
+  // Visualizar os jobs de um projeto
+  Route::get('/jobs-projetos/{projeto}', 'Empresa\Job\JobController@jobsView');
+  // Aceitar projeto
+  Route::get('/jobs-projetos/{projeto}/aceitar', 'Empresa\Job\JobController@aceitarProjeto');
+  // Recusar projeto
+  Route::get('/jobs-projetos/{projeto}/recusar', 'Empresa\Job\JobController@recusarProjeto');
+  // Visualizar job
+  Route::get('/job/{job}', 'Empresa\Job\JobController@jobViewProdutora')->name('job.view.produtora');
 });
 
 
