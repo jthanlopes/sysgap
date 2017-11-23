@@ -24,17 +24,25 @@
                 <a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante/{{ $freelancer->id }}/add" class="w3-button w3-blue w3-small" title="Adicionar integrante">Adicionar</a></td>
               </tr>
               @endforeach
-            </table>
-            @if(count($freelancers) == 0)
-            <div style="text-align: center;">
-              Primeiramente adicione integrantes ao projeto.
+              @foreach ($produtoras as $produtora)
+              <tr>
+                <td><a href="/empresa/pesquisa/perfil-produtora/{{ $produtora->id }}" title="Ver perfil">{{ $produtora->nome }}</a></td>
+                <td>{{ $produtora->email }}</td>
+                <td>
+                  <a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante-produtora/{{ $produtora->id }}/add" class="w3-button w3-blue w3-small" title="Adicionar integrante">Adicionar</a></td>
+                </tr>
+                @endforeach
+              </table>
+              @if(count($freelancers) == 0 && count($produtoras) == 0)
+              <div style="text-align: center;">
+                Primeiramente adicione integrantes ao projeto.
+              </div>
+              @endif
             </div>
-            @endif
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- End Middle Column -->
-  </div>
-  @endsection
+      <!-- End Middle Column -->
+    </div>
+    @endsection

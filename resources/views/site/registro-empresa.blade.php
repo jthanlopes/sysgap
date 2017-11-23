@@ -46,7 +46,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="confirmaSenha">Confirmação de senha:</label>
-              <input type="password" class="w3-input" id="confirmaSenha" placeholder="Senha" name="confirmaSenha" required>
+              <input type="password" class="w3-input" id="confirmaSenha" placeholder="Senha" name="senha_confirmation" required>
             </div>
           </div>
         </div>

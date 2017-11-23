@@ -133,7 +133,7 @@ public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
 }
 
 public function addProdutora(Projeto $projeto, Empresa $empresa) {
-  $projeto->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+  $projeto->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0]);
 
   $message = parent::returnMessage('success', $empresa->nome . ' foi convidado(a) para o projeto!');
 

@@ -21,9 +21,10 @@ class JobController extends Controller
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
     $freelancers = $job->freelancers()->orderBy('nome')->get();
+    $produtoras = $job->empresas()->orderBy('nome')->get();
     $conhecimentos = Conhecimento::orderBy('titulo')->get();
 
-    return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto', 'freelancers', 'conhecimentos'));
+    return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto', 'freelancers', 'produtoras','conhecimentos'));
   }
 
   public function novoForm(Projeto $projeto) {
@@ -119,6 +120,22 @@ class JobController extends Controller
     return redirect('/empresa/projeto/' . $projeto->id . '/job/' . $job->id)->with('message', $message);
   }
 
+  public function addProdutora(Projeto $projeto, Job $job, Empresa $empresa) {
+    $job->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+
+    $message = parent::returnMessage('success', $empresa->nome . ' foi adicionado(a) a este job!');
+
+    return redirect('/empresa/projeto/' . $projeto->id . '/job/' . $job->id)->with('message', $message);
+  }
+
+  public function removerProdutora(Projeto $projeto, Job $job, Empresa $empresa) {
+    $job->empresas()->detach($empresa);
+
+    $message = parent::returnMessage('success', $empresa->nome . ' foi removido(a) do job!');
+
+    return redirect('/empresa/projeto/' . $projeto->id . '/job/' . $job->id)->with('message', $message);
+  }
+
   public function addConhecimento(Projeto $projeto, Job $job, Request $request) {
     $id = $request->get('tecnologia');
     $conhecimento = Conhecimento::find($id);
@@ -144,9 +161,9 @@ class JobController extends Controller
     // $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
     if($projeto->titulo == null) {
-      $jobs = Empresa::find($id)->jobs()->where([['status', 'Aberto'], ['empresa_id', '!=', $id]])->paginate(10);
+      $jobs = Empresa::find($id)->jobsProd()->where([['status', 'Aberto']])->paginate(10);
     } else {
-      $jobs = Empresa::find($id)->jobs()->where([['projeto_id', $projeto->id], ['status', 'Aberto'], ['empresa_id', '!=', $id]])->paginate(10);
+      $jobs = Empresa::find($id)->jobsProd()->where([['projeto_id', $projeto->id], ['status', 'Aberto']])->paginate(10);
     }
 
     return view('site.empresa.job.jobs-view', compact('empresa', 'jobs'));

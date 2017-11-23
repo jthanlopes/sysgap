@@ -22,9 +22,9 @@ class JobController extends Controller
     $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
     if($projeto->titulo == null) {
-      $jobs = Freelancer::find($id)->jobs()->paginate(10);
+      $jobs = Freelancer::find($id)->jobs()->where([['status', 'Aberto']])->paginate(10);
     } else {
-      $jobs = Freelancer::find($id)->jobs()->where('projeto_id', $projeto->id)->paginate(10);
+      $jobs = Freelancer::find($id)->jobs()->where([['projeto_id', $projeto->id], ['status', 'Aberto']])->paginate(10);
     }
 
     return view('site.freelancer.job.jobs-view', compact('freelancer', 'jobs', 'notificacoes', 'notificacoes2'));

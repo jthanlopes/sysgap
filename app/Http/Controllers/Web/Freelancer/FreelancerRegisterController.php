@@ -32,7 +32,7 @@ class FreelancerRegisterController extends Controller
     $validator = Validator::make($request->all(), [
       'nome' => 'required',
       'email' => 'required|unique:freelancers',
-      'senha' => 'required|min:6',
+      'senha' => 'required|min:6|confirmed',
       'cpf' => 'required',
       'profile_photo' => 'required',
       'cep' => 'required',
@@ -69,7 +69,7 @@ class FreelancerRegisterController extends Controller
       'nome' => $request->nome,
       'email' => $request->email,
       'cpf' => $request->cpf,
-      'password' => bcrypt($request->password),
+      'password' => bcrypt($request->senha),
       'foto_perfil' => $filename,
       'endereco_id' => $endereco['id'],
       'ativo' => 0,

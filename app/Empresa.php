@@ -60,4 +60,8 @@ class Empresa extends Authenticatable
     public function portifolios() {
       return $this->hasMany(Portifolio::class);
     }
+
+    public function jobsProd() {
+      return $this->belongsToMany(Job::class);
+    }
   }

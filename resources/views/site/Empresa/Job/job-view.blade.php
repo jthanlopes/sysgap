@@ -5,15 +5,16 @@
 <div class="w3-col m7">
   <div class="w3-row-padding">
     <div class="w3-col m12">
-      @if(session()->has('message'))
-      <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        {{ session()->get('message')['message'] }}
-      </div>
-      @endif
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
           <h3 class="w3-opacity">Job {{ $job->titulo }} <span class="opt-projeto">[<a href="/empresa/projeto/job/editar/{{ $job->id }}">Editar job</a>]@if($job->status == "Aberto")[<a href="/empresa/projeto/{{ $projeto->id }}/job/finalizar/{{ $job->id }}">Finalizar job</a>]@else[<a href="/empresa/projeto/{{ $projeto->id }}/job/reabrir/{{ $job->id }}">Reabrir job</a>]@endif</span></h3>
+          @if(session()->has('message'))
+          <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ session()->get('message')['message'] }}
+          </div>
+          @endif
+          <hr>
           <p class="w3-opacity">Descrição: {{ $job->descricao }}</p>
           <p class="w3-opacity">Status: {{ $job->status }}</p>
           <p class="w3-opacity">Data de criação: {{ $job->created_at->format('d/m/Y') }}</p>
@@ -35,8 +36,17 @@
               </td>
             </tr>
             @endforeach
+            @foreach ($produtoras as $produtora)
+            <tr>
+              <td><a href="/empresa/pesquisa/perfil-produtora/{{ $produtora->id }}">{{ $produtora->nome }}</a></td>
+              <td>{{ $produtora->email }}</td>
+              <td><a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para a produtora">Enviar E-mail</a>
+                <a href="/empresa/projeto/{{ $projeto->id }}/job/{{ $job->id }}/integrante-produtora/{{ $produtora->id }}/remover" class="w3-button w3-red w3-small" title="Remover produtora">Remover</a>
+              </td>
+            </tr>
+            @endforeach
           </table>
-          @if(count($freelancers) == 0)
+          @if(count($freelancers) == 0 && count($produtoras) == 0)
           <div style="text-align: center; margin-top: 10px;">
             Adicione os integrantes que irão realizar esse job.
           </div>

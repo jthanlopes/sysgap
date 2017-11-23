@@ -32,7 +32,7 @@ class EmpresaRegisterController extends Controller
     $validator = Validator::make($request->all(), [
       'nome' => 'required',
       'email' => 'required|unique:empresas',
-      'senha' => 'required|min:6',
+      'senha' => 'required|min:6|confirmed',
       'cnpj' => 'required',
       'profile_photo' => 'required',
       'cep' => 'required',

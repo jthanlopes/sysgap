@@ -77,8 +77,12 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/{projeto}/job/{job}/integrante/novo', 'Empresa\Job\JobController@novoFormIntegrantes')->name('job.add.integrantes.form');
   // Adicionar freelancer ao job
   Route::get('/projeto/{projeto}/job/{job}/integrante/{freelancer}/add', 'Empresa\Job\JobController@addFreelancer')->name('job.add.integrante');
+  // Adicionar produtora ao job
+  Route::get('/projeto/{projeto}/job/{job}/integrante-produtora/{empresa}/add', 'Empresa\Job\JobController@addProdutora')->name('job.add.integrante-produtora');
   // Remover freelancer e produtora do job
   Route::get('/projeto/{projeto}/job/{job}/integrante/{freelancer}/remover', 'Empresa\Job\JobController@removerFreelancer')->name('job.remover-freelancer');
+  // Remover produtora
+  Route::get('/projeto/{projeto}/job/{job}/integrante-produtora/{empresa}/remover', 'Empresa\Job\JobController@removerProdutora')->name('job.remover-produtora');
   //
   Route::post('/projeto/{projeto}/job/{job}/conhecimento/add', 'Empresa\Job\JobController@addConhecimento')->name('job.conhecimento.add');
   //
@@ -91,7 +95,7 @@ Route::prefix('empresa')->group(function () {
   // Adicionar freelancer e produtora ao projeto
   Route::get('/projeto/{projeto}/integrante/addFreelancer/{freelancer}', 'Empresa\Projeto\ProjetoController@addFreelancer')->name('integrante.add-freelancer.form');
   Route::get('/projeto/{projeto}/integrante/addProdutora/{empresa}', 'Empresa\Projeto\ProjetoController@addProdutora')->name('integrante.add-produtora.form');
-  // Remover freelancer e produtora ao projeto
+  // Remover freelancer e produtora do projeto
   Route::get('/projeto/{projeto}/integrante/remover/{freelancer}', 'Empresa\Projeto\ProjetoController@removerFreelancer')->name('integrante.remover-freelancer.form');
   Route::get('/projeto/{projeto}/integrante/remover-produtora/{empresa}', 'Empresa\Projeto\ProjetoController@removerProdutora')->name('integrante.remover-produtora.form');
   // Finalizar projeto
