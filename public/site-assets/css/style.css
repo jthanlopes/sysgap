@@ -2,13 +2,18 @@
   font-family: 'Langdon';
   src: url('../fonts/Langdon.otf');
   font-weight: normal;
-  font-style: normal;    
+  font-style: normal;
 }
 
 #home-page {
   margin: 0;
   padding: 0;
 }
+
+#home-page .fa-ajuste {
+  font: normal normal normal 17px/1.6 FontAwesome !important;
+}
+
 /* Definindo css do overleaf */
 #home-page .overlay {
   position: fixed;
@@ -45,7 +50,7 @@
 /* Alterar fonte do título principal da home */
 #home-page .header-home .main-title {
   font-family: "Langdon";
-  text-transform: lowercase;  
+  text-transform: lowercase;
 }
 
 /* Alterar tamanho da fonte do H1 do header da home */
@@ -71,7 +76,7 @@
   height: 100%; /* Full height */
   overflow: scroll;
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */    
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
@@ -121,12 +126,12 @@
 }
 
 @-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
+  from {-webkit-transform: scale(0)}
   to {-webkit-transform: scale(1)}
 }
 
 @keyframes animatezoom {
-  from {transform: scale(0)} 
+  from {transform: scale(0)}
   to {transform: scale(1)}
 }
 
@@ -173,7 +178,7 @@
 #home-page .acessibilidade {
   position: relative;
   left: 20px;
-  top: -40px;  
+  top: -40px;
 }
 
 #home-page .acessibilidade p {
@@ -261,6 +266,18 @@
   box-sizing: border-box;
 }
 
+#home-page .login {
+width: 40%;
+margin-left: 30%;
+}
+
+@media screen and (max-width: 600px) {
+  #home-page .login {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
 #home-page .login .ajuste-label-login {
   margin-top: 20px;
 }
@@ -286,7 +303,7 @@
 
 #admin-perfil .form-news textarea {
   width: 100%;
-  max-width: 100%;  
+  max-width: 100%;
   padding: 5px;
 }
 
@@ -343,7 +360,7 @@
 #admin-perfil .geral button {
   background-color: #4CAF50;
   color: white;
-  padding: 14px 20px;    
+  padding: 14px 20px;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -376,7 +393,7 @@
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
 .show-snackbar {
   visibility: visible; /* Show the snackbar */
-  /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
   However, delay the fade out process for 2.5 seconds */
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
@@ -385,7 +402,7 @@
 /* Animations to fade the snackbar in and out */
 
 @-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;} 
+  from {bottom: 0; opacity: 0;}
   to {bottom: 30px; opacity: 1;}
 }
 
@@ -395,7 +412,7 @@
 }
 
 @-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;} 
+  from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
 }
 
@@ -409,22 +426,22 @@
   margin-top: 15px;
   background-color: #4CAF50;
   color: white;
-  padding: 14px 20px;    
+  padding: 14px 20px;
   border: none;
   cursor: pointer;
   width: 100%;
 }
 
 #admin-perfil .opt-post {
-  font-size: 10pt;  
+  font-size: 10pt;
 }
 
 #admin-perfil .opt-tec {
-  font-size: 8pt;  
+  font-size: 8pt;
 }
 
 #admin-perfil .opt-projeto {
-  font-size: 10pt;  
+  font-size: 10pt;
 }
 
 #admin-perfil .table-projetos {

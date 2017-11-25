@@ -2,7 +2,7 @@
 
 @section ('conteudo')
 <div class="w3-row">
-  <div class="w3-padding-64 w3-container login" style="width: 40%;margin-left: 30%;">
+  <div class="w3-padding-64 w3-container login">
     <div class="w3-content">
       <div class="w3-container">
         <h2>Login Empresa</h2>

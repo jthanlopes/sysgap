@@ -36,10 +36,10 @@
       </div>
     </div>
     @endif
-    <a href="{{ route('pesquisa.form.usuarios') }}" class="w3-button w3-padding-large" title="Pesquisar usuários"><i class="fa fa-search"></i></a>
+    <a href="{{ route('pesquisa.form.usuarios') }}" class="w3-button w3-hide-small w3-padding-large" title="Pesquisar usuários"><i class="fa fa-search"></i></a>
     @if (auth()->guard('empresa')->check())
     <div class="w3-dropdown-hover w3-right">
-      <button class="w3-button w3-theme-d4 ajuste">{{ auth()->guard('empresa')->user()->nome }}</button>
+      <button class="w3-button w3-theme-d4 w3-hide-small ajuste">{{ auth()->guard('empresa')->user()->nome }}</button>
       <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
         <a href="{{ route('home.page') }}" class="w3-bar-item w3-button">Home page</a>
         <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button">Logout</a>
@@ -47,18 +47,10 @@
     </div>
     @elseif (auth()->guard('freelancer')->check())
     <div class="w3-dropdown-hover w3-right">
-      <button class="w3-button w3-theme-d4 ajuste">{{ auth()->guard('freelancer')->user()->nome }}</button>
+      <button class="w3-button w3-theme-d4 w3-hide-small ajuste">{{ auth()->guard('freelancer')->user()->nome }}</button>
       <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
         <a href="{{ route('home.page') }}" class="w3-bar-item w3-button">Home page</a>
         <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button">Logout</a>
-      </div>
-    </div>
-    @else
-    <div class="w3-dropdown-hover w3-right">
-      <button class="w3-button ajuste">Login</button>
-      <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
-        <a href="{{ route('empresa.login-view') }}" class="w3-bar-item w3-button">Sou empresa</a>
-        <a href="{{ route('freelancer.login-view') }}" class="w3-bar-item w3-button">Sou freelancer</a>
       </div>
     </div>
     @endif
@@ -67,8 +59,14 @@
 
 <!-- Navbar on small screens -->
 <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+  @if(auth()->guard('empresa')->check())
+    <a href="{{ route('empresa.editar-perfil.view') }}" class="w3-bar-item w3-button w3-padding-large" title="Editar perfil" style="margin-top: 51px;">Editar perfil</a>
+    <a href="" class="w3-bar-item w3-button w3-padding-large" title="Editar perfil">Notificações</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large" title="Mensagens">Mensagens</a>
+    <a href="{{ route('pesquisa.form.usuarios') }}" class="w3-bar-item w3-button w3-padding-large" title="Pesquisar usuários">Pesquisar usuários</a>
+    <a href="{{ route('home.page') }}" class="w3-bar-item w3-button w3-padding-large">Home page</a>
+    <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button w3-padding-large">Logout</a>
+  @else
+
+  @endif
 </div>
