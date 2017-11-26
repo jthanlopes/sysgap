@@ -67,6 +67,10 @@
     <a href="{{ route('home.page') }}" class="w3-bar-item w3-button w3-padding-large">Home page</a>
     <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button w3-padding-large">Logout</a>
   @else
-
+    <a href="{{ route('freelancer.editar-perfil.view') }}" class="w3-bar-item w3-button w3-padding-large" title="Editar perfil" style="margin-top: 51px;">Editar perfil</a>
+    <a href="" class="w3-bar-item w3-button w3-padding-large" title="Editar perfil">Notificações</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large" title="Mensagens">Mensagens</a>
+    <a href="{{ route('home.page') }}" class="w3-bar-item w3-button w3-padding-large">Home page</a>
+    <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button w3-padding-large">Logout</a>
   @endif
 </div>

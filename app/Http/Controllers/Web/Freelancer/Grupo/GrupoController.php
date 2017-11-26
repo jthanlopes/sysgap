@@ -16,7 +16,7 @@ class GrupoController extends Controller
   public function gruposView() {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
-    $grupos = Freelancer::find($id)->grupos()->whereIn('aceito', [0, 1])->get();
+    $grupos = Freelancer::find($id)->grupos()->where('status', 1)->whereIn('aceito', [0, 1])->get();
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
     $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 
@@ -27,7 +27,7 @@ class GrupoController extends Controller
   public function gruposPesquisar(Request $request) {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
-    $grupos = Freelancer::find($id)->grupos()->where([['status', 1], ['titulo', 'like', '%' . $request->buscar . '%']])->get();
+    $grupos = Freelancer::find($id)->grupos()->where([['status', 1], ['titulo', 'like', '%' . $request->buscar . '%']])->whereIn('aceito', [0, 1])->get();
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
     $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 

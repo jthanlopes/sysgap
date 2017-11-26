@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>SysGAP - Visualização de Perfil</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   {{-- Icones Google --}}
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -33,7 +34,7 @@
         <div class="w3-card-2 w3-round w3-white">
           <div class="w3-container">
            <h4 class="w3-center">Perfil Freelancer</h4>
-           <p class="w3-center"><img src="{{ asset('storage') . '/freelancers/perfil/' . $freelancer->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da freelancer"></p>
+           <p class="w3-center"><img src="{{ asset('storage') . '/freelancers/perfil/' $freelancer->foto_perfil }}" class="w3-circle" style="height:164px;width:164px" alt="Imagem da freelancer"></p>
            <hr>
            <div style="text-align: center;">
              <p title="Nome de usuário">{{ $freelancer->nome }}</p>

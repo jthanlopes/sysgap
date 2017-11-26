@@ -10,6 +10,7 @@ use App\Noticia;
 use App\Freelancer;
 use App\Grupo;
 use Auth;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class PesquisaController extends Controller
 {
   public function __construct() {
     $this->middleware('auth:empresa');
+    Carbon::setLocale('pt-br');
   }
 
   public function pesquisarView() {
@@ -28,7 +30,7 @@ class PesquisaController extends Controller
     $grupos = [];
     $cidades = Endereco::select('cidade', 'uf')->distinct()->get();
     $tecnologias = Conhecimento::all();
-    return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'cidades', 'tecnologias'));
+    return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'cidades', 'tecnologias', 'grupos'));
   }
 
   public function pesquisar(Request $request) {
@@ -117,7 +119,7 @@ class PesquisaController extends Controller
   ->get();
 }
 
-return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'grupos', 'cidades', 'tecnologias'));
+return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'grupos', 'cidades', 'tecnologias', 'grupos'));
 }
 
 public function viewPerfilProdutora(Empresa $produtora) {

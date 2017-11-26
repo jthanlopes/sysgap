@@ -295,6 +295,17 @@ margin-left: 30%;
   overflow: hidden;
 }
 
+@media screen and (max-width: 600px) {
+  #admin-perfil .w3-row-padding, .w3-row-padding>.w3-half, .w3-row-padding>.w3-third, .w3-row-padding>.w3-twothird, .w3-row-padding>.w3-threequarter, .w3-row-padding>.w3-quarter, .w3-row-padding>.w3-col {
+    padding: 0!important;
+    margin-bottom: 20px;
+  }
+
+  #admin-perfil .w3-margin {
+    margin: -20px 0 20px 0!important;
+  }
+}
+
 #admin-perfil .form-news input {
   width: 100%;
   max-width: 100%;

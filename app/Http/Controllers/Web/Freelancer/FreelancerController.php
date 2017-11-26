@@ -7,11 +7,13 @@ use App\Endereco;
 use App\Noticia;
 use Auth;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class FreelancerController extends Controller
 {
   public function __construct() {
     $this->middleware('auth:freelancer');
+    Carbon::setLocale('pt-br');
   }
 
   public function perfil() {

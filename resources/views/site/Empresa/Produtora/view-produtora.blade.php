@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>SysGAP - Visualização de Perfil</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   {{-- Icones Google --}}
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

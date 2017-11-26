@@ -17,6 +17,7 @@ class CreateGruposTable extends Migration
             $table->increments('id');
             $table->string('titulo', 45);
             $table->text('descricao');
+            $table->boolean('status');
             $table->integer('freelancer_id')->unsigned();
             $table->timestamps();
         });
