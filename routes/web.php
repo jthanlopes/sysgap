@@ -38,6 +38,11 @@ Route::prefix('empresa')->group(function () {
   Route::post('/login', 'Empresa\EmpresaLoginController@login')->name('empresa.login');
 	// Rotas de logout
   Route::get('/logout', 'Empresa\EmpresaLoginController@logout')->name('empresa.logout');
+  // Resetar senha
+  Route::post('/resetar-senha/email', 'Empresa\EmpresaForgotPasswordController@sendResetLinkEmail')->name('empresa.reseta-senha.email');
+  Route::get('/resetar-senha/resetar', 'Empresa\EmpresaForgotPasswordController@showLinkRequestForm')->name('empresa.reseta-senha.request');
+  Route::post('/resetar-senha/resetar', 'Empresa\EmpresaResetPasswordController@reset');
+  Route::get('/resetar-senha/resetar/{token}', 'Empresa\EmpresaResetPasswordController@showResetForm')->name('empresa.reseta-senha.reset');
   // Abrir formulário de editar perfil
   Route::get('/editar-perfil', 'Empresa\EmpresaController@editarPerfil')->name('empresa.editar-perfil.view');
   //
@@ -268,4 +273,4 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/pesquisa/perfil-freelancer/portifolios/{freelancer}', 'Freelancer\Pesquisa\PesquisaController@viewPortifoliosFreelancer')->name('view.portifolios-freelancer.freelancer');
 });
 
-Auth::routes();
+// Auth::routes();

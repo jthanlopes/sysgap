@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\EmpresaResetPasswordNotification;
 
 class Empresa extends Authenticatable
 {
@@ -63,5 +64,9 @@ class Empresa extends Authenticatable
 
     public function jobsProd() {
       return $this->belongsToMany(Job::class);
+    }
+
+    public function sendPasswordResetNotification($token) {
+      $this->notify(new EmpresaResetPasswordNotification($token));
     }
   }

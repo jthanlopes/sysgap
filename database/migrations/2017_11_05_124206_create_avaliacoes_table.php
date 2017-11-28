@@ -20,7 +20,7 @@ class CreateAvaliacoesTable extends Migration
             $table->integer('freelancer_avaliador')->unsigned();
             $table->integer('freelancer_avaliado')->unsigned();
             $table->integer('nota');
-            $table->text('descricao');
+            $table->text('descritiva');
             $table->integer('item_id')->unsigned();
             $table->timestamps();
         });

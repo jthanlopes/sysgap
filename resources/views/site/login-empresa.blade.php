@@ -19,6 +19,12 @@
           @endforeach
         </div>
         @endif
+        @if (session('status'))
+        <div class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          {{ session('status') }}
+        </div>
+        @endif
         <hr>
         <form method="POST" action="{{ route('empresa.login') }}">
           {{ csrf_field() }}
@@ -32,7 +38,7 @@
           <button type="submit" class="btn-default-home">Logar</button>
         </form>
         <div style="text-align: center;">
-          <a href="">Esqueceu sua senha?</a> <br/>
+          <a href="{{ route('empresa.reseta-senha.request') }}">Esqueceu sua senha?</a> <br/>
           Ainda não tem uma conta? <a href="{{ route('empresa.registro-view') }}">Cadastre-se</a>
         </div>
       </div>
