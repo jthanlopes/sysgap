@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\FreelancerResetPasswordNotification;
 
 class Freelancer extends Authenticatable {
   use Notifiable;
@@ -67,5 +68,9 @@ class Freelancer extends Authenticatable {
 
     public function portifolios() {
       return $this->hasMany(Portifolio::class);
+    }
+
+    public function sendPasswordResetNotification($token) {
+      $this->notify(new FreelancerResetPasswordNotification($token));
     }
   }

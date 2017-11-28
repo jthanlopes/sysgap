@@ -200,6 +200,11 @@ Route::prefix('freelancer')->group(function () {
 
   // Rotas de logout
   Route::get('/logout', 'Freelancer\FreelancerLoginController@logout')->name('freelancer.logout');
+   // Resetar senha
+  Route::post('/resetar-senha/email', 'Freelancer\FreelancerForgotPasswordController@sendResetLinkEmail')->name('freelancer.reseta-senha.email');
+  Route::get('/resetar-senha/resetar', 'Freelancer\FreelancerForgotPasswordController@showLinkRequestForm')->name('freelancer.reseta-senha.request');
+  Route::post('/resetar-senha/resetar', 'Freelancer\FreelancerResetPasswordController@reset');
+  Route::get('/resetar-senha/resetar/{token}', 'Freelancer\FreelancerResetPasswordController@showResetForm')->name('freelancer.reseta-senha.reset');
   // Rotas de conhecimentos do freelancer
   //
   Route::get('/conhecimentos', 'Freelancer\Conhecimento\ConhecimentoController@conhecimentosView')->name('tecnologias.view.freelancer');
