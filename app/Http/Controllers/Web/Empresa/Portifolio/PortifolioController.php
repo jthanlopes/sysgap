@@ -18,15 +18,17 @@ class PortifolioController extends Controller
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
     $portifolios = Portifolio::where('empresa_id', $id)->paginate(5);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.portifolio.portifolios-view', compact('empresa', 'portifolios'));
+    return view('site.empresa.portifolio.portifolios-view', compact('empresa', 'portifolios', 'notificacoes'));
   }
 
   public function criarPortifolioView() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.portifolio.portifolio-novo', compact('empresa'));
+    return view('site.empresa.portifolio.portifolio-novo', compact('empresa', 'notificacoes'));
   }
 
   public function criarPortifolio(Request $request) {
@@ -55,8 +57,9 @@ class PortifolioController extends Controller
   public function editarPortifolioView(Portifolio $portifolio) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.portifolio.portifolio-editar', compact('empresa', 'portifolio'));
+    return view('site.empresa.portifolio.portifolio-editar', compact('empresa', 'portifolio', 'notificacoes'));
   }
 
   public function editarPortifolio(Request $request) {

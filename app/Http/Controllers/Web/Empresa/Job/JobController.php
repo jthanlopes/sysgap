@@ -22,16 +22,19 @@ class JobController extends Controller
     $empresa = Empresa::find($id);
     $freelancers = $job->freelancers()->orderBy('nome')->get();
     $produtoras = $job->empresas()->orderBy('nome')->get();
-    $conhecimentos = Conhecimento::orderBy('titulo')->get();
+    $jobConhe = $job->conhecimentos()->select('id')->get()->pluck('id')->toArray();
+    $conhecimentos = Conhecimento::orderBy('titulo')->wherenotin('id', $jobConhe)->get();
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto', 'freelancers', 'produtoras','conhecimentos'));
+    return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto', 'freelancers', 'produtoras','conhecimentos', 'notificacoes'));
   }
 
   public function novoForm(Projeto $projeto) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.job.criar-job', compact('empresa', 'projeto'));
+    return view('site.empresa.job.criar-job', compact('empresa', 'projeto', 'notificacoes'));
   }
 
   public function novo(Request $request) {
@@ -48,8 +51,9 @@ class JobController extends Controller
   public function editarJobView(Projeto $projeto, Job $job) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.job.editar-job', compact('empresa', 'job'));
+    return view('site.empresa.job.editar-job', compact('empresa', 'job', 'notificacoes'));
   }
 
   public function editarJob(Request $request) {
@@ -100,8 +104,9 @@ class JobController extends Controller
     $empresa = Empresa::find($id);
     $freelancers = $projeto->freelancers()->where('aceito', '=', 1)->orderBy('nome')->get();
     $produtoras = $projeto->empresas()->where('aceito', '=', 1)->orderBy('nome')->get();
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.integrante.add-integrante-job', compact('empresa', 'projeto', 'freelancers', 'produtoras', 'job'));
+    return view('site.empresa.integrante.add-integrante-job', compact('empresa', 'projeto', 'freelancers', 'produtoras', 'job', 'notificacoes'));
   }
 
   public function addFreelancer(Projeto $projeto, Job $job, Freelancer $freelancer) {
@@ -157,8 +162,7 @@ class JobController extends Controller
   public function jobsView(Projeto $projeto) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    // $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
-    // $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
     if($projeto->titulo == null) {
       $jobs = Empresa::find($id)->jobsProd()->where([['status', 'Aberto']])->paginate(10);
@@ -166,17 +170,16 @@ class JobController extends Controller
       $jobs = Empresa::find($id)->jobsProd()->where([['projeto_id', $projeto->id], ['status', 'Aberto']])->paginate(10);
     }
 
-    return view('site.empresa.job.jobs-view', compact('empresa', 'jobs'));
+    return view('site.empresa.job.jobs-view', compact('empresa', 'jobs', 'notificacoes'));
   }
 
   public function jobsViewProjeto() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
     $projetos = Empresa::find($id)->projetos()->where('aceito', '!=', 3)->get();
-    // $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
-    // $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.job.jobs-view-projeto', compact('empresa', 'projetos'));
+    return view('site.empresa.job.jobs-view-projeto', compact('empresa', 'projetos', 'notificacoes'));
   }
 
   public function aceitarProjeto(Projeto $projeto) {
@@ -204,9 +207,8 @@ class JobController extends Controller
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
     $freelancers = $job->freelancers()->orderBy('nome')->get();
-    // $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
-    // $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.job.job-view-produtora', compact('empresa', 'job', 'projeto', 'freelancers'));
+    return view('site.empresa.job.job-view-produtora', compact('empresa', 'job', 'projeto', 'freelancers', 'notificacoes'));
   }
 }

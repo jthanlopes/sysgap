@@ -30,12 +30,15 @@ class PesquisaController extends Controller
     $grupos = [];
     $cidades = Endereco::select('cidade', 'uf')->distinct()->get();
     $tecnologias = Conhecimento::all();
-    return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'cidades', 'tecnologias', 'grupos'));
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
+
+    return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'cidades', 'tecnologias', 'grupos', 'notificacoes'));
   }
 
   public function pesquisar(Request $request) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
     $cidades = Endereco::select('cidade', 'uf')->distinct()->get();
     $tecnologias = Conhecimento::all();
     $cidadesCheckBoxes = $request->input('cidades');
@@ -119,7 +122,7 @@ class PesquisaController extends Controller
   ->get();
 }
 
-return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'grupos', 'cidades', 'tecnologias', 'grupos'));
+return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'grupos', 'cidades', 'tecnologias', 'grupos', 'notificacoes'));
 }
 
 public function viewPerfilProdutora(Empresa $produtora) {

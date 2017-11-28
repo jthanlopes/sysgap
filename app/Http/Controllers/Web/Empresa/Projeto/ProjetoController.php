@@ -19,8 +19,9 @@ class ProjetoController extends Controller
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
     $projetos = Projeto::orderBy('created_at', 'desc')->where('empresa_id', $id)->get();
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.projetos-view', compact('empresa', 'projetos'));
+    return view('site.empresa.projetos-view', compact('empresa', 'projetos', 'notificacoes'));
   }
 
   // Recebe um valor por POST e retorna somente os projetos correspondentes
@@ -28,28 +29,31 @@ class ProjetoController extends Controller
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
     $projetos = Projeto::orWhere('titulo', 'like', '%' . $request->buscar . '%')->get();
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.projetos-view-pesquisar', compact('empresa', 'projetos'));
+    return view('site.empresa.projetos-view-pesquisar', compact('empresa', 'projetos', 'notificacoes'));
   }
 
   public function viewProjeto(Projeto $projeto) {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
     $jobs = Job::orderBy('status', 'asc')->orderBy('created_at', 'desc')->where('projeto_id', $projeto->id)->get();
 
     $freelancers = $projeto->freelancers()->orderBy('nome')->get();
     $produtoras = $projeto->empresas()->orderBy('nome')->get();
 
-    return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs', 'freelancers', 'produtoras'));
+    return view('site.empresa.projeto-view', compact('empresa', 'projeto', 'jobs', 'freelancers', 'produtoras', 'notificacoes'));
   }
 
   // Carrega o formulário para cadastro do projeto
   public function novoProjeto() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.criar-projeto', compact('empresa'));
+    return view('site.empresa.criar-projeto', compact('empresa', 'notificacoes'));
   }
 
   public function criarProjeto() {
@@ -74,8 +78,9 @@ class ProjetoController extends Controller
 public function editarProjetoView(Projeto $projeto) {
   $id = Auth::user()->id;
   $empresa = Empresa::find($id);
+  $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-  return view('site.empresa.projeto-editar', compact('empresa', 'projeto'));
+  return view('site.empresa.projeto-editar', compact('empresa', 'projeto', 'notificacoes'));
 }
 
 public function editarProjeto() {
@@ -102,26 +107,28 @@ public function novoFormIntegrantes(Projeto $projeto) {
   $id = Auth::user()->id;
   $empresa = Empresa::find($id);
   $results = Freelancer::all();
+  $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-  return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results'));
+  return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results', 'notificacoes'));
 }
 
 public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
   $categoria = $request->get('categoria');
   $id = Auth::user()->id;
   $empresa = Empresa::find($id);
+  $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
   if ($categoria == 0) {
     $results = Freelancer::where('nome', 'like', '%' . $request->nome . '%')->orWhere('email', 'like', '%' . $request->nome . '%')->get();
 
-    return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results'));
+    return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results', 'notificacoes'));
   } else {
     $results = Empresa::where([['id', '!=', $id], ['nome', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->orWhere([['id', '!=', $id] ,['email', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->get();
 
     $categoria = "produtora";
   }
 
-  return view('site.empresa.integrante.add-integrante-produtora', compact('empresa', 'projeto', 'results'));
+  return view('site.empresa.integrante.add-integrante-produtora', compact('empresa', 'projeto', 'results', 'notificacoes'));
 }
 
 public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {

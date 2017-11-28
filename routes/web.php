@@ -278,4 +278,4 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/pesquisa/perfil-freelancer/portifolios/{freelancer}', 'Freelancer\Pesquisa\PesquisaController@viewPortifoliosFreelancer')->name('view.portifolios-freelancer.freelancer');
 });
 
-// Auth::routes();
+Auth::routes();

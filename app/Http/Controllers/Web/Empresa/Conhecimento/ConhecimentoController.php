@@ -19,8 +19,9 @@ class ConhecimentoController extends Controller
     $empresa = Empresa::find($id);
     $empresaConhe = $empresa->conhecimentos()->select('id')->get()->pluck('id')->toArray();
     $conhecimentos = Conhecimento::orderBy('titulo')->wherenotin('id', $empresaConhe)->get();
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.conhecimentos-view', compact('empresa', 'conhecimentos'));
+    return view('site.empresa.conhecimentos-view', compact('empresa', 'conhecimentos', 'notificacoes'));
   }
 
   public function addConhecimento(Request $request) {
