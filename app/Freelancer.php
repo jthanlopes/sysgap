@@ -70,6 +70,10 @@ class Freelancer extends Authenticatable {
       return $this->hasMany(Portifolio::class);
     }
 
+    public function comentarios() {
+      return $this->hasMany(Comentario::class);
+    }
+
     public function sendPasswordResetNotification($token) {
       $this->notify(new FreelancerResetPasswordNotification($token));
     }

@@ -66,6 +66,10 @@ class Empresa extends Authenticatable
       return $this->belongsToMany(Job::class);
     }
 
+    public function comentarios() {
+      return $this->hasMany(Comentario::class);
+    }
+
     public function sendPasswordResetNotification($token) {
       $this->notify(new EmpresaResetPasswordNotification($token));
     }
