@@ -17,7 +17,7 @@ class PortifolioController extends Controller
   public function portifoliosView() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    $portifolios = Portifolio::where('empresa_id', $id)->paginate(5);
+    $portifolios = Portifolio::where('empresa_id', $id)->orderBy('created_at', 'DESC')->paginate(6);
     $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
     return view('site.empresa.portifolio.portifolios-view', compact('empresa', 'portifolios', 'notificacoes'));

@@ -2,28 +2,48 @@
  <div class="w3-col m2">
   <div class="w3-card-2 w3-round w3-white w3-center">
     <div class="w3-container">
-      <p>Upcoming Events:</p>
-      <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-      <p><strong>Holiday</strong></p>
-      <p>Friday 15:00</p>
-      <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+      <p style="text-decoration: underline;">Ranking Produtoras</p>
+      <table class="w3-table w3-centered w3-bordered table-projetos">
+        <tr>
+          <th>Prod</th>
+          <th>Pontuação</th>
+        </tr>
+        <tr>
+          <td><a href="" title="Ver perfil">Prod 1</a></td>
+          <td>1000pts</td>
+        </tr>
+        <tr>
+          <td><a href="" title="Ver perfil">Prod 2</a></td>
+          <td>500pts</td>
+        </tr>
+      </table>
+    </div>
+    <div class="w3-container" style="margin-top: 20px;">
+      <p><a href="" class="link-voltar" title="Ver ranking completo">Ranking completo</a></p>
     </div>
   </div>
   <br>
 
   <div class="w3-card-2 w3-round w3-white w3-center">
     <div class="w3-container">
-      <p>Friend Request</p>
-      <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-      <span>Jane Doe</span>
-      <div class="w3-row w3-opacity">
-        <div class="w3-half">
-          <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-        </div>
-        <div class="w3-half">
-          <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-        </div>
-      </div>
+      <p style="text-decoration: underline;">Ranking Freelancers</p>
+      <table class="w3-table w3-centered w3-bordered table-projetos">
+        <tr>
+          <th>Freela</th>
+          <th>Pontuação</th>
+        </tr>
+        <tr>
+          <td><a href="" title="Ver perfil">Jonathan</a></td>
+          <td>2000pts</td>
+        </tr>
+        <tr>
+          <td><a href="" title="Ver perfil">Cinder</a></td>
+          <td>1850pts</td>
+        </tr>
+      </table>
+    </div>
+    <div class="w3-container" style="margin-top: 20px;">
+      <p><a href="" class="link-voltar" title="Ver ranking completo">Ranking completo</a></p>
     </div>
   </div>
   <br>

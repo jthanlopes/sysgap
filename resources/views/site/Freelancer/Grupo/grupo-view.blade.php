@@ -68,14 +68,12 @@
             <tr>
               <th>Tecnologia</th>
               <th>Descrição</th>
-              <th>Nível</th>
             </tr>
             @foreach($results as $result)
             @foreach ($result->conhecimentos as $conhecimento)
             <tr>
               <td>{{ $conhecimento->titulo }}</td>
               <td>{{ $conhecimento->descricao }}</td>
-              <td>{{ $conhecimento->nivel }}</td>
               @endforeach
               @endforeach
             </table>

@@ -47,7 +47,6 @@ class EmpresaController extends Controller
 
         Empresa::where('id', $request->empresa)
         ->update(['nome' => $request->nome,
-          'email' => $request->email,
           'cnpj' => $request->cnpj,
           'password' => bcrypt($request->senha),
           'categoria' => $request->get('categoria'),

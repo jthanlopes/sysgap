@@ -57,13 +57,11 @@
       <tr>
         <th>Título</th>
         <th>Descrição</th>
-        <th>Nível</th>
       </tr>
       @foreach ($job->conhecimentos as $conhecimento)
       <tr>
         <td>{{ $conhecimento->titulo }}</td>
         <td>{{ $conhecimento->descricao }}</td>
-        <td>{{ $conhecimento->nivel }}</td>
       </tr>
       @endforeach
     </table>

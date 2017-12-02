@@ -8,7 +8,7 @@
     <div class="w3-col m12">
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding form-news">
-          <h3 class="w3-opacity">Editar Portifólio</h3>
+          <h3 class="w3-opacity">Editar Portfólio</h3>
           <hr>
           <form method="POST" action="{{ route('portifolio.editar.empresa') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -16,8 +16,8 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="titulo">Título do portifólio:</label>
-                  <input type="text" class="w3-input" id="titulo" placeholder="Digite o título" name="titulo" value="{{ $portifolio->titulo}}">
+                  <label for="titulo">Título do portfólio:</label>
+                  <input type="text" class="w3-input" id="titulo" placeholder="Digite o título" name="titulo" value="{{ $portifolio->titulo}}" required>
                 </div>
               </div>
             </div>
@@ -25,7 +25,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="link">Link:</label>
-                  <input type="text" class="w3-input" id="link" placeholder="Digite o link" name="link" value="{{ $portifolio->link }}">
+                  <input type="text" class="w3-input" id="link" placeholder="Digite o link" name="link" value="{{ $portifolio->link }}" required>
                 </div>
               </div>
             </div>
@@ -33,7 +33,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="imagem">Imagem:</label>
-                  <input type="file" name="imagem">
+                  <input type="file" name="imagem" required>
                 </div>
               </div>
             </div>

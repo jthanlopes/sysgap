@@ -115,13 +115,11 @@
               <tr>
                 <th>Tecnologia</th>
                 <th>Descrição</th>
-                <th>Nível</th>
               </tr>
               @foreach ($produtora->conhecimentos as $conhecimento)
               <tr>
                 <td>{{ $conhecimento->titulo }}</td>
                 <td>{{ $conhecimento->descricao }}</td>
-                <td>{{ $conhecimento->nivel }}</td>
               </tr>
               @endforeach
             </table>

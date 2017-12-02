@@ -47,7 +47,6 @@ class FreelancerController extends Controller
 
     Freelancer::where('id', $request->freelancer)
     ->update(['nome' => $request->nome,
-      'email' => $request->email,
       'cpf' => $request->cpf,
       'password' => bcrypt($request->senha),
       'endereco_id' => $request->endereco,

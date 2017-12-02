@@ -31,7 +31,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="email">Email:</label>
-                  <input type="text" class="w3-input" id="email" value="{{ $empresa->email }}" placeholder="E-mail" name="email" required>
+                  <input type="text" class="w3-input" id="email" value="{{ $empresa->email }}" placeholder="E-mail" name="email" readonly="true" required>
                 </div>
               </div>
             </div>

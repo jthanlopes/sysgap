@@ -8,7 +8,7 @@
     <div class="w3-col m12">
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding form-news">
-          <h3 class="w3-opacity">Cadastro de Job</h3>   
+          <h3 class="w3-opacity">Cadastro de Job</h3>
           <hr>
           <form method="POST" action="{{ route('job.novo') }}">
             <input type="hidden" name="projeto" value="{{ $projeto->id }}">
@@ -33,7 +33,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="categoria">Nível de conhecimento necessário:</label>
-                  <select class="w3-select" id="nivel" name="nivel" required>                        
+                  <select class="w3-select" id="nivel" name="nivel" required>
                     <option value="Básico">Básico</option>
                     <option value="Intermediário">Intermediário</option>
                     <option value="Avançado">Avançado</option>
@@ -43,13 +43,13 @@
             </div>
             <hr>
             <input type="submit" value="Cadastrar">
-          </form>   
+          </form>
         </div>
       </div>
     </div>
   </div>
 
-  
+
   <!-- End Middle Column -->
-</div>      
+</div>
 @endsection

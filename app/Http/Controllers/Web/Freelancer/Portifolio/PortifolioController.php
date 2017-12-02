@@ -19,7 +19,7 @@ class PortifolioController extends Controller
     $freelancer = Freelancer::find($id);
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
     $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
-    $portifolios = Portifolio::where('freelancer_id', $id)->paginate(5);
+    $portifolios = Portifolio::where('freelancer_id', $id)->orderBy('created_at', 'DESC')->paginate(6);
 
     return view('site.freelancer.portifolio.portifolios-view', compact('freelancer', 'notificacoes', 'portifolios', 'notificacoes2'));
   }

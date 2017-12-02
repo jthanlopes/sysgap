@@ -17,7 +17,6 @@ class CreateConhecimentosTable extends Migration {
 			$table->increments('id');
 			$table->string('titulo', 50);
 			$table->string('descricao', 100)->nullable();
-			$table->string('nivel', 45);
 			$table->boolean('padrao');
 			$table->timestamps();
 		});

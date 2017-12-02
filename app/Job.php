@@ -27,4 +27,8 @@ public function conhecimentos() {
 public function grupos() {
   return $this->belongsTo(Grupo::class);
 }
+
+public function comentarios() {
+  return $this->hasMany(Comentario::class);
+}
 }

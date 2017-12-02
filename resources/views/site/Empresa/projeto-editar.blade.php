@@ -17,13 +17,13 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Título do projeto:</label>
-                  <input type="text" class="w3-input" id="titulo" value="{{ $projeto->titulo }}" placeholder="Digite o título" name="titulo">
+                  <input type="text" class="w3-input" id="titulo" value="{{ $projeto->titulo }}" placeholder="Digite o título" name="titulo" required>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="descricao">Descrição do projeto:</label>
-                  <textarea class="w3-input w3-border" name="descricao" id="" cols="20" rows="10" placeholder="Digite a descrição">{{ $projeto->descricao }}</textarea>
+                  <textarea class="w3-input w3-border" name="descricao" id="" cols="20" rows="10" placeholder="Digite a descrição" required>{{ $projeto->descricao }}</textarea>
                 </div>
               </div>
             </div>

@@ -24,7 +24,7 @@
                   <select class="w3-select" name="tecnologia" required>
                     <option value="" disabled selected>Escolha a tecnologia</option>
                     @foreach ($conhecimentos as $conhecimento)
-                    <option  value="{{ $conhecimento->id }}">{{ $conhecimento->titulo . '/' . $conhecimento->descricao . '/' . $conhecimento->nivel }}</option>
+                    <option  value="{{ $conhecimento->id }}">{{ $conhecimento->titulo . '/' . $conhecimento->descricao }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -44,14 +44,12 @@
             <tr>
               <th>Tecnologia</th>
               <th>Descrição</th>
-              <th>Nível</th>
               <th>Ações</th>
             </tr>
             @foreach ($empresa->conhecimentos as $conhecimento)
             <tr>
               <td>{{ $conhecimento->titulo }}</td>
               <td>{{ $conhecimento->descricao }}</td>
-              <td>{{ $conhecimento->nivel }}</td>
               <td><a href="/empresa/conhecimento/excluir/{{ $conhecimento->id }}" class="w3-button w3-red w3-small" title="Remover o conhecimento">Remover</a>
               </tr>
               @endforeach

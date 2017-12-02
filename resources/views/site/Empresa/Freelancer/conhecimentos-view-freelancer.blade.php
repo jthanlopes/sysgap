@@ -116,14 +116,12 @@
                 <th>Tecnologia</th>
                 <th>Descrição</th>
                 <th>Tempo<br>Experiência</th>
-                <th>Nível</th>
               </tr>
               @foreach ($freelancer->conhecimentos as $conhecimento)
               <tr>
                 <td>{{ $conhecimento->titulo }}</td>
                 <td>{{ $conhecimento->descricao }}</td>
                 <td>{{ $conhecimento->pivot->tempo_experiencia }}</td>
-                <td>{{ $conhecimento->nivel }}</td>
               </tr>
               @endforeach
             </table>

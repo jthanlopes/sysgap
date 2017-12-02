@@ -19,38 +19,47 @@
           <form method="POST" action="{{ route('projetos.view.pesquisar') }}">
             {{ csrf_field() }}
             <div class="row">
-              <div class="col-md-6">
-                <input class="w3-input w3-border" type="text" name="buscar" placeholder="Buscar projeto">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input class="w3-input w3-border" type="text" name="buscar" placeholder="Buscar projeto">
+                </div>
               </div>
+            </div>
+            <div class="row">
               <div class="col-md-6">
-                <button type="input">Buscar</button>
+                <div class="form-group">
+                  <button type="input">Buscar</button>
+                </div>
               </div>
             </div>
           </form>
           <table class="w3-table w3-centered w3-bordered table-projetos">
             <tr>
               <th>Título</th>
-              <th>Data<br/>Criação</th>
+              <th>Data Criação</th>
               <th>Ações</th>
             </tr>
             @foreach ($projetos as $projeto)
             <tr>
               <td>{{ $projeto->titulo }}</td>
               <td>{{ $projeto->created_at->format('d-m-Y') }}</td>
-              <td><a href="/empresa/projeto/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
-                <a href="/empresa/projeto/{{ $projeto->id }}/finalizar" class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</a></td>
-              </tr>
-              @endforeach
-            </table>
-            @if(count($projetos) == 0)
-            <div style="text-align: center; margin-top: 10px;">
-              Crie seu projeto na opção acima.
-            </div>
-            @endif
+              <td>
+                <a href="/empresa/projeto/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Visualizar e editar o projeto">Visualizar</a>
+
+                <a href="/empresa/projeto/{{ $projeto->id }}/finalizar" class="w3-button w3-red w3-small" title="Finalizar o projeto">Finalizar</a>
+              </td>
+            </tr>
+            @endforeach
+          </table>
+          @if(count($projetos) == 0)
+          <div style="text-align: center; margin-top: 10px;">
+            Crie seu projeto na opção acima.
           </div>
+          @endif
         </div>
       </div>
     </div>
-    <!-- End Middle Column -->
   </div>
-  @endsection
+  <!-- End Middle Column -->
+</div>
+@endsection
