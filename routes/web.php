@@ -74,6 +74,8 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/job/editar/{job}', 'Empresa\Job\JobController@editarJobView')->name('view.job-editar');
   //
   Route::post('/projeto/job/editar', 'Empresa\Job\JobController@editarJob')->name('job.editar');
+  //
+  Route::post('/projeto/job/addComentario', 'Empresa\Comentario\ComentarioController@addComentario')->name('job.add-comentario');
   // Finalizar job
   Route::get('/projeto/{projeto}/job/finalizar/{job}', 'Empresa\Job\JobController@finalizarJob')->name('job.finalizar');
   // Reabrir job

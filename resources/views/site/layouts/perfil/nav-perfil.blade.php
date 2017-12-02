@@ -11,7 +11,7 @@
     <a href="{{ route('freelancer.editar-perfil.view') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Editar perfil"><i class="fa fa-user"></i></a>
     @endif
     {{-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a> --}}
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Mensagens"><i class="fa fa-envelope"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Minha pontuação"><i class="fa fa-check"></i></a>
     @if (auth()->guard('freelancer')->check())
     <div class="w3-dropdown-hover w3-hide-small">
       <button class="w3-button w3-padding-large" title="Notificações"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">{{ count($notificacoes) + count($notificacoes2) }}</span></button>
@@ -68,14 +68,14 @@
   @if(auth()->guard('empresa')->check())
   <a href="{{ route('empresa.editar-perfil.view') }}" class="w3-bar-item w3-button w3-padding-large" title="Editar perfil" style="margin-top: 51px;">Editar perfil</a>
   <a href="" class="w3-bar-item w3-button w3-padding-large" title="Editar perfil">Notificações</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large" title="Mensagens">Mensagens</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" title="Minha pontuação">Pontuação</a>
   <a href="{{ route('pesquisa.form.usuarios') }}" class="w3-bar-item w3-button w3-padding-large" title="Pesquisar usuários">Pesquisar usuários</a>
   <a href="{{ route('home.page') }}" class="w3-bar-item w3-button w3-padding-large">Home page</a>
   <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button w3-padding-large">Logout</a>
   @else
   <a href="{{ route('freelancer.editar-perfil.view') }}" class="w3-bar-item w3-button w3-padding-large" title="Editar perfil" style="margin-top: 51px;">Editar perfil</a>
   <a href="" class="w3-bar-item w3-button w3-padding-large" title="Editar perfil">Notificações</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large" title="Mensagens">Mensagens</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" title="Minha pontuação">Pontuação</a>
   <a href="{{ route('home.page') }}" class="w3-bar-item w3-button w3-padding-large">Home page</a>
   <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button w3-padding-large">Logout</a>
   @endif

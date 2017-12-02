@@ -17,8 +17,8 @@ class CreateComentariosTable extends Migration
         $table->increments('id');
         $table->text('comentario');
         $table->integer('job_id')->unsigned();
-        $table->integer('freelancer_id')->unsigned();
-        $table->integer('empresa_id')->unsigned();
+        $table->integer('freelancer_id')->nullable()->unsigned();
+        $table->integer('empresa_id')->nullable()->unsigned();
         $table->timestamps();
       });
     }

@@ -94,12 +94,13 @@
             @endif
             <hr>
             <h4 class="w3-opacity">Comentários</h4>
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('job.add-comentario') }}">
               {{ csrf_field() }}
+              <input type="hidden" name="jobId" value="{{ $job->id }}">
               <div class="row">
                 <div class="col-md-10">
                   <div class="form-group">
-                    <textarea class="w3-input w3-border" name="comentario" id="" cols="10" rows="1" placeholder="Faça seu comentário"></textarea>
+                    <textarea class="w3-input w3-border" name="comentario" id="" cols="10" rows="1" placeholder="Faça seu comentário" style="max-width: 100%;"></textarea>
                   </div>
                 </div>
                 <div class="col-md-2">
@@ -109,9 +110,28 @@
                 </div>
               </div>
             </form>
-            @if(count($job->comentarios) != 0)
-            @foreach ($job->comentarios as $comentario)
-            <textarea class="w3-input w3-border" name="comentario" id="" cols="20" rows="5" readonly="true">{{ $comentario->comentario }}</textarea>
+            @if(count($comentarios) != 0)
+            @foreach ($comentarios as $comentario)
+            <div style="margin-top: 10px;">
+              <div style="float: left;">
+                <img src="{{ asset('storage') . '/empresas/perfil/' . $comentario->empresa->foto_perfil }}" style="height:60px;width:60px;" alt="Imagem da empresa">
+              </div>
+              <div style="float: left; margin-left: 10px;">
+                <p style="margin-bottom: 0;">{{ $comentario->empresa->nome }}</p>
+                <p>{{ $comentario->empresa->email }}</p>
+              </div>
+            </div>
+
+            <div style="clear: both; border-left: 6px solid #7d97a5; background-color: #f5f7f8; padding: 10px; margin-top: 100px;">
+              <p>{{ $comentario->comentario }}</p>
+            </div>
+
+            <div style="float: right;">
+              <p>{{ $comentario->created_at->diffForHumans() }}</p>
+            </div>
+            <div style="clear: both;">
+              <hr>
+            </div>
             @endforeach
             @else
             <div style="text-align: center; margin-top: 10px;">

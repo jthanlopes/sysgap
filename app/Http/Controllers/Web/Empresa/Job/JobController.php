@@ -7,6 +7,7 @@ use App\Projeto;
 use App\Empresa;
 use App\Freelancer;
 use App\Conhecimento;
+use Carbon\Carbon;
 
 use Auth;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class JobController extends Controller
 {
   public function __construct() {
     $this->middleware('auth:empresa');
+     Carbon::setLocale('pt-br');
   }
 
   public function jobView(Projeto $projeto, Job $job) {
@@ -25,8 +27,9 @@ class JobController extends Controller
     $jobConhe = $job->conhecimentos()->select('id')->get()->pluck('id')->toArray();
     $conhecimentos = Conhecimento::orderBy('titulo')->wherenotin('id', $jobConhe)->get();
     $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
+    $comentarios = Job::find($job->id)->comentarios()->orderBy('created_at', 'DESC')->get();
 
-    return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto', 'freelancers', 'produtoras','conhecimentos', 'notificacoes'));
+    return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto', 'freelancers', 'produtoras','conhecimentos', 'notificacoes', 'comentarios'));
   }
 
   public function novoForm(Projeto $projeto) {
