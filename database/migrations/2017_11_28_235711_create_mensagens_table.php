@@ -13,17 +13,17 @@ class CreateMensagensTable extends Migration
      */
     public function up()
     {
-        Schema::create('mensagens', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('empresa_destinataria')->unsigned();
-            $table->integer('empresa_remetente')->unsigned();
-            $table->integer('freelancer_remetente')->unsigned();
-            $table->integer('freelancer_destinatario')->unsigned();
-            $table->integer('admin_destinatario')->unsigned();
-            $table->text('mensagem');
-            $table->boolean('tipo');
-            $table->timestamps();
-        });
+      Schema::create('mensagens', function (Blueprint $table) {
+        $table->increments('id');
+        $table->integer('empresa_remetente')->unsigned()->nullable();
+        $table->integer('freelancer_remetente')->unsigned()->nullable();
+        $table->string('email_remetente', 200);
+        $table->string('nome_remetente', 200);
+        $table->text('mensagem');
+        $table->boolean('tipo');
+        $table->boolean('respondida');
+        $table->timestamps();
+      });
     }
 
     /**
@@ -33,6 +33,6 @@ class CreateMensagensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mensagens');
+      Schema::dropIfExists('mensagens');
     }
-}
+  }

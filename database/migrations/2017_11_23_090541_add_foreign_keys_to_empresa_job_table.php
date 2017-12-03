@@ -13,7 +13,7 @@ class AddForeignKeysToEmpresaJobTable extends Migration
      */
     public function up()
     {
-        Schema::table('produtora_job', function(Blueprint $table)
+        Schema::table('empresa_job', function(Blueprint $table)
         {
           $table->foreign('job_id', 'fk_job_job_prod')->references('id')->on('jobs')->onUpdate('NO ACTION')->onDelete('NO ACTION');
           $table->foreign('empresa_id', 'fk_prod_prod')->references('id')->on('empresas')->onUpdate('NO ACTION')->onDelete('NO ACTION');
@@ -27,7 +27,7 @@ class AddForeignKeysToEmpresaJobTable extends Migration
      */
     public function down()
     {
-         Schema::table('produtora_job', function(Blueprint $table)
+         Schema::table('empresa_job', function(Blueprint $table)
        {
           $table->dropForeign('fk_job_job_prod');
           $table->dropForeign('fk_prod_prod');

@@ -73,4 +73,8 @@ class Empresa extends Authenticatable
     public function sendPasswordResetNotification($token) {
       $this->notify(new EmpresaResetPasswordNotification($token));
     }
+
+    public function mensagens() {
+      return $this->hasMany(Mensagen::class);
+    }
   }

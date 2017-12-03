@@ -1,6 +1,6 @@
 $(document).ready(function(){
   var data = sessionStorage.getItem('job');
-  if (data) {    
+  if (data) {
     // Get the snackbar DIV
     var x = document.getElementsByClassName("snackbar")[0];
     // Add the "show" class to DIV

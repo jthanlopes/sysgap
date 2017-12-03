@@ -1,5 +1,3 @@
-var loadImages;
-
 $(document).ready(function(){
 	// Exibe overlay ao abrir a home-page
 	$(".overlay").css({ display: "block" });
@@ -42,43 +40,6 @@ $(document).ready(function(){
  		$(".register-options").slideToggle('200');
  	});
 
- 	$("#modal-login-empresa").click(function(event){
- 		var modal = document.getElementById('modal-login-empresa');
- 		if (event.target == modal) {
- 			modal.style.display = "none";
- 		}
- 	});
-
- 	$("#modal-login-freelancer").click(function(event){
- 		var modal = document.getElementById('modal-login-freelancer');
- 		if (event.target == modal) {
- 			modal.style.display = "none";
- 		}
- 	});
-
- 	$("#modal-register-empresa").click(function(event){
- 		var modal = document.getElementById('modal-register-empresa');
- 		var modal2 = $(".modal-dialog");
- 		if (event.target == modal || event.target == modal2) {
- 			$(this).css("display", "none");
- 		}
- 	});
-
- 	$("#modal-register-freelancer").click(function(event){
- 		var modal = document.getElementById('modal-register-freelancer');
- 		var modal2 = $(".modal-dialog");
- 		if (event.target == modal || event.target == modal2) {
- 			$(this).css("display", "none");
- 		}
- 	});
-
- 	$("#modal-criar-job").click(function(event){
- 		var modal = document.getElementById('modal-criar-job');
- 		if (event.target == modal) {
- 			modal.style.display = "none";
- 		}
- 	});
-
  	// Pega todos os elementos da página
  	var $elemento = $("body .w3-content, .acessi-text").find("*");
  	var fonts = [];
@@ -107,27 +68,6 @@ $(document).ready(function(){
 		}
 	});
 
-	// Criar uma session com msg ao enviar formulário de contato
-	$(".btn-msg-contato").click(function(event){
-		if ($( ".input-contato-nome" ).val() != '' && $( ".input-contato-email" ).val() != '' && $( ".textarea-contato-msg" ).val() != '') {
-			sessionStorage.setItem('contato', '1');
-		}
-	});
-
-	window.setTimeout(function() {
-		// Exibe barra de mensagem, caso exista uma variavel de sessão
-		var data = sessionStorage.getItem('contato');
-		if (data) {
-    // Get the snackbar DIV
-    var x = document.getElementsByClassName("snackbar")[0];
-    // Add the "show" class to DIV
-    x.className = "snackbar" + " show-snackbar";
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show-snackbar", ""); }, 4000);
-    sessionStorage.removeItem('contato');
-  }
-}, 800);
-
   // Acessibilidade, aumenta a fonte do site
   $(".publicar-empresa").click(function(event){
     $(".form-publicar").slideToggle("slow");
@@ -136,4 +76,4 @@ $(document).ready(function(){
   $(".opcoes-pesquisa").click(function(event){
     $(".show-opcoes-pesquisa").slideToggle("slow");
   });
-})
+});

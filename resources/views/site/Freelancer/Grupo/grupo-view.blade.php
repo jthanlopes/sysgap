@@ -5,15 +5,16 @@
 <div class="w3-col m7">
   <div class="w3-row-padding">
     <div class="w3-col m12">
-      @if(session()->has('message'))
-      <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        {{ session()->get('message')['message'] }}
-      </div>
-      @endif
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
           <h3 class="w3-opacity">Grupo {{ $grupo->titulo }} @if(auth()->user()->id == $grupo->freelancer_id) <span class="opt-projeto">[<a href="/freelancer/grupo/{{ $grupo->id }}/editar">Editar grupo</a>]</span>@endif</h3>
+          <hr>
+          @if(session()->has('message'))
+          <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ session()->get('message')['message'] }}
+          </div>
+          @endif
           <p class="w3-opacity">Descrição: {{ $grupo->descricao }}</p>
           <p class="w3-opacity">Data de criação: {{ $grupo->created_at->format('d/m/Y') }}</p>
           <a href="/freelancer/grupo/{{ $grupo->id }}/pdf">Gerar relatório do grupo</a>

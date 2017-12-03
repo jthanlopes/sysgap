@@ -19,6 +19,8 @@ Route::get('/eventos', 'Noticia\NoticiaController@noticiasViewHome')->name('even
 Route::get('/eventos/evento-view/{noticia}', 'Noticia\NoticiaController@noticiaView')->name('evento.view');
 // Rota do formulário de contato com o admin
 Route::get('/contato', function () {return view('site.contato');})->name('contato.page');
+//
+Route::post('/contato/enviar-mensagem', 'MensagemController@envia')->name('contato.msg.enviar');
 
 // Rotas de empresa
 Route::prefix('empresa')->group(function () {
@@ -278,6 +280,8 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/pesquisa/perfil-freelancer/conhecimentos/{freelancer}', 'Freelancer\Pesquisa\PesquisaController@viewConhecimentosFreelancer')->name('view.conhecimentos-freelancer.freelancer');
   // Visualizar portifolio de um freelancer
   Route::get('/pesquisa/perfil-freelancer/portifolios/{freelancer}', 'Freelancer\Pesquisa\PesquisaController@viewPortifoliosFreelancer')->name('view.portifolios-freelancer.freelancer');
+  // Adicionar comentário no job
+  Route::post('/job/addComentario', 'Freelancer\Comentario\ComentarioController@addComentario')->name('job.add-comentario.freelancer');
 });
 
 Auth::routes();

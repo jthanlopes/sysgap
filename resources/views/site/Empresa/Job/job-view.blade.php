@@ -114,11 +114,20 @@
             @foreach ($comentarios as $comentario)
             <div style="margin-top: 10px;">
               <div style="float: left;">
+                @if($comentario->freelancer_id == null)
                 <img src="{{ asset('storage') . '/empresas/perfil/' . $comentario->empresa->foto_perfil }}" style="height:60px;width:60px;" alt="Imagem da empresa">
+                @else
+                <img src="{{ asset('storage') . '/freelancers/perfil/' . $comentario->freelancer->foto_perfil }}" style="height:60px;width:60px;" alt="Imagem do freelancer">
+                @endif
               </div>
               <div style="float: left; margin-left: 10px;">
-                <p style="margin-bottom: 0;">{{ $comentario->empresa->nome }}</p>
+                @if($comentario->freelancer_id == null)
+                <p style="margin-bottom: 0;">{{ $comentario->empresa->nome }} @if($job->empresa_id == $comentario->empresa->id) (admin) @endif</p>
                 <p>{{ $comentario->empresa->email }}</p>
+                @else
+                <p style="margin-bottom: 0;">{{ $comentario->freelancer->nome }}</p>
+                <p>{{ $comentario->freelancer->email }}</p>
+                @endif
               </div>
             </div>
 
@@ -138,6 +147,9 @@
               <p>Nenhum comentário feito neste job!</p>
             </div>
             @endif
+            <div style="text-align: center;">
+              {{ $comentarios->links() }}
+            </div>
           </div>
         </div>
       </div>

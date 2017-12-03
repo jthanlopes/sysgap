@@ -27,7 +27,7 @@ class JobController extends Controller
     $jobConhe = $job->conhecimentos()->select('id')->get()->pluck('id')->toArray();
     $conhecimentos = Conhecimento::orderBy('titulo')->wherenotin('id', $jobConhe)->get();
     $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
-    $comentarios = Job::find($job->id)->comentarios()->orderBy('created_at', 'DESC')->get();
+    $comentarios = Job::find($job->id)->comentarios()->orderBy('created_at', 'DESC')->paginate(10);
 
     return view('site.empresa.job.job-view', compact('empresa', 'job', 'projeto', 'freelancers', 'produtoras','conhecimentos', 'notificacoes', 'comentarios'));
   }

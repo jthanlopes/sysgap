@@ -30,7 +30,6 @@
               <td>{{ $job->status }}</td>
               <td>
                 <a href="/freelancer/job/{{ $job->id }}" class="w3-button w3-blue w3-small" title="Ver o job">Ver</a>
-                <a href="" class="w3-button w3-yellow w3-small" title="Devolver o job">Devolver</a>
               </tr>
               @endforeach
             </table>

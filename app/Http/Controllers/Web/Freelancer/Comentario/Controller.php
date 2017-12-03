@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Web\Freelancer\Comentario;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -13,7 +13,7 @@ class Controller extends BaseController
 
     public function returnMessage( String $response, String $message )
     {
-      return array(
+    	return array(
           'response' => $response,
           'message' => $message
       );

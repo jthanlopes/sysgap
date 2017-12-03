@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProdutoraJobTable extends Migration
+class CreateEmpresaJobTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProdutoraJobTable extends Migration
      */
     public function up()
     {
-        Schema::create('produtora_job', function (Blueprint $table) {
+        Schema::create('empresa_job', function (Blueprint $table) {
             $table->integer('job_id')->unsigned();
             $table->integer('empresa_id')->unsigned();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateProdutoraJobTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produtora_job');
+        Schema::dropIfExists('empresa_job');
     }
 }

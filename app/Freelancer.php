@@ -77,4 +77,8 @@ class Freelancer extends Authenticatable {
     public function sendPasswordResetNotification($token) {
       $this->notify(new FreelancerResetPasswordNotification($token));
     }
+
+    public function mensagens() {
+      return $this->hasMany(Mensagen::class);
+    }
   }

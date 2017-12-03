@@ -67,7 +67,8 @@ class JobController extends Controller
     $freelancers = $job->freelancers()->orderBy('nome')->get();
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
     $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
+    $comentarios = Job::find($job->id)->comentarios()->orderBy('created_at', 'DESC')->paginate(10);
 
-    return view('site.freelancer.job.job-view', compact('freelancer', 'job', 'projeto', 'freelancers', 'notificacoes', 'notificacoes2'));
+    return view('site.freelancer.job.job-view', compact('freelancer', 'job', 'projeto', 'freelancers', 'notificacoes', 'notificacoes2', 'comentarios'));
   }
 }

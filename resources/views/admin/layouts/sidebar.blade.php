@@ -1,4 +1,15 @@
-d<!-- Left side column. contains the logo and sidebar -->
+<?php
+
+use App\Mensagen;
+
+$duvidas = Mensagen::where('tipo', 0)->count();
+$elogios = Mensagen::where('tipo', 1)->count();
+$reclamacoes = Mensagen::where('tipo', 2)->count();
+$sugestoes = Mensagen::where('tipo', 3)->count();
+
+?>
+
+<!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -115,12 +126,13 @@ d<!-- Left side column. contains the logo and sidebar -->
           </a> --}}
         </li>
         <li>
-          <a href="pages/mailbox/mailbox.html">
+          <a href="{{ route('msg.view') }}">
             <i class="fa fa-envelope"></i> <span>Mensagens</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
+              <small class="label pull-right bg-blue" title="Sugestões">{{ $sugestoes }}</small>
+              <small class="label pull-right bg-yellow" title="Dúvidas">{{ $duvidas }}</small>
+              <small class="label pull-right bg-green" title="Elogios">{{ $elogios}}</small>
+              <small class="label pull-right bg-red" title="Reclamações">{{ $reclamacoes }}</small>
             </span>
           </a>
         </li>
@@ -176,7 +188,7 @@ d<!-- Left side column. contains the logo and sidebar -->
             <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
           </ul>
         </li>
-        <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentação</span></a></li>
+        <li><a href="https://github.com/jthanlopes/SysGAP" target="_blank"><i class="fa fa-book"></i> <span>Documentação</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

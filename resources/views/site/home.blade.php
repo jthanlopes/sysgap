@@ -67,8 +67,9 @@
       <h1>Eventos / Notícias</h1>
       <div class="w3-padding-32">
         <h2>{{ $noticia->titulo }}</h2>
-        <p>{{ substr($noticia->conteudo, 0, 300)."..." }}</p>
-        <a class="btn-veja-mais" href="/eventos/evento-view/{{ $noticia->id }}"><span>Veja mais </span></a>
+        <p>{{ substr($noticia->conteudo, 0, 300)."..." }} <a class="btn-veja-mais" href="/eventos/evento-view/{{ $noticia->id }}"><span>Leia mais</span></a></p>
+
+        <a class="btn-veja-mais" href="{{ route('eventos.page') }}"><span>Veja mais notícias e eventos</span></a>
       </div>
     </div>
     <div class="w3-third w3-center">

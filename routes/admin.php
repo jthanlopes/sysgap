@@ -121,3 +121,6 @@ Route::get('/freelancers-view', 'Freelancer\FreelancerController@freelancersView
 Route::get('/jobs-view', 'Job\JobController@jobsView')->name('jobs.view');
 
 //-------------------------------------------------------------------------------------------------------
+
+// Rotas das mensagens
+Route::get('/mensagens-view', 'Mensagem\MensagemController@msgView')->name('msg.view');
