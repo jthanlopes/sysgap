@@ -13,6 +13,7 @@
     <li><a href="{{ route('noticias.view') }}"><i class="fa fa-circle-o"></i> Notícias </a></li>
     <li><a href="{{ route('conhecimentos.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
     <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Itens </a></li>
+    <li><a href="{{ route('pontuacoes.view') }}" ><i class="fa fa-circle-o"></i> Pontuações </a>
   </ul>
 </li>
 @endsection
@@ -46,10 +47,10 @@
             <label for="descricao" class="col-sm-2 control-label">Descrição</label>
             <div class="col-sm-10">
               <select class="form-control" id="descricao" name="descricao" required>
-                <option value="Back-end" @if($conhecimento->categoria == "Back-end") {{ "selected" }} @endif>Back-end</option>
-                <option value="BD" @if($conhecimento->categoria == "BD") {{ "selected" }} @endif>BD</option>
-                <option value="Ferramenta" @if($conhecimento->categoria == "Ferramenta") {{ "selected" }} @endif>Ferramenta</option>
-                <option value="Front-end" @if($conhecimento->categoria == "Front-end") {{ "selected" }} @endif>Front-end</option>
+                <option value="Back-end" @if($conhecimento->descricao == "Back-end") {{ "selected" }} @endif>Back-end</option>
+                <option value="BD" @if($conhecimento->descricao == "BD") {{ "selected" }} @endif>BD</option>
+                <option value="Ferramenta" @if($conhecimento->descricao == "Ferramenta") {{ "selected" }} @endif>Ferramenta</option>
+                <option value="Front-end" @if($conhecimento->descricao == "Front-end") {{ "selected" }} @endif>Front-end</option>
               </select>
               @if ($errors->has('descricao'))
               <span class="help-block">

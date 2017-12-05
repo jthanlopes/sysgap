@@ -20,13 +20,15 @@
       <h1>Sobre o Projeto</h1>
       <h5 class="w3-padding-32">Com a atual expansão do mercado de TI e o lançamento de novas tecnologias para os mais variados sistemas, algumas empresas de grande porte acabam terceirizando alguns serviços para empresas menores especialistas nessas tecnologias ou também para freelancers.</h5>
 
-      <p class="w3-text-grey" style="padding-bottom: 0!important;">Aqui você pode fazer o cadastro e gerenciamento de um perfil, para agências, produtoras, freelancers ou outros tipos de empresas. Facilitando a busca por profissionais qualificados ou vagas de freela. Clique nos links abaixo para fazer seu login ou cadastro.</p>
+      <p class="w3-text-grey" style="padding-bottom: 0!important;">Aqui você pode fazer o cadastro e gerenciamento de um perfil, para agências, produtoras, freelancers ou outros tipos de empresas. Facilitando a busca por profissionais qualificados ou vagas de freela. Você também pode criar e gerenciar projetos, jobs e grupos.<br><u>Clique nos links abaixo para fazer seu login ou cadastro.</u></p>
 
       Você é uma empresa? <a href="{{ route('empresa.login-view') }}">Clique aqui</a> e faça seu login ou cadastro. <br>
-      Você é um freelancer? <a href="{{ route('freelancer.login-view') }}">Clique aqui</a> e faça seu login ou cadastro. <br><br><br>
+      Você é um freelancer? <a href="{{ route('freelancer.login-view') }}">Clique aqui</a> e faça seu login ou cadastro.
+      <hr><br>
 
-      <p><a href="https://github.com/jthanlopes/sysgap" target="_blank">Link para o GitHub do projeto.</a></p>
-      <p><a href="https://www.overleaf.com/11934003zdnngqxnftps#/45250684/" target="_blank">Link para o Overleaf do projeto.</a></p>
+      <p>Você também pode acessar: </p>
+      <p><a href="https://github.com/jthanlopes/sysgap" target="_blank">GitHub do projeto.</a><br>
+      <a href="https://www.overleaf.com/11934003zdnngqxnftps#/45250684/" target="_blank">Overleaf do projeto.</a></p>
     </div>
 
     <div class="w3-third w3-center">
@@ -46,15 +48,14 @@
       <h1>Diferenciais</h1>
       <h5 class="w3-padding-32">Alguns dos diferencias do sistema são:</h5>
       <ul class="w3-text-grey">
-        <li>Perfil de usuário gerenciável;</li>
-        <li>Criação de grupos de freelancers;</li>
-        <li>Cadastro de experiências e conhecimentos;</li>
-        <li>Cadastro de portifólio;</li>
-        <li>Filtros avançados de pesquisa;</li>
-        <li>Criação de projetos e jobs;</li>
-        <li>Troca de mensagens entre os usuários;</li>
-        <li>Sistema de avaliação e pagamento para os jobs;</li>
-        <li>Sistema de pontuação com ranking.</li>
+        <li>Perfil de usuário gerenciável</li>
+        <li>Criação de grupos de freelancers</li>
+        <li>Cadastro de experiências e conhecimentos</li>
+        <li>Cadastro de portifólio</li>
+        <li>Filtros de pesquisa</li>
+        <li>Criação de projetos e jobs</li>
+        <li>Sistema de avaliação de usuários</li>
+        <li>Sistema de pontuação com ranking</li>
       </ul>
     </div>
   </div>

@@ -100,7 +100,7 @@
               <div class="row">
                 <div class="col-md-10">
                   <div class="form-group">
-                    <textarea class="w3-input w3-border" name="comentario" id="" cols="10" rows="1" placeholder="Faça seu comentário" style="max-width: 100%;"></textarea>
+                    <textarea class="w3-input w3-border" name="comentario" id="" cols="10" rows="1" placeholder="Faça seu comentário" style="max-width: 100%;min-height: 40px;min-width: 100%;"></textarea>
                   </div>
                 </div>
                 <div class="col-md-2">

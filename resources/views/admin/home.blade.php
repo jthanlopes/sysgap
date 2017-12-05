@@ -13,12 +13,13 @@
     <li><a href="{{ route('noticias.view') }}"><i class="fa fa-circle-o"></i> Notícias </a></li>
     <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
     <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Itens </a></li>
-  </ul>
-</li>
-@endsection
+    <li><a href="{{ route('pontuacoes.view') }}" ><i class="fa fa-circle-o"></i> Pontuações </a>
+    </ul>
+  </li>
+  @endsection
 
-@section ('content')
-<!-- Content Wrapper. Contains page content -->
+  @section ('content')
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -29,6 +30,6 @@
         <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol>
-    </section>    
+    </section>
   </div>
-@endsection
+  @endsection

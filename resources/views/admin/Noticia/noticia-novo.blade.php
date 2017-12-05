@@ -13,6 +13,7 @@
     <li><a href="{{ route('noticias.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Notícias </a></li>
     <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
     <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Itens </a></li>
+    <li><a href="{{ route('pontuacoes.view') }}" ><i class="fa fa-circle-o"></i> Pontuações </a>
 </ul>
 </li>
 @endsection
@@ -21,7 +22,7 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">  
+    <section class="content-header">
         <h1>Cadastro de Notícia</h1>
         <hr>
         <ol class="breadcrumb">
@@ -44,7 +45,7 @@
                     <div class="form-group{{ $errors->has('conteudo') ? ' has-error' : '' }}">
                         <label for="conteudo" class="col-sm-2 control-label">Conteúdo</label>
                         <div class="col-sm-10">
-                            <textarea id="conteudo" class="form-control" rows="10" name="conteudo" placeholder="Digite o conteúdo" required></textarea>           
+                            <textarea id="conteudo" class="form-control" rows="10" name="conteudo" placeholder="Digite o conteúdo" required></textarea>
                             @if ($errors->has('conteudo'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('conteudo') }}</strong>
@@ -62,27 +63,27 @@
                                 <strong>{{ $errors->first('data_final') }}</strong>
                             </span>
                             @endif
-                        </div>                        
+                        </div>
                     </div>
 
                     <div class="form-group{{ $errors->has('principal') ? ' has-error' : '' }}">
                         <label for="principal" class="col-sm-2 control-label">Principal</label>
-                        <div class="col-sm-10">                                         
+                        <div class="col-sm-10">
                           <select class="form-control" id="principal" name="principal" required>
                             <option value="Não">Não</option>
                             <option value="Sim">Sim</option>
-                        </select>                    
-                    </div>                         
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                       <button type="submit" class="btn btn-primary"> Cadastrar </button>
-                   </div>
-               </div>
-           </form>
-       </div>
-   </div>
-</section>        
+                     <button type="submit" class="btn btn-primary"> Cadastrar </button>
+                 </div>
+             </div>
+         </form>
+     </div>
+ </div>
+</section>
 </div>
 @endsection

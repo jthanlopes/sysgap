@@ -8,6 +8,7 @@ use App\Mail\ConfirmaConta;
 use Validator;
 use Illuminate\Http\Request;
 use Storage;
+use Mail;
 
 class EmpresaRegisterController extends Controller
 {

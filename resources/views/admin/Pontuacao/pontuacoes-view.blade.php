@@ -12,8 +12,8 @@
     <li><a href="{{ route('admins.view') }}"><i class="fa fa-circle-o"></i> Administradores</a></li>
     <li><a href="{{ route('noticias.view') }}"><i class="fa fa-circle-o"></i> Notícias </a></li>
     <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
-    <li><a href="{{ route('itens.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Itens </a></li>
-    <li><a href="{{ route('pontuacoes.view') }}" ><i class="fa fa-circle-o"></i> Pontuações </a>
+    <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Itens </a></li>
+    <li><a href="{{ route('pontuacoes.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Pontuações </a></li>
   </ul>
 </li>
 @endsection
@@ -24,14 +24,14 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Lista de itens de avaliação
+      Lista de itens de pontuação
     </h1>
     <hr>
     <ol class="breadcrumb">
       <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Itens</li>
+      <li class="active">Pontuações</li>
     </ol>
-    <a href="{{ route('item.show-form-novo') }}" class="btn btn-success btn-sm btn-add">
+    <a href="{{ route('pontuacao.show-form-novo') }}" class="btn btn-success btn-sm btn-add">
     ADICIONAR NOVO</a>
 
     <div class="row">
@@ -45,18 +45,20 @@
         <table class="table table-hover table-striped">
           <thead class="thead-inverse">
             <tr>
-              <th>Pergunta</th>
+              <th>Descrição</th>
+              <th>Valor</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody class="itens-view">
-            @foreach ($itens as $item)
+            @foreach ($pontuacoes as $pontuacao)
             <tr>
-              <td>{{ $item->pergunta }}</td>
+              <td>{{ $pontuacao->descricao }}</td>
+              <td>{{ $pontuacao->valor }} pontos</td>
               <td>
-               <a href="/admin/item-view/editar/{{ $item->id }}" class="btn btn-warning">
+               <a href="/admin/pontuacao-view/editar/{{ $pontuacao->id }}" class="btn btn-warning">
                Editar</a>
-               <a href="/admin/item-view/excluir/{{ $item->id }}" class="btn btn-danger">
+               <a href="/admin/pontuacao-view/excluir/{{ $pontuacao->id }}" class="btn btn-danger">
                Excluir</a>
              </td>
            </tr>
@@ -64,7 +66,7 @@
          </tbody>
        </table>
        <div class="paginacao">
-        {{ $itens->links() }}
+        {{ $pontuacoes->links() }}
       </div>
     </div>
   </div>

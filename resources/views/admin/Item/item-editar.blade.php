@@ -11,8 +11,9 @@
 <ul class="treeview-menu">
     <li><a href="{{ route('admins.view') }}"><i class="fa fa-circle-o"></i> Administradores</a></li>
     <li><a href="{{ route('noticias.view') }}"><i class="fa fa-circle-o"></i> Notícias </a></li>
-    <li><a href="{{ route('conhecimentos.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
-    <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Itens </a></li>
+    <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
+    <li><a href="{{ route('itens.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Itens </a></li>
+    <li><a href="{{ route('pontuacoes.view') }}"><i class="fa fa-circle-o"></i> Pontuações </a>
 </ul>
 </li>
 @endsection
@@ -21,14 +22,14 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">  
+    <section class="content-header">
         <h1>Edição de Perguntas</h1>
         <h5>As perguntas cadastradas serão utilizadas nas avaliaçãoes.</h5>
         <hr>
         <ol class="breadcrumb">
             <li><a href="/admin"><i class="fa fa-dashboard"></i> Home </a></li>
             <li><a href="/admin/itens-view"></i> Itens </a></li>
-            <li class="active"> Cadastro </li>
+            <li class="active"> Editar </li>
         </ol>
 
         <div class="row">
@@ -50,6 +51,6 @@
                </form>
            </div>
        </div>
-   </section>        
+   </section>
 </div>
 @endsection

@@ -204,8 +204,10 @@
   padding-top: 10px;
 }
 
-#home-page .eventos .w3-panel {
-  height: 260px;
+@media screen and (min-width: 915px) {
+  #home-page .eventos .w3-panel {
+    height: 260px;
+  }
 }
 
 #home-page .eventos .noticia-text p {
@@ -235,9 +237,10 @@
   content: '\00bb';
   position: absolute;
   opacity: 0;
-  top: 0;
+  top: -10px;
   right: -20px;
   transition: 0.5s;
+  font-size: 20pt;
 }
 
 #home-page .eventos .btn-veja-mais:hover span {
@@ -267,14 +270,34 @@
 }
 
 #home-page .login {
-width: 40%;
-margin-left: 30%;
+  width: 40%;
+  margin-left: 30%;
 }
 
 @media screen and (max-width: 600px) {
   #home-page .login {
     width: 100%;
     margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 915px) {
+  #home-page .noticia-text {
+    float: none!important;
+    width: 100%!important;
+  }
+  #home-page .noticia-text div {
+    height: 40%!important;
+  }
+  #home-page .noticia-img {
+    float: none!important;
+    width: 100%!important;
+  }
+  #home-page .noticia-img img{
+    width: 100%!important;
+  }
+  #home-page .eventos .w3-panel {
+    height: auto!important;
   }
 }
 
@@ -287,10 +310,10 @@ margin-left: 30%;
   padding-top: 16px;
 }
 
-#home-page .g-recaptcha div {
+/*#home-page .g-recaptcha div {
   margin-left: auto;
   margin-right: auto;
-}
+}*/
 
 /* Formatação da página de login*/
 /* css dropdown menu perfil admin*/

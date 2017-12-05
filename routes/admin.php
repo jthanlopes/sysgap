@@ -124,3 +124,23 @@ Route::get('/jobs-view', 'Job\JobController@jobsView')->name('jobs.view');
 
 // Rotas das mensagens
 Route::get('/mensagens-view', 'Mensagem\MensagemController@msgView')->name('msg.view');
+
+//-------------------------------------------------------------------------------------------------------
+
+// Rotas de pontuações
+Route::get('/pontuacoes-view', 'Pontuacao\PontuacaoController@pontuacoesView')->name('pontuacoes.view');
+
+// Formulário de cadastro de itens de pontuação
+Route::get('/pontuacoes-view/novo', 'Pontuacao\PontuacaoController@pontuacaoNovo')->name('pontuacao.show-form-novo');
+
+// Salvar formulário do item de pontuação
+Route::post('/pontuacoes-view/novo', 'Pontuacao\PontuacaoController@pontuacaoCadastrar')->name('pontuacao.cadastrar');
+
+// Chama o formulário de edição da pontuação
+Route::get('/pontuacao-view/editar/{pontuacao}', 'Pontuacao\PontuacaoController@editarForm')->name('pontuacao.show-form-edit');
+
+// Submete o formulário de edição da pontuação
+Route::post('/pontuacao-view/editar', 'Pontuacao\PontuacaoController@pontuacaoEditar')->name('pontuacao.editar');
+
+// Excluir o item de pontução (pergunta)
+Route::get('/pontuacao-view/excluir/{pontuacao}', 'Pontuacao\PontuacaoController@pontuacaoExcluir')->name('pontuacao.excluir');

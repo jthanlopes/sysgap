@@ -13,6 +13,7 @@
     <li><a href="{{ route('noticias.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Notícias </a></li>
     <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
     <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Itens </a></li>
+    <li><a href="{{ route('pontuacoes.view') }}" ><i class="fa fa-circle-o"></i> Pontuações </a>
   </ul>
 </li>
 @endsection
@@ -73,7 +74,7 @@
               <td>{{ $noticia->admin->name }}</td>
               <td><?php echo ($noticia->ativo == 1) ? "Ativo" : "Inativo"; ?></td>
               <td>
-                <a href="{{-- {{ route('noticia.inativar', $noticia->id) }} --}}" class="btn btn-info">
+                <a href="/eventos/evento-view/{{ $noticia->id }}" class="btn btn-info" target="_blank">
                 Visualizar</a>
                 <a href="{{-- {{ route('noticia.perfil') }} --}}" class="btn btn-warning">
                 Editar</a>

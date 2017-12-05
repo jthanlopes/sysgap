@@ -171,6 +171,8 @@ Route::prefix('empresa')->group(function () {
   Route::get('/jobs-projetos/{projeto}/recusar', 'Empresa\Job\JobController@recusarProjeto');
   // Visualizar job
   Route::get('/job/{job}', 'Empresa\Job\JobController@jobViewProdutora')->name('job.view.produtora');
+  // Rotas de pontuação
+  Route::get('/pontuacoes', 'Empresa\Pontuacao\PontuacaoController@pontuacoesView')->name('pontuacoes.view');
 });
 
 
