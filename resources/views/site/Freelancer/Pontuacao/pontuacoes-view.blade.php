@@ -16,7 +16,7 @@
           </div>
           @endif
           <hr>
-          <h4 class="w3-opacity"><u>Minha pontuação: {{ $total }} pontos</u></h4>
+          <h4 class="w3-opacity animate-bounce">Minha pontuação: {{ $total }} pontos</h4>
           <table class="w3-table w3-centered w3-bordered table-conhecimentos">
             <tr>
               <th>Descrição</th>

@@ -143,7 +143,7 @@ class ProjetoController extends Controller
   }
 
   public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
-    $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0]);
+    $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0, 'avaliado' => 0]);
 
     $message = parent::returnMessage('success', $freelancer->nome . ' foi convidado(a) para o projeto!');
 
@@ -175,6 +175,9 @@ class ProjetoController extends Controller
   }
 
   public function finalizarProjetoView(Projeto $projeto) {
-    return view('site.empresa.projeto-view-finalizar', compact('projeto'));
+    $freelancers = Projeto::find($projeto->id)->freelancers;
+    $produtoras = Projeto::find($projeto->id)->empresas;
+
+    return view('site.empresa.projeto-view-finalizar', compact('projeto', 'freelancers', 'produtoras'));
   }
 }

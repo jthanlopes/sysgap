@@ -76,7 +76,7 @@ class EmpresaRegisterController extends Controller
       'endereco_id' => $endereco['id'],
       'foto_perfil' => $filename,
       'ativo' => 0,
-      'pontuacao' => 100;
+      'pontuacao' => 100,
       'account_confirmation' => hash_hmac('sha256', str_random(40), config('app.key')),
     ]);
 

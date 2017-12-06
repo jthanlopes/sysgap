@@ -3,7 +3,8 @@ $(document).ready(function(){
 	$(".overlay").css({ display: "block" });
 	// Acrescenta a animação ao overlay
 	$('.animate-zoomIn').addClass('animated zoomIn');
-	$('.animate-slideInLeft').addClass('animated slideInLeft');
+  $('.animate-slideInLeft').addClass('animated slideInLeft');
+	$('.animate-bounce').addClass('animated bounce');
 
 	// Fecha overlay da home ao clicar nele
 	$(".overlay").click(function(event){
