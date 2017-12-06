@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Freelancer\Noticia;
 
 use App\Noticia;
+use App\Freelancer;
 use Auth;
 use Illuminate\Http\Request;
 use Storage;
@@ -14,41 +15,52 @@ class NoticiaController extends Controller
   }
 
   public function criarNoticia(Request $request) {
-    $filename = config('app.name') . '_post_' . Auth::user()->id . '_' . $request->file('imagem')->getClientOriginalName();
-    $storage = 'freelancers/posts/' .  Auth::user()->id;
-    $request->imagem->storeAs($storage, $filename, 'public');
+   $id = Auth::user()->id;
+   $freelancer = Freelancer::find($id);
 
-    $create = Noticia::create([
-      'titulo' => request('titulo'),
-      'conteudo' => request('conteudo'),
-      'imagem' => $filename,
-      'freelancer_id' => Auth::user()->id,
-      'ativo' => 1,
-      'principal' => 0,
-    ]);
+   $filename = config('app.name') . '_post_' . Auth::user()->id . '_' . $request->file('imagem')->getClientOriginalName();
+   $storage = 'freelancers/posts/' .  Auth::user()->id;
+   $request->imagem->storeAs($storage, $filename, 'public');
 
-    if ($create)
-    {
-      $message = parent::returnMessage('success', 'Notícia/evento postado com sucesso!');
-    } else
-    {
-      $message = parent::returnMessage('danger', 'Erro ao postar a notícia/evento!');
+   $create = Noticia::create([
+    'titulo' => request('titulo'),
+    'conteudo' => request('conteudo'),
+    'imagem' => $filename,
+    'freelancer_id' => Auth::user()->id,
+    'ativo' => 1,
+    'principal' => 0,
+  ]);
+
+   if ($create)
+   {
+    $message = parent::returnMessage('success', 'Notícia/evento postado com sucesso!');
+
+    $verificaPontuacao = $freelancer->pontuacoes()->where('pontuacoe_id', 4)->count();
+
+    if($verificaPontuacao == 0) {
+      $pontuacaoId = 4;
+
+      $freelancer->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
     }
-
-    return redirect()->route('freelancer.perfil')->with('message', $message);
+  } else
+  {
+    $message = parent::returnMessage('danger', 'Erro ao postar a notícia/evento!');
   }
 
-  public function excluirNoticia(Noticia $noticia) {
-    $delete = $noticia->delete();
+  return redirect()->route('freelancer.perfil')->with('message', $message);
+}
 
-    if ($delete)
-    {
-      $message = parent::returnMessage('success', 'Notícia/evento excluído com sucesso!');
-    } else
-    {
-      $message = parent::returnMessage('danger', 'Erro ao excluir a notícia/evento!');
-    }
+public function excluirNoticia(Noticia $noticia) {
+  $delete = $noticia->delete();
 
-    return redirect()->route('freelancer.perfil')->with('message', $message);
+  if ($delete)
+  {
+    $message = parent::returnMessage('success', 'Notícia/evento excluído com sucesso!');
+  } else
+  {
+    $message = parent::returnMessage('danger', 'Erro ao excluir a notícia/evento!');
   }
+
+  return redirect()->route('freelancer.perfil')->with('message', $message);
+}
 }

@@ -1,3 +1,13 @@
+<?php
+use App\Freelancer;
+
+$freelancer = Freelancer::find(auth()->user()->id);
+$total = $freelancer->pontuacoes->sum('valor');
+$freelancer->pontuacao = $total;
+$freelancer->save();
+
+?>
+
 <!-- Page Container -->
 <div id="" class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
   <!-- The Grid -->

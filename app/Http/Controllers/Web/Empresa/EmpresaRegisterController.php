@@ -8,6 +8,7 @@ use App\Mail\ConfirmaConta;
 use Validator;
 use Illuminate\Http\Request;
 use Storage;
+use Pontuacoe;
 use Mail;
 
 class EmpresaRegisterController extends Controller
@@ -75,10 +76,15 @@ class EmpresaRegisterController extends Controller
       'endereco_id' => $endereco['id'],
       'foto_perfil' => $filename,
       'ativo' => 0,
+      'pontuacao' => 100;
       'account_confirmation' => hash_hmac('sha256', str_random(40), config('app.key')),
     ]);
 
     \Mail::to($empresa)->send(new ConfirmaConta($empresa));
+
+    $pontuacaoId = 1;
+
+    $empresa->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
 
     if ( $empresa )
     {
@@ -99,11 +105,19 @@ class EmpresaRegisterController extends Controller
      $empresa->save();
      $message = parent::returnMessage('success', 'Conta confirmada com sucesso!');
 
-     return redirect()->route('empresa.login-view')->with('message', $message);
-   }
+     $verificaPontuacao = $empresa->pontuacoes()->where('pontuacoe_id', 2)->count();
 
-   $message = parent::returnMessage('danger', 'Usuário não encontrado!');
+     if($verificaPontuacao == 0) {
+      $pontuacaoId = 2;
 
-   return redirect()->route('empresa.login-view')->with('message', $message);
- }
+      $empresa->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+
+      $total = $empresa->pontuacoes->sum('valor');
+      $empresa->pontuacao = $total;
+      $empresa->save();
+    }
+
+    return redirect()->route('empresa.login-view')->with('message', $message);
+  }
+}
 }

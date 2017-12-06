@@ -73,12 +73,17 @@ class FreelancerRegisterController extends Controller
       'foto_perfil' => $filename,
       'endereco_id' => $endereco['id'],
       'ativo' => 0,
+      'pontuacao' => 100,
       'account_confirmation' => hash_hmac('sha256', str_random(40), config('app.key')),
     ]);
 
     $freelancer->save();
 
     \Mail::to($freelancer)->send(new ConfirmaContaFreelancer($freelancer));
+
+    $pontuacaoId = 1;
+
+    $freelancer->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
 
     if ( $freelancer )
     {
@@ -99,11 +104,19 @@ class FreelancerRegisterController extends Controller
      $freelancer->save();
      $message = parent::returnMessage('success', 'Conta confirmada com sucesso!');
 
-     return redirect()->route('freelancer.login-view')->with('message', $message);
-   }
+     $verificaPontuacao = $freelancer->pontuacoes()->where('pontuacoe_id', 2)->count();
 
-   $message = parent::returnMessage('danger', 'Usuário não encontrado!');
+     if($verificaPontuacao == 0) {
+      $pontuacaoId = 2;
 
-   return redirect()->route('freelancer.login-view')->with('message', $message);
- }
+      $freelancer->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+
+      $total = $freelancer->pontuacoes->sum('valor');
+      $freelancer->pontuacao = $total;
+      $freelancer->save();
+    }
+
+    return redirect()->route('freelancer.login-view')->with('message', $message);
+  }
+}
 }

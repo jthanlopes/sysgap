@@ -33,7 +33,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <input class="w3-input" type="text" name="tempo_experiencia" placeholder="Tempo de experiência (Exs.: 6 meses, 2 anos)">
+                  <input class="w3-input" type="text" name="tempo_experiencia" placeholder="Tempo de experiência (Exs.: 6 meses, 2 anos)" required>
                 </div>
               </div>
             </div>

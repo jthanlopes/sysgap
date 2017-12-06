@@ -32,6 +32,9 @@ class PortifolioController extends Controller
   }
 
   public function criarPortifolio(Request $request) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+
     $filename = config('app.name') . '_portifolio_' . Auth::user()->id . '_' . $request->file('imagem')->getClientOriginalName();
     $storage = 'empresas/portifolio/' .  Auth::user()->id;
     $request->imagem->storeAs($storage, $filename, 'public');
@@ -46,6 +49,15 @@ class PortifolioController extends Controller
     if ($create)
     {
       $message = parent::returnMessage('success', 'Portifólio cadastrado com sucesso!');
+
+      $verificaPontuacao = $empresa->pontuacoes()->where('pontuacoe_id', 6)->count();
+
+      if($verificaPontuacao == 0) {
+        $pontuacaoId = 6;
+
+        $empresa->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+      }
+
     } else
     {
       $message = parent::returnMessage('danger', 'Erro ao cadastrar o portifólio!');

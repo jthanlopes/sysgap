@@ -17,7 +17,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Título do job:</label>
-                  <input type="text" class="w3-input" id="titulo" placeholder="Digite o título" name="titulo">
+                  <input type="text" class="w3-input" id="titulo" placeholder="Digite o título" name="titulo" required autofocus>
                 </div>
               </div>
             </div>
@@ -25,7 +25,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="descricao">Descrição do job:</label>
-                  <textarea class="w3-input w3-border" name="descricao" id="" cols="20" rows="5" placeholder="Digite a descrição"></textarea>
+                  <textarea class="w3-input w3-border" name="descricao" id="" cols="20" rows="5" placeholder="Digite a descrição" required></textarea>
                 </div>
               </div>
             </div>

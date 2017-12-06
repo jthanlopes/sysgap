@@ -19,7 +19,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Título do job:</label>
-                  <input type="text" class="w3-input" value="{{ $job->titulo }}" id="titulo" placeholder="Digite o título" name="titulo" required>
+                  <input type="text" class="w3-input" value="{{ $job->titulo }}" id="titulo" placeholder="Digite o título" name="titulo" required autofocus>
                 </div>
               </div>
             </div>

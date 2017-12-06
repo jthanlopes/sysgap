@@ -12,6 +12,7 @@ class MensagemController extends Controller
 {
   public function envia(Request $request) {
     if (auth()->guard('empresa')->check()) {
+      $empresa = Empresa::find(auth()->guard('empresa')->user()->id);
       Mensagen::create([
         'mensagem' => $request->msg,
         'tipo' => $request->get('tipo'),
@@ -20,7 +21,16 @@ class MensagemController extends Controller
         'nome_remetente' => $request->nome,
         'respondida' => 0,
       ]);
+
+      $verificaPontuacao = $empresa->pontuacoes()->where('pontuacoe_id', 3)->count();
+
+      if($verificaPontuacao == 0) {
+        $pontuacaoId = 3;
+
+        $empresa->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+      }
     } elseif (auth()->guard('freelancer')->check()) {
+      $freelancer = Freelancer::find(auth()->guard('freelancer')->user()->id);
       Mensagen::create([
         'mensagem' => $request->msg,
         'tipo' => $request->get('tipo'),
@@ -29,6 +39,14 @@ class MensagemController extends Controller
         'nome_remetente' => $request->nome,
         'respondida' => 0,
       ]);
+
+      $verificaPontuacao = $freelancer->pontuacoes()->where('pontuacoe_id', 3)->count();
+
+      if($verificaPontuacao == 0) {
+        $pontuacaoId = 3;
+
+        $freelancer->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+      }
     } else {
       Mensagen::create([
         'mensagem' => $request->msg,

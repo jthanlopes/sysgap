@@ -13,8 +13,8 @@ class CreateEmpresaPontuacaoTable extends Migration
      */
     public function up()
     {
-        Schema::create('empresa_pontuacao', function (Blueprint $table) {
-            $table->integer('pontuacao_id')->unsigned();
+        Schema::create('empresa_pontuacoe', function (Blueprint $table) {
+            $table->integer('pontuacoe_id')->unsigned();
             $table->integer('empresa_id')->unsigned();
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateEmpresaPontuacaoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('empresa_pontuacao');
+        Schema::dropIfExists('empresa_pontuacoe');
     }
 }

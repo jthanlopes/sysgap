@@ -20,10 +20,10 @@ class EmpresaLoginController extends Controller
 
   public function login(Request $request, Curl $curl) {
     $messages = [
-    'min'    => 'Senha deve tem no minímo seis caracteres!',
-    'required' => 'Preencha o campo :attribute!',
-    'password.required' => 'Preencha o campo senha!',
-    'email' => 'Formato do e-mail esta incorreto!',
+      'min'    => 'Senha deve tem no minímo seis caracteres!',
+      'required' => 'Preencha o campo :attribute!',
+      'password.required' => 'Preencha o campo senha!',
+      'email' => 'Formato do e-mail esta incorreto!',
     ];
 
     $validator = Validator::make($request->all(), [
@@ -58,6 +58,7 @@ class EmpresaLoginController extends Controller
     if ($empresa->ativo == 0) {
       $message = parent::returnMessage('info', 'Confirme sua conta antes de continuar.');
     } elseif(auth()->guard('empresa')->attempt(['email' => $request->email, 'password' => $request->password, 'ativo' => 1], $request->remember)) {
+
       return redirect()->route('empresa.perfil');
     } else {
       $message = parent::returnMessage('danger', 'Senha incorreta! Tente novamente.');

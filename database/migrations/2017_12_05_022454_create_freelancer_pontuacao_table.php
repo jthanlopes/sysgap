@@ -13,8 +13,8 @@ class CreateFreelancerPontuacaoTable extends Migration
      */
     public function up()
     {
-        Schema::create('freelancer_pontuacao', function (Blueprint $table) {
-            $table->integer('pontuacao_id')->unsigned();
+        Schema::create('freelancer_pontuacoe', function (Blueprint $table) {
+            $table->integer('pontuacoe_id')->unsigned();
             $table->integer('freelancer_id')->unsigned();
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateFreelancerPontuacaoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('freelancer_pontuacao');
+        Schema::dropIfExists('freelancer_pontuacoe');
     }
 }

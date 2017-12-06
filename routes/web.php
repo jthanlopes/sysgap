@@ -172,7 +172,7 @@ Route::prefix('empresa')->group(function () {
   // Visualizar job
   Route::get('/job/{job}', 'Empresa\Job\JobController@jobViewProdutora')->name('job.view.produtora');
   // Rotas de pontuação
-  Route::get('/pontuacoes', 'Empresa\Pontuacao\PontuacaoController@pontuacoesView')->name('pontuacoes.view');
+  Route::get('/pontuacoes', 'Empresa\Pontuacao\PontuacaoController@pontuacoesView')->name('pontuacoes.view.empresa');
 });
 
 
@@ -284,6 +284,8 @@ Route::prefix('freelancer')->group(function () {
   Route::get('/pesquisa/perfil-freelancer/portifolios/{freelancer}', 'Freelancer\Pesquisa\PesquisaController@viewPortifoliosFreelancer')->name('view.portifolios-freelancer.freelancer');
   // Adicionar comentário no job
   Route::post('/job/addComentario', 'Freelancer\Comentario\ComentarioController@addComentario')->name('job.add-comentario.freelancer');
+  // Rotas de pontuação
+  Route::get('/pontuacoes', 'Freelancer\Pontuacao\PontuacaoController@pontuacoesView')->name('pontuacoes.view.freelancer');
 });
 
 Auth::routes();

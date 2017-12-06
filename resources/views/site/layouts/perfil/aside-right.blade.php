@@ -1,50 +1,66 @@
- <!-- Right Column -->
- <div class="w3-col m2">
+<?php
+
+use App\Empresa;
+use App\Freelancer;
+
+$empresasRanking = Empresa::where('categoria', 'Agência')->orderBy('pontuacao', 'DESC')->limit(3)->get();
+
+$produtorasRanking = Empresa::where('categoria', 'Produtora')->orderBy('pontuacao', 'DESC')->limit(3)->get();
+
+$freelancersRanking = Freelancer::orderBy('pontuacao', 'DESC')->limit(3)->get();
+
+?>
+
+<!-- Right Column -->
+<div class="w3-col m2">
   <div class="w3-card-2 w3-round w3-white w3-center">
-    <div class="w3-container">
-      <p style="text-decoration: underline;">Ranking Produtoras</p>
-      <table class="w3-table w3-centered w3-bordered table-projetos">
-        <tr>
-          <th>Prod</th>
-          <th>Pontuação</th>
-        </tr>
-        <tr>
-          <td><a href="" title="Ver perfil">Prod 1</a></td>
-          <td>1000pts</td>
-        </tr>
-        <tr>
-          <td><a href="" title="Ver perfil">Prod 2</a></td>
-          <td>500pts</td>
-        </tr>
-      </table>
-    </div>
-    <div class="w3-container" style="margin-top: 20px;">
-      <p><a href="" class="link-voltar" title="Ver ranking completo">Ranking completo</a></p>
-    </div>
+    <p class="w3-block w3-theme-l1 w3-left-align" style="padding: 10px; margin-bottom: 0">Ranking Agências</p>
+    <table class="w3-table w3-striped w3-centered">
+      <tr>
+        <th>Agência</th>
+        <th>Pontuação</th>
+      </tr>
+      @foreach($empresasRanking as $empresaR)
+      <tr>
+        <td><a href="" title="Ver perfil">{{ $empresaR->nome }}</a></td>
+        <td>{{ $empresaR->pontuacao }}pts</td>
+      </tr>
+      @endforeach
+    </table>
   </div>
   <br>
 
   <div class="w3-card-2 w3-round w3-white w3-center">
-    <div class="w3-container">
-      <p style="text-decoration: underline;">Ranking Freelancers</p>
-      <table class="w3-table w3-centered w3-bordered table-projetos">
-        <tr>
-          <th>Freela</th>
-          <th>Pontuação</th>
-        </tr>
-        <tr>
-          <td><a href="" title="Ver perfil">Jonathan</a></td>
-          <td>2000pts</td>
-        </tr>
-        <tr>
-          <td><a href="" title="Ver perfil">Cinder</a></td>
-          <td>1850pts</td>
-        </tr>
-      </table>
-    </div>
-    <div class="w3-container" style="margin-top: 20px;">
-      <p><a href="" class="link-voltar" title="Ver ranking completo">Ranking completo</a></p>
-    </div>
+    <p class="w3-block w3-theme-l1 w3-left-align" style="padding: 10px; margin-bottom: 0">Ranking Produtoras</p>
+    <table class="w3-table w3-striped w3-centered">
+      <tr>
+        <th>Produtora</th>
+        <th>Pontuação</th>
+      </tr>
+      @foreach($produtorasRanking as $produtoraR)
+      <tr>
+        <td><a href="" title="Ver perfil">{{ $produtoraR->nome }}</a></td>
+        <td>{{ $produtoraR->pontuacao }}pts</td>
+      </tr>
+      @endforeach
+    </table>
+  </div>
+  <br>
+
+  <div class="w3-card-2 w3-round w3-white w3-center">
+    <p class="w3-block w3-theme-l1 w3-left-align" style="padding: 10px; margin-bottom: 0">Ranking Freelancers</p>
+    <table class="w3-table w3-striped w3-centered">
+      <tr>
+        <th>Freelancer</th>
+        <th>Pontuação</th>
+      </tr>
+      @foreach($freelancersRanking as $freelancerR)
+      <tr>
+        <td><a href="" title="Ver perfil">{{ $freelancerR->nome }}</a></td>
+        <td>{{ $freelancerR->pontuacao }}pts</td>
+      </tr>
+      @endforeach
+    </table>
   </div>
   <br>
 

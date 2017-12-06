@@ -57,113 +57,124 @@ class ProjetoController extends Controller
   }
 
   public function criarProjeto() {
-   $create = Projeto::create([
-    'titulo' => request('titulo'),
-    'descricao' => request('descricao'),
-    'status' => 'Aberto',
-    'empresa_id' => Auth::user()->id,
-  ]);
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $create = Projeto::create([
+      'titulo' => request('titulo'),
+      'descricao' => request('descricao'),
+      'status' => 'Aberto',
+      'empresa_id' => Auth::user()->id,
+    ]);
 
-   if ($create)
-   {
-    $message = parent::returnMessage('success', 'Projeto criado com sucesso!');
-  } else
-  {
-    $message = parent::returnMessage('danger', 'Erro ao criar o projeto!');
+    if ($create)
+    {
+      $message = parent::returnMessage('success', 'Projeto criado com sucesso!');
+
+      $verificaPontuacao = $empresa->pontuacoes()->where('pontuacoe_id', 7)->count();
+
+      if($verificaPontuacao == 0) {
+        $pontuacaoId = 7;
+
+        $empresa->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+      }
+
+    } else
+    {
+      $message = parent::returnMessage('danger', 'Erro ao criar o projeto!');
+    }
+
+    return redirect('/empresa/projeto/' . $create->id)->with('message', $message);
   }
 
-  return redirect('/empresa/projeto/' . $create->id)->with('message', $message);
-}
+  public function editarProjetoView(Projeto $projeto) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-public function editarProjetoView(Projeto $projeto) {
-  $id = Auth::user()->id;
-  $empresa = Empresa::find($id);
-  $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
-
-  return view('site.empresa.projeto-editar', compact('empresa', 'projeto', 'notificacoes'));
-}
-
-public function editarProjeto() {
-  $update = Projeto::where( 'id', request('idProjeto') )
-  ->update([
-    'titulo' => request('titulo'),
-    'descricao' => request('descricao'),
-    'status' => 'Aberto',
-    'empresa_id' => Auth::user()->id,
-  ]);
-
-  if ($update)
-  {
-    $message = parent::returnMessage('success', 'Projeto alterado com sucesso!');
-  } else
-  {
-    $message = parent::returnMessage('danger', 'Erro ao alterar o projeto!');
+    return view('site.empresa.projeto-editar', compact('empresa', 'projeto', 'notificacoes'));
   }
 
-  return redirect('/empresa/projeto/' . request('idProjeto'))->with('message', $message);
-}
+  public function editarProjeto() {
+    $update = Projeto::where( 'id', request('idProjeto') )
+    ->update([
+      'titulo' => request('titulo'),
+      'descricao' => request('descricao'),
+      'status' => 'Aberto',
+      'empresa_id' => Auth::user()->id,
+    ]);
 
-public function novoFormIntegrantes(Projeto $projeto) {
-  $id = Auth::user()->id;
-  $empresa = Empresa::find($id);
-  $results = Freelancer::all();
-  $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
+    if ($update)
+    {
+      $message = parent::returnMessage('success', 'Projeto alterado com sucesso!');
+    } else
+    {
+      $message = parent::returnMessage('danger', 'Erro ao alterar o projeto!');
+    }
 
-  return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results', 'notificacoes'));
-}
+    return redirect('/empresa/projeto/' . request('idProjeto'))->with('message', $message);
+  }
 
-public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
-  $categoria = $request->get('categoria');
-  $id = Auth::user()->id;
-  $empresa = Empresa::find($id);
-  $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
-
-  if ($categoria == 0) {
-    $results = Freelancer::where('nome', 'like', '%' . $request->nome . '%')->orWhere('email', 'like', '%' . $request->nome . '%')->get();
+  public function novoFormIntegrantes(Projeto $projeto) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $results = Freelancer::all();
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
     return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results', 'notificacoes'));
-  } else {
-    $results = Empresa::where([['id', '!=', $id], ['nome', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->orWhere([['id', '!=', $id] ,['email', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->get();
-
-    $categoria = "produtora";
   }
 
-  return view('site.empresa.integrante.add-integrante-produtora', compact('empresa', 'projeto', 'results', 'notificacoes'));
-}
+  public function pesquisarIntegrantes(Projeto $projeto, Request $request) {
+    $categoria = $request->get('categoria');
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
-  $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0]);
+    if ($categoria == 0) {
+      $results = Freelancer::where('nome', 'like', '%' . $request->nome . '%')->orWhere('email', 'like', '%' . $request->nome . '%')->get();
 
-  $message = parent::returnMessage('success', $freelancer->nome . ' foi convidado(a) para o projeto!');
+      return view('site.empresa.integrante.add-integrante', compact('empresa', 'projeto', 'results', 'notificacoes'));
+    } else {
+      $results = Empresa::where([['id', '!=', $id], ['nome', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->orWhere([['id', '!=', $id] ,['email', 'like', '%' . $request->nome . '%'], ['categoria', 'Produtora']])->get();
 
-  return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
-}
+      $categoria = "produtora";
+    }
 
-public function addProdutora(Projeto $projeto, Empresa $empresa) {
-  $projeto->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0]);
+    return view('site.empresa.integrante.add-integrante-produtora', compact('empresa', 'projeto', 'results', 'notificacoes'));
+  }
 
-  $message = parent::returnMessage('success', $empresa->nome . ' foi convidado(a) para o projeto!');
+  public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
+    $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0]);
 
-  return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
-}
+    $message = parent::returnMessage('success', $freelancer->nome . ' foi convidado(a) para o projeto!');
 
-public function removerFreelancer(Projeto $projeto, Freelancer $freelancer) {
-  $projeto->freelancers()->detach($freelancer);
+    return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
+  }
 
-  $message = parent::returnMessage('success', $freelancer->nome . ' foi removido(a) do projeto "' . $projeto->titulo .'"!');
+  public function addProdutora(Projeto $projeto, Empresa $empresa) {
+    $projeto->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0]);
 
-  return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
-}
+    $message = parent::returnMessage('success', $empresa->nome . ' foi convidado(a) para o projeto!');
 
-public function removerProdutora(Projeto $projeto, Empresa $empresa) {
-  $projeto->empresas()->detach($empresa);
+    return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
+  }
 
-  $message = parent::returnMessage('success', $empresa->nome . ' foi removido(a) do projeto "' . $projeto->titulo .'"!');
+  public function removerFreelancer(Projeto $projeto, Freelancer $freelancer) {
+    $projeto->freelancers()->detach($freelancer);
 
-  return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
-}
+    $message = parent::returnMessage('success', $freelancer->nome . ' foi removido(a) do projeto "' . $projeto->titulo .'"!');
 
-public function finalizarProjetoView(Projeto $projeto) {
-  return view('site.empresa.projeto-view-finalizar', compact('projeto'));
-}
+    return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
+  }
+
+  public function removerProdutora(Projeto $projeto, Empresa $empresa) {
+    $projeto->empresas()->detach($empresa);
+
+    $message = parent::returnMessage('success', $empresa->nome . ' foi removido(a) do projeto "' . $projeto->titulo .'"!');
+
+    return redirect('/empresa/projeto/' . $projeto->id)->with('message', $message);
+  }
+
+  public function finalizarProjetoView(Projeto $projeto) {
+    return view('site.empresa.projeto-view-finalizar', compact('projeto'));
+  }
 }

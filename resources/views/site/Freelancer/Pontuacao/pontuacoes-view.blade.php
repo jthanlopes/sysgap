@@ -23,7 +23,7 @@
               <th>Valor</th>
               <th>Status</th>
             </tr>
-            @foreach ($pontuacoesEmpresa as $pontuacao)
+            @foreach ($pontuacoesFreelancer as $pontuacao)
             <tr>
               <td>{{ $pontuacao->descricao }}</td>
               <td>{{ $pontuacao->valor }} pontos</td>

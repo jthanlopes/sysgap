@@ -16,7 +16,7 @@ class JobController extends Controller
 {
   public function __construct() {
     $this->middleware('auth:empresa');
-     Carbon::setLocale('pt-br');
+    Carbon::setLocale('pt-br');
   }
 
   public function jobView(Projeto $projeto, Job $job) {
@@ -41,12 +41,24 @@ class JobController extends Controller
   }
 
   public function novo(Request $request) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+
     auth()->guard('empresa')->user()->cadastrarJob(
       $job = new Job(['titulo' => $request->titulo, 'descricao' => $request->descricao,
         'nivel_conhecimento_necessario' => $request->get('nivel'), 'status' => 'Aberto', 'projeto_id' => $request->projeto])
     );
 
     $message = parent::returnMessage('success', 'Job cadastrado com sucesso!');
+
+    $verificaPontuacao = $empresa->pontuacoes()->where('pontuacoe_id', 8)->count();
+
+    if($verificaPontuacao == 0) {
+      $pontuacaoId = 8;
+
+      $empresa->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+    }
+
 
     return redirect('/empresa/projeto/' . $request->projeto . '/job/' . $job->id)->with('message', $message);
   }

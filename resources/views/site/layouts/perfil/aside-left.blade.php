@@ -1,3 +1,13 @@
+<?php
+use App\Empresa;
+
+$empresa = Empresa::find(auth()->user()->id);
+$total = $empresa->pontuacoes->sum('valor');
+$empresa->pontuacao = $total;
+$empresa->save();
+
+?>
+
 <!-- Page Container -->
 <div id="" class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
   <!-- The Grid -->

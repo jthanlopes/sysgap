@@ -13,9 +13,9 @@ class AddForeignKeysToFreelancerPontuacaoTable extends Migration
      */
     public function up()
     {
-        Schema::table('freelancer_pontuacao', function(Blueprint $table)
+        Schema::table('freelancer_pontuacoe', function(Blueprint $table)
         {
-          $table->foreign('pontuacao_id', 'fk_pontua_pontua_freela')->references('id')->on('pontuacoes')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+          $table->foreign('pontuacoe_id', 'fk_pontua_pontua_freela')->references('id')->on('pontuacoes')->onUpdate('NO ACTION')->onDelete('NO ACTION');
           $table->foreign('freelancer_id', 'fk_freela_freela_pontua')->references('id')->on('freelancers')->onUpdate('NO ACTION')->onDelete('NO ACTION');
       });
     }
@@ -27,7 +27,7 @@ class AddForeignKeysToFreelancerPontuacaoTable extends Migration
      */
     public function down()
     {
-        Schema::table('freelancer_pontuacao', function(Blueprint $table)
+        Schema::table('freelancer_pontuacoe', function(Blueprint $table)
         {
           $table->dropForeign('fk_pontua_pontua_freela');
           $table->dropForeign('fk_freela_freela_pontua');

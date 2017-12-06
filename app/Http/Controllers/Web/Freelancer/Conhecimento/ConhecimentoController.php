@@ -35,6 +35,14 @@ class ConhecimentoController extends Controller
 
     $message = parent::returnMessage('success', 'Conhecimento adicionado com sucesso!');
 
+    $verificaPontuacao = $freelancer->pontuacoes()->where('pontuacoe_id', 5)->count();
+
+    if($verificaPontuacao == 0) {
+      $pontuacaoId = 5;
+
+      $freelancer->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+    }
+
     return redirect()->route('tecnologias.view.freelancer')->with('message', $message);
   }
 
