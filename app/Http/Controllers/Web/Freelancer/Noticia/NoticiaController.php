@@ -50,6 +50,39 @@ class NoticiaController extends Controller
   return redirect()->route('freelancer.perfil')->with('message', $message);
 }
 
+public function editarNoticiaView(Noticia $noticia) {
+  $id = Auth::user()->id;
+  $freelancer = Freelancer::find($id);
+  $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
+  $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
+
+  return view('site.freelancer.noticia.noticia-editar', compact('noticia', 'freelancer', 'notificacoes', 'notificacoes2'));
+}
+
+public function editarNoticia(Request $request) {
+  if ($request->file('imagem') == null) {
+    $noticia = Noticia::find($request->noticiaId);
+    $filename = $noticia->imagem;
+  } else {
+   $filename = config('app.name') . '_post_' . Auth::user()->id . '_' . $request->file('imagem')->getClientOriginalName();
+   $storage = 'freelancers/posts/' .  Auth::user()->id;
+   $request->imagem->storeAs($storage, $filename, 'public');
+ }
+
+ Noticia::where('id', $request->noticiaId)
+ ->update(['titulo' => request('titulo'),
+  'conteudo' => request('conteudo'),
+  'imagem' => $filename,
+  'empresa_id' => Auth::user()->id,
+  'ativo' => 1,
+  'principal' => 0,
+]);
+
+ $message = parent::returnMessage('success', 'Notícia editada com sucesso!');
+
+ return redirect()->route('freelancer.perfil')->with('message', $message);
+}
+
 public function excluirNoticia(Noticia $noticia) {
   $delete = $noticia->delete();
 

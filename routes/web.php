@@ -130,6 +130,10 @@ Route::prefix('empresa')->group(function () {
   // Rotas de notícias e eventos
   // Submeter e criar uma nova notícia
   Route::post('/noticias/novo/', 'Empresa\Noticia\NoticiaController@criarNoticia')->name('noticia.novo');
+  // Abrir form de edição da notícia
+  Route::get('/noticia/editar/{noticia}', 'Empresa\Noticia\NoticiaController@editarNoticiaView')->name('noticia.editar-view');
+  // Editar uma notícia
+  Route::post('/noticia/editar/', 'Empresa\Noticia\NoticiaController@editarNoticia')->name('noticia.editar');
   // Excluir notícia/evento
   Route::get('/noticia/excluir/{noticia}', 'Empresa\Noticia\NoticiaController@excluirNoticia')->name('noticia.excluir');
   // Rotas de conhecimentos
@@ -221,6 +225,10 @@ Route::prefix('freelancer')->group(function () {
   // Rotas de notícias e eventos
   // Submeter e criar uma nova notícia
   Route::post('/noticias/novo/', 'Freelancer\Noticia\NoticiaController@criarNoticia')->name('noticia.novo.freelancer');
+  // Abrir form de edição da notícia
+  Route::get('/noticia/editar/{noticia}', 'Freelancer\Noticia\NoticiaController@editarNoticiaView')->name('noticia.editar-view.freelancer');
+  // Editar uma notícia
+  Route::post('/noticia/editar/', 'Freelancer\Noticia\NoticiaController@editarNoticia')->name('noticia.editar.freelancer');
   // Excluir notícia/evento
   Route::get('/noticia/excluir/{noticia}', 'Freelancer\Noticia\NoticiaController@excluirNoticia')->name('noticia.excluir.freelancer');
   // Rotas dos jobs

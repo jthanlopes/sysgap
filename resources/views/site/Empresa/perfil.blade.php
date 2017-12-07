@@ -57,7 +57,7 @@
   @foreach($noticias as $noticia)
   <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
     <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
-    <h4>{{ $noticia->titulo }} <span class="opt-post">[<a href="">Editar</a>][<a href="/empresa/noticia/excluir/{{ $noticia->id }}">Excluir</a>]</span></h4><br>
+    <h4>{{ $noticia->titulo }} <span class="opt-post">[<a href="/empresa/noticia/editar/{{ $noticia->id }}">Editar</a>][<a href="/empresa/noticia/excluir/{{ $noticia->id }}">Excluir</a>]</span></h4><br>
     <hr class="w3-clear">
     <p>{{ $noticia->conteudo }}</p>
     <div class="w3-row-padding" style="margin:0 -16px">
