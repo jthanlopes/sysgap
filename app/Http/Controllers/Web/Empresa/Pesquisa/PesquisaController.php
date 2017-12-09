@@ -27,12 +27,13 @@ class PesquisaController extends Controller
     $empresa = Empresa::find($id);
     $produtoras = [];
     $freelancers = [];
-    $grupos = [];
+    $agencias = [];
+    $tipo = "usuários";
     $cidades = Endereco::select('cidade', 'uf')->distinct()->get();
     $tecnologias = Conhecimento::all();
     $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'cidades', 'tecnologias', 'grupos', 'notificacoes'));
+    return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'cidades', 'tecnologias', 'agencias', 'notificacoes', 'tipo'));
   }
 
   public function pesquisar(Request $request) {
@@ -51,25 +52,44 @@ class PesquisaController extends Controller
     // Conhecimentos selecionadas
     if ($conhecimentosCheckBoxes != null) {
       $conhecimentos = Conhecimento::select('id')->wherein('titulo', $conhecimentosCheckBoxes)->get()->pluck('id')->toArray();
+      $conhecimentosCheck = Conhecimento::whereIn('id', $conhecimentos)->get();
+      $freelas = [];
+      $empres = [];
+
+      foreach ($conhecimentosCheck as $conhecimentoF) {
+        foreach ($conhecimentoF->freelancers as $freelancer) {
+          array_push($freelas, $freelancer->id);
+        }
+      }
+
+      foreach ($conhecimentosCheck as $conhecimentoE) {
+        foreach ($conhecimentoE->empresas as $empresa) {
+          array_push($empres, $empresa->id);
+        }
+      }
     }
     //
     $categoria = $request->get('categoria');
     $pesquisa = $request->get('nome');
+    $agencias = [];
     $produtoras = [];
     $freelancers = [];
-    $grupos = [];
+    $tipo = "usuários";
 
-    if ($categoria == 0 && $pesquisa == null && $cidadesCheckBoxes == null) {
+    if ($categoria == 0 && $pesquisa == null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes == null) {
       $produtoras = Empresa::where('categoria', 'Produtora')->get();
       $freelancers = Freelancer::all();
-      $grupos = Grupo::all();
-    }elseif($categoria == 1 && $pesquisa == null && $cidadesCheckBoxes == null) {
+      $agencias = Empresa::where('categoria', 'Agência')->get();
+    }elseif($categoria == 1 && $pesquisa == null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes == null) {
       $freelancers = Freelancer::all();
-    }elseif($categoria == 2 && $pesquisa == null && $cidadesCheckBoxes == null) {
+      $tipo = "freelancers";
+    }elseif($categoria == 2 && $pesquisa == null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes == null) {
       $produtoras = Empresa::where('categoria', 'Produtora')->get();
-    }elseif($categoria == 3 && $pesquisa == null && $cidadesCheckBoxes == null) {
-      $grupos = Grupo::all();
-    }elseif($categoria == 0 && $pesquisa != null && $cidadesCheckBoxes == null) {
+      $tipo = "produtoras";
+    }elseif($categoria == 3 && $pesquisa == null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes == null) {
+      $agencias = Empresa::where('categoria', 'Agência')->get();
+      $tipo = "agências";
+    }elseif($categoria == 0 && $pesquisa != null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes == null) {
       $produtoras = Empresa::where([['categoria', 'Produtora'],
         ['nome', 'like', '%' . $pesquisa . '%']])
       ->orwhere([['categoria', 'Produtora'],
@@ -78,26 +98,46 @@ class PesquisaController extends Controller
       $freelancers = Freelancer::where('nome', 'like', '%' . $pesquisa . '%')
       ->orwhere('email', 'like', '%' . $pesquisa . '%')
       ->get();
-    } elseif($categoria == 1 && $pesquisa != null && $cidadesCheckBoxes == null) {
+      $agencias = Empresa::where([['categoria', 'Agência'],
+        ['nome', 'like', '%' . $pesquisa . '%']])
+      ->orwhere([['categoria', 'Agência'],
+        ['email', 'like', '%' . $pesquisa . '%']])
+      ->get();
+    } elseif($categoria == 1 && $pesquisa != null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes == null) {
      $freelancers = Freelancer::where('nome', 'like', '%' . $pesquisa . '%')
      ->orwhere('email', 'like', "'%" . $pesquisa . "%'")
      ->get();
-   } elseif($categoria == 2 && $pesquisa != null && $cidadesCheckBoxes == null) {
+     $tipo = "freelancers";
+   } elseif($categoria == 2 && $pesquisa != null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes == null) {
     $produtoras = Empresa::where([['categoria', 'Produtora'],
       ['nome', 'like', '%' . $pesquisa . '%']])
     ->orwhere([['categoria', 'Produtora'],
       ['email', 'like', '%' . $pesquisa . '%']])
     ->get();
+    $tipo = "produtoras";
+  } elseif($categoria == 3 && $pesquisa != null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes == null) {
+    $produtoras = Empresa::where([['categoria', 'Agência'],
+      ['nome', 'like', '%' . $pesquisa . '%']])
+    ->orwhere([['categoria', 'Agência'],
+      ['email', 'like', '%' . $pesquisa . '%']])
+    ->get();
+    $tipo = "agências";
   }
 
-  if ($categoria == 0 && $pesquisa == null && $cidadesCheckBoxes != null) {
+  if ($categoria == 0 && $pesquisa == null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes == null) {
     $freelancers = Freelancer::wherein('endereco_id', $enderecos)->get();
     $produtoras = Empresa::where('categoria', 'Produtora')->wherein('endereco_id', $enderecos)->get();
-  }elseif($categoria == 1 && $pesquisa == "" && $cidadesCheckBoxes != null) {
+    $agencias = Empresa::where('categoria', 'Agência')->wherein('endereco_id', $enderecos)->get();
+  }elseif($categoria == 1 && $pesquisa == null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes == null) {
     $freelancers = Freelancer::wherein('endereco_id', $enderecos)->get();
-  }elseif($categoria == 2 && $pesquisa == "" && $cidadesCheckBoxes != null) {
+    $tipo = "freelancers";
+  }elseif($categoria == 2 && $pesquisa == null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes == null) {
     $produtoras = Empresa::where('categoria', 'Produtora')->wherein('endereco_id', $enderecos)->get();
-  } elseif($categoria == 0 && $pesquisa != "" && $cidadesCheckBoxes != null) {
+    $tipo = "produtoras";
+  } elseif($categoria == 3 && $pesquisa == null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes == null) {
+    $produtoras = Empresa::where('categoria', 'Agência')->wherein('endereco_id', $enderecos)->get();
+    $tipo = "agências";
+  } elseif($categoria == 0 && $pesquisa != null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes == null) {
     $produtoras = Empresa::wherein('endereco_id', $enderecos)
     ->where([['categoria', 'Produtora'],
       ['nome', 'like', '%' . $pesquisa . '%']])
@@ -108,21 +148,150 @@ class PesquisaController extends Controller
     ->where('nome', 'like', '%' . $pesquisa . '%')
     ->orwhere('email', 'like', '%' . $pesquisa . '%')
     ->get();
-  } elseif($categoria == 1 && $pesquisa != "" && $cidadesCheckBoxes != null) {
+    $produtoras = Empresa::wherein('endereco_id', $enderecos)
+    ->where([['categoria', 'Agência'],
+      ['nome', 'like', '%' . $pesquisa . '%']])
+    ->orwhere([['categoria', 'Agência'],
+      ['email', 'like', '%' . $pesquisa . '%']])
+    ->get();
+  } elseif($categoria == 1 && $pesquisa != null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes == null) {
    $freelancers = Freelancer::wherein('endereco_id', $enderecos)
    ->where('nome', 'like', '%' . $pesquisa . '%')
    ->orwhere('email', 'like', '%' . $pesquisa . '%')
    ->get();
- } elseif($categoria == 2 && $pesquisa != "" && $cidadesCheckBoxes != null) {
+   $tipo = "freelancers";
+ } elseif($categoria == 2 && $pesquisa != null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes == null) {
   $produtoras = Empresa::wherein('endereco_id', $enderecos)
   ->where([['categoria', 'Produtora'],
     ['nome', 'like', '%' . $pesquisa . '%']])
   ->orwhere([['categoria', 'Produtora'],
     ['email', 'like', '%' . $pesquisa . '%']])
   ->get();
+  $tipo = "produtoras";
+} elseif($categoria == 3 && $pesquisa != null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes == null) {
+  $produtoras = Empresa::wherein('endereco_id', $enderecos)
+  ->where([['categoria', 'Agência'],
+    ['nome', 'like', '%' . $pesquisa . '%']])
+  ->orwhere([['categoria', 'Agência'],
+    ['email', 'like', '%' . $pesquisa . '%']])
+  ->get();
+  $tipo = "agências";
 }
 
-return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'grupos', 'cidades', 'tecnologias', 'grupos', 'notificacoes'));
+//
+// Busca por conhecimentos
+if ($categoria == 0 && $pesquisa == null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes != null) {
+  $freelancers = Freelancer::find($freelas);
+  $produtoras = Empresa::find($empres)->where('categoria', 'Produtora');
+  $agencias = Empresa::find($empres)->where('categoria', 'Agência');
+} elseif ($categoria == 1 && $pesquisa == null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes != null) {
+  $freelancers = Freelancer::find($freelas);
+  $tipo = "freelancers";
+} elseif($categoria == 2 && $pesquisa == null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes != null) {
+  $produtoras = Empresa::find($empres)->where('categoria', 'Produtora');
+  $tipo = "produtoras";
+} elseif($categoria == 3 && $pesquisa == null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes != null) {
+  $agencias = Empresa::find($empres)->where('categoria', 'Agência');
+  $tipo = "agências";
+} elseif($categoria == 0 && $pesquisa != null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes != null) {
+  $freelancers = Freelancer::wherein('id', $freelas)
+  ->where('nome', 'like', '%' . $pesquisa . '%')
+  ->orwhere('email', 'like', '%' . $pesquisa . '%')->get();
+
+  $produtoras = Empresa::wherein('id', $empres)
+  ->where([['categoria', 'Produtora'],
+    ['nome', 'like', '%' . $pesquisa . '%']])
+  ->orwhere([['categoria', 'Produtora'],
+    ['email', 'like', '%' . $pesquisa . '%']]);
+
+  $agencias = Empresa::wherein('id', $empres)->where([['categoria', 'Agência'],
+    ['nome', 'like', '%' . $pesquisa . '%']])
+  ->orwhere([['categoria', 'Agência'],
+    ['email', 'like', '%' . $pesquisa . '%']]);
+
+} elseif($categoria == 1 && $pesquisa != null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes != null) {
+  $freelancers = Freelancer::wherein('id', $freelas)
+  ->where('nome', 'like', '%' . $pesquisa . '%')
+  ->orwhere('email', 'like', '%' . $pesquisa . '%')->get();
+  $tipo = "freelancers";
+} elseif($categoria == 2 && $pesquisa != null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes != null) {
+  $produtoras = Empresa::wherein('id', $empres)
+  ->where([['categoria', 'Produtora'],
+    ['nome', 'like', '%' . $pesquisa . '%']])
+  ->orwhere([['categoria', 'Produtora'],
+    ['email', 'like', '%' . $pesquisa . '%']]);
+  $tipo = "produtoras";
+} elseif($categoria == 3 && $pesquisa != null && $cidadesCheckBoxes == null && $conhecimentosCheckBoxes != null) {
+  $agencias = Empresa::wherein('id', $empres)->where([['categoria', 'Agência'],
+    ['nome', 'like', '%' . $pesquisa . '%']])
+  ->orwhere([['categoria', 'Agência'],
+    ['email', 'like', '%' . $pesquisa . '%']]);
+  $tipo = "agências";
+} elseif($categoria == 0 && $pesquisa == null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes != null) {
+  $produtoras = Empresa::wherein('id', $empres)
+  ->wherein('endereco_id', $enderecos)->where('categoria', 'Produtora')->get();
+  $freelancers = Freelancer::wherein('id', $freelas)->wherein('endereco_id', $enderecos)->get();
+  $agencias = Empresa::wherein('id', $empres)
+  ->wherein('endereco_id', $enderecos)->where('categoria', 'Agência')->get();
+} elseif ($categoria == 1 && $pesquisa == null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes != null) {
+  $freelancers = Freelancer::wherein('id', $freelas)->wherein('endereco_id', $enderecos)->get();
+  $tipo = "freelancers";
+} elseif($categoria == 2 && $pesquisa == null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes != null) {
+  $produtoras = Empresa::wherein('id', $empres)
+  ->wherein('endereco_id', $enderecos)->where('categoria', 'Produtora')->get();
+  $tipo = "produtoras";
+} elseif($categoria == 3 && $pesquisa == null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes != null) {
+  $agencias = Empresa::wherein('id', $empres)
+  ->wherein('endereco_id', $enderecos)->where('categoria', 'Agência')->get();
+  $tipo = "agências";
+} elseif($categoria == 0 && $pesquisa != null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes != null) {
+  $produtoras = Empresa::wherein('id', $empres)
+  ->wherein('endereco_id', $enderecos)
+  ->where([['categoria', 'Produtora'],
+    ['nome', 'like', '%' . $pesquisa . '%']])
+  ->orwhere([['categoria', 'Produtora'],
+    ['email', 'like', '%' . $pesquisa . '%']])
+  ->get();
+  $freelancers = Freelancer::wherein('id', $freelas)
+  ->wherein('endereco_id', $enderecos)
+  ->where('nome', 'like', '%' . $pesquisa . '%')
+  ->orwhere('email', 'like', '%' . $pesquisa . '%')
+  ->get();
+  $agencias = Empresa::wherein('id', $empres)
+  ->wherein('endereco_id', $enderecos)
+  ->where([['categoria', 'Agência'],
+    ['nome', 'like', '%' . $pesquisa . '%']])
+  ->orwhere([['categoria', 'Agência'],
+    ['email', 'like', '%' . $pesquisa . '%']])
+  ->get();
+} elseif ($categoria == 1 && $pesquisa != null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes != null) {
+  $freelancers = Freelancer::wherein('id', $freelas)
+  ->wherein('endereco_id', $enderecos)
+  ->where('nome', 'like', '%' . $pesquisa . '%')
+  ->orwhere('email', 'like', '%' . $pesquisa . '%')
+  ->get();
+  $tipo = "freelancers";
+} elseif ($categoria == 2 && $pesquisa != null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes != null) {
+  $produtoras = Empresa::wherein('id', $empres)
+  ->wherein('endereco_id', $enderecos)
+  ->where([['categoria', 'Produtora'],
+    ['nome', 'like', '%' . $pesquisa . '%']])
+  ->orwhere([['categoria', 'Produtora'],
+    ['email', 'like', '%' . $pesquisa . '%']])
+  ->get();
+  $tipo = "produtoras";
+} elseif ($categoria == 3 && $pesquisa != null && $cidadesCheckBoxes != null && $conhecimentosCheckBoxes != null) {
+  $agencias = Empresa::wherein('id', $empres)
+  ->wherein('endereco_id', $enderecos)
+  ->where([['categoria', 'Agência'],
+    ['nome', 'like', '%' . $pesquisa . '%']])
+  ->orwhere([['categoria', 'Agência'],
+    ['email', 'like', '%' . $pesquisa . '%']])
+  ->get();
+  $tipo = "agências";
+}
+
+return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtoras', 'freelancers', 'cidades', 'tecnologias', 'agencias', 'notificacoes', 'tipo'));
 }
 
 public function viewPerfilProdutora(Empresa $produtora) {

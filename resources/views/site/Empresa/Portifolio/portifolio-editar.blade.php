@@ -33,7 +33,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="imagem">Imagem:</label>
-                  <input type="file" name="imagem" required>
+                  <input type="file" name="imagem">
                 </div>
               </div>
             </div>

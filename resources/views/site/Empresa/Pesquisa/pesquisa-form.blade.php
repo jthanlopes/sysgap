@@ -18,9 +18,9 @@
                   <label for="categoria">Tipo de usuário:</label>
                   <select class="w3-select" id="categoria" name="categoria" required>
                     <option value="0">Todos</option>
+                    <option value="3">Agências</option>
                     <option value="1">Freelancers</option>
                     <option value="2">Produtoras</option>
-                    <option value="3">Grupos</option>
                   </select>
                 </div>
               </div>
@@ -43,10 +43,11 @@
                     <div class="col-md-12">
                       <div class="form-group" style="margin-top: 30px;">
                         <label for="categoria">Cidades:</label> <br/>
-                        @foreach ( $cidades as $cidade)
-                        <input class="w3-check" type="checkbox" name="cidades[]" value="{{ $cidade->cidade }}">
-                        <label style="font-weight: normal; margin-right: 10px;">{{ $cidade->cidade }}</label>
-                        @endforeach
+                        <select class="js-example-basic-multiple" name="cidades[]" multiple="multiple" style="width: 100%;">
+                          @foreach ( $cidades as $cidade)
+                          <option value="{{ $cidade->cidade }}">{{ $cidade->cidade }}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -55,10 +56,11 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="nome">Tecnologias:</label> <br/>
-                        @foreach ( $tecnologias as $tecnologia)
-                        <input class="w3-check" type="checkbox" name="tecnologias[]" value={{ $tecnologia->titulo }}>
-                        <label style="font-weight: normal; margin-right: 10px;">{{ $tecnologia->titulo }}/{{ $tecnologia->descricao }}</label>
-                        @endforeach
+                        <select class="js-example-basic-multiple" name="tecnologias[]" multiple="multiple" style="width: 100%;">
+                          @foreach ( $tecnologias as $tecnologia)
+                          <option value="{{ $tecnologia->titulo }}">{{ $tecnologia->titulo }}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -68,7 +70,7 @@
             <hr>
             <input type="submit" value="Pesquisar">
           </form>
-          <h4 class="w3-opacity" style="margin-top: 40px;">Listagem de usuários</h4>
+          <h4 class="w3-opacity" style="margin-top: 40px;">Listagem de {{ $tipo }}</h4>
           <table class="w3-table w3-centered w3-bordered">
             <tr>
               <th>Nome</th>
@@ -91,16 +93,16 @@
               </td>
             </tr>
             @endforeach
-            @foreach ( $grupos as $grupo)
+            @foreach ( $agencias as $agencia)
             <tr>
-              <td>{{ $grupo->titulo }}</td>
-              <td>{{ $grupo->freelancer->email }}</td>
-              <td><a href="/empresa/pesquisa/perfil-produtora/{{ $produtora->id }}" class="w3-button w3-blue w3-small" title="Ver perfil da produtora">Ver grupo</a>
+              <td>{{ $agencia->nome }}</td>
+              <td>{{ $agencia->email }}</td>
+              <td><a href="/empresa/pesquisa/perfil-produtora/{{ $agencia->id }}" class="w3-button w3-blue w3-small" title="Ver perfil da agência">Ver perfil</a>
               </td>
             </tr>
             @endforeach
           </table>
-          @if(count($freelancers) == 0 && count($produtoras) == 0)
+          @if(count($freelancers) == 0 && count($produtoras) == 0 && count($agencias) == 0)
           <div style="text-align: center; margin-top: 10px;">
             Nenhum resultado para a pesquisa.
           </div>

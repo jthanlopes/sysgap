@@ -73,7 +73,7 @@ public function editarNoticia(Request $request) {
  ->update(['titulo' => request('titulo'),
   'conteudo' => request('conteudo'),
   'imagem' => $filename,
-  'empresa_id' => Auth::user()->id,
+  'freelancer_id' => Auth::user()->id,
   'ativo' => 1,
   'principal' => 0,
 ]);

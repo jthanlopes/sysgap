@@ -29,6 +29,13 @@ function openNav() {
 <script src="/site-assets/js/browser-update.js"></script>
 <script src="/site-assets/js/jquery-mask/dist/jquery.mask.js"></script>
 <script src="/site-assets/js/home.js"></script>
+<script src="/site-assets/multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
+</script>
 </div>{{-- Final do admin-perfil --}}
 </body>
 </html>
