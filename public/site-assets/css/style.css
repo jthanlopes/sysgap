@@ -313,143 +313,148 @@
 /*#home-page .g-recaptcha div {
   margin-left: auto;
   margin-right: auto;
-}*/
+  }*/
 
-/* Formatação da página de login*/
-/* css dropdown menu perfil admin*/
+  /* Formatação da página de login*/
+  /* css dropdown menu perfil admin*/
 
-#admin-perfil .form-news {
-  height: 10%;
-  overflow: hidden;
-}
-
-@media screen and (max-width: 600px) {
-  #admin-perfil .w3-row-padding, .w3-row-padding>.w3-half, .w3-row-padding>.w3-third, .w3-row-padding>.w3-twothird, .w3-row-padding>.w3-threequarter, .w3-row-padding>.w3-quarter, .w3-row-padding>.w3-col {
-    padding: 0!important;
-    margin-bottom: 20px;
+  #admin-perfil .form-news {
+    height: 10%;
+    overflow: hidden;
   }
 
-  #admin-perfil .w3-margin {
-    margin: -20px 0 20px 0!important;
+  @media screen and (max-width: 600px) {
+    #admin-perfil .w3-row-padding, .w3-row-padding>.w3-half, .w3-row-padding>.w3-third, .w3-row-padding>.w3-twothird, .w3-row-padding>.w3-threequarter, .w3-row-padding>.w3-quarter, .w3-row-padding>.w3-col {
+      padding: 0!important;
+      margin-bottom: 20px;
+    }
+
+    #admin-perfil .w3-margin {
+      margin: -20px 0 20px 0!important;
+    }
   }
-}
 
-#admin-perfil .form-news input {
-  width: 100%;
-  max-width: 100%;
-  padding: 5px;
-}
+  #admin-perfil .form-news input {
+    width: 100%;
+    max-width: 100%;
+    padding: 5px;
+  }
 
-#admin-perfil .form-news textarea {
-  width: 100%;
-  max-width: 100%;
-  padding: 5px;
-}
+  #admin-perfil .form-news textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 5px;
+  }
 
-#admin-perfil {
-  margin: 0;
-  padding: 0;
-}
+  #admin-perfil {
+    margin: 0;
+    padding: 0;
+  }
 
-/* Dropdown Button */
-#admin-perfil .dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
+  /* Dropdown Button */
+  #admin-perfil .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
 
-/* Dropdown button on hover & focus */
-#admin-perfil .dropbtn:hover, .dropbtn:focus {
-  background-color: #3e8e41;
-}
+  /* Dropdown button on hover & focus */
+  #admin-perfil .dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+  }
 
-/* The container <div> - needed to position the dropdown content */
-#admin-perfil .dropdown {
-  position: relative;
-  display: inline-block;
-}
+  /* The container <div> - needed to position the dropdown content */
+  #admin-perfil .dropdown {
+    position: relative;
+    display: inline-block;
+  }
 
-/* Dropdown Content (Hidden by Default) */
-#admin-perfil .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
+  /* Dropdown Content (Hidden by Default) */
+  #admin-perfil .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
 
-/* Links inside the dropdown */
-#admin-perfil .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
+  /* Links inside the dropdown */
+  #admin-perfil .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
 
-/* Change color of dropdown links on hover */
-#admin-perfil .dropdown-content a:hover {background-color: #f1f1f1}
+  /* Change color of dropdown links on hover */
+  #admin-perfil .dropdown-content a:hover {background-color: #f1f1f1}
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-#admin-perfil .show {display:block;}
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  #admin-perfil .show {display:block;}
 
-/* Set a style for all buttons */
-#admin-perfil .geral button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+  /* Set a style for all buttons */
+  #admin-perfil .geral button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
 
-#admin-perfil .ajuste {
-  padding: 12px 16px;
-}
+  #admin-perfil .ajuste {
+    padding: 12px 16px;
+  }
 
-#admin-perfil .form-publicar {
-  display: none;
-}
+  #admin-perfil .form-publicar {
+    display: none;
+  }
 
-/* Set a style for all buttons */
-#admin-perfil .groups button {
-  margin-top: 15px;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+  /* Set a style for all buttons */
+  #admin-perfil .groups button {
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
 
-#admin-perfil .opt-post {
-  font-size: 10pt;
-}
+  #admin-perfil .opt-post {
+    font-size: 10pt;
+  }
 
-#admin-perfil .opt-tec {
-  font-size: 8pt;
-}
+  #admin-perfil .opt-tec {
+    font-size: 8pt;
+  }
 
-#admin-perfil .opt-projeto {
-  font-size: 10pt;
-}
+  #admin-perfil .opt-projeto {
+    font-size: 10pt;
+  }
 
-#admin-perfil .table-projetos {
-  margin-top: 20px;
-}
+  #admin-perfil .table-projetos {
+    margin-top: 20px;
+  }
 
-#admin-perfil .table-conhecimentos {
-  margin-top: 20px;
-}
+  #admin-perfil .table-conhecimentos {
+    margin-top: 20px;
+  }
 
-#admin-perfil .add-conhecimento {
-  margin-left: 20px;
-}
+  #admin-perfil .add-conhecimento {
+    margin-left: 20px;
+  }
 
-#admin-perfil .link-voltar {
-  color: #337ab7;
-  text-decoration: none;
-}
+  #admin-perfil .link-voltar {
+    color: #337ab7;
+    text-decoration: none;
+  }
+
+  #admin-perfil .table-scroll {
+    max-width: 100%;
+    overflow: scroll
+  }
 /* ----------------------------------------- */

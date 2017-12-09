@@ -109,6 +109,12 @@ Route::prefix('empresa')->group(function () {
   Route::get('/projeto/{projeto}/integrante/remover-produtora/{empresa}', 'Empresa\Projeto\ProjetoController@removerProdutora')->name('integrante.remover-produtora.form');
   // Finalizar projeto
   Route::get('/projeto/{projeto}/finalizar', 'Empresa\Projeto\ProjetoController@finalizarProjetoView')->name('projeto-view.finalizar');
+  // Cancelar projeto
+  Route::get('/projeto/{projeto}/cancelar', 'Empresa\Projeto\ProjetoController@cancelarProjeto')->name('projeto.cancelar');
+  // Reabrir o projeto
+  Route::get('/projeto/{projeto}/reabrir', 'Empresa\Projeto\ProjetoController@reabrirProjeto')->name('projeto.reabrir');
+  // Rotas de avaliar freelancers
+  Route::get('/projeto/{projeto}/finalizar/avaliar/{freelancer}', 'Empresa\Avaliacao\AvaliacaoController@avaliarFreelancer')->name('avaliar.freelancer');
   //
   // Rotas de pesquisa de usuários
   // Abrir formulário de pesquisa

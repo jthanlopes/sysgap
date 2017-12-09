@@ -28,7 +28,7 @@
               <p>{{ $freelancer->nome }}</p>
               <p>{{ $freelancer->email }}</p>
               @if($freelancer->pivot->avaliado == 0)
-              <a href="" class="w3-button w3-blue w3-small" title="Avaliar usuário">Avaliar</a>
+              <a href="/empresa/projeto/{{ $projeto->id }}/finalizar/avaliar/{{ $freelancer->id }}" class="w3-button w3-blue w3-small" title="Avaliar freelancer">Avaliar</a>
               @else
               Usuário já avaliado!
               @endif
@@ -45,13 +45,18 @@
               <p>{{ $produtora->nome }}</p>
               <p>{{ $produtora->email }}</p>
               @if($produtora->pivot->avaliado == 0)
-              <a href="" class="w3-button w3-blue w3-small" title="Avaliar usuário">Avaliar</a>
+              <a href="" class="w3-button w3-blue w3-small" title="Avaliar produtora">Avaliar</a>
               @else
               Usuário já avaliado!
               @endif
             </div>
           </div>
           @endforeach
+          @if(count($freelancers) == 0 && count($produtoras) == 0)
+          <div style="text-align: center; margin-top: 10px;">
+            Para finalizar o projeto, primeiro crie jobs e adicione integrantes.
+          </div>
+          @endif
         </div>
       </div>
     </div>

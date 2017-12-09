@@ -18,10 +18,12 @@ class ProjetoController extends Controller
   public function projetosView() {
     $id = Auth::user()->id;
     $empresa = Empresa::find($id);
-    $projetos = Projeto::orderBy('created_at', 'desc')->where('empresa_id', $id)->get();
+    $projetosAbertos = Projeto::orderBy('created_at', 'desc')->where([['empresa_id', $id], ['status', 'Aberto']])->get();
+    $projetosCancelados = Projeto::orderBy('created_at', 'desc')->where([['empresa_id', $id], ['status', 'Cancelado']])->get();
+    $projetosFinalizados = Projeto::orderBy('created_at', 'desc')->where([['empresa_id', $id], ['status', 'Finalizado']])->get();
     $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
 
-    return view('site.empresa.projetos-view', compact('empresa', 'projetos', 'notificacoes'));
+    return view('site.empresa.projetos-view', compact('empresa', 'projetosAbertos', 'notificacoes', 'projetosFinalizados', 'projetosCancelados'));
   }
 
   // Recebe um valor por POST e retorna somente os projetos correspondentes
@@ -179,5 +181,23 @@ class ProjetoController extends Controller
     $produtoras = Projeto::find($projeto->id)->empresas;
 
     return view('site.empresa.projeto-view-finalizar', compact('projeto', 'freelancers', 'produtoras'));
+  }
+
+  public function cancelarProjeto(Projeto $projeto) {
+    $projeto->status = "Cancelado";
+    $projeto->save();
+
+    $message = parent::returnMessage('success', 'O projeto foi cancelado!');
+
+    return redirect()->back()->with('message', $message);
+  }
+
+  public function reabrirProjeto(Projeto $projeto) {
+    $projeto->status = "Aberto";
+    $projeto->save();
+
+    $message = parent::returnMessage('success', 'O projeto foi reaberto!');
+
+    return redirect()->back()->with('message', $message);
   }
 }
