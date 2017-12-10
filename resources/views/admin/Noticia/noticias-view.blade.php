@@ -78,7 +78,7 @@
                 Visualizar</a>
                 <a href="{{-- {{ route('noticia.perfil') }} --}}" class="btn btn-warning">
                 Editar</a>
-                <a href="{{-- {{ route('noticia.inativar', $noticia->id) }} --}}" class="btn btn-danger">
+                <a href="{{ route('noticia.inativar', $noticia->id) }}" class="btn btn-danger">
                 Inativar</a>
               </td>
             </tr>

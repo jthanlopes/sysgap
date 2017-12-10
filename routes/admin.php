@@ -85,6 +85,9 @@ Route::get('/noticias-view/novo', 'Noticia\NoticiaController@noticiaNovo')->name
 // Salvar formulário de notícia
 Route::post('/noticias-view/novo', 'Noticia\NoticiaController@noticiaCadastrar')->name('noticia.cadastrar');
 
+// Inativar notícia
+Route::get('/noticia/{noticia}/inativar', 'Noticia\NoticiaController@noticiaInativar')->name('noticia.inativar');
+
 //------------------------------------------------------------------------------------------------------
 
 // Rotas de empresas

@@ -29,7 +29,7 @@ class ItemController extends Controller
     if ( $create )
     {
       $message = parent::returnMessage('success', 'Registro efetuado com sucesso!');
-    } else 
+    } else
     {
       $message = parent::returnMessage('danger', 'Erro ao efetuar o registro!');
     }
@@ -50,7 +50,7 @@ class ItemController extends Controller
     if ( $update )
     {
       $message = parent::returnMessage('success', 'Alteração efetuada com sucesso!');
-    } else 
+    } else
     {
       $message = parent::returnMessage('danger', 'Erro ao efetuar a alteração!');
     }
@@ -64,7 +64,7 @@ class ItemController extends Controller
     if ( $exclusao )
     {
       $message = parent::returnMessage('success', 'Exclusão efetuada com sucesso!');
-    } else 
+    } else
     {
       $message = parent::returnMessage('danger', 'Erro ao fazer a exclusão!');
     }

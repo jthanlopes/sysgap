@@ -43,7 +43,7 @@ public function graficosCadastros() {
     ->title('Usuários ativos')
     ->elementLabel('Usuários')
     ->values([$totAtivos,0,$totUsuarios])
-    ->responsive(true)
+    ->responsive(false)
     ->height(500)
     ->width(1000);
 

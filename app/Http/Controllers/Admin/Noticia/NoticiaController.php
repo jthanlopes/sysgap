@@ -13,7 +13,7 @@ class NoticiaController extends Controller
   }
 
   public function noticiasView() {
-    $noticias = Noticia::orderBy('created_at', 'desc')->where('admin_id', '<>', null)->paginate(10);
+    $noticias = Noticia::orderBy('created_at', 'desc')->where([['admin_id', '<>', null], ['ativo', 1]])->paginate(10);
 
     return view('admin.noticia.noticias-view', compact('noticias'));
   }
@@ -54,5 +54,14 @@ class NoticiaController extends Controller
     }
 
     return redirect()->route('noticias.view')->with('message', $message);
+  }
+
+  public function noticiaInativar(Noticia $noticia) {
+    $noticia->ativo = 0;
+    $noticia->save();
+
+    $message = parent::returnMessage('success', 'Notícia inativada com sucesso!');
+
+    return redirect()->back()->with('message', $message);
   }
 }
