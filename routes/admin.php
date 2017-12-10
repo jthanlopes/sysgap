@@ -144,3 +144,9 @@ Route::post('/pontuacao-view/editar', 'Pontuacao\PontuacaoController@pontuacaoEd
 
 // Excluir o item de pontução (pergunta)
 Route::get('/pontuacao-view/excluir/{pontuacao}', 'Pontuacao\PontuacaoController@pontuacaoExcluir')->name('pontuacao.excluir');
+
+//--------------------------------------------------------------------------------------------------
+
+// Rotas dos gráficos
+
+Route::get('/graficos/cadastros', 'Grafico\GraficoController@graficosCadastros')->name('graficos.cadastros');

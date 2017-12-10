@@ -31,5 +31,12 @@
         <li class="active">Dashboard</li>
       </ol>
     </section>
+    <hr>
+    <div style="clear: both;">
+      {!! $chart->render() !!}
+    </div>
+    <div style="margin-top: 30px;">
+      {!! $chart2->render() !!}
+    </div>
   </div>
   @endsection

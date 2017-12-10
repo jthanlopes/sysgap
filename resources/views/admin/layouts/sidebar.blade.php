@@ -10,25 +10,25 @@ $sugestoes = Mensagen::where('tipo', 3)->count();
 ?>
 
 <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Pesquisar...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li class="header">MENU PRINCIPAL</li>
-        @yield ('cadastros')
-        <li class="treeview">
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Pesquisar...">
+        <span class="input-group-btn">
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+      <li class="header">MENU PRINCIPAL</li>
+      @yield ('cadastros')
+      <li class="treeview">
           {{-- <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Layout Options</span>
@@ -43,7 +43,7 @@ $sugestoes = Mensagen::where('tipo', 3)->count();
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
         </li>
-         <li class="treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i>
             <span>Registros</span>
@@ -67,10 +67,8 @@ $sugestoes = Mensagen::where('tipo', 3)->count();
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+            <li><a href="{{ route('graficos.cadastros') }}"><i class="fa fa-circle-o"></i> Cadastros</a></li>
+            </li>
           </ul>
         </li>
         <li class="treeview">
