@@ -57,6 +57,10 @@
             Para finalizar o projeto, primeiro crie jobs e adicione integrantes.
           </div>
           @endif
+          <div style="clear: both; margin-top: 30px;">
+            <hr>
+            <a href="" class="w3-button w3-green w3-small" title="Finalizar avaliação">Avaliar</a>
+          </div>
         </div>
       </div>
     </div>

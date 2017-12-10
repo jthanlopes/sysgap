@@ -14,6 +14,19 @@
   font: normal normal normal 17px/1.6 FontAwesome !important;
 }
 
+#home-page .dropdown-caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-top: 2px;
+  vertical-align: middle;
+  content: "";
+  border: 6px solid;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
 /* Definindo css do overleaf */
 #home-page .overlay {
   position: fixed;
@@ -457,4 +470,18 @@
     max-width: 100%;
     overflow: scroll
   }
+
+  #admin-perfil .dropdown-caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-top: 2px;
+    vertical-align: middle;
+    content: "";
+    border: 6px solid;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
 /* ----------------------------------------- */

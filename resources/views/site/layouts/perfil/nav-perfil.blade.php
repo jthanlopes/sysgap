@@ -46,7 +46,7 @@
     <a href="{{ route('pesquisa.form.usuarios') }}" class="w3-button w3-hide-small w3-padding-large" title="Pesquisar usuários"><i class="fa fa-search"></i></a>
     @if (auth()->guard('empresa')->check())
     <div class="w3-dropdown-hover w3-right">
-      <button class="w3-button w3-theme-d4 w3-hide-small ajuste">{{ auth()->guard('empresa')->user()->nome }}</button>
+      <button class="w3-button w3-theme-d4 w3-hide-small ajuste">{{ auth()->guard('empresa')->user()->nome }} <span class="dropdown-caret"></span></button>
       <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
         <a href="{{ route('home.page') }}" class="w3-bar-item w3-button">Home page</a>
         <a href="{{ route('empresa.logout') }}" class="w3-bar-item w3-button">Logout</a>
@@ -54,7 +54,7 @@
     </div>
     @elseif (auth()->guard('freelancer')->check())
     <div class="w3-dropdown-hover w3-right">
-      <button class="w3-button w3-theme-d4 w3-hide-small ajuste">{{ auth()->guard('freelancer')->user()->nome }}</button>
+      <button class="w3-button w3-theme-d4 w3-hide-small ajuste">{{ auth()->guard('freelancer')->user()->nome }} <span class="dropdown-caret"></span></button>
       <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
         <a href="{{ route('home.page') }}" class="w3-bar-item w3-button">Home page</a>
         <a href="{{ route('freelancer.logout') }}" class="w3-bar-item w3-button">Logout</a>

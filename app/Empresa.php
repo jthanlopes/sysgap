@@ -81,4 +81,8 @@ class Empresa extends Authenticatable
     public function pontuacoes() {
       return $this->belongsToMany(Pontuacoe::class);
     }
+
+    public function avaliacoes() {
+      return $this->hasMany(Avaliacoe::class);
+    }
   }

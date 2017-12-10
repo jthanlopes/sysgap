@@ -15,10 +15,10 @@ class CreateAvaliacoesTable extends Migration
     {
         Schema::create('avaliacoes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('empresa_avaliadora')->unsigned();
-            $table->integer('empresa_avaliada')->unsigned();
-            $table->integer('freelancer_avaliador')->unsigned();
-            $table->integer('freelancer_avaliado')->unsigned();
+            $table->integer('empresa_avaliadora')->unsigned()->nullable();
+            $table->integer('empresa_avaliada')->unsigned()->nullable();
+            $table->integer('freelancer_avaliador')->unsigned()->nullable();
+            $table->integer('freelancer_avaliado')->unsigned()->nullable();
             $table->integer('nota');
             $table->text('descritiva');
             $table->integer('item_id')->unsigned();

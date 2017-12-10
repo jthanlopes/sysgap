@@ -20,11 +20,31 @@
             <input type="hidden" value="{{ $freelancer->id }}" name="idFreelancer">
             {{ csrf_field() }}
             @foreach($items as $item)
-            <p>{{ $item->pergunta }}</p>
-            <div class="quest ratestar">
-              <select name="" id=""></select>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="titulo">{{ $item->pergunta }}:</label>
+                  <select class="w3-select" name="item-{{ $item->id }}" required>
+                    <option value="" disabled selected>Escolha a nota</option>
+                    <option value="1">1 estrela</option>
+                    <option value="2">2 estrelas</option>
+                    <option value="3">3 estrelas</option>
+                    <option value="4">4 estrelas</option>
+                    <option value="5">5 estrelas</option>
+                  </select>
+                </div>
+              </div>
             </div>
             @endforeach
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="titulo">Avaliação descritiva (opcional):</label>
+                  <textarea class="w3-input w3-border" name="descritiva" cols="20" rows="5" placeholder="Você recomendaria este freelancer? (opcional)" required></textarea>
+                </div>
+              </div>
+            </div>
+            <hr>
             <a href="" class="w3-button w3-green w3-small" title="Finalizar avaliação">Avaliar</a>
           </form>
         </div>

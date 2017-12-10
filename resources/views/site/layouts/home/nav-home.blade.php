@@ -9,7 +9,7 @@
       <div class="w3-dropdown-hover w3-right">
        @if (auth()->guard('empresa')->check())
        <div class="w3-dropdown-hover w3-right">
-        <button class="w3-button w3-white w3-hide-small ajuste">{{ auth()->guard('empresa')->user()->nome }} +</button>
+        <button class="w3-button w3-white w3-hide-small ajuste">{{ auth()->guard('empresa')->user()->nome }} <span class="dropdown-caret"></span></button>
         <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
           <a href="{{ route('empresa.perfil') }}" class="w3-bar-item w3-button">Ver perfil</a>
           <a href="{{ route('empresa.editar-perfil.view') }}" class="w3-bar-item w3-button">Editar perfil</a>
@@ -18,7 +18,7 @@
       </div>
       @elseif (auth()->guard('freelancer')->check())
       <div class="w3-dropdown-hover w3-right">
-        <button class="w3-button w3-white w3-hide-small ajuste"><i class="fa fa-male w3-margin-right"></i> {{ auth()->guard('freelancer')->user()->nome }} +</button>
+        <button class="w3-button w3-white w3-hide-small ajuste">{{ auth()->guard('freelancer')->user()->nome }} <span class="dropdown-caret"></span></button>
         <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
           <a href="{{ route('freelancer.perfil') }}" class="w3-bar-item w3-button">Ver perfil</a>
           <a href="{{ route('freelancer.editar-perfil.view') }}" class="w3-bar-item w3-button">Editar perfil</a>
@@ -27,7 +27,7 @@
       </div>
       @else
       <div class="w3-dropdown-hover w3-right">
-        <button class="w3-button w3-white  w3-hide-small ajuste">Login +</button>
+        <button class="w3-button w3-white  w3-hide-small ajuste">Login <span class="dropdown-caret"></span></button>
         <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
           <a href="{{ route('empresa.login-view') }}" class="w3-bar-item w3-button">Sou empresa</a>
           <a href="{{ route('freelancer.login-view') }}" class="w3-bar-item w3-button">Sou freelancer</a>
