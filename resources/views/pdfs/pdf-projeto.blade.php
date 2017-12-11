@@ -16,6 +16,7 @@
   <header>
     <hgroup>
       <h1>Projeto {{ $projeto->titulo }}</h1>
+      <hr>
       <h4>Descrição: {{ $projeto->descricao }}</h4>
       <h4>Criado em: {{ $projeto->created_at->format('d/m/Y')}}
         <h4>Número de integrantes: {{ count($freelancers) + count($produtoras) }}</h4>

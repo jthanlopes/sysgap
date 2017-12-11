@@ -9,5 +9,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+  use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+  public function returnMessage( String $response, String $message )
+  {
+    return array(
+      'response' => $response,
+      'message' => $message
+    );
+  }
 }

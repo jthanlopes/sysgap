@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 use Auth;
 
@@ -19,20 +20,36 @@ class AdminLoginController extends Controller
     }
 
     public function login(Request $request) {
-    	$this->validate($request, [
-    		'email' => 'required|email',
-    		'password' => 'required|min:6'
-    	]);
+    	$messages = [
+          'min'    => 'Senha deve tem no minímo seis caracteres!',
+          'required' => 'Preencha o campo :attribute!',
+          'password.required' => 'Preencha o campo senha!',
+          'email' => 'Formato do e-mail esta incorreto!',
+      ];
 
-    	if (auth()->guard('web')->attempt(['email' => $request->email, 'password' => $request->password, 'active' => 1], $request->remember)) {
-    		return redirect()->intended(route('admin.dashboard'));
-    	}
-    	return redirect()->back()->withInput($request->only('email', 'remember'));
-    }
+      $validator = Validator::make($request->all(), [
+          'email' => 'required|email',
+          'password' => 'required|min:6',
+      ], $messages);
 
-    public function logout()
-    {
-        auth()->guard('web')->logout();
-        return redirect('/admin');
-    }
+      if ($validator->fails()) {
+          return redirect()->back()
+          ->withErrors($validator)
+          ->withInput();
+      }
+
+      if (auth()->guard('web')->attempt(['email' => $request->email, 'password' => $request->password, 'active' => 1], $request->remember)) {
+          return redirect()->intended(route('admin.dashboard'));
+      }
+
+      $message = parent::returnMessage('danger', 'Confira seu e-mail e senha!');
+
+      return redirect()->back()->withInput($request->only('email', 'remember'))->with('message', $message);
+  }
+
+  public function logout()
+  {
+    auth()->guard('web')->logout();
+    return redirect('/admin');
+}
 }
