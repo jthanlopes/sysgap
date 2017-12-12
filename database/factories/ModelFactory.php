@@ -30,7 +30,7 @@ $factory->define(App\Noticia::class, function (Faker\Generator $faker) {
         'titulo' => $faker->sentence(3),
         'conteudo' => $faker->paragraph(),
         'data_final' => $faker->date('Y-m-d'),
-        'imagem' => $faker->imageUrl(408, 237, 'animals', true, 'Faker'),
+        'imagem' => 'noticia.jpg',
         'admin_id' => 1,
         'ativo' => 1,
         'principal' => 0

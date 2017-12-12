@@ -12,7 +12,7 @@ class JobController extends Controller
   }
 
   public function jobsView() {
-    $jobs = Job::all();
+    $jobs = Job::orderBy('created_at')->get();
     return view('admin.job.jobs-view', compact('jobs'));
   }
 }

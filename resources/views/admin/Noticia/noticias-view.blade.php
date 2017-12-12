@@ -67,19 +67,22 @@
           <tbody class="noticia-view">
             @foreach ($noticias as $noticia)
             <tr>
-              <td>Teste Imagem{{-- <img src="{{ asset('storage') . '/noticias/perfil/' . $noticia->profile_photo }}" class="user-image img-circle" alt="User Image"> --}}</td>
+              <td><img src="{{ asset('storage') . '/admins/noticias/' . $noticia->imagem }}" class="user-image img-circle" alt="Noticia" style="width: 60%;"></td>
               <td>{{ $noticia->titulo }}</td>
               <td>{{ $noticia->created_at->format('d/m/Y') }}</td>
               <td>{{ $noticia->data_final->format('d/m/Y') }}</td>
               <td>{{ $noticia->admin->name }}</td>
               <td><?php echo ($noticia->ativo == 1) ? "Ativo" : "Inativo"; ?></td>
               <td>
+                @if($noticia->ativo == 1)
                 <a href="/eventos/evento-view/{{ $noticia->id }}" class="btn btn-info" target="_blank">
                 Visualizar</a>
-                <a href="{{-- {{ route('noticia.perfil') }} --}}" class="btn btn-warning">
-                Editar</a>
                 <a href="{{ route('noticia.inativar', $noticia->id) }}" class="btn btn-danger">
                 Inativar</a>
+                @else
+                <a href="{{ route('noticia.ativar', $noticia->id) }}" class="btn btn-success">
+                Ativar</a>
+                @endif
               </td>
             </tr>
             @endforeach

@@ -12,7 +12,7 @@ class EmpresaController extends Controller
   }
 
   public function empresasView() {
-    $empresas = Empresa::all()->where('ativo', '=', 1);
+    $empresas = Empresa::where('ativo', '=', 1)->orderBy('created_at')->get();
     return view('admin.empresa.empresas-view', compact('empresas'));
   }
 }

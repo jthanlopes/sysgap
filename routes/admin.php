@@ -88,6 +88,9 @@ Route::post('/noticias-view/novo', 'Noticia\NoticiaController@noticiaCadastrar')
 // Inativar notícia
 Route::get('/noticia/{noticia}/inativar', 'Noticia\NoticiaController@noticiaInativar')->name('noticia.inativar');
 
+// Ativar notícia
+Route::get('/noticia/{noticia}/ativar', 'Noticia\NoticiaController@noticiaAtivar')->name('noticia.ativar');
+
 //------------------------------------------------------------------------------------------------------
 
 // Rotas de empresas
@@ -153,3 +156,10 @@ Route::get('/pontuacao-view/excluir/{pontuacao}', 'Pontuacao\PontuacaoController
 // Rotas dos gráficos
 
 Route::get('/graficos/cadastros', 'Grafico\GraficoController@graficosCadastros')->name('graficos.cadastros');
+
+//-------------------------------------------------------------------------------------------------------
+
+// Rotas dos grupos
+Route::get('/grupos-view', 'Grupo\GrupoController@gruposView')->name('grupos.view');
+
+//-------------------------------------------------------------------------------------------------------

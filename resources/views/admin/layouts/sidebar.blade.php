@@ -55,7 +55,7 @@ $sugestoes = Mensagen::where('tipo', 3)->count();
             <li><a href="{{ route('empresas.view') }}"><i class="fa fa-circle-o"></i> Empresas</a></li>
             <li><a href="{{ route('freelancers.view') }}"><i class="fa fa-circle-o"></i> Freelancers</a></li>
             <li><a href="{{ route('jobs.view') }}"><i class="fa fa-circle-o"></i> Jobs</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Grupos</a></li>
+            <li><a href="{{ route('grupos.view') }}"><i class="fa fa-circle-o"></i> Grupos</a></li>
           </ul>
         </li>
         <li class="treeview">

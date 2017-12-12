@@ -13,7 +13,7 @@ class NoticiaController extends Controller
   }
 
   public function noticiasView() {
-    $noticias = Noticia::orderBy('created_at', 'desc')->where([['admin_id', '<>', null], ['ativo', 1]])->paginate(10);
+    $noticias = Noticia::orderBy('created_at', 'desc')->orderBy('ativo', 'desc')->where('admin_id', '<>', null)->paginate(10);
 
     return view('admin.noticia.noticias-view', compact('noticias'));
   }
@@ -31,7 +31,9 @@ class NoticiaController extends Controller
      //        'body' => 'required'
      //  ]);
 
-    $file = 'teste';
+    $filename = config('app.name') . '_noticia_' . $request->file('imagem')->getClientOriginalName();
+    $request->imagem->storeAs('admins/noticias', $filename, 'public');
+
     $principal;
 
     if($request->get('principal') == "Não") {
@@ -41,7 +43,7 @@ class NoticiaController extends Controller
     }
 
     auth()->user()->cadastrarNoticia(
-      $create = new Noticia(['titulo' => $request->titulo, 'conteudo' => $request->conteudo, 'imagem' => $file, 'data_final' => $request->data_final, 'ativo' => 1, 'principal' => $principal])
+      $create = new Noticia(['titulo' => $request->titulo, 'conteudo' => $request->conteudo, 'imagem' => $filename, 'data_final' => $request->data_final, 'ativo' => 1, 'principal' => $principal])
     );
 
     // Adicionar mensagem de sucesso e retornar para a view
@@ -61,6 +63,15 @@ class NoticiaController extends Controller
     $noticia->save();
 
     $message = parent::returnMessage('success', 'Notícia inativada com sucesso!');
+
+    return redirect()->back()->with('message', $message);
+  }
+
+  public function noticiaAtivar(Noticia $noticia) {
+    $noticia->ativo = 1;
+    $noticia->save();
+
+    $message = parent::returnMessage('success', 'Notícia ativada com sucesso!');
 
     return redirect()->back()->with('message', $message);
   }

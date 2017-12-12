@@ -10,8 +10,8 @@
   <div class="w3-content">
     <h1>{{ $noticia->titulo }}</h1>
     <hr>
-    <p>{{ $noticia->conteudo }}</p>    
-    <img src="{{ $noticia->imagem }}" alt="Imagem notícia">
+    <p>{{ $noticia->conteudo }}</p>
+    <img src="{{ asset('storage') . '/admins/noticias/' . $noticia->imagem }}" alt="Imagem Notícia">
   </div>
 </div>
 @endsection

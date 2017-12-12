@@ -8,7 +8,8 @@
     @foreach ($noticias as $noticia)
     <div class="w3-panel w3-card">
       <div class="noticia-img" style="width: 40%; float: left;">
-        <img src="{{ $noticia->imagem }}" alt="Imagem notícia">
+        {{-- <img src="{{ $noticia->imagem }}" alt="Imagem notícia"> --}}
+        <img src="{{ asset('storage') . '/admins/noticias/' . $noticia->imagem }}" alt="Imagem Notícia" style="width: 100%; height: 96%;">
       </div>
       <div class="noticia-text" style="width: 50%; float: right;">
         <div style="height: 79%;">

@@ -14,7 +14,7 @@
     <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
     <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Itens </a></li>
     <li><a href="{{ route('pontuacoes.view') }}" ><i class="fa fa-circle-o"></i> Pontuações </a>
-</ul>
+    </ul>
 </li>
 @endsection
 
@@ -33,7 +33,7 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <form class="form-horizontal" role="form" method="POST" action="{{ route('noticia.cadastrar') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('noticia.cadastrar') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('titulo') ? ' has-error' : '' }}">
                         <label for="titulo" class="col-sm-2 control-label">Título</label>
@@ -51,6 +51,12 @@
                                 <strong>{{ $errors->first('conteudo') }}</strong>
                             </span>
                             @endif
+                        </div>
+                    </div>
+                    <div class="form-group{{ $errors->has('imagem') ? ' has-error' : '' }}">
+                        <label for="conteudo" class="col-sm-2 control-label">Imagem</label>
+                        <div class="col-sm-10">
+                            <input id="input-1" type="file" class="file" name="imagem" placeholder="Envie a foto da notícia" />
                         </div>
                     </div>
 

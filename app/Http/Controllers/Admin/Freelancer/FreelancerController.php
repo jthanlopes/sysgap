@@ -12,7 +12,7 @@ class FreelancerController extends Controller
   }
 
   public function freelancersView() {
-    $freelancers = Freelancer::all()->where('ativo', '=', 1);
+    $freelancers = Freelancer::where('ativo', '=', 1)->orderBy('created_at')->get();
     return view('admin.freelancer.freelancers-view', compact('freelancers'));
   }
 }
