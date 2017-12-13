@@ -48,7 +48,7 @@ class PortifolioController extends Controller
 
     if ($create)
     {
-      $message = parent::returnMessage('success', 'Portifólio cadastrado com sucesso!');
+      $message = parent::returnMessage('success', 'Portfólio cadastrado com sucesso!');
 
       $verificaPontuacao = $empresa->pontuacoes()->where('pontuacoe_id', 6)->count();
 
@@ -60,7 +60,7 @@ class PortifolioController extends Controller
 
     } else
     {
-      $message = parent::returnMessage('danger', 'Erro ao cadastrar o portifólio!');
+      $message = parent::returnMessage('danger', 'Erro ao cadastrar o portfólio!');
     }
 
     return redirect()->route('portifolios.view.empresa')->with('message', $message);
@@ -91,7 +91,7 @@ class PortifolioController extends Controller
       'imagem' => $filename,
     ]);
 
-    $message = parent::returnMessage('success', 'Portifólio editado com sucesso!');
+    $message = parent::returnMessage('success', 'Portfólio editado com sucesso!');
 
     return redirect()->route('portifolios.view.empresa')->with('message', $message);
   }
@@ -101,10 +101,10 @@ class PortifolioController extends Controller
 
     if ($delete)
     {
-      $message = parent::returnMessage('success', 'Portifólio excluído com sucesso!');
+      $message = parent::returnMessage('success', 'Portfólio excluído com sucesso!');
     } else
     {
-      $message = parent::returnMessage('danger', 'Erro ao excluir o Portifólio!');
+      $message = parent::returnMessage('danger', 'Erro ao excluir o Portfólio!');
     }
 
     return redirect()->route('portifolios.view.empresa')->with('message', $message);

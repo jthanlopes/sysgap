@@ -468,7 +468,8 @@
 
   #admin-perfil .table-scroll {
     max-width: 100%;
-    overflow: scroll
+    overflow: scroll;
+    overflow-y: hidden;
   }
 
   #admin-perfil .dropdown-caret {

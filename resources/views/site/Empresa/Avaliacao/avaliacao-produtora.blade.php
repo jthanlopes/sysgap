@@ -8,7 +8,7 @@
     <div class="w3-col m12">
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
-          <h3 class="w3-opacity">Avaliar {{ $freelancer->nome }}</h3>
+          <h3 class="w3-opacity">Avaliar {{ $produtora->nome }}</h3>
           @if(session()->has('message'))
           <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -16,10 +16,10 @@
           </div>
           @endif
           <hr>
-          <form method="POST" action="/empresa/projeto/{{ $projeto->id }}/finalizar/avaliar/{{ $freelancer->id }}">
+          <form method="POST" action="/empresa/projeto/{{ $projeto->id }}/finalizar/avaliar-produtora/{{ $produtora->id }}">
             {{ csrf_field() }}
 
-            <input type="hidden" value="{{ $freelancer->id }}" name="idFreelancer">
+            <input type="hidden" value="{{ $produtora->id }}" name="idProdutora">
             <input type="hidden" value="{{ $projeto->id }}" name="idProjeto">
             @foreach($items as $item)
             <div class="row">
@@ -42,7 +42,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Avaliação descritiva (opcional):</label>
-                  <textarea class="w3-input w3-border" name="descritiva" cols="20" rows="5" placeholder="Você recomendaria este freelancer? (opcional)"></textarea>
+                  <textarea class="w3-input w3-border" name="descritiva" cols="20" rows="5" placeholder="Você recomendaria este produtora? (opcional)"></textarea>
                 </div>
               </div>
             </div>

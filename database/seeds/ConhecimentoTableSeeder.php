@@ -50,5 +50,45 @@ class ConhecimentoTableSeeder extends Seeder
       'created_at' => new \DateTime(),
       'updated_at' => new \DateTime(),
     ]);
+
+     DB::table('conhecimentos')->insert([
+      'titulo' => 'Illustrator CC',
+      'descricao' => 'Ferramenta',
+      'padrao' => 1,
+      'created_at' => new \DateTime(),
+      'updated_at' => new \DateTime(),
+    ]);
+
+     DB::table('conhecimentos')->insert([
+      'titulo' => 'SQLite',
+      'descricao' => 'BD',
+      'padrao' => 1,
+      'created_at' => new \DateTime(),
+      'updated_at' => new \DateTime(),
+    ]);
+
+     DB::table('conhecimentos')->insert([
+      'titulo' => 'CouchDB',
+      'descricao' => 'BD',
+      'padrao' => 1,
+      'created_at' => new \DateTime(),
+      'updated_at' => new \DateTime(),
+    ]);
+
+     DB::table('conhecimentos')->insert([
+      'titulo' => 'CSS 3',
+      'descricao' => 'Front-end',
+      'padrao' => 1,
+      'created_at' => new \DateTime(),
+      'updated_at' => new \DateTime(),
+    ]);
+
+     DB::table('conhecimentos')->insert([
+      'titulo' => 'SASS',
+      'descricao' => 'Front-end',
+      'padrao' => 1,
+      'created_at' => new \DateTime(),
+      'updated_at' => new \DateTime(),
+    ]);
    }
  }

@@ -114,7 +114,13 @@ Route::prefix('empresa')->group(function () {
   // Reabrir o projeto
   Route::get('/projeto/{projeto}/reabrir', 'Empresa\Projeto\ProjetoController@reabrirProjeto')->name('projeto.reabrir');
   // Rotas de avaliar freelancers
-  Route::get('/projeto/{projeto}/finalizar/avaliar/{freelancer}', 'Empresa\Avaliacao\AvaliacaoController@avaliarFreelancer')->name('avaliar.freelancer');
+  Route::get('/projeto/{projeto}/finalizar/avaliar/{freelancer}', 'Empresa\Avaliacao\AvaliacaoController@avaliarFreelancerView')->name('avaliar.freelancer.view');
+  // Avaliar freelancer
+  Route::post('/projeto/{projeto}/finalizar/avaliar/{freelancer}', 'Empresa\Avaliacao\AvaliacaoController@avaliarFreelancer')->name('avaliar.freelancer');
+  // Rotas de avaliar produtoras
+  Route::get('/projeto/{projeto}/finalizar/avaliar-produtora/{produtora}', 'Empresa\Avaliacao\AvaliacaoController@avaliarProdutoraView')->name('avaliar.produtora.view');
+  // Avaliar produtora
+  Route::post('/projeto/{projeto}/finalizar/avaliar-produtora/{produtora}', 'Empresa\Avaliacao\AvaliacaoController@avaliarProdutora')->name('avaliar.produtora');
   //
   // Rotas de pesquisa de usuários
   // Abrir formulário de pesquisa

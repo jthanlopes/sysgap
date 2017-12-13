@@ -153,7 +153,7 @@ class ProjetoController extends Controller
   }
 
   public function addProdutora(Projeto $projeto, Empresa $empresa) {
-    $projeto->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0]);
+    $projeto->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0, 'avaliado' => 0]);
 
     $message = parent::returnMessage('success', $empresa->nome . ' foi convidado(a) para o projeto!');
 
@@ -179,6 +179,32 @@ class ProjetoController extends Controller
   public function finalizarProjetoView(Projeto $projeto) {
     $freelancers = Projeto::find($projeto->id)->freelancers;
     $produtoras = Projeto::find($projeto->id)->empresas;
+    $controle = 0;
+
+    foreach ($freelancers as $freelancer) {
+      foreach ($freelancer->projetos as $freelaProjeto) {
+        if ($freelaProjeto->id == $projeto->id && $freelaProjeto->pivot->avaliado == 0) {
+          $controle++;
+        }
+      }
+    }
+
+    foreach ($produtoras as $produtora) {
+      foreach ($produtora->projetos as $prodProjeto) {
+        if ($prodProjeto->id == $projeto->id && $prodProjeto->pivot->avaliado == 0) {
+          $controle++;
+        }
+      }
+    }
+
+    if ($controle == 0) {
+      $projeto->status = "Finalizado";
+      $projeto->save();
+
+      $message = parent::returnMessage('success', 'O projeto foi finalizado!');
+
+      return redirect()->back()->with('message', $message);
+    }
 
     return view('site.empresa.projeto-view-finalizar', compact('projeto', 'freelancers', 'produtoras'));
   }
@@ -189,7 +215,7 @@ class ProjetoController extends Controller
 
     $message = parent::returnMessage('success', 'O projeto foi cancelado!');
 
-    return redirect()->back()->with('message', $message);
+    return redirect()->route('projetos.view')->with('message', $message);
   }
 
   public function reabrirProjeto(Projeto $projeto) {

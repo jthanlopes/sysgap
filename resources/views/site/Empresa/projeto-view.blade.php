@@ -48,7 +48,9 @@
                 @endif
                 <td>
                   <a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para o freelancer">Enviar E-mail</a>
+                  @if($projetoFreela->pivot->avaliado == 0)
                   <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover/{{ $freelancer->id }}" class="w3-button w3-red w3-small" title="Remover freelancer">Remover</a>
+                  @endif
                 </td>
               </tr>
               @endif

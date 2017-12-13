@@ -22,7 +22,7 @@ $freelancersRanking = Freelancer::orderBy('pontuacao', 'DESC')->limit(3)->get();
       </tr>
       @foreach($empresasRanking as $empresaR)
       <tr>
-        <td><a href="" title="Ver perfil">{{ $empresaR->nome }}</a></td>
+        <td><a href="/empresa/pesquisa/perfil-produtora/{{ $empresaR->id }}" title="Ver perfil" target="_blank">{{ $empresaR->nome }}</a></td>
         <td>{{ $empresaR->pontuacao }}pts</td>
       </tr>
       @endforeach
@@ -39,7 +39,7 @@ $freelancersRanking = Freelancer::orderBy('pontuacao', 'DESC')->limit(3)->get();
       </tr>
       @foreach($produtorasRanking as $produtoraR)
       <tr>
-        <td><a href="" title="Ver perfil">{{ $produtoraR->nome }}</a></td>
+        <td><a href="/empresa/pesquisa/perfil-produtora/{{ $produtoraR->id }}" title="Ver perfil" target="_blank">{{ $produtoraR->nome }}</a></td>
         <td>{{ $produtoraR->pontuacao }}pts</td>
       </tr>
       @endforeach
@@ -56,7 +56,7 @@ $freelancersRanking = Freelancer::orderBy('pontuacao', 'DESC')->limit(3)->get();
       </tr>
       @foreach($freelancersRanking as $freelancerR)
       <tr>
-        <td><a href="" title="Ver perfil">{{ $freelancerR->nome }}</a></td>
+        <td><a href="/empresa/pesquisa/perfil-freelancer/{{ $freelancerR->id }}" title="Ver perfil" target="_blank">{{ $freelancerR->nome }}</a></td>
         <td>{{ $freelancerR->pontuacao }}pts</td>
       </tr>
       @endforeach
