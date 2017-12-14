@@ -25,7 +25,7 @@ $(document).ready(function() {
 
                       $(".msg-cep").html("");
                         //Preenche os campos com "..." enquanto consulta webservice.
-                        $(".logradouro").val("...");     
+                        $(".logradouro").val("...");
                         $(".bairro").val("...");
                         $(".cidade").val("...");
                         $(".uf").val("...");

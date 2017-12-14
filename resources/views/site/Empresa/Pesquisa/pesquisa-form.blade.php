@@ -82,7 +82,7 @@
               <tr>
                 <td>{{ $freelancer->nome }}</td>
                 <td>{{ $freelancer->email }}</td>
-                <td><a href="/empresa/pesquisa/perfil-freelancer/{{ $freelancer->id }}" class="w3-button w3-blue w3-small" title="Ver perfil do freelancer">Ver perfil</a>
+                <td><a href="/empresa/pesquisa/perfil-freelancer/{{ $freelancer->id }}" class="w3-button w3-blue w3-small" title="Ver perfil do freelancer" target="_blank">Ver perfil</a>
                 </td>
               </tr>
               @endforeach
@@ -90,34 +90,38 @@
               <tr>
                 <td>{{ $produtora->nome }}</td>
                 <td>{{ $produtora->email }}</td>
-                <td><a href="/empresa/pesquisa/perfil-produtora/{{ $produtora->id }}" class="w3-button w3-blue w3-small" title="Ver perfil da produtora">Ver perfil</a>
-                </td>
-              </tr>
-              @endforeach
-              @foreach ( $agencias as $agencia)
-              <tr>
-                <td>{{ $agencia->nome }}</td>
-                <td>{{ $agencia->email }}</td>
-                @if($agencia->id == $empresa->id)
-                <td><a href="{{ route('empresa.perfil') }}" class="w3-button w3-blue w3-small" title="Ver perfil da agência">Meu perfil</a>
+                @if($produtora->id == $empresa->id)
+                <td><a href="{{ route('empresa.perfil') }}" class="w3-button w3-blue w3-small" title="Ver perfil da agência" target="_blank">Meu perfil</a>
                 </td>
                 @else
-                <td><a href="/empresa/pesquisa/perfil-produtora/{{ $agencia->id }}" class="w3-button w3-blue w3-small" title="Ver perfil da agência">Ver perfil</a>
-                </td>
+                <td><a href="/empresa/pesquisa/perfil-produtora/{{ $produtora->id }}" class="w3-button w3-blue w3-small" title="Ver perfil da produtora" target="_blank">Ver perfil</a>
+                </tr>
                 @endif
-              </tr>
-              @endforeach
-            </table>
+                @endforeach
+                @foreach ( $agencias as $agencia)
+                <tr>
+                  <td>{{ $agencia->nome }}</td>
+                  <td>{{ $agencia->email }}</td>
+                  @if($agencia->id == $empresa->id)
+                  <td><a href="{{ route('empresa.perfil') }}" class="w3-button w3-blue w3-small" title="Ver perfil da agência" target="_blank">Meu perfil</a>
+                  </td>
+                  @else
+                  <td><a href="/empresa/pesquisa/perfil-produtora/{{ $agencia->id }}" class="w3-button w3-blue w3-small" title="Ver perfil da agência" target="_blank">Ver perfil</a>
+                  </td>
+                  @endif
+                </tr>
+                @endforeach
+              </table>
+            </div>
+            @if(count($freelancers) == 0 && count($produtoras) == 0 && count($agencias) == 0)
+            <div style="text-align: center; margin-top: 10px;">
+              Nenhum resultado para a pesquisa.
+            </div>
+            @endif
           </div>
-          @if(count($freelancers) == 0 && count($produtoras) == 0 && count($agencias) == 0)
-          <div style="text-align: center; margin-top: 10px;">
-            Nenhum resultado para a pesquisa.
-          </div>
-          @endif
         </div>
       </div>
     </div>
+    <!-- End Middle Column -->
   </div>
-  <!-- End Middle Column -->
-</div>
-@endsection
+  @endsection

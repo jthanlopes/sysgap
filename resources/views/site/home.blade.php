@@ -4,7 +4,7 @@
 {{-- Overlay mostrado sobre a home page ao carregar a página --}}
 <div class="overlay">
   <div class="msg-alerta">
-    <h1 class="animate-zoomIn">Página em desenvolvimento.</h1>
+    <h1 class="animate-zoomIn">Página em fase de testes.</h1>
     <h3 class="animate-slideInLeft">clique para continuar</h3>
   </div>
 </div>

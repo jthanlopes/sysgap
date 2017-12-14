@@ -33,7 +33,7 @@
         <!-- Profile -->
         <div class="w3-card-2 w3-round w3-white">
           <div class="w3-container">
-           <h4 class="w3-center">Perfil Empresa</h4>
+           <h4 class="w3-center"><a href="{{ route('view.perfil-produtora', $produtora->id) }}">Perfil Empresa</a></h4>
            <p class="w3-center"><img src="{{ asset('storage') . '/empresas/perfil/' . $produtora->foto_perfil }}" class="w3-circle" style="height:130px;width:130px" alt="Imagem da produtora"></p>
            <hr>
            <div style="text-align: center;">
@@ -43,12 +43,9 @@
              <p title="Data de cadastro">{{ $produtora->created_at->format('d/m/Y') }}</p>
            </div>
            <div class="w3-row">
-            <div class="w3-half">
+            <center>
               <button class="w3-button w3-block w3-green w3-section" title="Accept">Enviar E-mail</button>
-            </div>
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-red w3-section" title="Decline">Enviar Mensagem</button>
-            </div>
+            </center>
           </div>
         </div>
       </div>
@@ -56,22 +53,17 @@
       <!-- Accordion -->
       <div class="w3-card-2 w3-round">
         <div class="w3-white groups">
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Projetos</button>
-          <div id="Demo2" class="w3-hide w3-container">
-            <hr>
-            <p><a href="">Ver projetos</a></p>
-          </div>
           <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Avaliações</button>
           <div id="Demo1" class="w3-hide w3-container">
             <hr>
             <p><a href="">Avaliações recebidas</a></p>
             <p><a href="">Avaliações feitas</a></p>
           </div>
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Portifólio</button>
+          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Portfólio</button>
           <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">
              <hr>
-             <p><a href="/empresa/pesquisa/perfil-produtora/portifolios/{{ $produtora->id }}">Ver portifólios</a></p>
+             <p><a href="/empresa/pesquisa/perfil-produtora/portifolios/{{ $produtora->id }}">Ver portfólio</a></p>
            </div>
          </div>
        </div>
@@ -97,59 +89,38 @@
   </div>
   <!-- Middle Column -->
   <div class="w3-col m7">
-    @if(count($noticias) > 0)
-    @foreach($noticias as $noticia)
-    <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;"><br>
-      <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
-      <h4>{{ $noticia->titulo }}</h4><br>
-      <hr class="w3-clear">
-      <p>{{ $noticia->conteudo }}</p>
-      <div class="w3-row-padding" style="margin:0 -16px">
-        <div class="w3-half">
-          <img src="{{ asset('storage')  . '/empresas/posts/' . str_slug($produtora->nome, '_') . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">
+    <div class="w3-row-padding">
+      <div class="w3-col m12">
+        @if(count($noticias) > 0)
+        @foreach($noticias as $noticia)
+        <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;"><br>
+          <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
+          <h4>{{ $noticia->titulo }}</h4><br>
+          <hr class="w3-clear">
+          <p>{{ $noticia->conteudo }}</p>
+          <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half">
+              <img src="{{ asset('storage')  . '/empresas/posts/' . $produtora->id . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    @endforeach
-    @else
-    <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;">
-      <h4>Nenhum post feito por este usuário!</h4>
-    </div>
-    @endif
+        @endforeach
+        @else
+        <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;">
+          <h4>Nenhum post feito por este usuário!</h4>
+        </div>
+        @endif
 
-    <!-- End Middle Column -->
-  </div>
-  <!-- Right Column -->
-  <div class="w3-col m2">
-    <div class="w3-card-2 w3-round w3-white w3-center">
-      <div class="w3-container">
-        <p>Upcoming Events:</p>
-        <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-        <p><strong>Holiday</strong></p>
-        <p>Friday 15:00</p>
-        <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+        <!-- End Middle Column -->
       </div>
+      <!-- Right Column -->
     </div>
-    <br>
-    <div class="w3-card-2 w3-round w3-white w3-center">
-      <div class="w3-container">
-        <p>Friend Request</p>
-        <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-        <span>Jane Doe</span>
-        <div class="w3-row w3-opacity">
-          <div class="w3-half">
-            <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-          </div>
-          <div class="w3-half">
-            <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <!-- End Right Column -->
   </div>
-  <!-- End Grid -->
+  @include ('site.layouts.perfil.aside-right')
+  <br>
+  <!-- End Right Column -->
+</div>
+<!-- End Grid -->
 </div>
 <!-- End Page Container -->
 </div>

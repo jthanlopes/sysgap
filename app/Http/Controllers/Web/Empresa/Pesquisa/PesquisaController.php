@@ -295,36 +295,45 @@ return view('site.empresa.pesquisa.pesquisa-form', compact('empresa', 'produtora
 }
 
 public function viewPerfilProdutora(Empresa $produtora) {
+  $notificacoes = $produtora->projetos()->where('aceito', '=', 0)->get();
   $noticias = Noticia::orderBy('created_at', 'desc')->where('empresa_id', $produtora->id)->paginate(10);
 
-  return view('site.empresa.produtora.view-produtora', compact('produtora', 'noticias'));
+  return view('site.empresa.produtora.view-produtora', compact('produtora', 'noticias', 'notificacoes'));
 }
 
 public function viewPerfilFreelancer(Freelancer $freelancer) {
+  $produtora = Empresa::find(Auth::user()->id);
+  $notificacoes = $produtora->projetos()->where('aceito', '=', 0)->get();
   $noticias = Noticia::orderBy('created_at', 'desc')->where('freelancer_id', $freelancer->id)->paginate(10);
 
-  return view('site.empresa.freelancer.view-freelancer', compact('freelancer', 'noticias'));
+  return view('site.empresa.freelancer.view-freelancer', compact('freelancer', 'noticias', 'notificacoes'));
 }
 
 public function viewConhecimentosFreelancer(Freelancer $freelancer) {
-  return view('site.empresa.freelancer.conhecimentos-view-freelancer', compact('freelancer'));
+  $produtora = Empresa::find(Auth::user()->id);
+  $notificacoes = $produtora->projetos()->where('aceito', '=', 0)->get();
+  return view('site.empresa.freelancer.conhecimentos-view-freelancer', compact('freelancer', 'notificacoes'));
 }
 
 public function viewConhecimentosProdutora(Empresa $empresa) {
   $produtora = $empresa;
-  return view('site.empresa.produtora.conhecimentos-view-produtora', compact('produtora'));
+  $notificacoes = $produtora->projetos()->where('aceito', '=', 0)->get();
+  return view('site.empresa.produtora.conhecimentos-view-produtora', compact('produtora', 'notificacoes'));
 }
 
 public function viewPortifoliosFreelancer(Freelancer $freelancer) {
   $portifolios = Portifolio::orderBy('created_at', 'desc')->where('freelancer_id', $freelancer->id)->paginate(5);
+  $produtora = Empresa::find(Auth::user()->id);
+  $notificacoes = $produtora->projetos()->where('aceito', '=', 0)->get();
 
-  return view('site.empresa.freelancer.portifolio-view-freelancer', compact('freelancer', 'portifolios'));
+  return view('site.empresa.freelancer.portifolio-view-freelancer', compact('freelancer', 'portifolios', 'notificacoes'));
 }
 
 public function viewPortifoliosProdutora(Empresa $empresa) {
   $portifolios = Portifolio::orderBy('created_at', 'desc')->where('empresa_id', $empresa->id)->paginate(5);
   $produtora = $empresa;
+  $notificacoes = $produtora->projetos()->where('aceito', '=', 0)->get();
 
-  return view('site.empresa.produtora.portifolios-view-produtora', compact('produtora', 'portifolios'));
+  return view('site.empresa.produtora.portifolios-view-produtora', compact('produtora', 'portifolios', 'notificacoes'));
 }
 }
