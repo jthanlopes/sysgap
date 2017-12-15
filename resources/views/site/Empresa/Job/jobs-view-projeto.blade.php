@@ -32,7 +32,7 @@
                @if($projeto->pivot->aceito == 1 && $projeto->pivot->avaliado == 0)
                <a href="/empresa/jobs-projetos/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Visualizar o job">Ver jobs</a>
                @elseif($projeto->pivot->aceito == 1 && $projeto->pivot->avaliado == 1 && $projeto->pivot->avaliado_prod == 0)
-               <a href="" class="w3-button w3-blue w3-small" title="Avalia empresa">Avaliar</a>
+               <a href="/empresa/{{ $projeto->id }}/avaliar-produtora/{{ $projeto->empresa->id }}" class="w3-button w3-blue w3-small" title="Avalia empresa">Avaliar</a>
                @elseif($projeto->pivot->aceito == 1 && $projeto->pivot->avaliado == 1 && $projeto->pivot->avaliado_prod == 1)
                --------
                @elseif($projeto->pivot->aceito == 0)

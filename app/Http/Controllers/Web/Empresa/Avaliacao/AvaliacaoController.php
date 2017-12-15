@@ -140,4 +140,63 @@ class AvaliacaoController extends Controller
 
     return view('site.empresa.avaliacao.avaliacoes-recebidas', compact('notificacoes', 'avaliacoes'));
   }
+
+  // Avaliação para as produtoras
+
+  public function avaliarView(Projeto $projeto, Empresa $empresa) {
+    $empresaAvaliada = $empresa;
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
+
+    $items = Item::where('destino', 'Empresas')->orWhere('destino', 'Ambos')->get();
+
+    return view('site.empresa.avaliacao.avaliacao-view', compact('empresa', 'notificacoes', 'items', 'empresaAvaliada', 'projeto'));
+  }
+
+  public function avaliar(Request $request) {
+    $id = Auth::user()->id;
+    $produtora = Empresa::find($id);
+    $items = Item::where('destino', 'Empresas')->orWhere('destino', 'Ambos')->get();
+    $empresa = Empresa::find($request->idEmpresa);
+    $total = 0;
+    $media = 0;
+
+    if (!$request->descritiva) {
+      $descritiva = "Sem descrição.";
+    } else {
+      $descritiva = $request->descritiva;
+    }
+
+    foreach ($items as $item) {
+      $create = Avaliacoe::create([
+        'empresa_avaliadora' => Auth::user()->id,
+        'empresa_avaliada' => $request->idEmpresa,
+        'nota' => $request->get('item-'.$item->id),
+        'descritiva' => $descritiva,
+        'item_id' => $item->id
+      ]);
+      $total += $request->get('item-'.$item->id);
+    }
+
+    $media = $total / count($items);
+
+    if($empresa->avaliacao_geral == 0) {
+      $empresa->avaliacao_geral = $media;
+      $empresa->save();
+    }else {
+      $empresa->avaliacao_geral = ($empresa->avaliacao_geral + $media)/2;
+      $empresa->save();
+    }
+
+    $produtora->projetos()->updateExistingPivot($request->idProjeto, ['avaliado_prod' => 1]);
+
+    $pontuacaoId = 9;
+
+    $empresa->pontuacoes()->attach($pontuacaoId, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime()]);
+
+    $message = $message = parent::returnMessage('success', 'Empresa avaliada com sucesso!');
+
+    return redirect()->route('jobs-projeto.view.produtora')->with('message', $message);
+  }
 }

@@ -192,7 +192,31 @@ Route::prefix('empresa')->group(function () {
   // Rotas de avaliações
   Route::get('/avaliacoes-feitas', 'Empresa\Avaliacao\AvaliacaoController@avaliacoesFeitasView')->name('avaliacoes-feitas.view.empresa');
   Route::get('/avaliacoes-recebidas', 'Empresa\Avaliacao\AvaliacaoController@avaliacoesRecebidasView')->name('avaliacoes-recebidas.view.empresa');
+  // Avaliação feita pelas produtoras
+  // Rotas de avaliar empresa
+  Route::get('/{projeto}/avaliar-produtora/{empresa}', 'Empresa\Avaliacao\AvaliacaoController@avaliarView')->name('produtora.avaliar-view');
+   // Rotas de avaliar empresa
+  Route::post('/avaliar-produtora', 'Empresa\Avaliacao\AvaliacaoController@avaliar')->name('produtora.avaliar');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -310,6 +334,10 @@ Route::prefix('freelancer')->group(function () {
   Route::post('/job/addComentario', 'Freelancer\Comentario\ComentarioController@addComentario')->name('job.add-comentario.freelancer');
   // Rotas de pontuação
   Route::get('/pontuacoes', 'Freelancer\Pontuacao\PontuacaoController@pontuacoesView')->name('pontuacoes.view.freelancer');
+  // Rotas de avaliar empresa
+  Route::get('/projeto/{projeto}/finalizar/avaliar/{empresa}', 'Freelancer\Avaliacao\AvaliacaoController@avaliarView')->name('freelancer.avaliar-view');
+   // Rotas de avaliar empresa
+  Route::post('/finalizar/avaliar', 'Freelancer\Avaliacao\AvaliacaoController@avaliar')->name('freelancer.avaliar');
 });
 
 Auth::routes();
