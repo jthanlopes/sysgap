@@ -7,6 +7,7 @@
     <a href="{{ route('empresa.perfil') }}" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Meu Perfil</a>
     <a href="{{ route('empresa.editar-perfil.view') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Editar perfil"><i class="fa fa-user"></i></a>
     <a href="{{ route('pontuacoes.view.empresa') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Minha pontuação"><i class="fa fa-check"></i></a>
+    <a href="{{ route('pesquisa.form.usuarios') }}" class="w3-button w3-hide-small w3-padding-large" title="Pesquisar usuários"><i class="fa fa-search"></i></a>
     @elseif (auth()->guard('freelancer')->check())
     <a href="{{ route('freelancer.perfil') }}" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Meu Perfil</a>
     <a href="{{ route('freelancer.editar-perfil.view') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Editar perfil"><i class="fa fa-user"></i></a>
@@ -43,7 +44,6 @@
       </div>
     </div>
     @endif
-    <a href="{{ route('pesquisa.form.usuarios') }}" class="w3-button w3-hide-small w3-padding-large" title="Pesquisar usuários"><i class="fa fa-search"></i></a>
     @if (auth()->guard('empresa')->check())
     <div class="w3-dropdown-hover w3-right">
       <button class="w3-button w3-theme-d4 w3-hide-small ajuste">{{ auth()->guard('empresa')->user()->nome }} <span class="dropdown-caret"></span></button>

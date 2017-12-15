@@ -18,4 +18,8 @@ public function empresaAvaliada() {
 public function freelancerAvaliado() {
   return $this->belongsTo(Freelancer::class);
 }
+
+public function item() {
+  return $this->belongsTo(Item::class);
+}
 }

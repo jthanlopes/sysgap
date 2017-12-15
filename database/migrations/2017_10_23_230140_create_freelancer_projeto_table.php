@@ -18,6 +18,7 @@ class CreateFreelancerProjetoTable extends Migration
             $table->integer('freelancer_id')->unsigned();
             $table->boolean('aceito');
             $table->boolean('avaliado');
+            $table->boolean('avaliado_freela');
             $table->timestamps();
         });
     }

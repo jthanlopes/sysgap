@@ -22,7 +22,7 @@ class CreateFreelancersTable extends Migration {
 			$table->string('foto_perfil', 100);
 			$table->integer('endereco_id')->unsigned()->nullable();
 			$table->integer('pontuacao')->default(0);
-			$table->integer('avaliacao_geral')->default(0);
+			$table->double('avaliacao_geral')->default(0);
 			$table->timestamps();
 			$table->rememberToken();
 			$table->string('account_confirmation');

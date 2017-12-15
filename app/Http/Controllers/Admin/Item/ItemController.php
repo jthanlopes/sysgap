@@ -24,6 +24,7 @@ class ItemController extends Controller
   public function itemCadastrar() {
     $create = Item::create([
       'pergunta' => request('pergunta'),
+      'destino' => request('destino'),
     ]);
 
     if ( $create )
@@ -45,6 +46,7 @@ class ItemController extends Controller
     $update = Item::where( 'id', $request->idItem )
     ->update([
       'pergunta' => $request->pergunta,
+      'destino' => request('destino'),
     ]);
 
     if ( $update )

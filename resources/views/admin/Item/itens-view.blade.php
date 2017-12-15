@@ -12,7 +12,7 @@
     <li><a href="{{ route('admins.view') }}"><i class="fa fa-circle-o"></i> Administradores</a></li>
     <li><a href="{{ route('noticias.view') }}"><i class="fa fa-circle-o"></i> Notícias </a></li>
     <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
-    <li><a href="{{ route('itens.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Itens </a></li>
+    <li><a href="{{ route('itens.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Avaliações </a></li>
     <li><a href="{{ route('pontuacoes.view') }}" ><i class="fa fa-circle-o"></i> Pontuações </a>
   </ul>
 </li>
@@ -24,12 +24,12 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Lista de itens de avaliação
+      Perguntas das avaliações
     </h1>
     <hr>
     <ol class="breadcrumb">
       <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Itens</li>
+      <li class="active">Perguntas</li>
     </ol>
     <a href="{{ route('item.show-form-novo') }}" class="btn btn-success btn-sm btn-add">
     ADICIONAR NOVO</a>
@@ -46,6 +46,7 @@
           <thead class="thead-inverse">
             <tr>
               <th>Pergunta</th>
+              <th>Para</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -53,6 +54,7 @@
             @foreach ($itens as $item)
             <tr>
               <td>{{ $item->pergunta }}</td>
+              <td>{{ $item->destino }}</td>
               <td>
                <a href="/admin/item-view/editar/{{ $item->id }}" class="btn btn-warning">
                Editar</a>

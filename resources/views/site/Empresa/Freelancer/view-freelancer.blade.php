@@ -40,6 +40,8 @@
              <p title="Nome de usuário">{{ $freelancer->nome }}</p>
              <p title="E-mail">{{ $freelancer->email }}</p>
              <p title="Data de cadastro">{{ $freelancer->created_at->format('d/m/Y') }}</p>
+             <p> Pontuação: {{ $freelancer->pontuacao }} pontos</p>
+             <p> Avaliação: {{ number_format($freelancer->avaliacao_geral, 2, '.', '') }}/5 <i class="fa fa-star" aria-hidden="true" style="color: #daa520;"></i></p>
            </div>
            <div class="w3-row">
             <center>
@@ -53,12 +55,12 @@
       <!-- Accordion -->
       <div class="w3-card-2 w3-round">
         <div class="w3-white groups">
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Avaliações</button>
+          {{-- <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Avaliações</button>
           <div id="Demo2" class="w3-hide w3-container">
             <hr>
             <p><a href="">Avaliações recebidas</a></p>
             <p><a href="">Avaliações feitas</a></p>
-          </div>
+          </div> --}}
           <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Portfólio</button>
           <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">
@@ -96,31 +98,26 @@
   </div>
   <!-- Middle Column -->
   <div class="w3-col m7">
-    <div class="w3-row-padding">
-      <div class="w3-col m12">
-        @if(count($noticias) > 0)
-        @foreach($noticias as $noticia)
-        <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;"><br>
-          <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
-          <h4>{{ $noticia->titulo }}</h4><br>
-          <hr class="w3-clear">
-          <p>{{ $noticia->conteudo }}</p>
-          <div class="w3-row-padding" style="margin:0 -16px">
-            <div class="w3-half">
-              <img src="{{ asset('storage')  . '/freelancers/posts/' . $freelancer->id . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">
-            </div>
-          </div>
+    @if(count($noticias) > 0)
+    @foreach($noticias as $noticia)
+    <div class="w3-container w3-card-2 w3-white w3-round w3-margin" style="margin-left: 16px; margin-right: 16px;"><br>
+      <span class="w3-right w3-opacity">{{ $noticia->created_at->diffForHumans() }} {{-- 1 min --}}</span>
+      <h4>{{ $noticia->titulo }}</h4><br>
+      <hr class="w3-clear">
+      <p>{{ $noticia->conteudo }}</p>
+      <div class="w3-row-padding" style="margin:0 -16px">
+        <div class="w3-half">
+          <img src="{{ asset('storage')  . '/freelancers/posts/' . $freelancer->id . '/' . $noticia->imagem  }}" style="width:100%" alt="Imagem do Post" class="w3-margin-bottom">
         </div>
-        @endforeach
-        @else
-        <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;">
-          <h4>Nenhum post feito por este usuário!</h4>
-        </div>
-        @endif
-
-        <!-- End Middle Column -->
       </div>
     </div>
+    @endforeach
+    @else
+    <div class="w3-container w3-card-2 w3-white w3-round" style="margin-left: 16px; margin-right: 16px;">
+      <h4>Nenhum post feito por este usuário!</h4>
+    </div>
+    @endif
+    <!-- End Middle Column -->
   </div>
   <!-- Right Column -->
   @include ('site.layouts.perfil.aside-right')

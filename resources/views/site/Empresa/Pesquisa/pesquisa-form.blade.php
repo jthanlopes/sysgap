@@ -76,12 +76,14 @@
               <tr>
                 <th>Nome</th>
                 <th>E-mail</th>
+                <th>Tipo</th>
                 <th>Ações</th>
               </tr>
               @foreach ( $freelancers as $freelancer)
               <tr>
                 <td>{{ $freelancer->nome }}</td>
                 <td>{{ $freelancer->email }}</td>
+                <td>Freelancer</td>
                 <td><a href="/empresa/pesquisa/perfil-freelancer/{{ $freelancer->id }}" class="w3-button w3-blue w3-small" title="Ver perfil do freelancer" target="_blank">Ver perfil</a>
                 </td>
               </tr>
@@ -90,6 +92,7 @@
               <tr>
                 <td>{{ $produtora->nome }}</td>
                 <td>{{ $produtora->email }}</td>
+                <td>Produtora</td>
                 @if($produtora->id == $empresa->id)
                 <td><a href="{{ route('empresa.perfil') }}" class="w3-button w3-blue w3-small" title="Ver perfil da agência" target="_blank">Meu perfil</a>
                 </td>
@@ -102,6 +105,7 @@
                 <tr>
                   <td>{{ $agencia->nome }}</td>
                   <td>{{ $agencia->email }}</td>
+                  <td>Agência</td>
                   @if($agencia->id == $empresa->id)
                   <td><a href="{{ route('empresa.perfil') }}" class="w3-button w3-blue w3-small" title="Ver perfil da agência" target="_blank">Meu perfil</a>
                   </td>

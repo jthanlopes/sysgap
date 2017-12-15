@@ -33,7 +33,7 @@ class JobController extends Controller
   public function jobsViewProjeto() {
     $id = Auth::user()->id;
     $freelancer = Freelancer::find($id);
-    $projetos = Freelancer::find($id)->projetos()->where('aceito', '!=', 3)->get();
+    $projetos = Freelancer::find($id)->projetos()->where('aceito', '!=', 3)->orderBy('status')->get();
     $notificacoes = $freelancer->projetos()->where('aceito', '=', 0)->get();
     $notificacoes2 = $freelancer->grupos()->where('aceito', '=', 0)->get();
 

@@ -68,8 +68,8 @@ class PontuacoesTableSeeder extends Seeder
       ]);
 
       DB::table('pontuacoes')->insert([
-        'descricao' => 'Avaliações recebidas (50 x média da avaliação recebida)',
-        'valor' => 50,
+        'descricao' => 'Avaliações recebidas',
+        'valor' => 200,
         'created_at' => new \DateTime(),
         'updated_at' => new \DateTime(),
       ]);

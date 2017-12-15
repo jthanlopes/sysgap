@@ -12,7 +12,7 @@
     <li><a href="{{ route('admins.view') }}"><i class="fa fa-circle-o"></i> Administradores</a></li>
     <li><a href="{{ route('noticias.view') }}"><i class="fa fa-circle-o"></i> Notícias </a></li>
     <li><a href="{{ route('conhecimentos.view') }}"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
-    <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Itens </a></li>
+    <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Avaliações </a></li>
     <li><a href="{{ route('pontuacoes.view') }}" ><i class="fa fa-circle-o"></i> Pontuações </a>
   </ul>
 </li>
@@ -65,8 +65,8 @@
             <tr>
               <td>{{ $grupo->titulo }}</td>
               <td>{{ $grupo->descricao }}</td>
-              <td>{{ $job->status }}</td>
-              <td>{{ $job->freelancer->nome }}</td>
+              <td>{{ $grupo->freelancer->nome }}</td>
+              <td>{{ $grupo->status }}</td>
               @endforeach
             </tbody>
           </table>

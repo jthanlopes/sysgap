@@ -29,9 +29,13 @@
               <td>{{ $projeto->empresa->nome }}</td>
               <td>{{ $projeto->status }}</td>
               <td>
-                @if($projeto->pivot->aceito == 1)
+                @if($projeto->pivot->aceito == 1 && $projeto->pivot->avaliado == 0)
                 <a href="/freelancer/jobs-projetos/{{ $projeto->id }}" class="w3-button w3-blue w3-small" title="Visualizar o job">Ver jobs</a>
-                @else
+                @elseif($projeto->pivot->aceito == 1 && $projeto->pivot->avaliado == 1 && $projeto->pivot->avaliado_freela == 0)
+                <a href="" class="w3-button w3-blue w3-small" title="Avalia empresa">Avaliar</a>
+                @elseif($projeto->pivot->aceito == 1 && $projeto->pivot->avaliado == 1 && $projeto->pivot->avaliado_freela == 1)
+                --------
+                @elseif($projeto->pivot->aceito == 0)
                 <a href="/freelancer/jobs-projetos/{{ $projeto->id }}/aceitar" class="w3-button w3-blue w3-small" title="Aceitar convite">Aceitar convite</a>
                 <a href="/freelancer/jobs-projetos/{{ $projeto->id }}/recusar" class="w3-button w3-red w3-small" title="Recusar convite">Recusar convite</a>
                 @endif

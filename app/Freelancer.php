@@ -46,7 +46,8 @@ class Freelancer extends Authenticatable {
     public function projetos() {
       return $this->belongsToMany(Projeto::class)
       ->withPivot('aceito')
-      ->withPivot('avaliado');
+      ->withPivot('avaliado')
+      ->withPivot('avaliado_freela');
     }
 
     public function jobs() {
@@ -87,7 +88,11 @@ class Freelancer extends Authenticatable {
       return $this->belongsToMany(Pontuacoe::class);
     }
 
-    public function avaliacoes() {
+    public function avaliacoes1() {
+      return $this->hasMany(Avaliacoe::class);
+    }
+
+    public function avaliacoes2() {
       return $this->hasMany(Avaliacoe::class);
     }
   }

@@ -40,7 +40,14 @@
              <p title="Nome de usuário">{{ $freelancer->nome }}</p>
              <p title="E-mail">{{ $freelancer->email }}</p>
              <p title="Data de cadastro">{{ $freelancer->created_at->format('d/m/Y') }}</p>
+             <p> Pontuação: {{ $freelancer->pontuacao }} pontos</p>
+             <p> Avaliação: {{ number_format($freelancer->avaliacao_geral, 2, '.', '') }}/5 <i class="fa fa-star" aria-hidden="true" style="color: #daa520;"></i></p>
            </div>
+           <div class="w3-row">
+            <center>
+              <button class="w3-button w3-block w3-green w3-section" title="Accept">Enviar E-mail</button>
+            </center>
+          </div>
          </div>
        </div>
        <br>
@@ -48,12 +55,12 @@
        <!-- Accordion -->
        <div class="w3-card-2 w3-round">
         <div class="w3-white groups">
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Avaliações</button>
+          {{-- <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> Avaliações</button>
           <div id="Demo2" class="w3-hide w3-container">
             <hr>
             <p><a href="">Avaliações recebidas</a></p>
             <p><a href="">Avaliações feitas</a></p>
-          </div>
+          </div> --}}
           <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Portfólio</button>
           <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">

@@ -42,7 +42,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="titulo">Avaliação descritiva (opcional):</label>
-                  <textarea class="w3-input w3-border" name="descritiva" cols="20" rows="5" placeholder="Você recomendaria este freelancer? (opcional)"></textarea>
+                  <textarea class="w3-input w3-border" name="descritiva" cols="20" rows="5" placeholder="Você recomendaria este freelancer? (opcional)" style="max-width: 100%; min-width: 100%;"></textarea>
                 </div>
               </div>
             </div>

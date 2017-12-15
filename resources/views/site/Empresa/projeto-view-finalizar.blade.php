@@ -9,7 +9,7 @@
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container w3-padding">
           <h3 class="w3-opacity">Finalizar projeto {{ $projeto->titulo }}</h3>
-          Avalie todos os freelancers e produtoras para poder finalizar o projeto!
+          <h6 class="animate-bounce">Avalie todos os freelancers e produtoras para poder finalizar o projeto!</h6>
           @if(session()->has('message'))
           <div class="alert alert-{{ session()->get('message')['response'] }} alert-dismissable" style="margin-top: 10px;">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

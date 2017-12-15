@@ -65,7 +65,9 @@
                 <td><?php echo ($projetoProd->pivot->aceito == 0) ? "Convite<br/>Enviado" : "Ativo"; ?></td>
                 <td>
                   <a href="" class="w3-button w3-blue w3-small" title="Enviar e-mail para a produtora">Enviar E-mail</a>
+                  @if($projetoProd->pivot->avaliado == 0)
                   <a href="/empresa/projeto/{{ $projeto->id }}/integrante/remover-produtora/{{ $produtora->id }}" class="w3-button w3-red w3-small" title="Remover produtora">Remover</a>
+                  @endif
                 </td>
               </tr>
               @endif

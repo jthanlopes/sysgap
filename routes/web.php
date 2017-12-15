@@ -189,7 +189,11 @@ Route::prefix('empresa')->group(function () {
   Route::get('/job/{job}', 'Empresa\Job\JobController@jobViewProdutora')->name('job.view.produtora');
   // Rotas de pontuação
   Route::get('/pontuacoes', 'Empresa\Pontuacao\PontuacaoController@pontuacoesView')->name('pontuacoes.view.empresa');
+  // Rotas de avaliações
+  Route::get('/avaliacoes-feitas', 'Empresa\Avaliacao\AvaliacaoController@avaliacoesFeitasView')->name('avaliacoes-feitas.view.empresa');
+  Route::get('/avaliacoes-recebidas', 'Empresa\Avaliacao\AvaliacaoController@avaliacoesRecebidasView')->name('avaliacoes-recebidas.view.empresa');
 });
+
 
 
 // Rotas de freelancer

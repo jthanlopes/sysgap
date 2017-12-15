@@ -145,7 +145,7 @@ class ProjetoController extends Controller
   }
 
   public function addFreelancer(Projeto $projeto, Freelancer $freelancer) {
-    $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0, 'avaliado' => 0]);
+    $projeto->freelancers()->attach($freelancer, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0, 'avaliado' => 0, 'avaliado_freela' => 0]);
 
     $message = parent::returnMessage('success', $freelancer->nome . ' foi convidado(a) para o projeto!');
 
@@ -153,7 +153,7 @@ class ProjetoController extends Controller
   }
 
   public function addProdutora(Projeto $projeto, Empresa $empresa) {
-    $projeto->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0, 'avaliado' => 0]);
+    $projeto->empresas()->attach($empresa, ['created_at' => new \DateTime(), 'updated_at' => new \DateTime(), 'aceito' => 0, 'avaliado' => 0, 'avaliado_prod' => 0]);
 
     $message = parent::returnMessage('success', $empresa->nome . ' foi convidado(a) para o projeto!');
 
@@ -177,53 +177,69 @@ class ProjetoController extends Controller
   }
 
   public function finalizarProjetoView(Projeto $projeto) {
+    $id = Auth::user()->id;
+    $empresa = Empresa::find($id);
+    $notificacoes = $empresa->projetos()->where('aceito', '=', 0)->get();
     $freelancers = Projeto::find($projeto->id)->freelancers;
     $produtoras = Projeto::find($projeto->id)->empresas;
     $controle = 0;
 
-    foreach ($freelancers as $freelancer) {
-      foreach ($freelancer->projetos as $freelaProjeto) {
-        if ($freelaProjeto->id == $projeto->id && $freelaProjeto->pivot->avaliado == 0) {
-          $controle++;
-        }
+    if (count($freelancers) == 0 && count($produtoras) == 0) {
+      $message = parent::returnMessage('info', 'Para ser finalizado, o projeto deve ter no minímo um integrante!');
+
+     return redirect()->route('projetos.view')->with('message', $message);
+   }
+
+   foreach ($freelancers as $freelancer) {
+    foreach ($freelancer->projetos as $freelaProjeto) {
+      if ($freelaProjeto->id == $projeto->id && $freelaProjeto->pivot->avaliado == 0) {
+        $controle++;
       }
     }
-
-    foreach ($produtoras as $produtora) {
-      foreach ($produtora->projetos as $prodProjeto) {
-        if ($prodProjeto->id == $projeto->id && $prodProjeto->pivot->avaliado == 0) {
-          $controle++;
-        }
-      }
-    }
-
-    if ($controle == 0) {
-      $projeto->status = "Finalizado";
-      $projeto->save();
-
-      $message = parent::returnMessage('success', 'O projeto foi finalizado!');
-
-      return redirect()->back()->with('message', $message);
-    }
-
-    return view('site.empresa.projeto-view-finalizar', compact('projeto', 'freelancers', 'produtoras'));
   }
 
-  public function cancelarProjeto(Projeto $projeto) {
-    $projeto->status = "Cancelado";
+  foreach ($produtoras as $produtora) {
+    foreach ($produtora->projetos as $prodProjeto) {
+      if ($prodProjeto->id == $projeto->id && $prodProjeto->pivot->avaliado == 0) {
+        $controle++;
+      }
+    }
+  }
+
+  if ($controle == 0) {
+    $projeto->status = "Finalizado";
     $projeto->save();
 
-    $message = parent::returnMessage('success', 'O projeto foi cancelado!');
+    $jobs = $projeto->jobs;
+
+    foreach ($jobs as $job) {
+      $job->status = "Finalizado";
+      $job->save();
+    }
+
+    $message = parent::returnMessage('success', 'O projeto foi finalizado!');
 
     return redirect()->route('projetos.view')->with('message', $message);
   }
 
-  public function reabrirProjeto(Projeto $projeto) {
-    $projeto->status = "Aberto";
-    $projeto->save();
+  return view('site.empresa.projeto-view-finalizar', compact('projeto', 'freelancers', 'produtoras', 'notificacoes'));
+}
 
-    $message = parent::returnMessage('success', 'O projeto foi reaberto!');
+public function cancelarProjeto(Projeto $projeto) {
+  $projeto->status = "Cancelado";
+  $projeto->save();
 
-    return redirect()->back()->with('message', $message);
-  }
+  $message = parent::returnMessage('success', 'O projeto foi cancelado!');
+
+  return redirect()->route('projetos.view')->with('message', $message);
+}
+
+public function reabrirProjeto(Projeto $projeto) {
+  $projeto->status = "Aberto";
+  $projeto->save();
+
+  $message = parent::returnMessage('success', 'O projeto foi reaberto!');
+
+  return redirect()->back()->with('message', $message);
+}
 }

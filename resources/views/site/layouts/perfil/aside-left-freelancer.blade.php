@@ -24,6 +24,9 @@ $freelancer->save();
            <p title="Nome de usuário">{{ $freelancer->nome }}</p>
            <p title="E-mail">{{ $freelancer->email }}</p>
            <p title="Data de cadastro">{{ $freelancer->created_at->format('d/m/Y') }}</p>
+           <hr>
+           <p> Pontuação: {{ $freelancer->pontuacao }} pontos</p>
+           <p> Avaliação: {{ number_format($freelancer->avaliacao_geral, 2, '.', '') }}/5 <i class="fa fa-star" aria-hidden="true" style="color: #daa520;"></i></p>
          </div>
        </div>
      </div>
@@ -46,10 +49,10 @@ $freelancer->save();
           <p><a href="{{ route('jobs.view.freelancer') }}">Visualizar todos</a></p>
           <p><a href="{{ route('jobs.projeto.view') }}">Filtrar por projeto</a></p>
         </div>
-        <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Portifólio</button>
+        <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Portfólio</button>
         <div id="Demo3" class="w3-hide w3-container">
          <hr>
-         <p><a href="{{ route('portifolios.view') }}">Gerenciar portifólio</a></p>
+         <p><a href="{{ route('portifolios.view') }}">Gerenciar portfólio</a></p>
        </div>
      </div>
    </div>

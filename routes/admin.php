@@ -160,6 +160,6 @@ Route::get('/graficos/cadastros', 'Grafico\GraficoController@graficosCadastros')
 //-------------------------------------------------------------------------------------------------------
 
 // Rotas dos grupos
-Route::get('/grupos-view', 'Grupo\GrupoController@gruposView')->name('grupos.view');
+Route::get('/grupos-view', 'Grupo\GrupoController@gruposView')->name('grupos.view.admin');
 
 //-------------------------------------------------------------------------------------------------------

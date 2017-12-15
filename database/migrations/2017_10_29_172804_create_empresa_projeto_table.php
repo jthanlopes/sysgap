@@ -18,6 +18,7 @@ class CreateEmpresaProjetoTable extends Migration
             $table->integer('empresa_id')->unsigned();
             $table->boolean('aceito');
             $table->boolean('avaliado');
+            $table->boolean('avaliado_prod');
             $table->timestamps();
         });
     }

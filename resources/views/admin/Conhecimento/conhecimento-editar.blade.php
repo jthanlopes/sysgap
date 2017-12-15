@@ -12,63 +12,63 @@
     <li><a href="{{ route('admins.view') }}"><i class="fa fa-circle-o"></i> Administradores</a></li>
     <li><a href="{{ route('noticias.view') }}"><i class="fa fa-circle-o"></i> Notícias </a></li>
     <li><a href="{{ route('conhecimentos.view') }}" style="color: #dd4b39"><i class="fa fa-circle-o"></i> Conhecimentos </a></li>
-    <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Itens </a></li>
+    <li><a href="{{ route('itens.view') }}"><i class="fa fa-circle-o"></i> Avaliações </a></li>
     <li><a href="{{ route('pontuacoes.view') }}" ><i class="fa fa-circle-o"></i> Pontuações </a>
-  </ul>
-</li>
-@endsection
+    </ul>
+  </li>
+  @endsection
 
-@section ('content')
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>Editar Conhecimento</h1>
-    <hr>
-    <ol class="breadcrumb">
-      <li><a href="/admin"><i class="fa fa-dashboard"></i> Home </a></li>
-      <li><a href="/admin/conhecimentos-view"></i> Conhecimentos </a></li>
-      <li class="active"> Editar </li>
-    </ol>
+  @section ('content')
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Editar Conhecimento</h1>
+      <hr>
+      <ol class="breadcrumb">
+        <li><a href="/admin"><i class="fa fa-dashboard"></i> Home </a></li>
+        <li><a href="/admin/conhecimentos-view"></i> Conhecimentos </a></li>
+        <li class="active"> Editar </li>
+      </ol>
 
-    <div class="row">
-      <div class="col-md-8 col-md-offset-1">
-        <form class="form-horizontal" role="form" method="POST" action="{{ route('conhecimento.editar') }}">
-          {{ csrf_field() }}
-          <input type="hidden" value="{{ $conhecimento->id }}" name="idConhecimento">
-          <div class="form-group{{ $errors->has('titulo') ? ' has-error' : '' }}">
-            <label for="titulo" class="col-sm-2 control-label">Título</label>
-            <div class="col-sm-10">
-              <input id="titulo" type="text" class="form-control" name="titulo" value="{{ $conhecimento->titulo }}" placeholder="Digite o título" required autofocus="">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+          <form class="form-horizontal" role="form" method="POST" action="{{ route('conhecimento.editar') }}">
+            {{ csrf_field() }}
+            <input type="hidden" value="{{ $conhecimento->id }}" name="idConhecimento">
+            <div class="form-group{{ $errors->has('titulo') ? ' has-error' : '' }}">
+              <label for="titulo" class="col-sm-2 control-label">Título</label>
+              <div class="col-sm-10">
+                <input id="titulo" type="text" class="form-control" name="titulo" value="{{ $conhecimento->titulo }}" placeholder="Digite o título" required autofocus="">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group{{ $errors->has('descricao') ? ' has-error' : '' }}">
-            <label for="descricao" class="col-sm-2 control-label">Descrição</label>
-            <div class="col-sm-10">
-              <select class="form-control" id="descricao" name="descricao" required>
-                <option value="Back-end" @if($conhecimento->descricao == "Back-end") {{ "selected" }} @endif>Back-end</option>
-                <option value="BD" @if($conhecimento->descricao == "BD") {{ "selected" }} @endif>BD</option>
-                <option value="Ferramenta" @if($conhecimento->descricao == "Ferramenta") {{ "selected" }} @endif>Ferramenta</option>
-                <option value="Front-end" @if($conhecimento->descricao == "Front-end") {{ "selected" }} @endif>Front-end</option>
-              </select>
-              @if ($errors->has('descricao'))
-              <span class="help-block">
-                <strong>{{ $errors->first('descricao') }}</strong>
-              </span>
-              @endif
+            <div class="form-group{{ $errors->has('descricao') ? ' has-error' : '' }}">
+              <label for="descricao" class="col-sm-2 control-label">Descrição</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="descricao" name="descricao" required>
+                  <option value="Back-end" @if($conhecimento->descricao == "Back-end") {{ "selected" }} @endif>Back-end</option>
+                  <option value="BD" @if($conhecimento->descricao == "BD") {{ "selected" }} @endif>BD</option>
+                  <option value="Ferramenta" @if($conhecimento->descricao == "Ferramenta") {{ "selected" }} @endif>Ferramenta</option>
+                  <option value="Front-end" @if($conhecimento->descricao == "Front-end") {{ "selected" }} @endif>Front-end</option>
+                </select>
+                @if ($errors->has('descricao'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('descricao') }}</strong>
+                </span>
+                @endif
+              </div>
             </div>
-          </div>
 
 
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-             <button type="submit" class="btn btn-primary"> Editar </button>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+               <button type="submit" class="btn btn-primary"> Editar </button>
+             </div>
            </div>
-         </div>
-       </form>
+         </form>
+       </div>
      </div>
-   </div>
- </section>
-</div>
-@endsection
+   </section>
+ </div>
+ @endsection

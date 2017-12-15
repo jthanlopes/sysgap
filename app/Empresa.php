@@ -56,7 +56,8 @@ class Empresa extends Authenticatable
     public function projetos() {
       return $this->belongsToMany(Projeto::class)
       ->withPivot('aceito')
-      ->withPivot('avaliado');
+      ->withPivot('avaliado')
+      ->withPivot('avaliado_prod');
     }
 
     public function portifolios() {
